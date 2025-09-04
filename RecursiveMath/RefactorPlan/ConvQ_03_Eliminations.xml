@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConvQ_Eliminations>
+    <metadata>
+        <purpose>Major eliminations and reductions achieved in Conv(ℚ)</purpose>
+        <usage>Include in "Two Sins" essay and Foundations</usage>
+        <tone>Present as mathematical discoveries, not attacks</tone>
+    </metadata>
+
+    <!-- Set Theory Elimination -->
+    <elimination id="set-theory">
+        <n>Set Theory Reduction to ℚ-Arithmetic</n>
+        <claim>ZFC set theory is unnecessary - ℚ arithmetic suffices</claim>
+
+        <construction>
+            <membership>
+                a ∈ b ⟺ ∃k ∈ ℚ [b = π(a,k) ∨ b = π(k,π(...a...))]
+            </membership>
+            <examples>
+                <ex>∅ = 0 ∈ ℚ</ex>
+                <ex>{0} = π(0,0) = 0² + 3·0 + 0 = 0</ex>
+                <ex>{1} = π(1,1) = 2² + 3·1 + 1 = 8</ex>
+                <ex>{0,1} = π(0,π(1,1)) = π(0,8) = 64 + 0 + 8 = 72</ex>
+                <ex>{0,1,2} = π(0,π(1,2)) = π(0,13) = 169 + 0 + 13 = 182</ex>
+            </examples>
+        </construction>
+
+        <zfc_axioms>
+            <axiom name="Extensionality">Two ℚ-codes equal iff same elements via π</axiom>
+            <axiom name="Pairing">π(a,b) exists for all a,b ∈ ℚ</axiom>
+            <axiom name="Union">Computable via π-decoding</axiom>
+            <axiom name="Power Set">2^n encoding via binary representation</axiom>
+            <axiom name="Infinity">ℕ ⊂ ℚ directly available</axiom>
+            <axiom name="Choice">Constructive choice via ℚ-computation</axiom>
+        </zfc_axioms>
+
+        <insight>Set theory was always ℚ-arithmetic in disguise!</insight>
+    </elimination>
+
+    <!-- Large Cardinals -->
+    <elimination id="large-cardinals">
+        <n>Large Cardinals as Arithmetic Mirages</n>
+        <claim>Large cardinals do not exist beyond ℚ-definability</claim>
+
+        <analysis>
+            <inaccessible>
+                "Inaccessible" κ = {n ∈ ℚ : no ℚ-program reaches n}
+                This is empty - all ℚ are ℚ-reachable
+            </inaccessible>
+            <measurable>
+                "Measurable" = ℚ-ultrafilter on ℚ-sets
+                Contradicts ℚ-countability
+            </measurable>
+            <woodin>
+                "Woodin" = ℚ-reflection principle
+                Vacuous in ℚ-universe
+            </woodin>
+        </analysis>
+
+        <conclusion>
+            Large cardinals are artifacts of assuming actual infinity.
+            In Conv(ℚ), they simply don't arise.
+        </conclusion>
+    </elimination>
+
+    <!-- Continuum Elimination -->
+    <elimination id="continuum">
+        <n>The Continuum as Unnecessary</n>
+        <claim>No mathematical theorem requires uncountable sets</claim>
+
+        <replacements>
+            <continuous_function>
+                Classical: f: ℝ → ℝ continuous
+                Conv(ℚ): f preserves convergent rational sequences
+            </continuous_function>
+
+            <intermediate_value>
+                Classical: Requires continuum completeness
+                Conv(ℚ): Works for uniformly continuous f on rationals
+            </intermediate_value>
+
+            <measure_theory>
+                Classical: Measures on uncountable σ-algebras
+                Conv(ℚ): ℚ-valued measures on ℚ-sets suffice
+            </measure_theory>
+        </replacements>
+
+        <note>
+            We don't claim ℝ "doesn't exist" - rather that mathematics
+            doesn't need it. Conv(ℚ) provides a complete alternative.
+        </note>
+    </elimination>
+
+    <!-- Forcing Reduction -->
+    <elimination id="forcing">
+        <n>Forcing as ℚ-Boolean Algebra</n>
+        <reduction>
+            <forcing_poset>ℙ = (ℚ-finite conditions, ⊆)</forcing_poset>
+            <generic_filter>G = ∪{p_n} where p_n ∈ ℚ-code</generic_filter>
+            <boolean_value>[[CH]]^B ∈ {0,1} ⊂ ℚ</boolean_value>
+        </reduction>
+        <insight>Independence results are ℚ-computational undecidability</insight>
+    </elimination>
+
+    <!-- Model Theory -->
+    <elimination id="model-theory">
+        <n>Model Theory in ℚ-Universe</n>
+        <structures>
+            <standard>𝔐 = (ℚ, +, ·, &lt;, 0, 1)</standard>
+            <satisfaction>𝔐 ⊨ φ ⟺ ℚ-code(𝔐) satisfies ℚ-code(φ)</satisfaction>
+            <nonstandard>ℚ ∪ {ω} where ω > all standard ℚ</nonstandard>
+        </structures>
+        <result>All models live in ℚ-universe via encoding</result>
+    </elimination>
+</ConvQ_Eliminations>

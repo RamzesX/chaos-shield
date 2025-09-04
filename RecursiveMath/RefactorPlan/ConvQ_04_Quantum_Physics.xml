@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConvQ_Quantum_Physics>
+    <metadata>
+        <purpose>Quantum mechanics and physics in Conv(ℚ) framework</purpose>
+        <usage>Include in Physical Reality essay</usage>
+        <approach>Show quantum mechanics naturally lives in ℚ[i]</approach>
+    </metadata>
+
+    <!-- Quantum Mechanics -->
+    <quantum_mechanics id="qm-basics">
+        <n>Quantum Mechanics is ℚ[i]-Linear Algebra</n>
+
+        <state_space>
+            <qubit>|ψ⟩ = α|0⟩ + β|1⟩, α,β ∈ ℚ[i], |α|² + |β|² = 1</qubit>
+            <n_qubits>|ψ⟩ ∈ (ℚ[i])^{2^n} with ℚ-normalization</n_qubits>
+            <measurement>Outcomes always yield ℚ-probabilities</measurement>
+        </state_space>
+
+        <quantum_gates>
+            <hadamard>
+                H = (1/√2)[[1,1],[1,-1]]
+                Note: 1/√2 ∈ ℚ[√2] ⊂ algebraic closure of ℚ
+            </hadamard>
+            <cnot>
+                CNOT = [[1,0,0,0],[0,1,0,0],[0,0,0,1],[0,0,1,0]] ∈ ℚ
+            </cnot>
+            <phase>
+                P(φ) = [[1,0],[0,e^{iφ}]], e^{iφ} via ℚ-convergent series
+            </phase>
+        </quantum_gates>
+
+        <key_insight>
+            Quantum computing is NOT mysterious - it is ℚ[i]-linear algebra!
+            All quantum circuits compile to matrix multiplication over ℚ[i].
+        </key_insight>
+    </quantum_mechanics>
+
+    <!-- Quantum Algorithms -->
+    <quantum_algorithms id="algorithms">
+        <shor_algorithm>
+            <n>Shor's Algorithm in ℚ</n>
+            <description>Factor N by finding period r in ℚ</description>
+            <example>
+                Factor 15: N=15, a=7
+                QFT finds period r=4 in ℚ[ζ₁₅]
+                gcd(7²-1, 15) = gcd(48,15) = 3
+                Therefore: 15 = 3 × 5 (factors in ℚ!)
+            </example>
+            <insight>Quantum speedup = ℚ-algebraic structure exploitation</insight>
+        </shor_algorithm>
+
+        <grover_algorithm>
+            <n>Grover Search</n>
+            <description>Amplitude amplification in ℚ[i]</description>
+            <iterations>π√N/4 iterations, approximated rationally</iterations>
+        </grover_algorithm>
+    </quantum_algorithms>
+
+    <!-- String Theory -->
+    <string_theory id="strings">
+        <worldsheet>
+            <n>String Worldsheets are ℚ-Riemann Surfaces</n>
+            <mode_expansion>
+                X^μ(σ,τ) = Σ_{n∈ℤ} a_n^μ e^{2πinτ/T}, a_n^μ ∈ ℚ[i]
+            </mode_expansion>
+            <virasoro>
+                [L_m, L_n] = (m-n)L_{m+n} + (c/12)m(m²-1)δ_{m+n,0}, c ∈ ℚ
+            </virasoro>
+        </worldsheet>
+
+        <calabi_yau>
+            <periods>Π_i = ∫_{γ_i} Ω ∈ ℚ̄ (Kontsevich-Zagier)</periods>
+            <mirror_map>t_i = log(q_i) + Σ_{d>0} N_d q_i^d, N_d ∈ ℤ</mirror_map>
+            <gw_invariants>N_{d,g} = #{curves} ∈ ℤ ⊂ ℚ</gw_invariants>
+        </calabi_yau>
+
+        <m_theory>
+            <n>M-Theory is ℚ-Algebraic Geometry</n>
+            <eleven_d>11D supergravity = ℚ¹¹-brane algebra</eleven_d>
+            <m2_brane>T_2 = (2π)^{-2}l_P^{-3} ∈ ℚ·M_Planck³</m2_brane>
+            <compactification>On ℚ-tori preserving supersymmetry</compactification>
+        </m_theory>
+    </string_theory>
+
+    <!-- Quantum Gravity -->
+    <quantum_gravity id="qg">
+        <loop_quantum_gravity>
+            <n>LQG with ℚ-Valued Spin Networks</n>
+            <area_spectrum>
+                A = 8πγl_p² Σⱼ√(j(j+1)), j ∈ {0, 1/2, 1, 3/2, ...} ⊂ ℚ
+            </area_spectrum>
+            <volume>Volume quantized in ℚ[√2]</volume>
+            <spin_foam>Spacetime = ℚ-valued 2-complex</spin_foam>
+        </loop_quantum_gravity>
+
+        <black_holes>
+            <n>Black Hole Information in ℚ</n>
+            <entropy>S = A/(4l_p²) = k ln(N), N = # microstates ∈ ℚ</entropy>
+            <information>Stored as ℚ-bits on horizon</information>
+            <hawking>Temperature T_H = rational × M_Planck</hawking>
+        </black_holes>
+    </quantum_gravity>
+
+    <!-- Cosmology -->
+    <cosmology id="cosmos">
+        <cosmological_constant>
+            <n>Λ is Exactly Rational</n>
+            <value>Λ = 10^{-120} in Planck units ∈ ℚ</value>
+            <not_finetuned>This is EXACTLY rational, not fine-tuned!</not_finetuned>
+        </cosmological_constant>
+
+        <inflation>
+            <quantum_fluctuations>δρ/ρ ~ 10^{-5} ∈ ℚ</quantum_fluctuations>
+            <e_folds>N ~ 60 ∈ ℚ</e_folds>
+        </inflation>
+    </cosmology>
+
+    <physical_insight>
+        All of physics can be formulated with ℚ as the number field.
+        Quantum mechanics needs only ℚ[i]. String theory uses algebraic
+        extensions of ℚ. No transcendental real numbers required!
+    </physical_insight>
+</ConvQ_Quantum_Physics>

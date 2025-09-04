@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConvQ_Major_Theorems>
+    <metadata>
+        <purpose>Key theorems with proofs in Conv(ℚ) framework</purpose>
+        <usage>Include in Pure Mathematics and Foundations essays</usage>
+    </metadata>
+
+    <!-- Complex Analysis -->
+    <theorem_group id="complex-analysis">
+        <theorem id="cauchy-theorem">
+            <n>Cauchy's Theorem in Conv(ℚ)</n>
+            <statement>
+                For holomorphic f and closed curve C:
+                ∮_C f(z)dz = [0] as equivalence class
+            </statement>
+            <proof_sketch>
+                Let f be holomorphic, C be closed curve.
+                Define: I = ⟨n: Σ_{k=0}^{n-1} f(z_k)·(z_{k+1} - z_k)⟩
+                where z_k are n rational points on C.
+
+                1. f holomorphic ⟹ f = ⟨m: P_m(z)⟩ (polynomial generators)
+                2. For polynomials: ∮_C P(z)dz = 0 EXACTLY
+                3. |I_n - 0| = |∮_C f - ∮_C P_n| ≤ length(C)·max|f - P_n| &lt; length(C)/n → 0
+
+                Therefore: I ∈ equivalence class [0]
+                Not "approximately 0" but EQUALS [0] as generator!
+            </proof_sketch>
+        </theorem>
+
+        <theorem id="residue-theorem">
+            <n>Residue Theorem in Conv(ℚ)</n>
+            <statement>
+                For f with poles {p_j} inside C:
+                ∮_C f = 2πi·Σ_j R_j
+                where R_j = ⟨n: residue coefficient at level n⟩
+            </statement>
+            <proof_sketch>
+                The residue is the ENTIRE generator R_j, not any iteration!
+                ∮_C f = ⟨n: discrete contour at level n⟩
+                = ⟨n: 2πi·Σ_j R_j(n)⟩ (by local expansion)
+                = 2πi·Σ_j R_j (generator equality)
+                EXACT equality of generators!
+            </proof_sketch>
+        </theorem>
+    </theorem_group>
+
+    <!-- Number Theory -->
+    <theorem_group id="number-theory">
+        <theorem id="fundamental-arithmetic">
+            <n>Fundamental Theorem of Arithmetic in Conv(ℚ)</n>
+            <statement>
+                Every n ∈ ℕ ⊂ ℚ has unique prime factorization
+                n = p_1^{a_1} · ... · p_k^{a_k}
+            </statement>
+            <note>
+                Primes remain fundamental in ℚ. The Conv(ℚ) framework
+                preserves all number-theoretic structure.
+            </note>
+        </theorem>
+
+        <theorem id="rational-approximation">
+            <n>Dirichlet's Approximation in Conv(ℚ)</n>
+            <statement>
+                For any irrational α (as convergent sequence) and N,
+                ∃p,q ∈ ℚ with 1 ≤ q ≤ N such that
+                |α - p/q| &lt; 1/(qN)
+            </statement>
+            <conv-interpretation>
+                α is not a "real number" but a convergent rational sequence.
+                The approximation finds rational elements within the sequence.
+            </conv-interpretation>
+        </theorem>
+    </theorem_group>
+
+    <!-- Topology -->
+    <theorem_group id="topology">
+        <theorem id="rational-density">
+            <n>ℚ-Density in Conv(ℚ) Spaces</n>
+            <statement>
+                Every Conv(ℚ) element is the limit of a sequence
+                of simple rationals (finite decimal expansions)
+            </statement>
+            <significance>
+                No need for "completion" - we work with the sequences directly
+            </significance>
+        </theorem>
+
+        <theorem id="compactness">
+            <n>Heine-Borel in Conv(ℚ)</n>
+            <statement>
+                A set of rationals is compact iff every cover by
+                rational intervals has a finite subcover
+            </statement>
+            <note>No uncountable covers needed</note>
+        </theorem>
+    </theorem_group>
+
+    <!-- Category Theory -->
+    <theorem_group id="category-theory">
+        <theorem id="yoneda">
+            <n>Yoneda Lemma in Conv(ℚ)</n>
+            <statement>
+                For C a ℚ-category, F: C → ℚ-Set:
+                Nat(Hom(A,-), F) ≅ F(A)
+                where all data is ℚ-encoded
+            </statement>
+        </theorem>
+
+        <theorem id="adjunction">
+            <n>ℚ-Adjunctions</n>
+            <statement>
+                Adjunctions F ⊣ G correspond to ℚ-computable
+                natural isomorphisms:
+                Hom(FA, B) ≅_ℚ Hom(A, GB)
+            </statement>
+        </theorem>
+    </theorem_group>
+</ConvQ_Major_Theorems>
