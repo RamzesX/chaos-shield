@@ -71,14 +71,16 @@ All of set theory reduces to ℚ-arithmetic.
 
 **Definition (Rational Pairing):**
 ```
-π: ℚ × ℚ → ℚ
-π(a,b) = (a+b)² + 3a + b
+π: ℚ⁺ × ℚ⁺ → ℚ⁺  (restricted to positive rationals)
+π(a,b) = (a+b)(a+b+1)/2 + b  (Cantor pairing)
 ```
 
 **Properties:**
-1. **Injective**: π(a,b) = π(c,d) ⟹ a = c ∧ b = d
+1. **Injective on ℚ⁺**: π(a,b) = π(c,d) ⟹ a = c ∧ b = d (for positive rationals)
 2. **Computable**: Both π and π⁻¹ computable in ℚ
-3. **Preserves ℚ**: Closure under the operation
+3. **Extension needed**: For full ℚ × ℚ, use sign encoding: π'(a,b) = π(|a|,|b|) · 2^(sign(a)) · 3^(sign(b))
+
+**Important Note**: This encoding provides a computational mechanism but doesn't capture full set-theoretic extensionality. The relationship between encoded sets and true set membership requires further development.
 
 ### 3.2 Set Membership via Pairing
 
@@ -221,20 +223,21 @@ The Pythagoreans were right: All is number — rational number.
 
 ### A.1 Injectivity of π
 
-**Proof that π is injective:**
+**Proof that Cantor pairing is injective on ℚ⁺:**
 ```
-Given π(a,b) = π(c,d)
-Let s = a + b, t = c + d
-Then s² + 3a + b = t² + 3c + d
-If s = t: Then 3a + b = 3c + d
-    With a + b = c + d, we get 2a = 2c, so a = c, b = d ✓
-If s ≠ t: Say s < t, then
-    t² - s² = 3(a-c) + (b-d)
-    = (t-s)(t+s) = 3(a-c) + (b-d)
-    But t + s ≥ 2t - 1 ≥ 2s + 1
-    So (t-s)(2s+1) ≤ 3(a-c) + (b-d) ≤ (t-s)(∞)
-    Contradiction for bounded a,b,c,d ∈ ℚ
+For positive rationals a,b,c,d:
+π(a,b) = π(c,d) ⟺ (a+b)(a+b+1)/2 + b = (c+d)(c+d+1)/2 + d
+
+Let k = a+b, m = c+d
+If k = m: Then b = d, hence a = c ✓
+If k ≠ m: The triangular numbers T_k = k(k+1)/2 are strictly increasing
+         So T_k + b ≠ T_m + d for b < k+1, d < m+1
+         Therefore π is injective on ℚ⁺
+
+For negative rationals: Use the extended encoding π'(a,b) with sign bits.
 ```
+
+**Limitation Acknowledged**: This provides a bijection ℚ × ℚ → ℚ for computational purposes, but doesn't fully eliminate set theory's conceptual framework. The reduction requires more sophisticated treatment.
 
 ### A.2 Density of ℚ in Conv(ℚ)
 

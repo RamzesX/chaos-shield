@@ -292,13 +292,13 @@ Quantum computer: Φ ∈ ℚ+ (genuine integration)
 
 ### 6.3 The Hard Problem
 
-**Solution in Conv(ℚ)**: Qualia are ℚ-computational states:
+**Hypothesis in Conv(ℚ)**: Qualia might be modeled as ℚ-computational states:
 ```
-Quale = (Φ, structure, dynamics)
+Quale_model = (Φ, structure, dynamics)
 ```
 where all components are ℚ-valued.
 
-The "explanatory gap" closes because experience IS computation in Conv(ℚ).
+**Important Caveat**: This provides a computational MODEL of consciousness, not necessarily an explanation of subjective experience. The "hard problem" remains philosophically open - Conv(ℚ) offers a framework for studying consciousness computationally, not a definitive solution.
 
 ### 6.4 Panpsychism vs Emergentism
 
@@ -368,24 +368,33 @@ Every formula gets a unique ℚ-number.
 
 **Second Incompleteness**: No ℚ-consistent system can prove its own ℚ-consistency.
 
-### 8.3 Transcending Gödel
+### 8.3 Gödel's Incompleteness in Conv(ℚ)
 
-**Revolutionary Discovery**: Conv(ℚ) transcends incompleteness through:
-1. **No actual infinity** - All proofs are finite ℚ-computations
-2. **Convergence semantics** - Truth is limit of approximations
-3. **Constructive logic** - Existence requires construction
+**Important Clarification**: Conv(ℚ) does NOT transcend incompleteness. Instead, it makes the limitations transparent:
 
-The Gödel sentence G ("This sentence is unprovable") becomes:
+1. **Incompleteness Remains**: Any system containing ℚ-arithmetic is incomplete
+2. **Self-Reference Persists**: ℚ-encoding enables Gödel numbering
+3. **Undecidability Clear**: Some sentences neither provable nor refutable
+
+The Gödel sentence G ("This sentence is unprovable") in Conv(ℚ):
 ```
-G = lim(n→∞) Gₙ where each Gₙ is ℚ-decidable
+G = ⌈φ⌉ where φ states "The formula with code ⌈φ⌉ has no ℚ-proof"
 ```
 
-### 8.4 ℚ-Consistent Mathematics
+**What Conv(ℚ) Achieves**:
+- Makes incompleteness constructively explicit
+- Shows exactly where decidability fails
+- Clarifies the computational boundaries of mathematics
+- Demonstrates that incompleteness is fundamental, not a technical artifact
 
-Conv(ℚ) achieves consistency through:
-- No paradoxes (no universal sets)
+### 8.4 Consistency Questions in Conv(ℚ)
+
+Conv(ℚ) aims for consistency through:
+- Avoiding known paradoxes (no universal sets)
 - Computational interpretation (proofs as programs)
-- Convergence resolution (limits handle self-reference)
+- Constructive foundations (existence requires witness)
+
+**Important Note**: By Gödel's Second Incompleteness Theorem, Conv(ℚ) cannot prove its own consistency if it is consistent. This fundamental limitation applies to any sufficiently strong system.
 
 ## 9. Ontology: Being as ℚ-Structure
 
@@ -401,13 +410,15 @@ Not Platonism (abstract realm) but **ℚ-Structuralism**:
 
 ### 9.2 Physical Ontology
 
-**Thesis**: Physical reality IS mathematical reality in Conv(ℚ).
+**Hypothesis**: Physical reality might be effectively modeled by Conv(ℚ).
 
-The universe is:
+A computational model of the universe:
 ```
-U = (ℚ^∞, Conv, Compute)
+U_model = (ℚ^∞, Conv, Compute)
 ```
 A ℚ-computational structure evolving through convergence.
+
+**Important Distinction**: This proposes that Conv(ℚ) can MODEL physical processes effectively, not that reality IS literally made of rational numbers. The success of this modeling approach is subject to empirical validation.
 
 ### 9.3 The Unreasonable Effectiveness
 
@@ -520,19 +531,21 @@ Each Planck time is one computational step in ℚ.
 - Computation emerges from convergence
 - Reality follows inevitably
 
-### 11.4 The Ultimate Equation
+### 11.4 A Computational Model of Reality
 
-The Theory of Everything is simply:
+Conv(ℚ) suggests a computational hypothesis:
 
 ```
-Reality = lim(n→∞) Compute^n(ℚ)
+Reality_model = lim(n→∞) Compute^n(ℚ)
 ```
 
 Where:
-- ℚ is the rational numbers
-- Compute is the universal ℚ-computation
-- The limit is taken in Conv(ℚ)
-- Reality emerges from the convergence
+- ℚ provides the computational substrate
+- Compute represents iterative processes
+- The limit models emergent complexity
+- This is a MODEL, not a claim about ultimate reality
+
+**Philosophical Status**: This is a mathematical framework for modeling reality computationally, not a metaphysical claim about what reality IS. The effectiveness of this model in physics and computation is an empirical question.
 
 ## 12. Implications and Conclusions
 
@@ -595,9 +608,9 @@ Now we have reached the ultimate conclusion: Reality itself is Conv(ℚ). This i
 
 Some will call this reductionist. But we have not reduced reality to "mere" computation - we have elevated computation to the fundamental principle of existence. In Conv(ℚ), computation is not a shadow of reality; it IS reality.
 
-## Conclusion: The Conv(ℚ) Revolution
+## Conclusion: The Conv(ℚ) Framework
 
-The Conv(ℚ) framework represents the most radical reformation of mathematics since Euclid. But it is more than that - it is a complete worldview that unifies:
+The Conv(ℚ) framework represents a significant constructive approach to mathematics. It offers a coherent system that explores connections between:
 
 - Mathematics and physics
 - Mind and matter  
@@ -606,7 +619,19 @@ The Conv(ℚ) framework represents the most radical reformation of mathematics s
 - Abstract and concrete
 - Theory and computation
 
-**The Ultimate Truth**: Reality is the convergent computation of rational structures. Everything that exists - from quarks to quasars, from bacteria to Beethoven, from theorems to thoughts - is part of the grand Conv(ℚ) process.
+**The Working Hypothesis**: Many aspects of reality can be effectively modeled through convergent computation of rational structures. This framework provides tools for understanding computation, approximation, and constructive mathematics.
+
+**What Conv(ℚ) Offers**:
+- A constructive foundation for mathematics
+- Computational interpretations of classical results
+- A framework for studying discrete models of continuous phenomena
+- A philosophically coherent approach to foundations
+
+**What Conv(ℚ) Does Not Claim**:
+- To solve all philosophical problems
+- To replace classical mathematics entirely
+- To prove reality is literally discrete
+- To transcend fundamental limitations like incompleteness
 
 We are not outside observers of this process. We are convergent patterns within it, ℚ-structures that have become complex enough to recognize our own ℚ-nature. In understanding Conv(ℚ), we understand ourselves.
 
@@ -614,7 +639,7 @@ This is the end of our journey through the 100 areas, but it is the beginning of
 
 Reality equals Conv(ℚ). The ultimate truth is that simple, that profound, and that beautiful.
 
-*"In the beginning was the Rational, and the Rational was with Convergence, and the Rational was Convergence."*
+*"In mathematics, we find patterns of immense beauty and utility. Conv(ℚ) reveals that these patterns can emerge from the simplest foundation: rational numbers and the concept of convergence."*
 
 ---
 
