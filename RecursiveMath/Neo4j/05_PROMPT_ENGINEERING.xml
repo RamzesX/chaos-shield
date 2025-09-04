@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<prompt_engineering_guide>
+    <metadata>
+        <document_id>PROMPT</document_id>
+        <file>05_PROMPT_ENGINEERING.xml</file>
+        <references>
+            <ref>00_MASTER_INDEX.xml</ref>
+            <ref>04_CYPHER_SYNTAX.xml</ref>
+        </references>
+        <for_claude>Opus 4.1</for_claude>
+    </metadata>
+
+    <effective_prompting_techniques>
+        <technique id="T001" name="Namespace_Context">
+            <pattern>Always specify namespace: 'recursive_math'</pattern>
+            <example>
+                "In the recursive_math namespace, find all Definitions"
+            </example>
+            <rationale>Prevents cross-namespace pollution</rationale>
+        </technique>
+
+        <technique id="T002" name="Query_Prefix_Pattern">
+            <pattern>Start every Neo4j query request with explicit Cypher version</pattern>
+            <example>
+                "Using CYPHER 25, create a new Definition node..."
+            </example>
+            <rationale>Ensures compatibility and feature availability</rationale>
+        </technique>
+
+        <technique id="T003" name="Incremental_Exploration">
+            <pattern>Build complex queries step by step</pattern>
+            <steps>
+                <step>First, get the node</step>
+                <step>Then, explore relationships</step>
+                <step>Finally, aggregate results</step>
+            </steps>
+            <example><![CDATA[
+Step 1: "Find the sqrt(2) Definition"
+Step 2: "Show what sqrt(2) is approximated by"
+Step 3: "Get the full approximation sequence"
+            ]]></example>
+        </technique>
+
+        <technique id="T004" name="Property_Specification">
+            <pattern>Be explicit about expected properties</pattern>
+            <good>
+                "Create a Definition with properties: name, definition, exists (false), approximable_by"
+            </good>
+            <bad>
+                "Create a mathematical object"
+            </bad>
+        </technique>
+
+        <technique id="T005" name="Relationship_Clarity">
+            <pattern>Specify both ends of relationships clearly</pattern>
+            <example>
+                "Connect the Definition 'pi' to ComputabilityClass 'Computable_Definitions' with BELONGS_TO"
+            </example>
+        </technique>
+    </effective_prompting_techniques>
+
+    <query_construction_patterns>
+        <pattern name="Find_and_Expand">
+            <template><![CDATA[
+1. Find [NodeType] where [condition]
+2. Get its [relationship] connections
+3. Return [specific properties]
+            ]]></template>
+            <example><![CDATA[
+1. Find Definition where name = 'golden_ratio'
+2. Get its APPROXIMATED_IN connections
+3. Return the approximation levels
+            ]]></example>
+        </pattern>
+
+        <pattern name="Create_and_Connect">
+            <template><![CDATA[
+1. Create [NodeType] named [name] with [properties]
+2. Connect to [existing_node] with [relationship]
+3. Verify the connection
+            ]]></template>
+        </pattern>
+
+        <pattern name="Analyze_Structure">
+            <template><![CDATA[
+1. Count nodes by type in namespace
+2. List relationship patterns
+3. Find orphaned nodes
+4. Identify hubs
+            ]]></template>
+        </pattern>
+    </query_construction_patterns>
+
+    <common_tasks>
+        <task name="Add_New_Mathematical_Object">
+            <prompt_template><![CDATA[
+In the recursive_math namespace, create a new Definition for [object_name].
+Properties:
+- name: [object_name]
+- symbol: [if applicable]
+- definition: [mathematical definition]
+- exists: false
+- approximable_by: [method]
+
+Then connect it to the appropriate ComputabilityClass.
+            ]]></prompt_template>
+        </task>
+
+        <task name="Trace_Object_Properties">
+            <prompt_template><![CDATA[
+For [object_name] in recursive_math namespace:
+1. Get its definition and existence status
+2. Find approximation sequences
+3. Show which ComputabilityClass it belongs to
+4. List any Proofs that reference it
+            ]]></prompt_template>
+        </task>
+
+        <task name="Verify_Theory_Consistency">
+            <prompt_template><![CDATA[
+Check recursive_math namespace consistency:
+1. Verify all Definitions have exists=false
+2. Confirm only ℤ and ℚ have exists=true
+3. Ensure all Definitions are classified in ComputabilityClass
+4. Check that all approximations target ℚ
+            ]]></prompt_template>
+        </task>
+    </common_tasks>
+
+    <debugging_prompts>
+        <debug name="Node_Not_Found">
+            <prompt>
+                "Show all nodes in recursive_math namespace with their types and names"
+            </prompt>
+            <follow_up>
+                "Check if node exists with slightly different name or in different namespace"
+            </follow_up>
+        </debug>
+
+        <debug name="Relationship_Missing">
+            <prompt>
+                "For node [name], show ALL relationships regardless of type"
+            </prompt>
+        </debug>
+
+        <debug name="Duplicate_Nodes">
+            <prompt>
+                "Find and clean duplicate nodes in recursive_math namespace"
+            </prompt>
+        </debug>
+    </debugging_prompts>
+
+    <extension_guidelines>
+        <guideline>Always maintain exists=false for new Definitions</guideline>
+        <guideline>Connect new objects to existing ComputabilityClass</guideline>
+        <guideline>Provide at least 3 levels of rational approximation</guideline>
+        <guideline>Link to relevant Theorems or Proofs when applicable</guideline>
+        <guideline>Document physical justification if claiming non-existence</guideline>
+    </extension_guidelines>
+
+    <prompt_optimization>
+        <tip>Use specific node labels rather than generic 'n'</tip>
+        <tip>Include expected return format in prompt</tip>
+        <tip>Specify ordering when multiple results expected</tip>
+        <tip>Ask for count verification after modifications</tip>
+        <tip>Request both creation and retrieval to verify success</tip>
+    </prompt_optimization>
+</prompt_engineering_guide>

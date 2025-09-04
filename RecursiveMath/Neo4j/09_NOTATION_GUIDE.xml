@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation_guide>
+    <metadata>
+        <document_id>NOTATION</document_id>
+        <file>09_NOTATION_GUIDE.xml</file>
+        <references>
+            <ref>00_MASTER_INDEX.xml</ref>
+            <ref>07_THEORY_SUMMARY.xml</ref>
+            <ref>08_WORKED_EXAMPLES.xml</ref>
+        </references>
+    </metadata>
+
+    <core_notation>
+        <symbol id="S001">
+            <notation>≝</notation>
+            <unicode>U+225D</unicode>
+            <meaning>Is defined as</meaning>
+            <usage>Object definition without existence claim</usage>
+            <example>√2 ≝ {x: x² = 2}</example>
+            <latex>\triangleq</latex>
+        </symbol>
+
+        <symbol id="S002">
+            <notation>⟨n: expression⟩</notation>
+            <unicode>U+27E8, U+27E9</unicode>
+            <meaning>Recursive generator at level n</meaning>
+            <usage>Defines sequence of rational approximations</usage>
+            <example>π ≝ ⟨n: 4·Σ((-1)^k/(2k+1), k=0..n)⟩</example>
+            <latex>\langle n: \text{expr} \rangle</latex>
+        </symbol>
+
+        <symbol id="S003">
+            <notation>≈_n</notation>
+            <unicode>U+2248</unicode>
+            <meaning>Approximates at recursion level n</meaning>
+            <usage>Rational approximation at specific level</usage>
+            <example>π ≈_5 355/113</example>
+            <latex>\approx_n</latex>
+        </symbol>
+
+        <symbol id="S004">
+            <notation>∄</notation>
+            <unicode>U+2204</unicode>
+            <meaning>Does not exist</meaning>
+            <usage>Explicit non-existence statement</usage>
+            <example>√2 ∄ in ℚ</example>
+            <latex>\nexists</latex>
+        </symbol>
+
+        <symbol id="S005">
+            <notation>∃!</notation>
+            <unicode>U+2203 U+0021</unicode>
+            <meaning>Exists uniquely</meaning>
+            <usage>Unique existence in ℚ</usage>
+            <example>2/3 ∃! in ℚ</example>
+            <latex>\exists!</latex>
+        </symbol>
+    </core_notation>
+
+    <set_notation>
+        <set id="SET001">
+            <notation>ℤ</notation>
+            <unicode>U+2124</unicode>
+            <meaning>Integers</meaning>
+            <exists>true</exists>
+            <construction>Successor function from 0</construction>
+        </set>
+
+        <set id="SET002">
+            <notation>ℚ</notation>
+            <unicode>U+211A</unicode>
+            <meaning>Rational numbers</meaning>
+            <exists>true</exists>
+            <construction>p/q where p,q ∈ ℤ, q ≠ 0</construction>
+        </set>
+
+        <set id="SET003">
+            <notation>ℝ</notation>
+            <unicode>U+211D</unicode>
+            <meaning>Real numbers (defined but non-existent)</meaning>
+            <exists>false</exists>
+            <note>Defined as complete ordered field, but doesn't exist</note>
+        </set>
+
+        <set id="SET004">
+            <notation>ℚ^ℕ</notation>
+            <meaning>Sequences of rationals</meaning>
+            <usage>Carrier set for recursive mathematics</usage>
+            <example>(1/1, 3/2, 7/5, 17/12, ...)</example>
+        </set>
+    </set_notation>
+
+    <operation_notation>
+        <operation id="OP001">
+            <notation>+_ℚ</notation>
+            <meaning>Rational addition</meaning>
+            <formula>(p/q) +_ℚ (r/s) = (ps + qr)/(qs)</formula>
+            <closure>ℚ × ℚ → ℚ</closure>
+        </operation>
+
+        <operation id="OP002">
+            <notation>×_ℚ</notation>
+            <meaning>Rational multiplication</meaning>
+            <formula>(p/q) ×_ℚ (r/s) = (pr)/(qs)</formula>
+            <closure>ℚ × ℚ → ℚ</closure>
+        </operation>
+
+        <operation id="OP003">
+            <notation>→_ℚ</notation>
+            <meaning>Converges in rationals</meaning>
+            <usage>Sequence convergence notation</usage>
+            <example>⟨n: F_{n+1}/F_n⟩ →_ℚ φ</example>
+        </operation>
+    </operation_notation>
+
+    <special_notation>
+        <special id="SP001">
+            <notation>[a₀; a₁, a₂, ...]</notation>
+            <meaning>Continued fraction</meaning>
+            <expansion>a₀ + 1/(a₁ + 1/(a₂ + ...))</expansion>
+            <example>√2 = [1; 2, 2, 2, ...]</example>
+        </special>
+
+        <special id="SP002">
+            <notation>@n</notation>
+            <meaning>At recursion level n</meaning>
+            <usage>Specify computation depth</usage>
+            <example>Compute π @10 (at level 10)</example>
+        </special>
+
+        <special id="SP003">
+            <notation>ℓ_P</notation>
+            <meaning>Planck length</meaning>
+            <value>10^-35 meters</value>
+            <significance>Minimum meaningful distance</significance>
+        </special>
+    </special_notation>
+
+    <conversion_rules>
+        <rule id="R001">
+            <from>Traditional limit</from>
+            <to>Recursive generator</to>
+            <pattern>lim_{n→∞} a_n becomes ⟨n: a_n⟩</pattern>
+        </rule>
+
+        <rule id="R002">
+            <from>Existence claim</from>
+            <to>Definition</to>
+            <pattern>∃x: P(x) becomes x ≝ {y: P(y)}</pattern>
+        </rule>
+
+        <rule id="R003">
+            <from>Real number</from>
+            <to>Rational sequence</to>
+            <pattern>r ∈ ℝ becomes ⟨n: rational_approx(r, n)⟩</pattern>
+        </rule>
+    </conversion_rules>
+
+    <usage_examples>
+        <example id="UE001">
+            <context>Defining a transcendental</context>
+            <notation>π ≝ ⟨n: 4·arctan_n(1)⟩</notation>
+            <meaning>π defined as generator using arctan series</meaning>
+        </example>
+
+        <example id="UE002">
+            <context>Stating approximation</context>
+            <notation>e ≈_5 163/60</notation>
+            <meaning>e approximated by 163/60 at level 5</meaning>
+        </example>
+
+        <example id="UE003">
+            <context>Denying existence</context>
+            <notation>√(-1) ∄ in ℚ</notation>
+            <meaning>Square root of -1 doesn't exist in rationals</meaning>
+        </example>
+
+        <example id="UE004">
+            <context>Computation directive</context>
+            <notation>Evaluate ⟨n: fib(n)/fib(n-1)⟩ @20</notation>
+            <meaning>Compute golden ratio approximation at level 20</meaning>
+        </example>
+    </usage_examples>
+
+    <typographical_conventions>
+        <convention>Use ASCII approximations when Unicode unavailable</convention>
+        <mapping>
+            <map unicode="≝" ascii=":="/>
+            <map unicode="≈" ascii="~="/>
+            <map unicode="∄" ascii="!exists"/>
+            <map unicode="∃!" ascii="exists!"/>
+            <map unicode="ℤ" ascii="Z"/>
+            <map unicode="ℚ" ascii="Q"/>
+            <map unicode="ℝ" ascii="R"/>
+            <map unicode="⟨⟩" ascii="<>"/>
+        </mapping>
+    </typographical_conventions>
+
+    <latex_rendering>
+        <preamble><![CDATA[
+\usepackage{amssymb}
+\usepackage{amsmath}
+\newcommand{\gen}[1]{\langle #1 \rangle}
+\newcommand{\defeq}{\triangleq}
+\newcommand{\approxn}[1]{\approx_{#1}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+        ]]></preamble>
+    </latex_rendering>
+</notation_guide>

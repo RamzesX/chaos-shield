@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navigation_queries>
+    <metadata>
+        <document_id>NAV</document_id>
+        <file>02_NAVIGATION_QUERIES.xml</file>
+        <references>
+            <ref>00_MASTER_INDEX.xml</ref>
+            <ref>04_CYPHER_SYNTAX.xml</ref>
+        </references>
+        <namespace>recursive_math</namespace>
+        <note>All queries must start with CYPHER 25</note>
+    </metadata>
+
+    <essential_queries>
+        <query id="Q001" name="Get_Entire_Theory">
+            <purpose>View complete theory structure</purpose>
+            <cypher><![CDATA[
+CYPHER 25
+MATCH (space:AlgebraicSpace {name: 'recursive_math'})
+OPTIONAL MATCH (space)-[r]->(component)
+WHERE component.namespace = 'recursive_math' OR component.name IN ['ℤ', 'ℚ']
+RETURN space, type(r) as rel_type, component
+            ]]></cypher>
+            <expected_results>Root space with all direct connections</expected_results>
+        </query>
+
+        <query id="Q002" name="List_All_Definitions">
+            <purpose>Get all mathematical objects</purpose>
+            <cypher><![CDATA[
+CYPHER 25
+MATCH (def:Definition {namespace: 'recursive_math'})
+RETURN def.name as name, 
+       def.definition as definition,
+       def.exists as exists,
+       def.approximable_by as approximation_method
+ORDER BY def.name
+            ]]></cypher>
+            <expected_count>8</expected_count>
+        </query>
+
+        <query id="Q003" name="Show_Approximations">
+            <purpose>See rational approximation sequences</purpose>
+            <cypher><![CDATA[
+CYPHER 25
+MATCH (approx:RecursiveApproximation {namespace: 'recursive_math'})
+MATCH (approx)-[:APPROXIMATES]->(def:Definition)
+RETURN def.name as object,
+       approx.level_0 as n0,
+       approx.level_1 as n1, 
+       approx.level_2 as n2,
+       approx.level_3 as n3,
+       approx.level_4 as n4,
+       approx.level_5 as n5
+            ]]></cypher>
+        </query>
+
+        <query id="Q004" name="Trace_Sqrt2_Complete">
+            <purpose>Everything about √2 in the system</purpose>
+            <cypher><![CDATA[
+CYPHER 25
+MATCH (def:Definition {name: 'sqrt(2)', namespace: 'recursive_math'})
+OPTIONAL MATCH (def)<-[:APPROXIMATES]-(approx)
+OPTIONAL MATCH (def)-[:APPROXIMATED_IN]->(set)
+OPTIONAL MATCH (def)-[:BELONGS_TO]->(comp)
+OPTIONAL MATCH (proof:Proof)-[:RESOLVES]->(def)
+OPTIONAL MATCH (ex:ComputationalExample)-[:COMPUTES]->(def)
+RETURN def, approx, set, comp, proof, ex
+            ]]></cypher>
+        </query>
+    </essential_queries>
+
+    <exploration_queries>
+        <query id="Q005" name="Find_Theorems">
+            <purpose>List all theoretical results</purpose>
+            <cypher><![CDATA[
+CYPHER 25
+MATCH (thm:Theorem {namespace: 'recursive_math'})
+RETURN thm.name, thm.statement, thm.significance
+ORDER BY thm.name
+            ]]></cypher>
+        </query>
+
+        <query id="Q006" name="Show_Godel_Resolution">
+            <purpose>How Gödel incompleteness is resolved</purpose>
+            <cypher><![CDATA[
+CYPHER 25
+MATCH (godel:Theorem {name: 'Gödel_Incompleteness_Reframed', namespace: 'recursive_math'})
+RETURN godel.standard_form as classical,
+       godel.recursive_interpretation as our_view,
+       godel.resolution as resolution,
+       godel.consequence as consequence
+            ]]></cypher>
+        </query>
+
+        <query id="Q007" name="Get_Computational_Examples">
+            <purpose>View worked computational examples</purpose>
+            <cypher><![CDATA[
+CYPHER 25
+MATCH (ex:ComputationalExample {namespace: 'recursive_math'})
+RETURN ex.name, ex.method, ex.recursion, ex.key_insight
+            ]]></cypher>
+        </query>
+
+        <query id="Q008" name="List_Operations">
+            <purpose>Mathematical operations in the space</purpose>
+            <cypher><![CDATA[
+CYPHER 25
+MATCH (op:Operation {namespace: 'recursive_math'})
+RETURN op.name, op.symbol, op.definition, op.closure, op.example
+            ]]></cypher>
+        </query>
+    </exploration_queries>
+
+    <analysis_queries>
+        <query id="Q009" name="Computable_vs_Uncomputable">
+            <purpose>Classification by computability</purpose>
+            <cypher><![CDATA[
+CYPHER 25
+MATCH (comp:ComputabilityClass {namespace: 'recursive_math'})
+OPTIONAL MATCH (def:Definition)-[:BELONGS_TO]->(comp)
+RETURN comp.name as class, collect(def.name) as objects
+            ]]></cypher>
+        </query>
+
+        <query id="Q010" name="Physics_Connections">
+            <purpose>Links to physical reality</purpose>
+            <cypher><![CDATA[
+CYPHER 25
+MATCH (phys:PhysicsConnection {namespace: 'recursive_math'})
+MATCH (planck:Limitation {name: 'Planck_Scale_Constraint', namespace: 'recursive_math'})
+RETURN phys.thesis, phys.observation, planck.mathematical_consequence
+            ]]></cypher>
+        </query>
+
+        <query id="Q011" name="Paradox_Resolutions">
+            <purpose>How classical paradoxes are resolved</purpose>
+            <cypher><![CDATA[
+CYPHER 25
+MATCH (paradox:ParadoxResolution {namespace: 'recursive_math'})
+RETURN paradox.name, paradox.classical_paradox, paradox.recursive_resolution
+            ]]></cypher>
+        </query>
+    </analysis_queries>
+
+    <modification_queries>
+        <query id="M001" name="Add_New_Definition">
+            <purpose>Template for adding new mathematical object</purpose>
+            <cypher><![CDATA[
+CYPHER 25
+MERGE (def:Definition {
+    name: 'new_object',
+    namespace: 'recursive_math',
+    id: randomUUID()
+})
+SET def.symbol = 'symbol',
+    def.definition = 'mathematical definition',
+    def.exists = false,
+    def.approximable_by = 'method'
+RETURN def
+            ]]></cypher>
+        </query>
+
+        <query id="M002" name="Add_Approximation_Sequence">
+            <purpose>Add approximation for a definition</purpose>
+            <cypher><![CDATA[
+CYPHER 25
+MATCH (def:Definition {name: 'target_name', namespace: 'recursive_math'})
+MERGE (approx:RecursiveApproximation {
+    name: 'approx_name',
+    namespace: 'recursive_math',
+    id: randomUUID()
+})
+SET approx.level_0 = 'p0/q0',
+    approx.level_1 = 'p1/q1'
+MERGE (approx)-[:APPROXIMATES]->(def)
+RETURN approx, def
+            ]]></cypher>
+        </query>
+    </modification_queries>
+
+    <see_also>
+        <doc>04_CYPHER_SYNTAX.xml for syntax patterns</doc>
+        <doc>03_NODE_CATALOG.xml for node properties</doc>
+    </see_also>
+</navigation_queries>
