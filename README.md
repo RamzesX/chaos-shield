@@ -53,7 +53,7 @@ Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
   author = {Norbert},
   title = {Chaos Shield: Constructive Mathematics and Quantum Security Frameworks},
   year = {2025},
-  url = {https://github.com/[your-username]/chaos-shield}
+  url = {https://github.com/RamzesX/chaos-shield}
 }
 ```
 

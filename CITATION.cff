@@ -5,7 +5,7 @@ authors:
 - family-names: "Norbert"
   given-names: ""
 type: software
-repository-code: "https://github.com/[your-username]/chaos-shield"
+repository-code: "https://github.com/RamzesX/chaos-shield"
 keywords:
   # Core Frameworks
   - constructive mathematics
