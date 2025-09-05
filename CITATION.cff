@@ -1,0 +1,70 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "Chaos Shield: Constructive Mathematics and Quantum Security Frameworks"
+authors:
+- family-names: "Norbert"
+  given-names: ""
+type: software
+repository-code: "https://github.com/[your-username]/chaos-shield"
+keywords:
+  # Core Frameworks
+  - constructive mathematics
+  - Conv(Q) framework
+  - quantum gravity
+  - discrete spacetime
+  - quantum chaos protocols
+  
+  # Mathematical Concepts
+  - rational numbers
+  - convergence operator
+  - computational foundations
+  - potential infinity
+  - mathematical minimalism
+  - computable analysis
+  - constructive proofs
+  - quantum integers
+  
+  # Physics & Cosmology
+  - planck scale physics
+  - mass generation
+  - geometric reshaping
+  - unified field theory
+  - emergent relativity
+  - higgs mechanism
+  - causal sets
+  - noether theorem
+  - spacetime lattice
+  - lorentz invariance
+  
+  # Quantum Computing & Security
+  - post-quantum cryptography
+  - traffic obfuscation
+  - differential privacy
+  - quantum resistance
+  - harvest now decrypt later
+  - quantum decoherence
+  - economic exhaustion
+  
+  # Philosophy
+  - digital physics
+  - it from bit
+  - computational universe
+  - constructivism
+  - finite information
+  - bekenstein bound
+  - emergent spacetime
+  
+  # Systems & Implementation
+  - unix philosophy
+  - operating systems
+  - tao of programming
+  - computational thinking
+license: CC-BY-4.0
+date-released: 2025-01-01
+abstract: |
+  Chaos Shield is a collection of theoretical frameworks exploring the intersection
+  of mathematics, quantum computing, and security. It introduces Conv(ℚ), a
+  constructive mathematical framework that restricts mathematics to computationally
+  meaningful objects, and presents novel quantum-resistant security protocols based
+  on economic exhaustion through traffic obfuscation. The work bridges theoretical
+  computer science, mathematical philosophy, and practical system design.

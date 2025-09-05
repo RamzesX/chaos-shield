@@ -1,0 +1,45 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Markdown files
+*.md text
+*.markdown text
+
+# Code files
+*.py text
+*.js text
+*.java text
+*.c text
+*.cpp text
+*.h text
+*.hpp text
+*.sh text
+*.bash text
+
+# Documentation
+*.txt text
+README text
+LICENSE text
+CONTRIBUTING text
+*.cff text
+
+# Config files
+.gitignore text
+.gitattributes text
+*.yml text
+*.yaml text
+*.json text
+*.xml text
+
+# Graphics (binary)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+
+# Archives (binary)
+*.zip binary
+*.tar binary
+*.gz binary
