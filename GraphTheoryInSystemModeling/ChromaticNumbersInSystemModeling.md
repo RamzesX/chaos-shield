@@ -2,7 +2,6 @@
 ## A Mathematical Framework for IT Systems Through Erdős's Lens
 
  Norbert [Author] 
-*Room 443 Correspondence, Warsaw Mathematical School*
 
 ---
 
