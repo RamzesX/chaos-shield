@@ -2,7 +2,7 @@
 
 > *A collection of theoretical frameworks for computational mathematics, quantum security, and system understanding*
 
-[![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
 ## What is this?
@@ -59,7 +59,7 @@ Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## License
 
-[CC BY 4.0](LICENSE) - Free to use with attribution
+[MIT](LICENSE) - Free open source license
 
 ---
 
