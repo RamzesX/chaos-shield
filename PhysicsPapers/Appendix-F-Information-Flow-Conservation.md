@@ -145,6 +145,8 @@ These violations occur because:
 2. e appears in exponential decay (infinite series)
 3. √2 appears in diagonal jumps (irrational)
 
+*[The δ(π, e, √2) term arises from computational deadline stress: action thresholds force transitions before these irrationals can be computed to infinite precision. The detailed mechanism is presented in Main Paper Section 2.3a, with quantitative estimates of δ vs. action density/temperature in Appendix A Section 2.2. At high action density (high temperature), δ becomes large; at low action density (low temperature), δ becomes negligible, explaining why classical information theory works at macroscopic scales.]*
+
 ### F.5.2 Statistical Emergence
 
 For N particles, the total information:

@@ -54,7 +54,7 @@ This is precisely the structure of a spin-2 field! The irrationality of π in ro
 ```
 Helicity = ±2ℏ × [1 + δ(π)]
 ```
-where δ(π) ~ 10^-35 represents Planck-scale uncertainty. □
+where δ(π) ~ 10^-35 represents Planck-scale uncertainty arising from computational deadlines in computing π for rotation matrices. *[For the mechanism by which π's irrationality creates this uncertainty through action threshold stress, see Main Paper Section 2.3a. The magnitude δ(π) ∝ ρ_S is quantified in Appendix A Section 2.2.]* □
 
 ### G.2.3 Information Content Calculation
 
