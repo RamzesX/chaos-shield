@@ -4,7 +4,7 @@
 
 ### Abstract
 
-We demonstrate that quantum computing error rates are fundamentally determined by action density ρ_S = S/V, providing a first-principles explanation for why ultra-low temperatures are necessary rather than merely practical. Our framework predicts that gate fidelity scales as F = F₀/(1 + α·T), matching observed temperature dependence across all major quantum computing architectures. This reveals cooling not as an engineering convenience but as a strategy to reduce action density, thereby extending computational time before quantum thresholds. We identify five alternative strategies to reduce action density: (1) volume expansion (sparse qubit layouts), (2) topological qubits (lower intrinsic energy), (3) gate time optimization (faster operations), (4) energy-level engineering (ground state computation), and (5) hybrid classical-quantum algorithms (reduced qubit count). Each strategy is analyzed quantitatively with implementation roadmaps. Our framework explains why room-temperature quantum computing faces fundamental physics barriers (ρ_S ~ 10¹⁸ × optimal) and why certain architectural choices (superconducting at 15 mK, trapped ion at 10⁻³ K, topological qubits) naturally emerge as optimal solutions. We provide detailed experimental protocols to test our predictions and estimate fundamental limits on quantum computing performance.
+We demonstrate that quantum computing error rates are fundamentally determined by action density ρ_S = S/V, providing a first-principles explanation for why ultra-low temperatures are necessary rather than merely practical. Our framework predicts that gate fidelity scales as F = F₀/(1 + α·T), matching observed temperature dependence across all major quantum computing architectures. This reveals cooling not as an engineering convenience but as a strategy to reduce action density, thereby extending computational time before quantum thresholds. *[This appendix applies the computational deadline mechanism developed in the Main Paper (Section 2.3a) and quantified with numerical examples in Appendix A (Section 2.2) specifically to quantum computing architectures.]* We identify five alternative strategies to reduce action density: (1) volume expansion (sparse qubit layouts), (2) topological qubits (lower intrinsic energy), (3) gate time optimization (faster operations), (4) energy-level engineering (ground state computation), and (5) hybrid classical-quantum algorithms (reduced qubit count). Each strategy is analyzed quantitatively with implementation roadmaps. Our framework explains why room-temperature quantum computing faces fundamental physics barriers (ρ_S ~ 10¹⁸ × optimal) and why certain architectural choices (superconducting at 15 mK, trapped ion at 10⁻³ K, topological qubits) naturally emerge as optimal solutions. We provide detailed experimental protocols to test our predictions and estimate fundamental limits on quantum computing performance.
 
 ## 1. Introduction: The Billion-Dollar Cooling Bill
 
@@ -189,6 +189,8 @@ T = 300 mK: F = 0.940 ± 0.006
 Our fit: F(T) = 0.999/(1 + 0.065×T[K])
 R² = 0.98 (excellent agreement!)
 ```
+
+*[This excellent agreement validates the computational deadline mechanism. The linear T-dependence is the signature of computational time reduction with temperature, as opposed to exponential thermal activation (~exp(-E/k_BT)). For the detailed mechanism showing how T maps to computational iteration budgets N_max = ℏ/(Nk_BT×t_Planck), see Appendix A, Section 2.2, Step 4.]*
 
 **Google Sycamore (inferred from publications):**
 ```
@@ -702,6 +704,8 @@ Commercial viability: Much better
 - **Cooling costs drop 10-100×**
 
 ## 6. Experimental Validation Protocols
+
+*[These protocols test the computational deadline mechanism directly: whether quantum errors scale linearly with temperature as predicted by the finite computational time model (N_max = ℏ/(Nk_BT×t_Planck)). For the theoretical foundation, see Main Paper Section 2.3a and Appendix A Section 2.2.]*
 
 ### Protocol 1: Direct Temperature Scaling Test
 

@@ -43,6 +43,8 @@ The cutoff Λ isn't arbitrary—it's the inverse Planck length! Physicists have 
 
 **Key Insight**: Every regularization scheme (Pauli-Villars, dimensional, lattice) is a different way of encoding the same truth: spacetime is discrete at scale ℓ_p.
 
+*[But the cutoff has a deeper meaning: it represents not just spatial discreteness but also the computational deadline. When action accumulates to thresholds S = nℏ, geometric calculations involving π, e, √2 must terminate with finite precision, creating an effective cutoff in momentum space. This dual nature—spatial AND computational—is detailed in Main Paper Section 2.3a and Appendix A Section 2.2.]*
+
 ## H.3 The Geometric Origin of Running Couplings
 
 ### H.3.1 Traditional RG Equations
@@ -66,13 +68,15 @@ As energy increases toward E_Planck:
 2. Effective coupling strength changes
 3. This IS the running of couplings!
 
+*[The explicit form of f(E/E_p, π, e, √2) including computational error terms is given in Main Paper Section 2.4. As E increases, action density increases, computational time decreases, and precision in calculating π, e, √2 degrades—this manifests as running coupling constants. See Appendix A Section 2.2 for quantitative iteration budgets vs. energy.]*
+
 **Mathematical Connection**:
 ```
 g(μ) = g₀ × [1 + geometric_correction(μ/M_p)]
 
 where geometric_correction involves:
 - π factors from spherical geometry
-- √2 from spacetime rotations  
+- √2 from spacetime rotations
 - e from field propagation
 ```
 
