@@ -35,6 +35,20 @@ keywords:
   - noether theorem
   - spacetime lattice
   - lorentz invariance
+  - action threshold physics
+  - computational deadlines
+  - time emergence
+  - observer blindness
+  - irrational number uncertainty
+  - information flow conservation
+  - graviton predictions
+  - renormalization correspondence
+  - quantum entanglement dimensional theory
+  - temperature dependent quantum errors
+  - lorentz doppler unification
+  - stress energy tensor emergence
+  - fourth conservation law
+  - holographic principle
   
   # Quantum Computing & Security
   - post-quantum cryptography
@@ -44,6 +58,12 @@ keywords:
   - harvest now decrypt later
   - quantum decoherence
   - economic exhaustion
+  - quantum computing temperature limits
+  - action density optimization
+  - topological qubits
+  - gate fidelity scaling
+  - cryogenic cooling alternatives
+  - qubit error rates
   
   # Philosophy
   - digital physics
@@ -63,8 +83,14 @@ license: CC-BY-4.0
 date-released: 2025-01-01
 abstract: |
   Chaos Shield is a collection of theoretical frameworks exploring the intersection
-  of mathematics, quantum computing, and security. It introduces Conv(ℚ), a
+  of mathematics, quantum computing, physics, and security. It introduces Conv(ℚ), a
   constructive mathematical framework that restricts mathematics to computationally
-  meaningful objects, and presents novel quantum-resistant security protocols based
-  on economic exhaustion through traffic obfuscation. The work bridges theoretical
-  computer science, mathematical philosophy, and practical system design.
+  meaningful objects, presents novel quantum-resistant security protocols based
+  on economic exhaustion through traffic obfuscation, and proposes a revolutionary
+  discrete spacetime theory where mass emerges from geometric reshaping costs and
+  quantum uncertainty arises from computational deadlines imposed by action thresholds.
+  The physics framework (13 papers) includes testable predictions for quantum computing
+  error rates, explains why cryogenic cooling buys computational time for irrational
+  number calculations, and resolves quantum entanglement paradoxes through hidden
+  dimensional proximity. The work bridges theoretical physics, mathematical philosophy,
+  quantum computing engineering, and practical system design.

@@ -17,9 +17,28 @@
 13. [`12_Open_Problems.md`](ConvQMath/12_Open_Problems.md) - Unsolved problems
 14. [`13_Quantum_Integers.md`](ConvQMath/13_Quantum_Integers.md) - Quantum extensions
 
-## Physics
+## Physics: Discrete Spacetime Framework (13 papers)
 
-- [`unified-physics-paper.md`](PhysicsPapers/unified-physics-paper.md) - **Discrete Spacetime and Mass as Geometric Reshaping** (42 pages)
+**Full Summary**: See [`Physics-Papers-Summary.md`](Physics-Papers-Summary.md) for comprehensive overview with reading orders and publication strategy.
+
+### Main Paper
+1. [`unified-physics-paper.md`](PhysicsPapers/unified-physics-paper.md) - **Discrete Spacetime and Mass as Geometric Reshaping** (62 pages)
+
+### Appendices
+2. [`Appendix-A-Action-Density-and-Quantum-Errors.md`](PhysicsPapers/Appendix-A-Action-Density-and-Quantum-Errors.md) - **Action-Threshold Physics**: Time emerges from action accumulation S = nℏ
+3. [`Appendix-B-Quantum-Computing-Temperature-Limits.md`](PhysicsPapers/Appendix-B-Quantum-Computing-Temperature-Limits.md) - **Quantum Computing Temperature Limits**: Cooling = buying computational time ($1.4B impact)
+4. [`Appendix-E-Quantum-Entanglement-Dimensional-Theory.md`](PhysicsPapers/Appendix-E-Quantum-Entanglement-Dimensional-Theory.md) - **Quantum Entanglement as Higher-Dimensional Proximity**: D_ent hidden dimension
+5. [`Appendix-LorentzDopplerEquivalence.md`](PhysicsPapers/Appendix-LorentzDopplerEquivalence.md) - **Lorentz-Doppler Unification**: Time dilation as Doppler effect
+6. [`Appendix-F-Information-Flow-Conservation.md`](PhysicsPapers/Appendix-F-Information-Flow-Conservation.md) - **Information Flow Conservation**: Fourth fundamental conservation law ∇·I = 0
+7. [`Appendix-G-Graviton-Predictions.md`](PhysicsPapers/Appendix-G-Graviton-Predictions.md) - **Graviton Predictions**: 2.32 bits geometric message
+8. [`Appendix-H-Renormalization-Correspondence.md`](PhysicsPapers/Appendix-H-Renormalization-Correspondence.md) - **Renormalization as Hidden Discreteness**: Infinities signal discrete spacetime
+9. [`Appendix-I-Experimental-Tests.md`](PhysicsPapers/Appendix-I-Experimental-Tests.md) - **Experimental Tests**: 30+ validation protocols
+
+### Supporting Documents
+10. [`CRITICAL-CONNECTION-Irrationals-Action-Thresholds.md`](PhysicsPapers/CRITICAL-CONNECTION-Irrationals-Action-Thresholds.md) - **Core Mechanism**: How π, e, √2 create uncertainty under computational deadlines (ESSENTIAL READING)
+11. [`appendix-E-visual-diagrams.md`](PhysicsPapers/appendix-E-visual-diagrams.md) - **Visual Diagrams**: Enhanced visualizations for D_ent theory
+12. [`unified-theory-diagram.md`](PhysicsPapers/unified-theory-diagram.md) - **Comprehensive Framework Diagram**: Complete 10-level visual architecture
+13. [`UPDATED-COMPREHENSIVE-REVIEW.md`](PhysicsPapers/UPDATED-COMPREHENSIVE-REVIEW.md) - **Critical Analysis**: Publication strategy and peer review assessment
 
 ## Quantum Security
 

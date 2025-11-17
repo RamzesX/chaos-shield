@@ -26,17 +26,23 @@
 ```
 ConvQMath/           # Constructive mathematics framework (14 papers)
 QuantumSecurity/     # Quantum-resistant protocols (3 papers)
-PhysicsPapers/       # Unified physics theory (1 major paper)
+PhysicsPapers/       # Unified physics theory (13 papers: 1 main + 9 appendices + 3 supporting)
 UnixOs/              # System internals documentation
 ```
 
 **Full paper list**: See [`PAPERS.md`](PAPERS.md) for complete index.
+**Physics papers summary**: See [`Physics-Papers-Summary.md`](Physics-Papers-Summary.md) for detailed overview.
 
 ## Quick Start
 
 **Mathematicians**: Start with [`ConvQMath/00_Introduction.md`](ConvQMath/00_Introduction.md)
 
-**Physicists**: Read [`PhysicsPapers/unified-physics-paper.md`](PhysicsPapers/unified-physics-paper.md)
+**Physicists**:
+- Overview: [`Physics-Papers-Summary.md`](Physics-Papers-Summary.md)
+- Core mechanism: [`PhysicsPapers/CRITICAL-CONNECTION-Irrationals-Action-Thresholds.md`](PhysicsPapers/CRITICAL-CONNECTION-Irrationals-Action-Thresholds.md)
+- Main paper: [`PhysicsPapers/unified-physics-paper.md`](PhysicsPapers/unified-physics-paper.md)
+
+**Quantum Computing Engineers**: [`PhysicsPapers/Appendix-B-Quantum-Computing-Temperature-Limits.md`](PhysicsPapers/Appendix-B-Quantum-Computing-Temperature-Limits.md) - $1.4B industry impact potential
 
 **Security Researchers**: See [`QuantumSecurity/quantum-chaos-protocols.md`](QuantumSecurity/quantum-chaos-protocols.md)
 
