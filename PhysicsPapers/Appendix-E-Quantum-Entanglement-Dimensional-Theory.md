@@ -3,7 +3,7 @@
 
 **Author**: Norbert Marchewka
 **Version**: 2.0 (Elegant Revision)
-**Date**: November 2024
+**Date**: November 2025
 **Status**: Complete Theoretical Framework with Experimental Protocol
 
 ---
@@ -22,23 +22,23 @@ Quantum entanglement represents the most profound mystery in physics—instantan
 
 ```
 ╔═══════════════════════════════════════════════════════════════════════════════╗
-║                    NO DISTANCE PARADOX RESOLUTION                              ║
+║                    NO DISTANCE PARADOX RESOLUTION                             ║
 ╠═══════════════════════════════════════════════════════════════════════════════╣
-║                                                                                 ║
-║   EINSTEIN'S VIEW (1935)              OUR RESOLUTION (2024)                    ║
-║   ──────────────────────              ──────────────────────                   ║
-║                                                                                 ║
-║   "Spooky action at a distance"       "Local touching in D_ent"                ║
-║                                                                                 ║
-║   A ←────────?────────→ B             3D Space:  A ←──────────→ B              ║
-║       Mystery signal?                             (separated)                   ║
-║       Faster than light?                              │                         ║
-║       Violates relativity?                    D_ent:  A━━B                      ║
-║                                                   (touching!)                   ║
-║                                                                                 ║
-║   PARADOX: How can separated           RESOLUTION: They're NOT separated       ║
-║   particles instantly correlate?       in D_ent—they remain adjacent!          ║
-║                                                                                 ║
+║                                                                               ║
+║   EINSTEIN'S VIEW (1935)              OUR RESOLUTION (2025)                   ║
+║   ──────────────────────              ──────────────────────                  ║
+║                                                                               ║
+║   "Spooky action at a distance"       "Local touching in D_ent"               ║
+║                                                                               ║
+║   A ←────────?────────→ B             3D Space:  A ←──────────→ B             ║
+║       Mystery signal?                             (separated)                 ║
+║       Faster than light?                              │                       ║
+║       Violates relativity?                    D_ent:  A━━B                    ║
+║                                                   (touching!)                 ║
+║                                                                               ║
+║   PARADOX: How can separated           RESOLUTION: They're NOT separated      ║
+║   particles instantly correlate?       in D_ent—they remain adjacent!         ║
+║                                                                               ║
 ╚═══════════════════════════════════════════════════════════════════════════════╝
 ```
 
@@ -105,26 +105,26 @@ When particles make entangled quantum jumps, they must compute their D_ent coord
 
 ```
 ╔════════════════════════════════════════════════════════════════════════════╗
-║                  ENTANGLEMENT UNDER COMPUTATIONAL DEADLINES                 ║
+║                  ENTANGLEMENT UNDER COMPUTATIONAL DEADLINES                ║
 ╠════════════════════════════════════════════════════════════════════════════╣
-║                                                                              ║
-║  1. ACTION ACCUMULATES:        S → nℏ (threshold approaching)               ║
-║                                                                              ║
-║  2. D_ENT CALCULATION NEEDED:  • Spherical harmonics in D_ent (uses π)      ║
-║                                • Exponential binding (uses e)               ║
-║                                • Diagonal paths in D_ent (uses √2)          ║
-║                                                                              ║
-║  3. COMPUTATIONAL BUDGET:      N_max = ℏ/(Nk_BT × t_Planck)                 ║
-║                                                                              ║
-║  4. PRECISION ACHIEVED:        π to N_max digits                            ║
-║                                e to N_max terms                             ║
-║                                √2 to N_max iterations                       ║
-║                                                                              ║
-║  5. FORCED TRANSITION:         Jump occurs with APPROXIMATE D_ent coords    ║
-║                                                                              ║
-║  6. RESULT:                    Entanglement fidelity ∝ 1/T                  ║
-║                                (Higher T → Less precise D_ent binding!)      ║
-║                                                                              ║
+║                                                                            ║
+║  1. ACTION ACCUMULATES:        S → nℏ (threshold approaching)              ║
+║                                                                            ║
+║  2. D_ENT CALCULATION NEEDED:  • Spherical harmonics in D_ent (uses π)     ║
+║                                • Exponential binding (uses e)              ║
+║                                • Diagonal paths in D_ent (uses √2)         ║
+║                                                                            ║
+║  3. COMPUTATIONAL BUDGET:      N_max = ℏ/(Nk_BT × t_Planck)                ║
+║                                                                            ║
+║  4. PRECISION ACHIEVED:        π to N_max digits                           ║
+║                                e to N_max terms                            ║
+║                                √2 to N_max iterations                      ║
+║                                                                            ║
+║  5. FORCED TRANSITION:         Jump occurs with APPROXIMATE D_ent coords   ║
+║                                                                            ║
+║  6. RESULT:                    Entanglement fidelity ∝ 1/T                 ║
+║                                (Higher T → Less precise D_ent binding!)    ║
+║                                                                            ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 ```
 
@@ -150,27 +150,27 @@ where α_ent ≈ 0.08 K⁻¹ (slightly higher than gate operations due to D_ent 
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                    ENTANGLEMENT ENERGY LANDSCAPE                     │
+│                    ENTANGLEMENT ENERGY LANDSCAPE                    │
 ├─────────────────────────────────────────────────────────────────────┤
-│                                                                       │
-│  Energy                                                               │
-│    ▲                                                                  │
-│    │     Initial State (Separated in D_ent)                          │
+│                                                                     │
+│  Energy                                                             │
+│    ▲                                                                │
+│    │     Initial State (Separated in D_ent)                         │
 │  E₀├─────●───────────────────────●──────── High energy              │
-│    │      A                       B         (D_ent distance = large)  │
-│    │                                                                  │
-│    │            E_create                                              │
-│    │     ╱      (pinching work)                                       │
-│    │    ╱                                                             │
-│    │   ╱    Entangled State                                           │
+│    │      A                       B      (D_ent distance = large)   │
+│    │                                                                │
+│    │            E_create                                            │
+│    │     ╱      (pinching work)                                     │
+│    │    ╱                                                           │
+│    │   ╱    Entangled State                                         │
 │  E₁├──●━━━━━━━━━━━━━━━━━━━━━━━━━●──────── Lower energy              │
-│    │            A══════B                    (D_ent distance = 0)      │
-│    │                                                                  │
-│    │                    E_maintain                                    │
-│    │            (resist thermal noise)                                │
-│    │                                                                  │
-│    └──────────────────────────────────────────────────────            │
-│                    D_ent coordinate                                   │
+│    │            A══════B                    (D_ent distance = 0)    │
+│    │                                                                │
+│    │                    E_maintain                                  │
+│    │            (resist thermal noise)                              │
+│    │                                                                │
+│    └──────────────────────────────────────────────────────          │
+│                    D_ent coordinate                                 │
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -201,31 +201,31 @@ This explains why entanglement persists across cosmic distances—3D separation 
 
 ```
 ╔══════════════════════════════════════════════════════════════════════════╗
-║                        ENTANGLEMENT PARADOXES RESOLVED                    ║
+║                        ENTANGLEMENT PARADOXES RESOLVED                   ║
 ╠══════════════════════════════════════════════════════════════════════════╣
-║                                                                            ║
-║  PARADOX                    TRADITIONAL VIEW        D_ENT RESOLUTION      ║
-║  ─────────────────────────────────────────────────────────────────────    ║
-║                                                                            ║
-║  EPR Paradox               "Hidden variables?"     No paradox—particles    ║
-║                                                    are adjacent in D_ent   ║
-║                                                                            ║
-║  Instantaneous             "Violates relativity"   No signal travels—      ║
-║  Correlation                                       already touching!        ║
-║                                                                            ║
-║  No-Communication          "Why can't send info?"  Can't push through      ║
-║  Theorem                                           D_ent (bound, not       ║
-║                                                    mechanically coupled)    ║
-║                                                                            ║
-║  Monogamy of               "Why exclusive?"        Limited connection      ║
-║  Entanglement                                      points in D_ent         ║
-║                                                                            ║
-║  Bell Inequality           "Local realism fails"   Local in D_ent!        ║
-║  Violation                                         We just can't see it     ║
-║                                                                            ║
-║  Quantum Teleportation     "Information jumps?"    Travels through D_ent   ║
-║                                                    tunnel (not jumping)     ║
-║                                                                            ║
+║                                                                          ║
+║  PARADOX                    TRADITIONAL VIEW        D_ENT RESOLUTION     ║
+║  ─────────────────────────────────────────────────────────────────────   ║
+║                                                                          ║
+║  EPR Paradox               "Hidden variables?"     No paradox—particles  ║
+║                                                    are adjacent in D_ent ║
+║                                                                          ║
+║  Instantaneous             "Violates relativity"   No signal travels—    ║
+║  Correlation                                       already touching!     ║
+║                                                                          ║
+║  No-Communication          "Why can't send info?"  Can't push through    ║
+║  Theorem                                           D_ent (bound, not     ║
+║                                                    mechanically coupled) ║
+║                                                                          ║
+║  Monogamy of               "Why exclusive?"        Limited connection    ║
+║  Entanglement                                      points in D_ent       ║
+║                                                                          ║
+║  Bell Inequality           "Local realism fails"   Local in D_ent!       ║
+║  Violation                                         We just can't see it  ║
+║                                                                          ║
+║  Quantum Teleportation     "Information jumps?"    Travels through D_ent ║
+║                                                    tunnel (not jumping)  ║
+║                                                                          ║
 ╚══════════════════════════════════════════════════════════════════════════╝
 ```
 
@@ -248,43 +248,43 @@ The connection is **geometric**, not mechanical—binding without the ability to
 #### Test 1: Temperature-Dependent Entanglement Fidelity
 ```
 ┌────────────────────────────────────────────────────────────────┐
-│  PROTOCOL: Entanglement vs Temperature                          │
+│  PROTOCOL: Entanglement vs Temperature                         │
 ├────────────────────────────────────────────────────────────────┤
-│                                                                  │
-│  1. Create Bell pairs at various temperatures (10mK - 1K)       │
-│  2. Measure entanglement fidelity via Bell inequality           │
-│  3. Plot: F(T) vs T                                             │
-│                                                                  │
-│  PREDICTION: F(T) = F₀/(1 + 0.08×T)  [LINEAR, not exponential]  │
-│                                                                  │
-│  Signal strength: ΔF ≈ 5% over range                            │
-│  SNR: ~50 (excellent!)                                          │
-│  Cost: $400K                                                    │
-│  Equipment: Dilution fridge + entangled photon source           │
-│                                                                  │
-│  IF CONFIRMED: Direct evidence of D_ent computational stress    │
+│                                                                │
+│  1. Create Bell pairs at various temperatures (10mK - 1K)      │
+│  2. Measure entanglement fidelity via Bell inequality          │
+│  3. Plot: F(T) vs T                                            │
+│                                                                │
+│  PREDICTION: F(T) = F₀/(1 + 0.08×T)  [LINEAR, not exponential] │
+│                                                                │
+│  Signal strength: ΔF ≈ 5% over range                           │
+│  SNR: ~50 (excellent!)                                         │
+│  Cost: $400K                                                   │
+│  Equipment: Dilution fridge + entangled photon source          │
+│                                                                │
+│  IF CONFIRMED: Direct evidence of D_ent computational stress   │
 └────────────────────────────────────────────────────────────────┘
 ```
 
 #### Test 2: Inertial Mass Anomaly
 ```
 ┌────────────────────────────────────────────────────────────────┐
-│  PROTOCOL: Mass of Entangled vs Non-Entangled Particles         │
+│  PROTOCOL: Mass of Entangled vs Non-Entangled Particles        │
 ├────────────────────────────────────────────────────────────────┤
-│                                                                  │
-│  1. Trap single ions in Paul trap                               │
-│  2. Create entangled pairs vs isolated ions                     │
-│  3. Apply identical acceleration                                │
-│  4. Measure position difference after time t                    │
-│                                                                  │
-│  PREDICTION: Δm/m ≈ (E_bind/mc²) ≈ 10⁻²⁰                        │
-│                                                                  │
+│                                                                │
+│  1. Trap single ions in Paul trap                              │
+│  2. Create entangled pairs vs isolated ions                    │
+│  3. Apply identical acceleration                               │
+│  4. Measure position difference after time t                   │
+│                                                                │
+│  PREDICTION: Δm/m ≈ (E_bind/mc²) ≈ 10⁻²⁰                       │
+│                                                                │
 │  Position difference: Δx ≈ 10⁻¹⁸ m (challenging but possible)  │
-│  Integration time: 10⁶ measurements                             │
-│  SNR after averaging: ~3                                        │
-│  Cost: $1M                                                      │
-│                                                                  │
-│  IF CONFIRMED: D_ent binding energy affects inertia!            │
+│  Integration time: 10⁶ measurements                            │
+│  SNR after averaging: ~3                                       │
+│  Cost: $1M                                                     │
+│                                                                │
+│  IF CONFIRMED: D_ent binding energy affects inertia!           │
 └────────────────────────────────────────────────────────────────┘
 ```
 
@@ -334,24 +334,24 @@ Our D_ent theory provides a deeper explanation:
 
 ```
 ╔════════════════════════════════════════════════════════════════════╗
-║           QUANTUM COMPUTING'S ENTANGLEMENT CHALLENGE                ║
+║           QUANTUM COMPUTING'S ENTANGLEMENT CHALLENGE               ║
 ╠════════════════════════════════════════════════════════════════════╣
-║                                                                      ║
-║  Quantum algorithms REQUIRE maintaining entanglement across qubits  ║
-║                           ↓                                          ║
-║  D_ent coordinates must be computed precisely for N qubits          ║
-║                           ↓                                          ║
-║  Computational load scales as O(N²) for pairwise entanglements      ║
-║                           ↓                                          ║
-║  Higher temperature → Shorter deadlines → Imprecise D_ent coords    ║
-║                           ↓                                          ║
-║  RESULT: Gate fidelity collapse at high T                           ║
-║                                                                      ║
-║  Room-temp QC impossible UNLESS:                                    ║
-║  • Find way to compute D_ent without π, e, √2                       ║
-║  • Use topological protection (different D_ent geometry)            ║
-║  • Operate below action threshold (pulsed operations)               ║
-║                                                                      ║
+║                                                                    ║
+║  Quantum algorithms REQUIRE maintaining entanglement across qubits ║
+║                           ↓                                        ║
+║  D_ent coordinates must be computed precisely for N qubits         ║
+║                           ↓                                        ║
+║  Computational load scales as O(N²) for pairwise entanglements     ║
+║                           ↓                                        ║
+║  Higher temperature → Shorter deadlines → Imprecise D_ent coords   ║
+║                           ↓                                        ║
+║  RESULT: Gate fidelity collapse at high T                          ║
+║                                                                    ║
+║  Room-temp QC impossible UNLESS:                                   ║
+║  • Find way to compute D_ent without π, e, √2                      ║
+║  • Use topological protection (different D_ent geometry)           ║
+║  • Operate below action threshold (pulsed operations)              ║
+║                                                                    ║
 ╚════════════════════════════════════════════════════════════════════╝
 ```
 
@@ -378,23 +378,23 @@ This predicts rapid fidelity degradation for highly entangled states at elevated
 ┌─────────────────────────────────────────────────────────────────┐
 │                  WHAT D_ENT REVEALS ABOUT REALITY               │
 ├─────────────────────────────────────────────────────────────────┤
-│                                                                  │
+│                                                                 │
 │  1. HIGHER DIMENSIONS EXIST                                     │
 │     Not speculation—required for quantum mechanics              │
-│                                                                  │
+│                                                                 │
 │  2. OBSERVATION IS INCOMPLETE                                   │
 │     We literally cannot see where particles connect             │
-│                                                                  │
+│                                                                 │
 │  3. LOCALITY IS PRESERVED                                       │
 │     Einstein was right to insist on it—just wrong dimension!    │
-│                                                                  │
+│                                                                 │
 │  4. INFORMATION IS GEOMETRIC                                    │
 │     Quantum information flows through D_ent topology            │
-│                                                                  │
+│                                                                 │
 │  5. CONSCIOUSNESS CONNECTION?                                   │
 │     If neurons can entangle, could consciousness                │
 │     utilize D_ent for binding problem?                          │
-│                                                                  │
+│                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -476,7 +476,7 @@ The integration with our computational deadline framework reveals why temperatur
    - No new equipment needed
    - Can start immediately
 
-**Contact for Collaboration**: [Author Email]
+**Contact for Collaboration**: norbertmarchewka44@gmail.com
 
 ---
 
