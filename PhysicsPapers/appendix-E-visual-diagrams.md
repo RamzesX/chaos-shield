@@ -1,465 +1,380 @@
-# Appendix E: Quantum Entanglement - Enhanced Visual Diagrams
-## Hidden Dimensional Proximity Theory - Visual Architecture
+# Supplementary Diagrams: Quantum Entanglement as Higher-Dimensional Proximity
+
+## Visual Framework for the D_ent Dimension Theory
+
+**Purpose**: This supplementary document provides schematic representations of the theoretical framework presented in the main text, intended to clarify the geometric and physical relationships underlying the D_ent interpretation of quantum entanglement.
 
 ---
 
-### Core Concept: The D_ent Dimension Revealed
+## S1. Dimensional Structure
+
+### S1.1 Observable vs. Complete Geometry
 
 ```
-╔═══════════════════════════════════════════════════════════════════════════════════════════╗
-║                         THE COMPLETE DIMENSIONAL STRUCTURE                                ║
-╠═══════════════════════════════════════════════════════════════════════════════════════════╣
-║                                                                                           ║
-║   WHAT WE SEE (3D+1)                    THE FULL REALITY (5D+)                            ║
-║   ────────────────────                  ─────────────────────                             ║
-║                                                                                           ║
-║   ┌──────────────┐                      ┌──────────────┐                                  ║
-║   │     x,y,z    │                      │     x,y,z    │                                  ║
-║   │       +      │                      │       +      │                                  ║
-║   │       t      │                      │       t      │                                  ║
-║   └──────────────┘                      │       +      │                                  ║
-║                                         │    D_ent     │ ← Hidden dimension!              ║
-║                                         └──────────────┘                                  ║
-║                                                                                           ║
-║   Particles separate                    Particles can remain                              ║
-║   when moving in xyz                    connected in D_ent                                ║
-║                                          while separated in xyz!                          ║
-║                                                                                           ║
-╚═══════════════════════════════════════════════════════════════════════════════════════════╝
+┌─────────────────────────────────────────────────────────────────────┐
+│                    DIMENSIONAL STRUCTURE                            │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│   Observable Spacetime (3+1)          Complete Geometry (4+1)       │
+│   ══════════════════════════          ═══════════════════════       │
+│                                                                     │
+│   ┌──────────────────┐                ┌──────────────────┐          │
+│   │  Coordinates:    │                │  Coordinates:    │          │
+│   │  (x, y, z, t)    │                │  (x, y, z, t)    │          │
+│   │                  │                │       +          │          │
+│   │                  │                │     w_ent        │          │
+│   └──────────────────┘                └──────────────────┘          │
+│                                                                     │
+│   Entangled particles                 Entangled particles           │
+│   appear separated                    remain adjacent in w_ent      │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
 ```
 
----
+### S1.2 Folding Analogy
 
-### The Paper Folding Analogy - Extended
+The relationship between 3D appearance and 5D reality parallels the relationship a 2D surface has to 3D space. Points distant on a sheet appear adjacent when the sheet folds through the third dimension:
 
 ```
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│                      DIMENSIONAL FOLDING VISUALIZATION                          │
-├─────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                 │
-│  2D BEINGS' VIEW (What Flatlanders See):                                        │
-│  ════════════════════════════════════════                                       │
-│                                                                                 │
-│  A ● ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ● B                      │
-│              "Vast distance! No connection possible!"                           │
-│                                                                                 │
-│  3D REALITY (What Actually Happens):                                            │
-│  ═══════════════════════════════════                                            │
-│                                                                                 │
-│         A ●┐                                                                    │
-│            │╲                      Paper folds in 3rd dimension                 │
-│            │ ╲___                                                               │
-│            │     ╲___                                                           │
-│            │         ╲___                                                       │
-│            │             ╲___                                                   │
-│            │                 ╲___                                               │
-│            │                     ╲● B                                           │
-│            │                      │                                             │
-│            └──────────────────────┘                                             │
-│                  (Touching through fold!)                                       │
-│                                                                                 │
-│  OUR SITUATION (4D Beings in 5D Reality):                                       │
-│  ═════════════════════════════════════════                                      │
-│                                                                                 │
-│  3D+1 View:    Earth ● ─ ─ ─ ─ ─ ─ ─ ─ ─ ● Alpha Centauri                       │
-│                      "4.3 light years apart!"                                   │
-│                                                                                 │
-│  With D_ent:   Earth ●═══════════════════● Alpha Centauri                       │
-│                      Connected in D_ent!                                        │
-│                      (Distance in D_ent can be zero!)                           │
-│                                                                                 │
-└─────────────────────────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────────┐
+│              DIMENSIONAL FOLDING ANALOGY                            │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│   2D Perspective (Flatland):                                        │
+│                                                                     │
+│   A ● ─────────────────────────────────────────── ● B               │
+│            (Appears separated; no direct path)                      │
+│                                                                     │
+│   3D Reality (with fold):                                           │
+│                                                                     │
+│        A ●                                                          │
+│          │\                                                         │
+│          │ \                                                        │
+│          │  \───────────────                                        │
+│          │                  \                                       │
+│          │                   ● B                                    │
+│          │                   │                                      │
+│          └───────────────────┘                                      │
+│              (Adjacent through fold)                                │
+│                                                                     │
+│   Analogously for entanglement:                                     │
+│                                                                     │
+│   3D Perspective:  A ●───────────────● B  (Separated in 3-space)    │
+│                                                                     │
+│   5D Reality:      A ●═══● B              (Adjacent in D_ent)       │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-### Energy Landscape with Computational Stress
+## S2. Entanglement Distance Function
+
+### S2.1 D_ent Distance vs. Entanglement Measure
+
+The entanglement distance function d_ent(A,B) = d₀(1 - |⟨Ψ_AB⟩|²) exhibits the following behavior:
 
 ```
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│              ENTANGLEMENT ENERGY WITH COMPUTATIONAL DEADLINES                   │
-├─────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                 │
-│  Energy/Action                                                                  │
-│      ▲                                                                          │
-│      │                                                                          │
-│   S₀ ├────────────────────────────────────── Before entanglement                │
-│      │     A ●               ● B              (Separated in D_ent)              │
-│      │                                                                          │
-│      │          ACTION ACCUMULATING...                                          │
-│      │          dS/dt = L > 0                                                   │
-│      │          ↓                                                               │
-│      │     ┌───────────────────── ┐                                             │
-│      │     │ DEADLINE APPROACHING │                                             │
-│      │     │   T_left = (nℏ-S)/L  │                                             │
-│      │     │   Must compute D_ent │                                             │
-│      │     │   coordinates using  │                                             │
-│      │     │   π, e, √2 before    │                                             │
-│      │     │   S reaches nℏ!      │                                             │
-│      │     └───────────────────── ┘                                             │
-│      │                ↓                                                         │
-│      │         E_entangle = Work to                                             │
-│      │         pinch D_ent dimension                                            │
-│      │                ↓                                                         │
-│   S₁ ├────────────────────────────────────── After entanglement                 │
-│      │           A ●═══● B                    (Connected in D_ent)              │
-│      │                                        d_ent = 0!                        │
-│      │                                                                          │
-│      │     But if T is high:                                                    │
-│      │     • Shorter deadline                                                   │
-│      │     • Imprecise D_ent calculation                                        │
-│      │     • Weaker entanglement!                                               │
-│      │                                                                          │
-│      └──────────────────────────────────────────────────                        │
-│                     D_ent coordinate                                            │
-└─────────────────────────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────────┐
+│          ENTANGLEMENT DISTANCE FUNCTION                             │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│   d_ent(A,B)                                                        │
+│       ▲                                                             │
+│       │                                                             │
+│   d₀  ├───●                                                         │
+│       │    \                                                        │
+│       │     \        d_ent = d₀(1 - |⟨Ψ_AB⟩|²)                      │
+│       │      \                                                      │
+│  d₀/2 ├───────●                                                     │
+│       │        \                                                    │
+│       │         \                                                   │
+│       │          \                                                  │
+│     0 ├───────────●──────────────────────────────                   │
+│       └───────────┬───────────┬───────────────────                  │
+│                   0          0.5           1.0                      │
+│                        |⟨Ψ_AB⟩|²                                    │
+│                                                                     │
+│   |⟨Ψ_AB⟩|² = 0:    Unentangled    →  d_ent = d₀ (maximum)          │
+│   |⟨Ψ_AB⟩|² = 0.5:  Partial        →  d_ent = d₀/2                  │
+│   |⟨Ψ_AB⟩|² = 1:    Maximal (Bell) →  d_ent = 0 (touching)          │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-### Entanglement Creation and Swapping Mechanisms
+## S3. Energy Landscape
+
+### S3.1 Entanglement Energy Profile
 
 ```
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│                    ENTANGLEMENT CREATION MECHANISMS                             │
-├─────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                 │
-│  METHOD 1: DIRECT CREATION (SPDC - Spontaneous Parametric Down-Conversion)      │
-│  ══════════════════════════════════════════════════════════════════════════     │
-│                                                                                 │
-│  Step 1: High-energy photon approaches nonlinear crystal                        │
-│          ───⟩ γ_pump  ───→ [Crystal]                                            │
-│                                                                                 │
-│  Step 2: Crystal creates D_ent pinch point                                      │
-│          [Crystal] ═══ D_ent connection formed ═══                              │
-│                                                                                 │
-│  Step 3: Two entangled photons emerge, connected in D_ent                       │
-│          γ₁ ⟨═══════[D_ent]═══════⟩ γ₂                                          │
-│                                                                                 │
-│  Step 4: Photons separate in 3D but remain connected in D_ent                   │
-│          γ₁ ←─────────────────────→ γ₂  (3D view)                               │
-│          γ₁ ●═══════════════════● γ₂    (D_ent view: still touching!)           │
-│                                                                                 │
-│  ─────────────────────────────────────────────────────────────────────────      │
-│                                                                                 │
-│  METHOD 2: ENTANGLEMENT SWAPPING (Teleportation of Entanglement)                │
-│  ═══════════════════════════════════════════════════════════════════            │
-│                                                                                 │
-│  Initial: Two separate entangled pairs                                          │
-│                                                                                 │
-│     3D Space:    A ←────→ B         C ←────→ D                                  │
-│     D_ent:       A ●═══● B         C ●═══● D                                    │
-│                                                                                 │
-│  Step 1: Bring B and C together in 3D space                                     │
-│                                                                                 │
-│     3D Space:    A ←────→ [B·C] ←────→ D                                        │
-│     D_ent:       A ●═══● B●C ●═══● D                                            │
-│                           ↑                                                     │
-│                    Can now interact!                                            │
-│                                                                                 │
-│  Step 2: Bell measurement on B,C creates D_ent tunnel                           │
-│                                                                                 │
-│     Measurement forces B,C to share D_ent coordinate                            │
-│     This "bridges" the two entanglements!                                       │
-│                                                                                 │
-│     D_ent:       A ●═════╳═════● D                                              │
-│                         B,C                                                     │
-│                    (measured out)                                               │
-│                                                                                 │
-│  Result: A and D now entangled without ever meeting!                            │
-│                                                                                 │
-│     3D Space:    A ←─────────────────→ D  (never met!)                          │
-│     D_ent:       A ●═══════════════● D    (connected via swap!)                 │
-│                                                                                 │
-└─────────────────────────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────────┐
+│                ENTANGLEMENT ENERGY LANDSCAPE                        │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│   Energy                                                            │
+│      ▲                                                              │
+│      │                                                              │
+│  E_i ├─────●───────────────────────●───────  Initial (unentangled)  │
+│      │     A                       B         d_ent = d₀             │
+│      │                                                              │
+│      │                                                              │
+│      │         E_create (work to establish D_ent connection)        │
+│      │              ↓                                               │
+│      │                                                              │
+│  E_f ├─────────────●═══●───────────────────  Final (entangled)      │
+│      │             A   B                     d_ent = 0              │
+│      │                                                              │
+│      └──────────────────────────────────────────                    │
+│                   D_ent coordinate                                  │
+│                                                                     │
+│   E_create = ℏω_ent · ln(d_3D/ℓ_P)                                  │
+│                                                                     │
+│   Key property: 3D separation requires no additional energy         │
+│   once D_ent connection is established.                             │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-### Temperature Effects on Entanglement Fidelity
+## S4. Computational Deadline Integration
+
+### S4.1 Action Threshold Mechanism for D_ent Navigation
 
 ```
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│            COMPUTATIONAL STRESS EFFECTS ON ENTANGLEMENT                         │
-├─────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                 │
-│  Entanglement                                                                   │
-│  Fidelity                                                                       │
-│     ▲                                                                           │
-│  1.0├─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ Perfect entanglement             │
-│     │●                                                                          │
-│     │ ●       T = 10 mK                                                         │
-│     │  ●      (N_max ~ 10³⁶ iterations for π)                                   │
-│  0.9├   ●     Excellent D_ent precision                                         │
-│     │    ●                                                                      │
-│     │     ●                                                                     │
-│     │      ●  T = 100 mK                                                        │
-│  0.8├       ● (N_max ~ 10³⁵ iterations)                                         │
-│     │        ●                                                                  │
-│     │         ●                                                                 │
-│     │          ●  T = 1 K                                                       │
-│  0.7├           ● (N_max ~ 10³⁴ iterations)                                     │
-│     │            ●                                                              │
-│     │             ●                                                             │
-│     │              ●  T = 10 K                                                  │
-│  0.6├               ● (N_max ~ 10³³ iterations)                                 │
-│     │                ●                                                          │
-│     │                 ●●  T = 300 K (Room temp)                                 │
-│  0.5├                   ●● (N_max ~ 10³¹ iterations)                            │
-│     │                     ●● INSUFFICIENT FOR                                   │
-│     │                       ●● QUANTUM COMPUTING!                               │
-│     │                         ●●●                                               │
-│     └───────────────────────────●●●──────────────                               │
-│     10mK    100mK    1K    10K   100K  300K                                     │
-│                    Temperature →                                                │
-│                                                                                 │
-│  KEY INSIGHT: F(T) = F₀/(1 + αT) - LINEAR, not exponential!                     │
-│  This is the signature of computational deadlines, not thermal noise!           │
-│                                                                                 │
-└─────────────────────────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────────┐
+│        COMPUTATIONAL CONSTRAINTS ON D_ENT OPERATIONS                │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│   Step 1: Action Accumulation                                       │
+│   ════════════════════════════                                      │
+│           S_current → nℏ (threshold approaching)                    │
+│                                                                     │
+│   Step 2: Geometric Calculations Required                           │
+│   ══════════════════════════════════════                            │
+│           • Spherical harmonics in D_ent (requires π)               │
+│           • Exponential binding factors (requires e)                │
+│           • Diagonal D_ent paths (requires √2)                      │
+│                                                                     │
+│   Step 3: Computational Budget                                      │
+│   ═════════════════════════════                                     │
+│           N_max = ℏ/(Nk_BT · t_Planck)                              │
+│                                                                     │
+│   Step 4: Precision Achieved                                        │
+│   ═══════════════════════════                                       │
+│           ε_geometric ∼ 10^(-N_max)                                 │
+│                                                                     │
+│   Step 5: Forced Transition at S = nℏ                               │
+│   ══════════════════════════════════                                │
+│           Jump occurs with approximate D_ent coordinates            │
+│                                                                     │
+│   Result: F_ent(T) = F₀/(1 + α_ent·T)                               │
+│           Higher T → shorter time → lower precision → weaker ent.   │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-### Complete Paradox Resolution Map
+## S5. Temperature Dependence
+
+### S5.1 Entanglement Fidelity vs. Temperature
 
 ```
-╔═══════════════════════════════════════════════════════════════════════════════════╗
-║                      ENTANGLEMENT PARADOXES: THEN VS NOW                          ║
-╠═══════════════════════════════════════════════════════════════════════════════════╣
-║                                                                                   ║
-║   ┌──────────────────────────┐              ┌──────────────────────────┐          ║
-║   │     OLD PARADOX          │              │    D_ENT RESOLUTION      │          ║
-║   └──────────────────────────┘              └──────────────────────────┘          ║
-║                                                                                   ║
-║   "Faster than light!"                      "No speed - already touching"         ║
-║   A ←─ instant signal ──→ B                 A[3D: far] ●═● B[D_ent: touching]     ║
-║                                                                                   ║
-║   "Violates locality!"                      "IS local - in D_ent!"                ║
-║   A ?────mystery────? B                     A[D_ent = 0 separation]B              ║
-║                                                                                   ║
-║   "Information teleports!"                  "Information flows through D_ent"     ║
-║   A ─ ─ jump? ─ ─→ B                        A ●═══continuous path═══● B           ║
-║                                                                                   ║
-║   "Measurement mystery!"                    "D_ent geometry determines outcome"   ║
-║   Random but correlated?                    Fixed by D_ent configuration          ║
-║                                                                                   ║
-║   "Can't explain monogamy!"                 "Limited D_ent connection points"     ║
-║   Why exclusive pairing?                    Only one D_ent bond per particle      ║
-║                                                                                   ║
-║   "Bell inequality violation!"              "We measure 3D projection of 5D"      ║
-║   Local realism fails?                      Local in 5D, non-local projection     ║
-║                                                                                   ║
-╚═══════════════════════════════════════════════════════════════════════════════════╝
-```
-
----
-
-### Experimental Signature Predictions
-
-```
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│                    TESTABLE PREDICTIONS FROM D_ENT THEORY                       │
-├─────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                 │
-│  TEST 1: TEMPERATURE-DEPENDENT ENTANGLEMENT FIDELITY                            │
-│  ════════════════════════════════════════════════════                           │
-│                                                                                 │
-│     Fidelity                                                                    │
-│        ▲                                                                        │
-│    1.0 ├●                      Traditional: F ∝ exp(-E/kT)                      │
-│        │ ●●                    (Exponential thermal decay)                      │
-│        │   ●●●                                                                  │
-│    0.8 ├      ●●●●             Our Theory: F = F₀/(1+αT)                        │
-│        │          ●●●●●        (LINEAR computational stress!)                   │
-│        │               ●●●●●                                                    │
-│    0.6 ├                    ●●●●●                                               │
-│        └──────────────────────────────                                          │
-│           10mK    100mK    1K     10K                                           │
-│                                                                                 │
-│     SNR: ~50 (EXCELLENT!)      Cost: $400K      Timeline: 2 years               │
-│                                                                                 │
-│  ─────────────────────────────────────────────────────────────────────          │
-│                                                                                 │
-│  TEST 2: INERTIAL MASS DIFFERENCE                                               │
-│  ═════════════════════════════════                                              │
-│                                                                                 │
-│       Non-entangled              Entangled                                      │
-│           │                          │                                          │
-│           ▼ F                        ▼ F                                        │
-│           ●                          ●══● ← D_ent binding                       │
-│           │                          │  │   adds effective mass!                │
-│           ▼ a₀                       ▼ a₀ - δa                                  │
-│                                                                                 │
-│     Prediction: δm/m ≈ 10⁻²⁰                                                    │
-│     Detection: Ion trap with 10⁶ measurements                                   │
-│     SNR: ~3 (Marginal but possible)                                             │
-│                                                                                 │
-│  ─────────────────────────────────────────────────────────────────────          │
-│                                                                                 │
-│  TEST 3: MAXIMUM ENTANGLEMENT DISTANCE                                          │
-│  ══════════════════════════════════                                             │
-│                                                                                 │
-│     Fidelity                                                                    │
-│        ▲                                                                        │
-│    1.0 ├●●●●●●●●●●●●●●●●●●●                                                     │
-│        │                   ●                                                    │
-│        │                    ●  Sharp cutoff!                                    │
-│        │                     ●                                                  │
-│    0.5 ├                      ●                                                 │
-│        │                       ●●●●●                                            │
-│        │                            ●●●●●                                       │
-│    0.0 ├                                 ●●●●●                                  │
-│        └──────────────────────────────────────                                  │
-│         0    10⁶   10⁹   10¹²  10¹⁵  10¹⁸ meters                                │
-│                          ↑                                                      │
-│                    Critical distance                                            │
-│                    (D_ent snaps!)                                               │
-│                                                                                 │
-│     Requires: Satellite quantum distribution                                    │
-│     Timeline: 5-10 years                                                        │
-│                                                                                 │
-└─────────────────────────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────────┐
+│          PREDICTED TEMPERATURE-FIDELITY RELATIONSHIP                │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│   Entanglement                                                      │
+│   Fidelity (F)                                                      │
+│       ▲                                                             │
+│   1.0 ├─●                     F(T) = F₀/(1 + α_ent·T)               │
+│       │  ●                    α_ent ≈ 0.08 K⁻¹                      │
+│       │   ●                                                         │
+│   0.9 ├    ●                                                        │
+│       │     ●                                                       │
+│       │      ●                                                      │
+│   0.8 ├       ●                                                     │
+│       │        ●                                                    │
+│       │         ●                                                   │
+│   0.7 ├          ●                                                  │
+│       │           ●                                                 │
+│       │            ●                                                │
+│   0.6 ├             ●●                                              │
+│       │               ●●                                            │
+│   0.5 ├                 ●●●                                         │
+│       │                    ●●●●                                     │
+│       └───────────────────────●●●●──────────────────────            │
+│       10mK   100mK    1K     10K    100K    300K                    │
+│                    Temperature →                                    │
+│                                                                     │
+│   Distinguishing feature: Linear scaling (not exponential)          │
+│   This is the signature of computational time reduction             │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-### Integration with Main Theoretical Framework
+## S6. Paradox Resolution Summary
+
+### S6.1 Resolution Table
 
 ```
-╔═══════════════════════════════════════════════════════════════════════════════════╗
-║                  D_ENT IN THE UNIFIED FRAMEWORK ARCHITECTURE                      ║
-╠═══════════════════════════════════════════════════════════════════════════════════╣
-║                                                                                   ║
-║                            ALGEBRAIC SPACE Ω                                      ║
-║                                    │                                              ║
-║                    ┌───────────────┼───────────────┐                              ║
-║                    │               │               │                              ║
-║              Generates        Generates      Generates                            ║
-║                    │               │               │                              ║
-║                    ▼               ▼               ▼                              ║
-║            4D Spacetime      D_ent dim      Internal symmetries                   ║
-║              (x,y,z,t)         (w_ent)       (SU(3)×SU(2)×U(1))                   ║
-║                    │               │               │                              ║
-║                    └───────────────┼───────────────┘                              ║
-║                                    │                                              ║
-║                          DISCRETE LATTICE Λ                                       ║
-║                          (Now 5D: includes D_ent!)                                ║
-║                                    │                                              ║
-║                    ┌───────────────┼───────────────┐                              ║
-║                    │               │               │                              ║
-║              Action quanta    Irrationals    Geometric                            ║
-║                S = nℏ         π, e, √2      reshaping                             ║
-║                    │               │               │                              ║
-║                    └───────────────┼───────────────┘                              ║
-║                                    │                                              ║
-║                      COMPUTATIONAL STRESS IN D_ENT                                ║
-║                      (Must compute D_ent coordinates                              ║
-║                       before action threshold!)                                   ║
-║                                    │                                              ║
-║                          ┌─────────┴─────────┐                                    ║
-║                          │                   │                                    ║
-║                   Temperature           Entanglement                              ║
-║                   dependence             fidelity                                 ║
-║                          │                   │                                    ║
-║                          └─────────┬─────────┘                                    ║
-║                                    │                                              ║
-║                        OBSERVABLE PHENOMENA                                       ║
-║                        • Quantum correlations                                     ║
-║                        • Bell inequality violations                               ║
-║                        • Quantum computing errors                                 ║
-║                        • Decoherence rates                                        ║
-║                                                                                   ║
-╚═══════════════════════════════════════════════════════════════════════════════════╝
+┌─────────────────────────────────────────────────────────────────────┐
+│               ENTANGLEMENT PARADOXES: RESOLUTION SUMMARY            │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│   Paradox                  Standard View         D_ent Resolution   │
+│   ═══════════════════════════════════════════════════════════════   │
+│                                                                     │
+│   EPR Paradox              Hidden variables?     Local in D_ent     │
+│                            (ruled out by Bell)   (particles touch)  │
+│                                                                     │
+│   Instantaneous            Violates relativity?  No signal needed   │
+│   Correlation              (but no signaling)    (already adjacent) │
+│                                                                     │
+│   Bell Inequality          Local realism fails   Local in 5D        │
+│   Violation                                      (projection effect)│
+│                                                                     │
+│   No-Communication         Why no signaling?     Geometric, not     │
+│   Theorem                                        mechanical coupling│
+│                                                                     │
+│   Monogamy of              Why exclusive?        Limited D_ent      │
+│   Entanglement                                   connection points  │
+│                                                                     │
+│   Quantum                  Information jumps?    Flows through      │
+│   Teleportation                                  D_ent tunnel       │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-### The Information Flow in D_ent
+## S7. Framework Integration
+
+### S7.1 D_ent in Complete Theoretical Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│                    INFORMATION CONSERVATION IN D_ENT                            │
-├─────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                 │
-│     The Fourth Conservation Law Extended to D_ent:                              │
-│                                                                                 │
-│                    ∇₅ · I = 0  (in 5D including D_ent)                          │
-│                                                                                 │
-│     ┌──────────────────────────────────────────────────────┐                    │
-│     │                                                      │                    │
-│     │    3D Space:  Information appears to "jump"          │                    │
-│     │                                                      │                    │
-│     │    Alice ● ─ ─ ─ ─ ? ─ ─ ─ ─ ● Bob                   │                    │
-│     │           Measurement    Instant                     │                    │
-│     │                          correlation                 │                    │
-│     └──────────────────────────────────────────────────────┘                    │
-│                                                                                 │
-│     ┌──────────────────────────────────────────────────────┐                    │
-│     │                                                      │                    │
-│     │    With D_ent: Information flows continuously        │                    │
-│     │                                                      │                    │
-│     │    Alice ●═════════I→═════════● Bob                  │                    │
-│     │           Information flows                          │                    │
-│     │           through D_ent tunnel                       │                    │
-│     │           (continuous, conserved!)                   │                    │
-│     └──────────────────────────────────────────────────────┘                    │
-│                                                                                 │
-│     This explains:                                                              │
-│     • Why quantum information cannot be cloned                                  │
-│     • Why entanglement is monogamous                                            │
-│     • Why quantum teleportation requires classical channel                      │
-│     • Why measurement destroys superposition                                    │
-│                                                                                 │
-│     All follow from ∇₅ · I = 0 in the extended space!                           │
-│                                                                                 │
-└─────────────────────────────────────────────────────────────────────────────────┘
-```
-
----
-
-### The Big Picture: Reality's Hidden Architecture
-
-```
-╔═══════════════════════════════════════════════════════════════════════════════════╗
-║                         REALITY'S COMPLETE ARCHITECTURE                           ║
-╠═══════════════════════════════════════════════════════════════════════════════════╣
-║                                                                                   ║
-║   WHAT HUMANS SEE           WHAT ACTUALLY EXISTS           WHY THE DIFFERENCE     ║
-║   ════════════════          ═══════════════════           ═══════════════════     ║
-║                                                                                   ║
-║   Continuous spacetime      Discrete lattice Λ            Observer blindness      ║
-║   3 spatial dimensions      4+ spatial dimensions         Can't see D_ent         ║
-║   Separated particles       Connected in D_ent            Dimensional projection  ║
-║   Spooky action            Local connection              Wrong dimension!         ║
-║   Random outcomes          Computational stress          Deadline incompleteness  ║
-║   Mysterious collapse      D_ent decoupling              Geometric process        ║
-║                                                                                   ║
-║   ─────────────────────────────────────────────────────────────────────────       ║
-║                                                                                   ║
-║                    THE HIERARCHY OF UNDERSTANDING                                 ║
-║                                                                                   ║
-║   Level 0: Classical mechanics (continuous, deterministic)                        ║
-║   Level 1: Quantum mechanics (probabilistic, mysterious)                          ║
-║   Level 2: Discrete spacetime (geometric, computational)                          ║
-║   Level 3: D_ent dimension (entanglement explained)                               ║
-║   Level 4: Algebraic space Ω (complete structure - unknown)                       ║
-║                                                                                   ║
-║   We are at Level 3, glimpsing Level 4...                                         ║
-║                                                                                   ║
-╚═══════════════════════════════════════════════════════════════════════════════════╝
+┌─────────────────────────────────────────────────────────────────────┐
+│         D_ENT WITHIN UNIFIED DISCRETE SPACETIME FRAMEWORK           │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│                      Algebraic Space Ω                              │
+│                            │                                        │
+│              ┌─────────────┼─────────────┐                          │
+│              │             │             │                          │
+│              ▼             ▼             ▼                          │
+│         4D Spacetime    D_ent dim    Internal                       │
+│         (x,y,z,t)       (w_ent)      Symmetries                     │
+│              │             │             │                          │
+│              └─────────────┼─────────────┘                          │
+│                            │                                        │
+│                    Discrete Lattice Λ                               │
+│                    (5D structure)                                   │
+│                            │                                        │
+│              ┌─────────────┼─────────────┐                          │
+│              │             │             │                          │
+│              ▼             ▼             ▼                          │
+│         Action        Irrationals   Geometric                       │
+│         Quanta        (π, e, √2)    Reshaping                       │
+│         S = nℏ                                                      │
+│              │             │             │                          │
+│              └─────────────┼─────────────┘                          │
+│                            │                                        │
+│              Computational Stress in D_ent                          │
+│              (Must compute D_ent coordinates                        │
+│               before action threshold)                              │
+│                            │                                        │
+│                            ▼                                        │
+│                    Observable Phenomena                             │
+│                    • Quantum correlations                           │
+│                    • Bell violations                                │
+│                    • Temperature-dependent fidelity                 │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## Summary: The Essential Insight
+## S8. Experimental Protocol Summary
 
-**Entanglement is not mysterious—we simply cannot see the dimension where particles remain connected.**
+### S8.1 Test Hierarchy
 
-Just as Flatlanders would find a sphere passing through their plane incomprehensible (a circle that changes size "magically"), we find entanglement incomprehensible because we cannot perceive D_ent where particles maintain their proximity.
-
-The temperature dependence of entanglement fidelity provides our clearest experimental window into this hidden dimension, revealing how computational stress from action thresholds affects our ability to maintain precise D_ent coordinates.
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                    EXPERIMENTAL TEST SUMMARY                        │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│   Priority    Test                      SNR      Timeline   Cost    │
+│   ════════════════════════════════════════════════════════════════  │
+│                                                                     │
+│   1 (High)    Temperature-dependent     ~50      2 years    $400K   │
+│               entanglement fidelity     (excellent)                 │
+│                                                                     │
+│   2 (Medium)  Inertial mass anomaly     ~3       3 years    $1M     │
+│                                         (marginal)                  │
+│                                                                     │
+│   3 (Low)     Maximum entanglement      ~10      5-10 yr    $50M+   │
+│               distance cutoff           (good)   (space)            │
+│                                                                     │
+│   Recommendation: Prioritize Test 1 for initial validation          │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+```
 
 ---
 
-*"In the cathedral of dimensions, entanglement is the hidden corridor connecting distant rooms. We hear the echoes but cannot see the passage. Until now."*
+## S9. Information Flow in Extended Space
+
+### S9.1 Conservation Law Extension
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│            INFORMATION CONSERVATION IN EXTENDED GEOMETRY            │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│   In 3+1 dimensions: Information appears to "jump"                  │
+│                                                                     │
+│       Alice ● ─ ─ ─ ─ ? ─ ─ ─ ─ ● Bob                               │
+│             Measurement    Instant correlation                      │
+│                                                                     │
+│   In 4+1 dimensions (with D_ent): Continuous flow                   │
+│                                                                     │
+│       Alice ●═══════════════════● Bob                               │
+│             Information flows through D_ent                         │
+│             (no discontinuity)                                      │
+│                                                                     │
+│   Conservation law: ∇₅ · I = 0                                      │
+│                                                                     │
+│   Implications:                                                     │
+│   • No-cloning theorem (conservation constraint)                    │
+│   • Monogamy (limited D_ent capacity)                               │
+│   • Quantum teleportation (D_ent tunnel transport)                  │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Summary
+
+These diagrams illustrate the core concepts of the D_ent interpretation:
+
+1. **Dimensional structure**: Entangled particles maintain adjacency in D_ent while appearing separated in 3-space
+
+2. **Energy landscape**: Entanglement creation requires work to establish D_ent connection; 3D separation requires no additional energy
+
+3. **Computational constraints**: D_ent navigation subject to same action-threshold deadlines as all quantum operations
+
+4. **Temperature dependence**: Linear F(T) scaling provides distinguishing experimental signature
+
+5. **Paradox resolution**: All standard entanglement paradoxes resolve through recognition of higher-dimensional locality
+
+The primary experimental test—temperature-dependent entanglement fidelity with linear scaling—provides a clear falsification criterion for the framework.
+
+---
+
+*Supplementary Material for: "Quantum Entanglement as Higher-Dimensional Proximity"*
