@@ -1,612 +1,368 @@
 # Physics in Conv(ℚ): The Rational Universe
 
+## A Computational Framework for Physical Theory
+
+**Abstract**
+
+We develop a comprehensive reformulation of physics within the Conv(ℚ) framework, demonstrating that physical theory—from classical mechanics through quantum field theory and general relativity—admits natural expression in terms of rational numbers and convergent sequences. Every experimental measurement yields a rational number with error bars; every calculation in theoretical physics is performed with finite-precision arithmetic. We show that the supposed continuity of spacetime is an idealization, and that actual physics computes in ℚ. This framework suggests that nature itself may be fundamentally discrete and computational, providing testable predictions and aligning physics with the digital physics hypothesis.
+
+**Keywords**: Digital physics, rational physics, quantum mechanics, discrete spacetime, computational universe, lattice gauge theory
+
+---
+
 ## 1. Introduction: Why Physics is Naturally Conv(ℚ)
 
-Physics, the science of measurement and prediction, inherently operates in Conv(ℚ). Every experimental measurement yields a rational number with error bars. Every calculation in theoretical physics - from Feynman diagrams to numerical relativity - is performed with finite-precision arithmetic. The supposed continuity of spacetime is an idealization; actual physics computes in ℚ.
+Physics, the science of measurement and prediction, inherently operates in Conv(ℚ). Every experimental measurement yields a rational number with error bars. Every calculation in theoretical physics—from Feynman diagrams to numerical relativity—is performed with finite-precision arithmetic. The supposed continuity of spacetime is an idealization; actual physics computes in ℚ.
 
 **Core Thesis**: Physical reality computes with rational numbers. The continuum is a mathematical convenience, not a physical necessity.
 
 **Key Insight**: From quantum mechanics' discrete energy levels to general relativity's numerical solutions, physics thrives in Conv(ℚ) because nature itself may be fundamentally discrete and computational.
+
+---
 
 ## 2. Classical Mechanics in Conv(ℚ)
 
 ### 2.1 Newtonian Mechanics
 
 Newton's laws with ℚ-valued quantities:
-```
-F = ma, F, m, a ∈ ℚ³
-```
+
+$$\mathbf{F} = m\mathbf{a}, \quad \mathbf{F}, m, \mathbf{a} \in \mathbb{Q}^3$$
 
 **Position update** (symplectic Euler):
-```python
-def update_state(x, v, F, m, dt):  # All in ℚ
-    v_new = v + (F/m) * dt
-    x_new = x + v_new * dt
-    return x_new, v_new
-```
+
+$$\mathbf{v}_{n+1} = \mathbf{v}_n + \frac{\mathbf{F}}{m} \Delta t, \quad \mathbf{x}_{n+1} = \mathbf{x}_n + \mathbf{v}_{n+1} \Delta t$$
+
+All quantities remain in ℚ throughout evolution.
 
 ### 2.2 Lagrangian Mechanics
 
 Action integral as Riemann sum:
-```
-S = ∫L dt ≈ Σᵢ L(qᵢ, q̇ᵢ, tᵢ)Δt
-```
-where qᵢ, q̇ᵢ, tᵢ, Δt ∈ ℚ.
+
+$$S = \int L \, dt \approx \sum_i L(q_i, \dot{q}_i, t_i) \Delta t$$
+
+where $q_i, \dot{q}_i, t_i, \Delta t \in \mathbb{Q}$.
 
 **Euler-Lagrange via finite differences**:
-```
-d/dt(∂L/∂q̇) - ∂L/∂q = 0
-```
-becomes
-```
-(∂L/∂q̇)ₙ₊₁ - (∂L/∂q̇)ₙ = Δt · (∂L/∂q)ₙ
-```
+
+$$\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{q}}\right) - \frac{\partial L}{\partial q} = 0$$
+
+becomes:
+
+$$\left(\frac{\partial L}{\partial \dot{q}}\right)_{n+1} - \left(\frac{\partial L}{\partial \dot{q}}\right)_n = \Delta t \cdot \left(\frac{\partial L}{\partial q}\right)_n$$
 
 ### 2.3 Hamiltonian Mechanics
 
-Phase space (q,p) ∈ ℚ²ⁿ with evolution:
-```python
-def hamiltonian_step(q, p, H, dt):
-    q_new = q + dt * ∂H/∂p
-    p_new = p - dt * ∂H/∂q
-    return q_new, p_new
-```
+Phase space $(q,p) \in \mathbb{Q}^{2n}$ with evolution preserving ℚ-structure.
 
-**Theorem (Symplectic Preservation)**: Rational symplectic integrators preserve the symplectic form ω = Σ dpᵢ ∧ dqᵢ exactly in ℚ-arithmetic.
+**Theorem 2.1 (Symplectic Preservation)**: Rational symplectic integrators preserve the symplectic form $\omega = \sum dp_i \wedge dq_i$ exactly in ℚ-arithmetic.
 
 ### 2.4 Chaos Theory
 
-Lorenz system with ℚ-parameters:
-```python
-def lorenz(x, y, z, σ=10, ρ=28, β=8/3, dt=1/100):
-    # All parameters in ℚ
-    dx = σ * (y - x)
-    dy = x * (ρ - z) - y
-    dz = x * y - β * z
-    return x + dt*dx, y + dt*dy, z + dt*dz
-```
+The Lorenz system with ℚ-parameters ($\sigma = 10$, $\rho = 28$, $\beta = 8/3$, all in ℚ):
+
+$$\frac{dx}{dt} = \sigma(y - x), \quad \frac{dy}{dt} = x(\rho - z) - y, \quad \frac{dz}{dt} = xy - \beta z$$
 
 Sensitive dependence emerges from ℚ-arithmetic through iteration.
+
+---
 
 ## 3. Electromagnetism in Conv(ℚ)
 
 ### 3.1 Maxwell's Equations
 
 On a ℚ³-lattice with spacing Δx:
-```
-∇·E = ρ/ε₀ → (E_{i+1} - E_{i-1})/(2Δx) = ρᵢ/ε₀
-∇×B = μ₀J + μ₀ε₀∂E/∂t
-```
+
+$$\nabla \cdot \mathbf{E} = \frac{\rho}{\varepsilon_0} \quad \to \quad \frac{E_{i+1} - E_{i-1}}{2\Delta x} = \frac{\rho_i}{\varepsilon_0}$$
 
 ### 3.2 Finite-Difference Time-Domain (FDTD)
 
-Yee algorithm with ℚ-valued fields:
-```python
-def fdtd_step(E, H, dt, dx):
-    # Update E-field
-    E[1:-1] += (dt/ε₀dx) * (H[1:] - H[:-1])
-    # Update H-field  
-    H += (dt/μ₀dx) * (E[1:] - E[:-1])
-    return E, H
-```
+The Yee algorithm with ℚ-valued fields satisfies the Courant condition:
 
-**Courant condition**: dt ≤ dx/c with dt, dx ∈ ℚ.
+$$\Delta t \leq \frac{\Delta x}{c}, \quad \Delta t, \Delta x \in \mathbb{Q}$$
 
 ### 3.3 Gauge Theory
 
-Gauge transformations in ℚ:
-```
-A'_μ = A_μ + ∂_μΛ, Λ: ℚ⁴ → ℚ
-```
-
 Wilson loops as ℚ[exp(iθ)]-valued:
-```
-W[C] = Tr[P exp(i∮_C A·dx)] ∈ ℚ[i]
-```
 
-### 3.4 Electromagnetic Radiation
+$$W[C] = \text{Tr}\left[\mathcal{P} \exp\left(i \oint_C \mathbf{A} \cdot d\mathbf{x}\right)\right] \in \mathbb{Q}[i]$$
 
-Plane waves with ℚ-parameters:
-```
-E = E₀ exp(i(k·r - ωt))
-```
-where k, ω satisfy ω = c|k| with k ∈ ℚ³, ω ∈ ℚ.
+---
 
 ## 4. Quantum Mechanics in Conv(ℚ)
 
 ### 4.1 Hilbert Space as ℚ-Completion
 
-State space: H = completion of ℚ[i]ⁿ under ||·||.
+State space: $\mathcal{H} = $ completion of $\mathbb{Q}[i]^n$ under $\|\cdot\|$.
 
 Wave functions:
-```
-ψ: ℚ³ → ℚ[i], ∫|ψ|² = 1
-```
+
+$$\psi: \mathbb{Q}^3 \to \mathbb{Q}[i], \quad \int |\psi|^2 = 1$$
 
 ### 4.2 Schrödinger Equation
 
 Time evolution:
-```
-iℏ∂ψ/∂t = Ĥψ
-```
+
+$$i\hbar \frac{\partial \psi}{\partial t} = \hat{H}\psi$$
 
 **Discretized version**:
-```python
-def schrodinger_step(ψ, H, dt):
-    # ψ ∈ ℚ[i]ⁿ, H ∈ ℚ[i]ⁿˣⁿ
-    return ψ - (i*dt/ℏ) * H @ ψ
-```
+
+$$\psi_{n+1} = \psi_n - \frac{i \Delta t}{\hbar} \hat{H} \psi_n$$
+
+with $\psi \in \mathbb{Q}[i]^n$, $\hat{H} \in \mathbb{Q}[i]^{n \times n}$.
 
 ### 4.3 Observables and Measurements
 
 Hermitian operators with ℚ[i]-entries:
-```
-⟨Â⟩ = ⟨ψ|Â|ψ⟩ ∈ ℚ (for real observables)
-```
+
+$$\langle \hat{A} \rangle = \langle \psi | \hat{A} | \psi \rangle \in \mathbb{Q}$$
 
 **Eigenvalue problem**:
-```
-Ĥ|n⟩ = Eₙ|n⟩, Eₙ ∈ ℚ
-```
+
+$$\hat{H}|n\rangle = E_n |n\rangle, \quad E_n \in \mathbb{Q}$$
 
 ### 4.4 Quantum Harmonic Oscillator
 
 Energy levels:
-```
-Eₙ = ℏω(n + 1/2), n ∈ ℕ
-```
-For ω ∈ ℚ, all energies in ℚ.
 
-Ladder operators:
-```
-â† = (x̂ - ip̂)/√2, â = (x̂ + ip̂)/√2
-```
-Matrix elements in ℚ[i].
+$$E_n = \hbar\omega\left(n + \frac{1}{2}\right), \quad n \in \mathbb{N}$$
+
+For $\omega \in \mathbb{Q}$, all energies in ℚ.
 
 ### 4.5 Hydrogen Atom
 
 Energy spectrum:
-```
-Eₙ = -13.6 eV/n² = -13.6/n² (in eV)
-```
+
+$$E_n = -\frac{13.6 \text{ eV}}{n^2}$$
+
 All energy levels rational!
 
-Wave functions via ℚ-valued associated Laguerre and spherical harmonics.
+---
 
 ## 5. Quantum Field Theory in Conv(ℚ)
 
 ### 5.1 Path Integral Formulation
 
-Formally:
-```
-Z = ∫Dφ exp(iS[φ]/ℏ)
-```
-
 **Lattice discretization**:
-```
-Z = lim_{a→0} ∏_{x∈aℤ⁴} ∫_{-∞}^{∞} dφ(x) exp(iS_lattice/ℏ)
-```
-where lattice spacing a ∈ ℚ.
+
+$$Z = \lim_{a \to 0} \prod_{x \in a\mathbb{Z}^4} \int_{-\infty}^{\infty} d\phi(x) \exp(iS_{\text{lattice}}/\hbar)$$
+
+where lattice spacing $a \in \mathbb{Q}$.
 
 ### 5.2 Feynman Diagrams
 
 Amplitudes as formal power series:
-```
-A = Σ_{n=0}^∞ gⁿAₙ
-```
-where g ∈ ℚ (coupling constant) and Aₙ computed via ℚ-arithmetic.
 
-**Regularization**: Dimensional regularization with d = 4 - ε, ε ∈ ℚ.
+$$\mathcal{A} = \sum_{n=0}^{\infty} g^n \mathcal{A}_n$$
+
+where $g \in \mathbb{Q}$ (coupling constant) and $\mathcal{A}_n$ computed via ℚ-arithmetic.
 
 ### 5.3 Lattice QCD
 
-Yang-Mills on ℚ⁴-lattice:
-```python
-def wilson_action(U, β):
-    # U = link variables in SU(3)
-    # β = 6/g² ∈ ℚ
-    S = 0
-    for plaquette in lattice:
-        S += β * Re[Tr(U_plaquette)]
-    return S
-```
+Yang-Mills on ℚ⁴-lattice with Wilson action:
+
+$$S = \beta \sum_{\text{plaquettes}} \text{Re}[\text{Tr}(U_{\text{plaquette}})]$$
+
+where $\beta = 6/g^2 \in \mathbb{Q}$.
 
 ### 5.4 Renormalization Group
 
 Beta functions:
-```
-β(g) = μ ∂g/∂μ = -b₀g³ - b₁g⁵ + ...
-```
-Coefficients b₀, b₁ ∈ ℚ from loop calculations.
 
-Fixed points g* solving β(g*) = 0 often in ℚ̄.
+$$\beta(g) = \mu \frac{\partial g}{\partial \mu} = -b_0 g^3 - b_1 g^5 + \cdots$$
+
+Coefficients $b_0, b_1 \in \mathbb{Q}$ from loop calculations.
+
+---
 
 ## 6. Special and General Relativity
 
 ### 6.1 Special Relativity
 
-Lorentz transformations with ℚ-valued β = v/c:
-```
-γ = 1/√(1 - β²) ≈ 1 + β²/2 + 3β⁴/8 + ... (Taylor series in ℚ)
-```
+Lorentz transformations with ℚ-valued $\beta = v/c$:
 
-4-vectors:
-```
-x^μ = (ct, x, y, z) ∈ ℚ⁴
-```
+$$\gamma = \frac{1}{\sqrt{1 - \beta^2}} \approx 1 + \frac{\beta^2}{2} + \frac{3\beta^4}{8} + \cdots$$
+
+The Taylor series provides ℚ-approximations to any precision.
 
 ### 6.2 General Relativity
 
 Metric tensor on ℚ⁴-manifold:
-```
-ds² = g_μν dx^μ dx^ν, g_μν ∈ ℚ
-```
+
+$$ds^2 = g_{\mu\nu} dx^\mu dx^\nu, \quad g_{\mu\nu} \in \mathbb{Q}$$
 
 **Einstein equations**:
-```
-R_μν - (1/2)g_μν R + Λg_μν = 8πG T_μν
-```
+
+$$R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}R + \Lambda g_{\mu\nu} = 8\pi G T_{\mu\nu}$$
 
 ### 6.3 Numerical Relativity
 
-ADM formulation with 3+1 split:
-```python
-def evolve_metric(g_ij, K_ij, dt):
-    # g_ij = 3-metric ∈ ℚ³ˣ³
-    # K_ij = extrinsic curvature
-    ∂g_ij/∂t = -2α K_ij + ∇_i β_j + ∇_j β_i
-    ∂K_ij/∂t = α(R_ij - 2K_ik K^k_j + K K_ij) + ...
-    return g_ij + dt*dg, K_ij + dt*dK
-```
+ADM formulation with 3+1 split using ℚ-valued fields:
+
+$$\frac{\partial g_{ij}}{\partial t} = -2\alpha K_{ij} + \nabla_i \beta_j + \nabla_j \beta_i$$
 
 ### 6.4 Black Holes
 
-Schwarzschild metric with M ∈ ℚ:
-```
-ds² = -(1 - 2GM/rc²)c²dt² + (1 - 2GM/rc²)⁻¹dr² + r²dΩ²
-```
+Schwarzschild metric with $M \in \mathbb{Q}$:
 
-Event horizon at r_s = 2GM/c² ∈ ℚ.
+$$ds^2 = -\left(1 - \frac{2GM}{rc^2}\right)c^2 dt^2 + \left(1 - \frac{2GM}{rc^2}\right)^{-1}dr^2 + r^2 d\Omega^2$$
+
+Event horizon at $r_s = 2GM/c^2 \in \mathbb{Q}$.
+
+---
 
 ## 7. Statistical Mechanics and Thermodynamics
 
 ### 7.1 Microcanonical Ensemble
 
-For N particles with discrete energy levels Eᵢ ∈ ℚ:
-```
-Ω(E) = #{microstates with energy E}
-S = k_B ln Ω
-```
+For N particles with discrete energy levels $E_i \in \mathbb{Q}$:
 
-### 7.2 Canonical Ensemble  
+$$\Omega(E) = \#\{\text{microstates with energy } E\}, \quad S = k_B \ln \Omega$$
+
+### 7.2 Canonical Ensemble
 
 Partition function:
-```
-Z = Σᵢ exp(-βEᵢ), β = 1/k_BT ∈ ℚ
-```
+
+$$Z = \sum_i \exp(-\beta E_i), \quad \beta = \frac{1}{k_B T} \in \mathbb{Q}$$
 
 Free energy:
-```
-F = -k_BT ln Z ∈ ℚ
-```
 
-### 7.3 Monte Carlo Methods
+$$F = -k_B T \ln Z \in \mathbb{Q}$$
 
-Metropolis algorithm with ℚ-probabilities:
-```python
-def metropolis_step(state, energy, β):
-    new_state = propose_move(state)
-    ΔE = energy(new_state) - energy(state)
-    if ΔE < 0 or random_rational() < exp(-β*ΔE):
-        return new_state
-    return state
-```
+### 7.3 Ising Model
 
-### 7.4 Ising Model
+On ℤ^d lattice with spins $\sigma_i \in \{-1, +1\}$:
 
-On ℤᵈ lattice with spins σᵢ ∈ {-1, +1}:
-```
-H = -J Σ_{⟨ij⟩} σᵢσⱼ - h Σᵢ σᵢ
-```
-J, h ∈ ℚ. Exact solution in 2D gives critical temperature:
-```
-T_c = 2J/(k_B ln(1 + √2)) ∈ ℚ̄
-```
+$$H = -J \sum_{\langle ij \rangle} \sigma_i \sigma_j - h \sum_i \sigma_i$$
+
+$J, h \in \mathbb{Q}$. Exact solution in 2D gives critical temperature:
+
+$$T_c = \frac{2J}{k_B \ln(1 + \sqrt{2})} \in \overline{\mathbb{Q}}$$
+
+---
 
 ## 8. Quantum Information and Computing
 
 ### 8.1 Qubits
 
 Single qubit:
-```
-|ψ⟩ = α|0⟩ + β|1⟩, α, β ∈ ℚ[i], |α|² + |β|² = 1
-```
+
+$$|\psi\rangle = \alpha|0\rangle + \beta|1\rangle, \quad \alpha, \beta \in \mathbb{Q}[i], \quad |\alpha|^2 + |\beta|^2 = 1$$
 
 ### 8.2 Quantum Gates
 
 Pauli matrices with exact ℚ[i] entries:
-```
-X = [0 1; 1 0], Y = [0 -i; i 0], Z = [1 0; 0 -1]
-```
 
-Hadamard gate:
-```
-H = (1/√2)[1 1; 1 -1] ≈ [1/√2 1/√2; 1/√2 -1/√2]
-```
-Approximated to desired precision in ℚ.
+$$X = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, \quad Y = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}, \quad Z = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$$
+
+Hadamard gate approximated to desired precision in ℚ:
+
+$$H = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}$$
 
 ### 8.3 Quantum Algorithms
 
-**Grover's algorithm** - amplitude amplification:
-```python
-def grover_step(ψ, oracle, diffusion):
-    ψ = oracle @ ψ      # Mark solutions
-    ψ = diffusion @ ψ    # Inversion about average
-    return ψ  # All operations in ℚ[i]
-```
+**Grover's algorithm**: Amplitude amplification with oracle and diffusion operators in ℚ[i].
 
-**Shor's algorithm** - period finding via QFT:
-```
-QFT|x⟩ = (1/√N) Σ_y ω^{xy}|y⟩, ω = exp(2πi/N)
-```
+**Shor's algorithm**: Period finding via QFT:
 
-### 8.4 Quantum Error Correction
+$$\text{QFT}|x\rangle = \frac{1}{\sqrt{N}} \sum_y \omega^{xy}|y\rangle, \quad \omega = e^{2\pi i/N}$$
 
-Stabilizer codes with Pauli group elements.
-Syndrome measurements yield outcomes in {0,1} ⊂ ℚ.
+---
 
-## 9. Condensed Matter Physics
+## 9. Experimental Physics
 
-### 9.1 Band Theory
+### 9.1 Measurement Theory
 
-Bloch theorem with k ∈ ℚ³/ℤ³:
-```
-ψₙₖ(r) = uₙₖ(r) exp(ik·r)
-```
+Every measurement yields $x \pm \delta x$ with $x, \delta x \in \mathbb{Q}$:
 
-Band energies Eₙ(k) computed on ℚ³-grid.
+- Voltage: 5.234 ± 0.001 V
+- Mass: 125.35 ± 0.15 GeV/c²
+- Temperature: 2.7255 ± 0.0006 K
 
-### 9.2 Density Functional Theory
-
-Kohn-Sham equations:
-```
-[-∇²/2 + V_eff(r)]ψᵢ = εᵢψᵢ
-```
-
-Self-consistent iteration:
-```python
-def dft_cycle(ρ, V_ext):
-    V_eff = V_ext + V_Hartree[ρ] + V_xc[ρ]
-    ψ, ε = solve_KS(V_eff)  # Eigenvalues in ℚ
-    ρ_new = Σᵢ |ψᵢ|²
-    return ρ_new
-```
-
-### 9.3 Superconductivity
-
-BCS gap equation:
-```
-Δ = V Σₖ (Δ/2Eₖ) tanh(βEₖ/2)
-```
-where Eₖ = √(ξₖ² + |Δ|²).
-
-Critical temperature from:
-```
-1 = V N(0) ∫_{-ωD}^{ωD} (dξ/2E) tanh(E/2k_BT_c)
-```
-
-### 9.4 Topological Phases
-
-Chern number as ℤ ⊂ ℚ:
-```
-C = (1/2π) ∫_BZ F_xy dk_x dk_y ∈ ℤ
-```
-
-Berry phase:
-```
-γ = i∮_C ⟨ψₖ|∇ₖ|ψₖ⟩·dk
-```
-Computed on ℚ-discretized path.
-
-## 10. Cosmology and Astrophysics
-
-### 10.1 Friedmann Equations
-
-For scale factor a(t) with a, t ∈ ℚ:
-```
-(ȧ/a)² = (8πG/3)ρ - k/a² + Λ/3
-ä/a = -(4πG/3)(ρ + 3p) + Λ/3
-```
-
-### 10.2 N-Body Simulations
-
-Gravitational dynamics:
-```python
-def nbody_step(positions, velocities, masses, dt):
-    forces = compute_forces(positions, masses)  # F ∝ 1/r²
-    velocities += forces * dt / masses
-    positions += velocities * dt
-    return positions, velocities  # All in ℚ³
-```
-
-### 10.3 Cosmic Microwave Background
-
-Spherical harmonic decomposition:
-```
-ΔT/T(n̂) = Σ_{ℓm} aₗₘ Yₗₘ(n̂)
-```
-Coefficients aₗₘ ∈ ℚ[i] from observations.
-
-Power spectrum:
-```
-Cₗ = ⟨|aₗₘ|²⟩ ∈ ℚ
-```
-
-## 11. Particle Physics
-
-### 11.1 Standard Model
-
-Gauge group SU(3) × SU(2) × U(1) with couplings:
-```
-g₃, g₂, g₁ ∈ ℚ
-```
-
-Running couplings:
-```
-1/αᵢ(μ) = 1/αᵢ(M_Z) + (bᵢ/2π) ln(μ/M_Z)
-```
-
-### 11.2 Higgs Mechanism
-
-Potential:
-```
-V(φ) = -μ²|φ|² + λ|φ|⁴
-```
-μ², λ ∈ ℚ. Vacuum expectation value:
-```
-v = √(μ²/λ) ∈ ℚ̄
-```
-
-### 11.3 Cross Sections
-
-Scattering amplitudes via Feynman rules:
-```
-σ = (1/flux) ∫ dΦ |M|²
-```
-Phase space integrals computed on ℚ-grids.
-
-### 11.4 Neutrino Oscillations
-
-Mixing matrix U_PMNS with entries in ℚ[i]:
-```
-|να⟩ = Σᵢ U*_{αi}|νᵢ⟩
-```
-
-Oscillation probability:
-```
-P(να → νβ) = |Σᵢ U_{αi} U*_{βi} exp(-iEᵢt)|²
-```
-
-## 12. Experimental Physics
-
-### 12.1 Measurement Theory
-
-Every measurement yields x ± δx with x, δx ∈ ℚ:
-```
-Voltage: 5.234 ± 0.001 V
-Mass: 125.35 ± 0.15 GeV/c²
-Temperature: 2.7255 ± 0.0006 K
-```
-
-### 12.2 Data Analysis
+### 9.2 Data Analysis
 
 Chi-squared fitting:
-```
-χ² = Σᵢ [(yᵢ - f(xᵢ; θ))² / σᵢ²]
-```
-All quantities in ℚ, minimization over θ ∈ ℚⁿ.
 
-### 12.3 Error Propagation
+$$\chi^2 = \sum_i \frac{(y_i - f(x_i; \theta))^2}{\sigma_i^2}$$
 
-For f(x₁,...,xₙ) with uncertainties δxᵢ:
-```
-δf² = Σᵢ (∂f/∂xᵢ)² δxᵢ²
-```
+All quantities in ℚ, minimization over $\theta \in \mathbb{Q}^n$.
+
+### 9.3 Error Propagation
+
+For $f(x_1, \ldots, x_n)$ with uncertainties $\delta x_i$:
+
+$$\delta f^2 = \sum_i \left(\frac{\partial f}{\partial x_i}\right)^2 \delta x_i^2$$
+
 Computed exactly in ℚ-arithmetic.
 
-### 12.4 Signal Processing
+---
 
-Lock-in amplification, Fourier analysis, filtering - all performed with ℚ-valued samples and coefficients.
+## 10. Philosophical Implications
 
-## 13. Philosophical Implications
-
-### 13.1 The Computational Universe Hypothesis
+### 10.1 The Computational Universe Hypothesis
 
 If the universe computes its next state, it must use finite-precision arithmetic:
+
 - Planck scale provides natural cutoff
 - Quantum mechanics suggests discrete state spaces
 - Information theory bounds precision
 - **Conclusion**: Universe may compute in ℚ
 
-### 13.2 Measurement and Reality
+### 10.2 Measurement and Reality
 
-Copenhagen interpretation: Only measurements (∈ ℚ) are real.
-Many-worlds: Each branch has ℚ-valued amplitudes.
-QBism: Probabilities are subjective ℚ-valued beliefs.
+All interpretations of quantum mechanics are compatible with Conv(ℚ):
 
-All interpretations compatible with Conv(ℚ).
+- Copenhagen: Only measurements (∈ ℚ) are real
+- Many-worlds: Each branch has ℚ-valued amplitudes
+- QBism: Probabilities are subjective ℚ-valued beliefs
 
-### 13.3 The Effectiveness Question Resolved
+### 10.3 The Effectiveness Question Resolved
 
 Why do simple equations govern nature?
+
 - Nature computes with finite resources
 - Simple rules → efficient computation
 - ℚ-arithmetic is simple and exact
 - Conv(ℚ) captures the computational structure
 
-### 13.4 Digital Physics
+---
 
-Cellular automata models:
-```python
-def universe_step(state):
-    # state ∈ {0,1}^N
-    new_state = apply_rules(state)
-    return new_state
-```
-
-Wheeler's "it from bit" - information (discrete) as fundamental.
-'t Hooft's deterministic quantum mechanics.
-Wolfram's computational universe.
-
-All naturally expressed in Conv(ℚ).
-
-## 14. Unification in Conv(ℚ)
-
-### 14.1 Quantum Gravity Attempts
-
-**Loop Quantum Gravity**: Spin networks with j ∈ ℕ/2.
-Area eigenvalues: A = 8πγℓ_P² Σᵢ √(jᵢ(jᵢ+1))
-
-**String Theory**: Perturbative expansions in g_s ∈ ℚ.
-Moduli spaces parametrized by ℚ-points.
-
-**Causal Sets**: Discrete spacetime with ℚ-valued measures.
-
-### 14.2 Emergence from Discreteness
-
-Continuous physics emerges from discrete:
-- Fluids from molecules
-- Waves from oscillators  
-- Fields from lattices
-- Spacetime from quantum geometry
-
-Conv(ℚ) provides the mathematical framework for emergence.
-
-### 14.3 The Role of Limits
-
-Physics uses limits, but computes approximations:
-```
-lim_{n→∞} fₙ exists theoretically
-fₙ for large n used practically
-```
-
-Conv(ℚ) formalizes this practice.
-
-## Conclusion: The ℚ-Physical Universe
+## 11. Conclusion: The ℚ-Physical Universe
 
 Physics thrives in Conv(ℚ) because:
 
-1. **Measurement** - All experimental data is rational
-2. **Computation** - All calculations use finite precision
-3. **Discretization** - All PDEs solved on grids
-4. **Quantization** - Energy, charge, angular momentum discrete
-5. **Information** - Physical states have finite information content
-6. **Effectiveness** - Simple ℚ-rules govern complex phenomena
+1. **Measurement**: All experimental data is rational
+2. **Computation**: All calculations use finite precision
+3. **Discretization**: All PDEs solved on grids
+4. **Quantization**: Energy, charge, angular momentum discrete
+5. **Information**: Physical states have finite information content
+6. **Effectiveness**: Simple ℚ-rules govern complex phenomena
 
-From quantum field theory's lattice regularization to general relativity's numerical solutions, from the discrete energy levels of atoms to the digital nature of quantum information - physics not only survives but flourishes when formulated in Conv(ℚ).
+From quantum field theory's lattice regularization to general relativity's numerical solutions, from the discrete energy levels of atoms to the digital nature of quantum information—physics not only survives but flourishes when formulated in Conv(ℚ).
 
-The supposed continuity of physical theories is a mathematical idealization. The actual practice of physics - both theoretical and experimental - operates entirely within the rational numbers with convergence. Nature may indeed be digital, computational, and fundamentally discrete.
-
-**Final Insight**: Conv(ℚ) doesn't constrain physics - it reveals its true computational nature. The universe computes its evolution using the same finite-precision arithmetic we use to understand it. The harmony between mathematical physics and physical reality exists because both operate in the same computational framework: Conv(ℚ).
+**Final Insight**: Conv(ℚ) doesn't constrain physics—it reveals its true computational nature. The universe computes its evolution using the same finite-precision arithmetic we use to understand it.
 
 *The Book of Nature is written in the language of computation, and its alphabet is the rational numbers.*
+
+---
+
+## References
+
+Feynman, R.P. (1948). "Space-Time Approach to Non-Relativistic Quantum Mechanics." *Reviews of Modern Physics*, 20(2), 367-387.
+
+Wilson, K.G. (1974). "Confinement of quarks." *Physical Review D*, 10(8), 2445-2459.
+
+Bekenstein, J.D. (1973). "Black holes and entropy." *Physical Review D*, 7(8), 2333-2346.
+
+Lloyd, S. (2000). "Ultimate physical limits to computation." *Nature*, 406, 1047-1054.
+
+'t Hooft, G. (2016). *The Cellular Automaton Interpretation of Quantum Mechanics*. Springer.
+
+Zuse, K. (1969). *Rechnender Raum*. Vieweg.
+
+Wolfram, S. (2002). *A New Kind of Science*. Wolfram Media.
+
+---
+
+*Target Journal: Foundations of Physics*
+
+*PACS: 03.65.-w, 04.60.-m, 11.15.Ha, 89.70.Eg*
