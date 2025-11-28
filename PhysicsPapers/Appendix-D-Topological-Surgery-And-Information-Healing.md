@@ -28,13 +28,13 @@ exist as a smooth Lorentzian 4-manifold?
 
 ### 1.2 Main Results
 
-**Theorem A** (Existence): Given information conservation ∂ᵤJᵘᵢ = 0, the continuum limit exists.
+**Theorem A** (Existence): Given information conservation $\partial_\mu J^\mu_I = 0$, the continuum limit exists.
 
 **Theorem B** (Uniqueness): The limit is unique up to diffeomorphism.
 
-**Theorem C** (Regularity): The limit metric gᵤᵥ ∈ C^∞(M).
+**Theorem C** (Regularity): The limit metric $g_{\mu\nu} \in C^\infty(M)$.
 
-**Theorem D** (Einstein Emergence): The limit satisfies Gᵤᵥ = (8πG/c⁴)Tᵤᵥ.
+**Theorem D** (Einstein Emergence): The limit satisfies $G_{\mu\nu} = (8\pi G/c^4)T_{\mu\nu}$.
 
 ### 1.3 Mathematical Prerequisites
 
@@ -53,13 +53,13 @@ We employ:
 
 **Definition 2.1** (Planck Lattice): Let Λ ⊂ ℝ⁴ be the discrete set:
 
-$$\Lambda = \left\{ x \in \mathbb{R}^4 : x^\mu = n^\mu \ell_p, \; n^\mu \in \mathbb{Z} \right\}$$
+$$\Lambda = \{ x \in \mathbb{R}^4 : x^\mu = n^\mu \ell_p, \; n^\mu \in \mathbb{Z} \}$$
 
 with Planck length ℓₚ = √(ℏG/c³) ≈ 1.616 × 10⁻³⁵ m.
 
 **Definition 2.2** (Lattice Neighborhood): For n ∈ Λ, define:
 
-$$\mathcal{N}(n) = \left\{ m \in \Lambda : \|m - n\|_1 = \ell_p \right\}$$
+$$\mathcal{N}(n) = \{ m \in \Lambda : \|m - n\|_1 = \ell_p \}$$
 
 the set of nearest neighbors (8 points in 4D).
 
@@ -95,11 +95,11 @@ $$(\Delta_{\text{lat}} f)(n) = \sum_{\mu=0}^{3} \frac{f(n + \ell_p \hat{e}_\mu) 
 
 $$\Gamma^\rho_{\mu\nu}(n) = \frac{1}{2} g^{\rho\sigma}(n) \left[ \Delta_\mu g_{\nu\sigma}(n) + \Delta_\nu g_{\mu\sigma}(n) - \Delta_\sigma g_{\mu\nu}(n) \right]$$
 
-where g^ρσ(n) is the inverse metric at site n.
+where $g^{\rho\sigma}(n)$ is the inverse metric at site n.
 
-**Lemma 2.1** (Symmetry): Γ^ρ_μν(n) = Γ^ρ_νμ(n).
+**Lemma 2.1** (Symmetry): $\Gamma^\rho_{\mu\nu}(n) = \Gamma^\rho_{\nu\mu}(n)$.
 
-*Proof*: Follows directly from symmetry of gᵤᵥ and commutativity of Δᵤ, Δᵥ. ∎
+*Proof*: Follows directly from symmetry of $g_{\mu\nu}$ and commutativity of $\Delta_\mu$, $\Delta_\nu$. ∎
 
 ### 2.4 Discrete Riemann Tensor
 
@@ -129,7 +129,7 @@ $$\Delta_\rho G^{\rho\mu}(n) = O(\ell_p)$$
 
 $$\Delta_\rho(AB) = (\Delta_\rho A)B + A(\Delta_\rho B) + O(\ell_p)$$
 
-The O(ℓₚ) error vanishes in the continuum limit. ∎
+The $O(\ell_p)$ error vanishes in the continuum limit. ∎
 
 ---
 
@@ -145,9 +145,9 @@ where the information functional:
 
 $$\mathcal{I}[g] = \frac{1}{2}\log\det(-g_{\mu\nu}) + \frac{1}{2}\text{Tr}(g^{-1}g_0)$$
 
-and g₀ = diag(−1,1,1,1) is the Minkowski reference metric.
+and $g_0 = \text{diag}(-1,1,1,1)$ is the Minkowski reference metric.
 
-**Proposition 3.1** (Information-Metric Correspondence): The variation of I with respect to gᵤᵥ is:
+**Proposition 3.1** (Information-Metric Correspondence): The variation of I with respect to $g_{\mu\nu}$ is:
 
 $$\frac{\delta I}{\delta g^{\mu\nu}} = \frac{1}{2\ell_p^4}\left( g_{\mu\nu} - (g_0)_{\mu\nu} \right)$$
 
@@ -157,7 +157,7 @@ $$\frac{\delta}{\delta g^{\mu\nu}}\log\det(-g) = -g_{\mu\nu}$$
 
 $$\frac{\delta}{\delta g^{\mu\nu}}\text{Tr}(g^{-1}g_0) = -(g_0)_{\alpha\beta}g^{\alpha\mu}g^{\beta\nu} = -(g_0)_{\mu\nu}$$
 
-Combining: δI/δg^μν = (1/2ℓₚ⁴)(gᵤᵥ − (g₀)ᵤᵥ). ∎
+Combining: $\delta I/\delta g^{\mu\nu} = (1/2\ell_p^4)(g_{\mu\nu} - (g_0)_{\mu\nu})$. ∎
 
 ### 3.2 Information Current
 
@@ -283,7 +283,7 @@ $$\rho_{\mathcal{D}}(n) = \frac{1}{\ell_p^4} |\mathcal{D}|(n)^2$$
 
 **Definition 4.7** (Defect Set): 
 
-$$\mathcal{S} = \left\{ n \in \Lambda : |\mathcal{D}|(n) > \epsilon_{\text{threshold}} \right\}$$
+$$\mathcal{S} = \{ n \in \Lambda : |\mathcal{D}|(n) > \epsilon_{\text{threshold}} \}$$
 
 **Lemma 4.2** (Defect Sparsity): The defect density satisfies:
 
@@ -306,9 +306,9 @@ by Chebyshev and Lemma 4.1. ∎
 $$\mathcal{F}[g] = \int_\Lambda \ell_p^4 \sum_n \left[ \frac{1}{2}(I(n) - \bar{I})^2 + \frac{\lambda}{2}|\mathcal{D}|^2(n) + \frac{\mu}{2}|\Delta g|^2(n) \right]$$
 
 where:
-- Ī = I_total / |Λ| (average information density)
-- λ > 0: defect penalty
-- μ > 0: smoothness penalty
+- $\bar{I} = I_{\text{total}} / |\Lambda|$ (average information density)
+- $\lambda > 0$: defect penalty
+- $\mu > 0$: smoothness penalty
 
 **Proposition 5.1**: The Euler-Lagrange equation for ℱ is:
 
@@ -328,7 +328,7 @@ $$\frac{\partial g_{\mu\nu}}{\partial \tau} = -(I - \bar{I})\frac{\delta I}{\del
 
 **Proposition 5.2** (Parabolic Structure): The healing flow is a quasilinear parabolic system.
 
-*Proof*: The highest-order term is μΔ_lat gᵤᵥ, which is the discrete Laplacian—a uniformly elliptic operator. ∎
+*Proof*: The highest-order term is $\mu\Delta_{\text{lat}} g_{\mu\nu}$, which is the discrete Laplacian—a uniformly elliptic operator. ∎
 
 ### 5.3 Comparison with Ricci Flow
 
@@ -354,7 +354,7 @@ Using the relation (in harmonic gauge):
 
 $$\partial_\alpha \partial^\alpha g_{\mu\nu} = -2R_{\mu\nu} + \text{Christoffel terms}$$
 
-The result follows with μ = ℓₚ²/2. ∎
+The result follows with $\mu = \ell_p^2/2$. ∎
 
 ---
 
@@ -376,18 +376,18 @@ $$\sum_n \ell_p^4 (4\pi\tau)^{-2} e^{-f(n)} = 1$$
 
 $$\frac{d\mathcal{W}}{d\tau} \leq 0$$
 
-with equality iff gᵤᵥ satisfies:
-1. 𝒟ᵤᵥ = 0 (defect-free)
-2. I(n) = Ī ∀n (uniform information)
-3. Rᵤᵥ = 0 (Ricci-flat) or Rᵤᵥ = Λgᵤᵥ (Einstein)
+with equality iff $g_{\mu\nu}$ satisfies:
+1. $\mathcal{D}_{\mu\nu} = 0$ (defect-free)
+2. $I(n) = \bar{I}$ ∀n (uniform information)
+3. $R_{\mu\nu} = 0$ (Ricci-flat) or $R_{\mu\nu} = \Lambda g_{\mu\nu}$ (Einstein)
 
-*Proof*: We compute d𝒲/dτ term by term.
+*Proof*: We compute $d\mathcal{W}/d\tau$ term by term.
 
 **Step 1**: Information term contribution:
 
 $$\frac{d}{d\tau}\int (I - \bar{I})^2 = 2\int (I - \bar{I})\frac{\partial I}{\partial \tau}$$
 
-Using ∂I/∂τ = (δI/δgᵘᵛ)(∂gᵤᵥ/∂τ) and the flow equation:
+Using $\partial I/\partial\tau = (\delta I/\delta g^{\mu\nu})(\partial g_{\mu\nu}/\partial\tau)$ and the flow equation:
 
 $$= -2\int (I - \bar{I})\frac{\delta I}{\delta g^{\mu\nu}} \cdot \frac{\delta \mathcal{F}}{\delta g^{\mu\nu}} \leq 0$$
 
@@ -423,36 +423,36 @@ $$= -2\mu \int |\Delta_{\text{lat}} g|^2 + \text{lower order}$$
 
 $$\frac{d\mathcal{W}}{d\tau} \leq -c_1 \int (I-\bar{I})^2 - c_2\lambda \int |\mathcal{D}|^4 - c_3\mu \int |\Delta_{\text{lat}}g|^2$$
 
-for positive constants c₁, c₂, c₃. Thus d𝒲/dτ ≤ 0. ∎
+for positive constants $c_1$, $c_2$, $c_3$. Thus $d\mathcal{W}/d\tau \leq 0$. ∎
 
 ### 6.3 Convergence Theorem
 
-**Theorem 6.2** (Global Convergence): For any initial data gᵤᵥ(n, 0) with finite 𝒲[g(0)]:
+**Theorem 6.2** (Global Convergence): For any initial data $g_{\mu\nu}(n, 0)$ with finite $\mathcal{W}[g(0)]$:
 
 $$\lim_{\tau \to \infty} g_{\mu\nu}(n, \tau) = g_{\mu\nu}^{(\infty)}(n)$$
 
-exists and satisfies δℱ/δgᵘᵛ = 0.
+exists and satisfies $\delta\mathcal{F}/\delta g^{\mu\nu} = 0$.
 
 *Proof*: 
 
-**Step 1**: 𝒲 is bounded below:
+**Step 1**: $\mathcal{W}$ is bounded below:
 
 $$\mathcal{W}[g] \geq 0$$
 
 since all terms are non-negative or have lower bounds.
 
-**Step 2**: 𝒲 is non-increasing (Theorem 6.1).
+**Step 2**: $\mathcal{W}$ is non-increasing (Theorem 6.1).
 
-**Step 3**: Therefore 𝒲(τ) → 𝒲_∞ as τ → ∞.
+**Step 3**: Therefore $\mathcal{W}(\tau) \to \mathcal{W}_\infty$ as $\tau \to \infty$.
 
 **Step 4**: The ω-limit set is non-empty and compact by:
-- 𝒲 bounded → g bounded in appropriate Sobolev norm
+- $\mathcal{W}$ bounded → g bounded in appropriate Sobolev norm
 - Discrete lattice → finite-dimensional approximation
 
-**Step 5**: On the ω-limit set, d𝒲/dτ = 0, implying:
-- (I − Ī) = 0
-- 𝒟ᵤᵥ = 0
-- Δ_lat gᵤᵥ = optimal
+**Step 5**: On the ω-limit set, $d\mathcal{W}/d\tau = 0$, implying:
+- $(I - \bar{I}) = 0$
+- $\mathcal{D}_{\mu\nu} = 0$
+- $\Delta_{\text{lat}} g_{\mu\nu}$ = optimal
 
 This characterizes the equilibrium. ∎
 
@@ -470,7 +470,7 @@ where Δ^α denotes multi-index discrete derivatives.
 
 **Definition 7.2** (Discrete Sobolev Space):
 
-$$W^{k,p}(\Lambda) = \left\{ f: \Lambda \to \mathbb{R} : \|f\|_{W^{k,p}} < \infty \right\}$$
+$$W^{k,p}(\Lambda) = \{ f: \Lambda \to \mathbb{R} : \|f\|_{W^{k,p}} < \infty \}$$
 
 ### 7.2 A Priori Estimates
 
@@ -478,9 +478,9 @@ $$W^{k,p}(\Lambda) = \left\{ f: \Lambda \to \mathbb{R} : \|f\|_{W^{k,p}} < \inft
 
 $$\|g(\tau)\|_{W^{1,2}(\Lambda)}^2 \leq \|g(0)\|_{W^{1,2}(\Lambda)}^2 \cdot e^{-\gamma\tau}$$
 
-for some γ > 0.
+for some $\gamma > 0$.
 
-*Proof*: Multiply the flow equation by gᵤᵥ and sum:
+*Proof*: Multiply the flow equation by $g_{\mu\nu}$ and sum:
 
 $$\frac{1}{2}\frac{d}{d\tau}\|g\|_{L^2}^2 = -\int g^{\mu\nu}\frac{\delta\mathcal{F}}{\delta g^{\mu\nu}}$$
 
@@ -502,7 +502,7 @@ Inductively, all discrete derivatives are controlled. ∎
 
 ### 7.3 Compactness
 
-**Theorem 7.1** (Compactness): Let {g^(ℓₚ)} be a family of solutions to the healing flow on lattices with spacing ℓₚ → 0. Then there exists a subsequence converging to a smooth limit:
+**Theorem 7.1** (Compactness): Let $\{g^{(\ell_p)}\}$ be a family of solutions to the healing flow on lattices with spacing $\ell_p \to 0$. Then there exists a subsequence converging to a smooth limit:
 
 $$g^{(\ell_{p_j})} \to g^{(0)} \in C^\infty(\mathbb{R}^4, \text{Sym}_2)$$
 
@@ -518,25 +518,25 @@ $$\tilde{g}^{(\ell_p)}(x) = \sum_{n \in \Lambda} g^{(\ell_p)}(n) \cdot \phi\left
 
 where φ is a smooth partition of unity.
 
-**Step 3**: Arzelà-Ascoli: Uniform W^{k,2} bounds imply:
+**Step 3**: Arzelà-Ascoli: Uniform $W^{k,2}$ bounds imply:
 - Equicontinuity of all derivatives up to order k−2
 - Uniform boundedness
 
-Therefore a subsequence converges in C^{k−2}.
+Therefore a subsequence converges in $C^{k-2}$.
 
-**Step 4**: Diagonal argument: Take k → ∞ to get C^∞ convergence. ∎
+**Step 4**: Diagonal argument: Take $k \to \infty$ to get $C^\infty$ convergence. ∎
 
 ### 7.4 Identification of the Limit
 
-**Theorem 7.2** (Limit Characterization): The continuum limit g^(0)_μν satisfies:
+**Theorem 7.2** (Limit Characterization): The continuum limit $g^{(0)}_{\mu\nu}$ satisfies:
 
 $$R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}R + \Lambda g_{\mu\nu} = \frac{8\pi G}{c^4}T^{(I)}_{\mu\nu}$$
 
-where Λ is determined by information density and T^(I) is the information stress-energy.
+where Λ is determined by information density and $T^{(I)}$ is the information stress-energy.
 
 *Proof*:
 
-**Step 1**: In the limit, the defect term vanishes: 𝒟ᵤᵥ → 0 by Lemma 4.2.
+**Step 1**: In the limit, the defect term vanishes: $\mathcal{D}_{\mu\nu} \to 0$ by Lemma 4.2.
 
 **Step 2**: The information term becomes:
 
@@ -548,7 +548,7 @@ where ρᵢ is the information density variation.
 
 $$\mu\Delta_{\text{lat}}g_{\mu\nu} \to -R_{\mu\nu} + \frac{1}{2}g_{\mu\nu}R$$
 
-**Step 4**: The equilibrium condition δℱ/δg = 0 becomes:
+**Step 4**: The equilibrium condition $\delta\mathcal{F}/\delta g = 0$ becomes:
 
 $$R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}R = \text{(information source terms)}$$
 
@@ -570,7 +570,7 @@ $$I_{\text{total}}[g] = I_{\text{total}}[g'] = I_0$$
 
 $$\frac{\delta \mathcal{F}}{\delta g^{\mu\nu}} = 0, \quad \frac{\delta \mathcal{F}}{\delta g'^{\mu\nu}} = 0$$
 
-**Step 2**: Define hᵤᵥ = gᵤᵥ − g'ᵤᵥ. The linearization:
+**Step 2**: Define $h_{\mu\nu} = g_{\mu\nu} - g'_{\mu\nu}$. The linearization:
 
 $$\frac{\delta^2 \mathcal{F}}{\delta g^{\mu\nu}\delta g^{\alpha\beta}} h_{\alpha\beta} = 0$$
 
@@ -594,15 +594,15 @@ Hence the limit is unique up to diffeomorphism. ∎
 
 **Theorem 8.2** (Stability): The continuum limit is stable: small perturbations decay exponentially.
 
-*Proof*: Linearize the flow around equilibrium g^(∞):
+*Proof*: Linearize the flow around equilibrium $g^{(\infty)}$:
 
 $$\frac{\partial h_{\mu\nu}}{\partial \tau} = \mathcal{L}[h_{\mu\nu}]$$
 
 where ℒ is the linearized operator. The spectrum of ℒ:
 
-$$\sigma(\mathcal{L}) \subset \left\{ z \in \mathbb{C} : \text{Re}(z) \leq -\gamma \right\}$$
+$$\sigma(\mathcal{L}) \subset \{ z \in \mathbb{C} : \text{Re}(z) \leq -\gamma \}$$
 
-for some γ > 0, excluding gauge modes. Therefore perturbations decay as e^{−γτ}. ∎
+for some $\gamma > 0$, excluding gauge modes. Therefore perturbations decay as $e^{-\gamma\tau}$. ∎
 
 ---
 
@@ -610,7 +610,7 @@ for some γ > 0, excluding gauge modes. Therefore perturbations decay as e^{−�
 
 ### 9.1 Elliptic Regularity
 
-**Theorem 9.1** (Smoothness): The continuum limit g^(0)_μν ∈ C^∞.
+**Theorem 9.1** (Smoothness): The continuum limit $g^{(0)}_{\mu\nu} \in C^\infty$.
 
 *Proof*:
 
@@ -618,19 +618,19 @@ for some γ > 0, excluding gauge modes. Therefore perturbations decay as e^{−�
 
 $$\mathcal{E}_{\mu\nu}[g] := R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}R - \frac{8\pi G}{c^4}T^{(I)}_{\mu\nu} = 0$$
 
-**Step 2**: In harmonic gauge (∇ᵘgᵤᵥ = ½∂ᵥ(gᵅᵝgᵅᵝ)):
+**Step 2**: In harmonic gauge ($\nabla^\mu g_{\mu\nu} = \frac{1}{2}\partial_\nu(g^{\alpha\beta}g_{\alpha\beta})$):
 
 $$g^{\alpha\beta}\partial_\alpha\partial_\beta g_{\mu\nu} = F_{\mu\nu}(g, \partial g)$$
 
 where F is smooth in its arguments.
 
-**Step 3**: Elliptic regularity: If g ∈ W^{k,p} and F ∈ W^{k−1,p}, then g ∈ W^{k+1,p}.
+**Step 3**: Elliptic regularity: If $g \in W^{k,p}$ and $F \in W^{k-1,p}$, then $g \in W^{k+1,p}$.
 
-**Step 4**: Bootstrap: Start with W^{1,2} (from Lemma 7.1), conclude W^{2,2}, then W^{3,2}, etc.
+**Step 4**: Bootstrap: Start with $W^{1,2}$ (from Lemma 7.1), conclude $W^{2,2}$, then $W^{3,2}$, etc.
 
-**Step 5**: Sobolev embedding: W^{k,2} ⊂ C^{k−2} for k > 4.
+**Step 5**: Sobolev embedding: $W^{k,2} \subset C^{k-2}$ for $k > 4$.
 
-Therefore g ∈ C^∞. ∎
+Therefore $g \in C^\infty$. ∎
 
 ### 9.2 Absence of Singularities
 
@@ -638,13 +638,13 @@ Therefore g ∈ C^∞. ∎
 
 *Proof*: 
 
-**Step 1**: Suppose a singularity exists at point p with |Rᵤᵥᵨσ| → ∞.
+**Step 1**: Suppose a singularity exists at point p with $|R_{\mu\nu\rho\sigma}| \to \infty$.
 
 **Step 2**: Near p, the information density:
 
 $$I(x) \sim \log\det(-g) \to \pm\infty$$
 
-**Step 3**: But I_total = constant (conservation), and:
+**Step 3**: But $I_{\text{total}} = \text{constant}$ (conservation), and:
 
 $$I_{\text{total}} = \int I(x) \sqrt{-g} \, d^4x$$
 
@@ -664,7 +664,7 @@ requires I to be integrable.
 
 Unlike Perelman's surgery which requires manual intervention, our surgery is automatic:
 
-**Theorem 10.1** (Mandatory Surgery): Whenever a defect forms, it must heal within time τ_heal ~ t_Planck.
+**Theorem 10.1** (Mandatory Surgery): Whenever a defect forms, it must heal within time $\tau_{\text{heal}} \sim t_{\text{Planck}}$.
 
 *Proof*:
 
@@ -796,7 +796,7 @@ is the **coarse-grained effect** of graviton-mediated repair:
 
 $$\mu \Delta_{\text{lat}} g_{\mu\nu} = \lim_{N \to \infty} \frac{1}{N}\sum_{i=1}^{N} \delta g_{\mu\nu}^{(i)}$$
 
-where δg^(i) is the metric correction from the i-th graviton. Statistical averaging of the graviton ensemble reproduces the continuum flow. ∎
+where $\delta g^{(i)}$ is the metric correction from the i-th graviton. Statistical averaging of the graviton ensemble reproduces the continuum flow. ∎
 
 ### 11.5 Graviton Flux Equation
 
@@ -878,7 +878,7 @@ $$\delta g_{\mu\nu} \sim \ell_p^2 R_{\mu\nu} \cdot \delta(\pi, e, \sqrt{2})$$
 
 $$v_{\text{gw}}(f) = c\left[ 1 - \alpha\left( \frac{f}{f_{\text{Planck}}} \right)^2 \right]$$
 
-with α ~ O(1) calculable from the healing flow.
+with $\alpha \sim O(1)$ calculable from the healing flow.
 
 ### 12.3 Cosmological Implications
 
