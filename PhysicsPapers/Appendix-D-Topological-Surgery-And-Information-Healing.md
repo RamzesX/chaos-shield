@@ -17,24 +17,24 @@ We develop a rigorous mathematical framework demonstrating that continuous 4D sp
 ### 1.1 Statement of the Problem
 
 Let (Λ, g) denote a discrete spacetime lattice with:
-- Λ = ℓ_p · ℤ⁴ (Planck-scale lattice)
+- Λ = ℓₚ · ℤ⁴ (Planck-scale lattice)
 - g: Λ → Sym₂(ℝ⁴) (discrete metric field)
 
 The fundamental question: Under what conditions does
 
-$$\lim_{\ell_p \to 0} (Λ, g) = (\mathcal{M}, g_{\mu\nu})$$
+$$\lim_{\ell_p \to 0} (\Lambda, g) = (\mathcal{M}, g_{\mu\nu})$$
 
 exist as a smooth Lorentzian 4-manifold?
 
 ### 1.2 Main Results
 
-**Theorem A** (Existence): Given information conservation ∂_μJ^μ_I = 0, the continuum limit exists.
+**Theorem A** (Existence): Given information conservation ∂ᵤJᵘᵢ = 0, the continuum limit exists.
 
 **Theorem B** (Uniqueness): The limit is unique up to diffeomorphism.
 
-**Theorem C** (Regularity): The limit metric g_μν ∈ C^∞(M).
+**Theorem C** (Regularity): The limit metric gᵤᵥ ∈ C^∞(M).
 
-**Theorem D** (Einstein Emergence): The limit satisfies G_μν = (8πG/c⁴)T_μν.
+**Theorem D** (Einstein Emergence): The limit satisfies Gᵤᵥ = (8πG/c⁴)Tᵤᵥ.
 
 ### 1.3 Mathematical Prerequisites
 
@@ -53,19 +53,20 @@ We employ:
 
 **Definition 2.1** (Planck Lattice): Let Λ ⊂ ℝ⁴ be the discrete set:
 
-$$\Lambda = \{x \in \mathbb{R}^4 : x^\mu = n^\mu \ell_p, \, n^\mu \in \mathbb{Z}\}$$
+$$\Lambda = \left\{ x \in \mathbb{R}^4 : x^\mu = n^\mu \ell_p, \; n^\mu \in \mathbb{Z} \right\}$$
 
-with Planck length ℓ_p = √(ℏG/c³) ≈ 1.616 × 10⁻³⁵ m.
+with Planck length ℓₚ = √(ℏG/c³) ≈ 1.616 × 10⁻³⁵ m.
 
 **Definition 2.2** (Lattice Neighborhood): For n ∈ Λ, define:
 
-$$\mathcal{N}(n) = \{m \in \Lambda : \|m - n\|_1 = \ell_p\}$$
+$$\mathcal{N}(n) = \left\{ m \in \Lambda : \|m - n\|_1 = \ell_p \right\}$$
 
 the set of nearest neighbors (8 points in 4D).
 
 **Definition 2.3** (Discrete Metric): A discrete metric is a map:
 
 $$g: \Lambda \to \text{Sym}_2(\mathbb{R}^4)$$
+
 $$n \mapsto g_{\mu\nu}(n)$$
 
 where Sym₂(ℝ⁴) denotes symmetric 2-tensors on ℝ⁴.
@@ -92,13 +93,13 @@ $$(\Delta_{\text{lat}} f)(n) = \sum_{\mu=0}^{3} \frac{f(n + \ell_p \hat{e}_\mu) 
 
 **Definition 2.8** (Discrete Christoffel Symbols): Define:
 
-$$\Gamma^\rho_{\mu\nu}(n) = \frac{1}{2} g^{\rho\sigma}(n) \left[\Delta_\mu g_{\nu\sigma}(n) + \Delta_\nu g_{\mu\sigma}(n) - \Delta_\sigma g_{\mu\nu}(n)\right]$$
+$$\Gamma^\rho_{\mu\nu}(n) = \frac{1}{2} g^{\rho\sigma}(n) \left[ \Delta_\mu g_{\nu\sigma}(n) + \Delta_\nu g_{\mu\sigma}(n) - \Delta_\sigma g_{\mu\nu}(n) \right]$$
 
-where g^{ρσ}(n) is the inverse metric at site n.
+where g^ρσ(n) is the inverse metric at site n.
 
-**Lemma 2.1** (Symmetry): Γ^ρ_{μν}(n) = Γ^ρ_{νμ}(n).
+**Lemma 2.1** (Symmetry): Γ^ρ_μν(n) = Γ^ρ_νμ(n).
 
-*Proof*: Follows directly from symmetry of g_μν and commutativity of Δ_μ, Δ_ν. ∎
+*Proof*: Follows directly from symmetry of gᵤᵥ and commutativity of Δᵤ, Δᵥ. ∎
 
 ### 2.4 Discrete Riemann Tensor
 
@@ -128,7 +129,7 @@ $$\Delta_\rho G^{\rho\mu}(n) = O(\ell_p)$$
 
 $$\Delta_\rho(AB) = (\Delta_\rho A)B + A(\Delta_\rho B) + O(\ell_p)$$
 
-The O(ℓ_p) error vanishes in the continuum limit. ∎
+The O(ℓₚ) error vanishes in the continuum limit. ∎
 
 ---
 
@@ -144,17 +145,19 @@ where the information functional:
 
 $$\mathcal{I}[g] = \frac{1}{2}\log\det(-g_{\mu\nu}) + \frac{1}{2}\text{Tr}(g^{-1}g_0)$$
 
-and g₀ = diag(-1,1,1,1) is the Minkowski reference metric.
+and g₀ = diag(−1,1,1,1) is the Minkowski reference metric.
 
-**Proposition 3.1** (Information-Metric Correspondence): The variation of I with respect to g_μν is:
+**Proposition 3.1** (Information-Metric Correspondence): The variation of I with respect to gᵤᵥ is:
 
-$$\frac{\delta I}{\delta g^{\mu\nu}} = \frac{1}{2\ell_p^4}\left(g_{\mu\nu} - (g_0)_{\mu\nu}\right)$$
+$$\frac{\delta I}{\delta g^{\mu\nu}} = \frac{1}{2\ell_p^4}\left( g_{\mu\nu} - (g_0)_{\mu\nu} \right)$$
 
 *Proof*:
+
 $$\frac{\delta}{\delta g^{\mu\nu}}\log\det(-g) = -g_{\mu\nu}$$
+
 $$\frac{\delta}{\delta g^{\mu\nu}}\text{Tr}(g^{-1}g_0) = -(g_0)_{\alpha\beta}g^{\alpha\mu}g^{\beta\nu} = -(g_0)_{\mu\nu}$$
 
-Combining: δI/δg^{μν} = (1/2ℓ_p⁴)(g_μν - (g₀)_μν). ∎
+Combining: δI/δg^μν = (1/2ℓₚ⁴)(gᵤᵥ − (g₀)ᵤᵥ). ∎
 
 ### 3.2 Information Current
 
@@ -163,12 +166,12 @@ Combining: δI/δg^{μν} = (1/2ℓ_p⁴)(g_μν - (g₀)_μν). ∎
 $$J^\mu_I(n) = I(n) \cdot u^\mu(n) + D^{\mu\nu}(n) \Delta_\nu I(n)$$
 
 where:
-- u^μ(n) is the local 4-velocity field
-- D^{μν}(n) is the information diffusion tensor
+- uᵘ(n) is the local 4-velocity field
+- Dᵘᵛ(n) is the information diffusion tensor
 
 **Definition 3.3** (Information Diffusion Tensor):
 
-$$D^{\mu\nu}(n) = \frac{\ell_p c}{2} \left(g^{\mu\nu}(n) + u^\mu(n)u^\nu(n)\right)$$
+$$D^{\mu\nu}(n) = \frac{\ell_p c}{2} \left( g^{\mu\nu}(n) + u^\mu(n)u^\nu(n) \right)$$
 
 ### 3.3 The Fourth Noether Law
 
@@ -176,16 +179,17 @@ $$D^{\mu\nu}(n) = \frac{\ell_p c}{2} \left(g^{\mu\nu}(n) + u^\mu(n)u^\nu(n)\righ
 
 $$\Delta_\mu J^\mu_I(n) = \sigma_I(n)$$
 
-where σ_I is the information source term, with σ_I = 0 for uniform motion.
+where σᵢ is the information source term, with σᵢ = 0 for uniform motion.
 
 *Proof*: Consider the action functional:
 
 $$S[g, \phi] = \int_\Lambda \ell_p^4 \sum_n \mathcal{L}(g_{\mu\nu}(n), \Delta_\alpha g_{\mu\nu}(n), \phi(n))$$
 
 Under uniform reshaping transformation:
+
 $$g_{\mu\nu} \to g_{\mu\nu} + \epsilon \cdot h_{\mu\nu}$$
 
-where h_μν is the reshaping pattern at constant velocity. Noether's theorem gives:
+where hᵤᵥ is the reshaping pattern at constant velocity. Noether's theorem gives:
 
 $$J^\mu_I = \frac{\partial \mathcal{L}}{\partial(\Delta_\mu g_{\alpha\beta})} h_{\alpha\beta}$$
 
@@ -199,13 +203,13 @@ $$I_{\text{total}} = \sum_{n \in \Lambda} \ell_p^4 \cdot I(n) = \text{constant}$
 
 **Definition 3.4** (Information Stress-Energy): Define:
 
-$$T^{(I)}_{\mu\nu}(n) = \frac{c^4}{8\pi G} \cdot \frac{\ell_p^4}{\hbar c} \left(\frac{\delta I_{\text{total}}}{\delta g^{\mu\nu}(n)}\right)$$
+$$T^{(I)}_{\mu\nu}(n) = \frac{c^4}{8\pi G} \cdot \frac{\ell_p^4}{\hbar c} \left( \frac{\delta I_{\text{total}}}{\delta g^{\mu\nu}(n)} \right)$$
 
 **Proposition 3.2**: In the continuum limit:
 
 $$T^{(I)}_{\mu\nu} \to \frac{\hbar c}{\ell_p^3} I_{\mu\nu}$$
 
-where I_μν is the information distribution tensor.
+where Iᵤᵥ is the information distribution tensor.
 
 ---
 
@@ -217,26 +221,28 @@ From Appendix A, action accumulates until threshold S = nℏ:
 
 **Definition 4.1** (Available Computation Time):
 
-$$\tau_{\text{comp}}(n) = \frac{\hbar}{L(n)} = \frac{\hbar}{N(n)k_BT(n)}$$
+$$\tau_{\text{comp}}(n) = \frac{\hbar}{L(n)} = \frac{\hbar}{N(n)k_B T(n)}$$
 
 **Definition 4.2** (Maximum Iterations):
 
-$$N_{\text{max}}(n) = \frac{\tau_{\text{comp}}(n)}{t_p} = \frac{\hbar}{N(n)k_BT(n) \cdot t_p}$$
+$$N_{\text{max}}(n) = \frac{\tau_{\text{comp}}(n)}{t_p} = \frac{\hbar}{N(n)k_B T(n) \cdot t_p}$$
 
 ### 4.2 Geometric Factor Truncation
 
 **Definition 4.3** (Truncated Irrationals): For computational bound N_max:
 
-$$\pi_{N} = \sum_{k=0}^{N} \frac{(-1)^k}{2k+1} \cdot 4 + O(N^{-1})$$
+$$\pi_N = \sum_{k=0}^{N} \frac{(-1)^k}{2k+1} \cdot 4 + O(N^{-1})$$
 
-$$e_{N} = \sum_{k=0}^{N} \frac{1}{k!} + O(N^{-N})$$
+$$e_N = \sum_{k=0}^{N} \frac{1}{k!} + O(N^{-N})$$
 
-$$(\sqrt{2})_{N} = \text{Newton iteration: } x_{k+1} = \frac{1}{2}(x_k + 2/x_k), \quad x_0 = 1$$
+$$(\sqrt{2})_N = \text{Newton iteration: } x_{k+1} = \frac{1}{2}\left( x_k + \frac{2}{x_k} \right), \quad x_0 = 1$$
 
 **Lemma 4.1** (Truncation Error Bounds):
 
 $$|\pi - \pi_N| \leq \frac{C_\pi}{N}$$
+
 $$|e - e_N| \leq \frac{C_e}{N!}$$
+
 $$|\sqrt{2} - (\sqrt{2})_N| \leq \frac{C_{\sqrt{2}}}{2^N}$$
 
 *Proof*: Standard convergence analysis of respective series/iterations. ∎
@@ -247,16 +253,16 @@ $$|\sqrt{2} - (\sqrt{2})_N| \leq \frac{C_{\sqrt{2}}}{2^N}$$
 
 $$\mathcal{D}_{\mu\nu}(n) = g_{\mu\nu}(n) - g_{\mu\nu}^{\text{exact}}(n)$$
 
-where g^{exact} is the metric computed with infinite precision.
+where g^exact is the metric computed with infinite precision.
 
 **Proposition 4.1** (Defect Decomposition):
 
 $$\mathcal{D}_{\mu\nu}(n) = \delta_\pi(n) \cdot \Pi_{\mu\nu}(n) + \delta_e(n) \cdot E_{\mu\nu}(n) + \delta_{\sqrt{2}}(n) \cdot S_{\mu\nu}(n)$$
 
 where:
-- Π_μν = circular/angular defect tensor
-- E_μν = exponential/growth defect tensor  
-- S_μν = diagonal/symmetry defect tensor
+- Πᵤᵥ = circular/angular defect tensor
+- Eᵤᵥ = exponential/growth defect tensor  
+- Sᵤᵥ = diagonal/symmetry defect tensor
 
 *Proof*: The metric involves geometric factors through:
 - Angles → π (circular geometry)
@@ -277,7 +283,7 @@ $$\rho_{\mathcal{D}}(n) = \frac{1}{\ell_p^4} |\mathcal{D}|(n)^2$$
 
 **Definition 4.7** (Defect Set): 
 
-$$\mathcal{S} = \{n \in \Lambda : |\mathcal{D}|(n) > \epsilon_{\text{threshold}}\}$$
+$$\mathcal{S} = \left\{ n \in \Lambda : |\mathcal{D}|(n) > \epsilon_{\text{threshold}} \right\}$$
 
 **Lemma 4.2** (Defect Sparsity): The defect density satisfies:
 
@@ -297,14 +303,14 @@ by Chebyshev and Lemma 4.1. ∎
 
 **Definition 5.1** (Healing Functional): Define:
 
-$$\mathcal{F}[g] = \int_\Lambda \ell_p^4 \sum_n \left[\frac{1}{2}(I(n) - \bar{I})^2 + \frac{\lambda}{2}|\mathcal{D}|^2(n) + \frac{\mu}{2}|\Delta g|^2(n)\right]$$
+$$\mathcal{F}[g] = \int_\Lambda \ell_p^4 \sum_n \left[ \frac{1}{2}(I(n) - \bar{I})^2 + \frac{\lambda}{2}|\mathcal{D}|^2(n) + \frac{\mu}{2}|\Delta g|^2(n) \right]$$
 
 where:
-- $\bar{I}$ = I_total / |Λ| (average information density)
+- Ī = I_total / |Λ| (average information density)
 - λ > 0: defect penalty
 - μ > 0: smoothness penalty
 
-**Proposition 5.1**: The Euler-Lagrange equation for F is:
+**Proposition 5.1**: The Euler-Lagrange equation for ℱ is:
 
 $$\frac{\delta \mathcal{F}}{\delta g^{\mu\nu}} = (I - \bar{I})\frac{\delta I}{\delta g^{\mu\nu}} + \lambda \mathcal{D}_{\mu\nu} - \mu \Delta_{\text{lat}} g_{\mu\nu} = 0$$
 
@@ -312,7 +318,7 @@ $$\frac{\delta \mathcal{F}}{\delta g^{\mu\nu}} = (I - \bar{I})\frac{\delta I}{\d
 
 ### 5.2 Healing Flow Equation
 
-**Definition 5.2** (Healing Flow): The gradient flow of F:
+**Definition 5.2** (Healing Flow): The gradient flow of ℱ:
 
 $$\frac{\partial g_{\mu\nu}}{\partial \tau} = -\frac{\delta \mathcal{F}}{\delta g^{\mu\nu}}$$
 
@@ -322,7 +328,7 @@ $$\frac{\partial g_{\mu\nu}}{\partial \tau} = -(I - \bar{I})\frac{\delta I}{\del
 
 **Proposition 5.2** (Parabolic Structure): The healing flow is a quasilinear parabolic system.
 
-*Proof*: The highest-order term is μΔ_lat g_μν, which is the discrete Laplacian—a uniformly elliptic operator. ∎
+*Proof*: The highest-order term is μΔ_lat gᵤᵥ, which is the discrete Laplacian—a uniformly elliptic operator. ∎
 
 ### 5.3 Comparison with Ricci Flow
 
@@ -336,7 +342,7 @@ $$\frac{\partial g_{\mu\nu}}{\partial \tau} = -\lambda \mathcal{D}_{\mu\nu} + \m
 
 **Theorem 5.1** (Ricci Flow Embedding): In the continuum limit with no defects and constant information:
 
-$$\lim_{\ell_p \to 0} \left(\mu \Delta_{\text{lat}} g_{\mu\nu}\right) = -2R_{\mu\nu} + \text{lower order}$$
+$$\lim_{\ell_p \to 0} \left( \mu \Delta_{\text{lat}} g_{\mu\nu} \right) = -2R_{\mu\nu} + \text{lower order}$$
 
 when μ is appropriately scaled.
 
@@ -348,7 +354,7 @@ Using the relation (in harmonic gauge):
 
 $$\partial_\alpha \partial^\alpha g_{\mu\nu} = -2R_{\mu\nu} + \text{Christoffel terms}$$
 
-The result follows with μ = ℓ_p²/2. ∎
+The result follows with μ = ℓₚ²/2. ∎
 
 ---
 
@@ -358,7 +364,7 @@ The result follows with μ = ℓ_p²/2. ∎
 
 **Definition 6.1** (Lyapunov Functional): Define:
 
-$$\mathcal{W}[g, \tau] = \int_\Lambda \ell_p^4 \sum_n \left[\tau(|\Delta g|^2 + R) + f(n) - 4\right](4\pi\tau)^{-2}e^{-f(n)} + \mathcal{F}[g]$$
+$$\mathcal{W}[g, \tau] = \int_\Lambda \ell_p^4 \sum_n \left[ \tau(|\Delta g|^2 + R) + f(n) - 4 \right] (4\pi\tau)^{-2} e^{-f(n)} + \mathcal{F}[g]$$
 
 where f: Λ → ℝ is an auxiliary function satisfying:
 
@@ -370,18 +376,18 @@ $$\sum_n \ell_p^4 (4\pi\tau)^{-2} e^{-f(n)} = 1$$
 
 $$\frac{d\mathcal{W}}{d\tau} \leq 0$$
 
-with equality iff g_μν satisfies:
-1. D_μν = 0 (defect-free)
-2. I(n) = $\bar{I}$ ∀n (uniform information)
-3. R_μν = 0 (Ricci-flat) or R_μν = Λg_μν (Einstein)
+with equality iff gᵤᵥ satisfies:
+1. 𝒟ᵤᵥ = 0 (defect-free)
+2. I(n) = Ī ∀n (uniform information)
+3. Rᵤᵥ = 0 (Ricci-flat) or Rᵤᵥ = Λgᵤᵥ (Einstein)
 
-*Proof*: We compute dW/dτ term by term.
+*Proof*: We compute d𝒲/dτ term by term.
 
 **Step 1**: Information term contribution:
 
 $$\frac{d}{d\tau}\int (I - \bar{I})^2 = 2\int (I - \bar{I})\frac{\partial I}{\partial \tau}$$
 
-Using ∂I/∂τ = (δI/δg^{μν})(∂g_{μν}/∂τ) and the flow equation:
+Using ∂I/∂τ = (δI/δgᵘᵛ)(∂gᵤᵥ/∂τ) and the flow equation:
 
 $$= -2\int (I - \bar{I})\frac{\delta I}{\delta g^{\mu\nu}} \cdot \frac{\delta \mathcal{F}}{\delta g^{\mu\nu}} \leq 0$$
 
@@ -391,7 +397,7 @@ by Cauchy-Schwarz.
 
 $$\frac{d}{d\tau}\int |\mathcal{D}|^2 = 2\int \mathcal{D}^{\mu\nu}\frac{\partial \mathcal{D}_{\mu\nu}}{\partial \tau} = 2\int \mathcal{D}^{\mu\nu}\frac{\partial g_{\mu\nu}}{\partial \tau}$$
 
-Since g^{exact} is independent of τ. Substituting the flow:
+Since g^exact is independent of τ. Substituting the flow:
 
 $$= -2\lambda \int |\mathcal{D}|^4 - 2\int \mathcal{D}^{\mu\nu}(I-\bar{I})\frac{\delta I}{\delta g^{\mu\nu}} + 2\mu \int \mathcal{D}^{\mu\nu}\Delta_{\text{lat}}g_{\mu\nu}$$
 
@@ -403,7 +409,7 @@ for any ε > 0.
 
 **Step 3**: Smoothness term contribution:
 
-$$\frac{d}{d\tau}\int |\Delta g|^2 = 2\int \Delta g^{\mu\nu} \cdot \Delta\left(\frac{\partial g_{\mu\nu}}{\partial \tau}\right)$$
+$$\frac{d}{d\tau}\int |\Delta g|^2 = 2\int \Delta g^{\mu\nu} \cdot \Delta\left( \frac{\partial g_{\mu\nu}}{\partial \tau} \right)$$
 
 Integration by parts (discrete):
 
@@ -417,36 +423,36 @@ $$= -2\mu \int |\Delta_{\text{lat}} g|^2 + \text{lower order}$$
 
 $$\frac{d\mathcal{W}}{d\tau} \leq -c_1 \int (I-\bar{I})^2 - c_2\lambda \int |\mathcal{D}|^4 - c_3\mu \int |\Delta_{\text{lat}}g|^2$$
 
-for positive constants c₁, c₂, c₃. Thus dW/dτ ≤ 0. ∎
+for positive constants c₁, c₂, c₃. Thus d𝒲/dτ ≤ 0. ∎
 
 ### 6.3 Convergence Theorem
 
-**Theorem 6.2** (Global Convergence): For any initial data g_μν(n, 0) with finite W[g(0)]:
+**Theorem 6.2** (Global Convergence): For any initial data gᵤᵥ(n, 0) with finite 𝒲[g(0)]:
 
 $$\lim_{\tau \to \infty} g_{\mu\nu}(n, \tau) = g_{\mu\nu}^{(\infty)}(n)$$
 
-exists and satisfies δF/δg^{μν} = 0.
+exists and satisfies δℱ/δgᵘᵛ = 0.
 
 *Proof*: 
 
-**Step 1**: W is bounded below:
+**Step 1**: 𝒲 is bounded below:
 
 $$\mathcal{W}[g] \geq 0$$
 
 since all terms are non-negative or have lower bounds.
 
-**Step 2**: W is non-increasing (Theorem 6.1).
+**Step 2**: 𝒲 is non-increasing (Theorem 6.1).
 
-**Step 3**: Therefore W(τ) → W_∞ as τ → ∞.
+**Step 3**: Therefore 𝒲(τ) → 𝒲_∞ as τ → ∞.
 
 **Step 4**: The ω-limit set is non-empty and compact by:
-- W bounded → g bounded in appropriate Sobolev norm
+- 𝒲 bounded → g bounded in appropriate Sobolev norm
 - Discrete lattice → finite-dimensional approximation
 
-**Step 5**: On the ω-limit set, dW/dτ = 0, implying:
-- (I - $\bar{I}$) = 0
-- D_μν = 0
-- Δ_lat g_μν = optimal
+**Step 5**: On the ω-limit set, d𝒲/dτ = 0, implying:
+- (I − Ī) = 0
+- 𝒟ᵤᵥ = 0
+- Δ_lat gᵤᵥ = optimal
 
 This characterizes the equilibrium. ∎
 
@@ -458,13 +464,13 @@ This characterizes the equilibrium. ∎
 
 **Definition 7.1** (Discrete Sobolev Norm): For k ∈ ℕ, p ∈ [1,∞]:
 
-$$\|f\|_{W^{k,p}(\Lambda)} = \left(\sum_{|\alpha| \leq k} \|\Delta^\alpha f\|_{L^p(\Lambda)}^p\right)^{1/p}$$
+$$\|f\|_{W^{k,p}(\Lambda)} = \left( \sum_{|\alpha| \leq k} \|\Delta^\alpha f\|_{L^p(\Lambda)}^p \right)^{1/p}$$
 
 where Δ^α denotes multi-index discrete derivatives.
 
 **Definition 7.2** (Discrete Sobolev Space):
 
-$$W^{k,p}(\Lambda) = \{f: \Lambda \to \mathbb{R} : \|f\|_{W^{k,p}} < \infty\}$$
+$$W^{k,p}(\Lambda) = \left\{ f: \Lambda \to \mathbb{R} : \|f\|_{W^{k,p}} < \infty \right\}$$
 
 ### 7.2 A Priori Estimates
 
@@ -474,11 +480,11 @@ $$\|g(\tau)\|_{W^{1,2}(\Lambda)}^2 \leq \|g(0)\|_{W^{1,2}(\Lambda)}^2 \cdot e^{-
 
 for some γ > 0.
 
-*Proof*: Multiply the flow equation by g_μν and sum:
+*Proof*: Multiply the flow equation by gᵤᵥ and sum:
 
 $$\frac{1}{2}\frac{d}{d\tau}\|g\|_{L^2}^2 = -\int g^{\mu\nu}\frac{\delta\mathcal{F}}{\delta g^{\mu\nu}}$$
 
-The coercivity of F gives:
+The coercivity of ℱ gives:
 
 $$\int g^{\mu\nu}\frac{\delta\mathcal{F}}{\delta g^{\mu\nu}} \geq c\|g\|_{W^{1,2}}^2 - C$$
 
@@ -496,7 +502,7 @@ Inductively, all discrete derivatives are controlled. ∎
 
 ### 7.3 Compactness
 
-**Theorem 7.1** (Compactness): Let {g^{(ℓ_p)}} be a family of solutions to the healing flow on lattices with spacing ℓ_p → 0. Then there exists a subsequence converging to a smooth limit:
+**Theorem 7.1** (Compactness): Let {g^(ℓₚ)} be a family of solutions to the healing flow on lattices with spacing ℓₚ → 0. Then there exists a subsequence converging to a smooth limit:
 
 $$g^{(\ell_{p_j})} \to g^{(0)} \in C^\infty(\mathbb{R}^4, \text{Sym}_2)$$
 
@@ -504,45 +510,45 @@ $$g^{(\ell_{p_j})} \to g^{(0)} \in C^\infty(\mathbb{R}^4, \text{Sym}_2)$$
 
 **Step 1**: Uniform bounds from Lemmas 7.1-7.2 give:
 
-$$\|g^{(\ell_p)}\|_{W^{k,2}} \leq C_k \quad \text{(independent of } \ell_p\text{)}$$
+$$\|g^{(\ell_p)}\|_{W^{k,2}} \leq C_k \quad \text{(independent of } \ell_p \text{)}$$
 
 **Step 2**: Extend to continuous functions via interpolation:
 
-$$\tilde{g}^{(\ell_p)}(x) = \sum_{n \in \Lambda} g^{(\ell_p)}(n) \cdot \phi\left(\frac{x - n}{\ell_p}\right)$$
+$$\tilde{g}^{(\ell_p)}(x) = \sum_{n \in \Lambda} g^{(\ell_p)}(n) \cdot \phi\left( \frac{x - n}{\ell_p} \right)$$
 
 where φ is a smooth partition of unity.
 
-**Step 3**: Arzela-Ascoli: Uniform W^{k,2} bounds imply:
-- Equicontinuity of all derivatives up to order k-2
+**Step 3**: Arzelà-Ascoli: Uniform W^{k,2} bounds imply:
+- Equicontinuity of all derivatives up to order k−2
 - Uniform boundedness
 
-Therefore a subsequence converges in C^{k-2}.
+Therefore a subsequence converges in C^{k−2}.
 
 **Step 4**: Diagonal argument: Take k → ∞ to get C^∞ convergence. ∎
 
 ### 7.4 Identification of the Limit
 
-**Theorem 7.2** (Limit Characterization): The continuum limit g^{(0)}_μν satisfies:
+**Theorem 7.2** (Limit Characterization): The continuum limit g^(0)_μν satisfies:
 
 $$R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}R + \Lambda g_{\mu\nu} = \frac{8\pi G}{c^4}T^{(I)}_{\mu\nu}$$
 
-where Λ is determined by information density and T^{(I)} is the information stress-energy.
+where Λ is determined by information density and T^(I) is the information stress-energy.
 
 *Proof*:
 
-**Step 1**: In the limit, the defect term vanishes: D_μν → 0 by Lemma 4.2.
+**Step 1**: In the limit, the defect term vanishes: 𝒟ᵤᵥ → 0 by Lemma 4.2.
 
 **Step 2**: The information term becomes:
 
 $$-(I - \bar{I})\frac{\delta I}{\delta g^{\mu\nu}} \to -\frac{c^4}{16\pi G}(g_{\mu\nu} - (g_0)_{\mu\nu}) \cdot \rho_I$$
 
-where ρ_I is the information density variation.
+where ρᵢ is the information density variation.
 
 **Step 3**: The smoothness term becomes Ricci:
 
 $$\mu\Delta_{\text{lat}}g_{\mu\nu} \to -R_{\mu\nu} + \frac{1}{2}g_{\mu\nu}R$$
 
-**Step 4**: The equilibrium condition δF/δg = 0 becomes:
+**Step 4**: The equilibrium condition δℱ/δg = 0 becomes:
 
 $$R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}R = \text{(information source terms)}$$
 
@@ -564,19 +570,19 @@ $$I_{\text{total}}[g] = I_{\text{total}}[g'] = I_0$$
 
 $$\frac{\delta \mathcal{F}}{\delta g^{\mu\nu}} = 0, \quad \frac{\delta \mathcal{F}}{\delta g'^{\mu\nu}} = 0$$
 
-**Step 2**: Define h_μν = g_μν - g'_μν. The linearization:
+**Step 2**: Define hᵤᵥ = gᵤᵥ − g'ᵤᵥ. The linearization:
 
 $$\frac{\delta^2 \mathcal{F}}{\delta g^{\mu\nu}\delta g^{\alpha\beta}} h_{\alpha\beta} = 0$$
 
 **Step 3**: The second variation is strictly positive-definite (away from diffeomorphisms):
 
-$$\frac{\delta^2 \mathcal{F}}{\delta g^2} \geq c \|h\|_{W^{1,2}}^2 - (\text{pure gauge modes})$$
+$$\frac{\delta^2 \mathcal{F}}{\delta g^2} \geq c \|h\|_{W^{1,2}}^2 - \text{(pure gauge modes)}$$
 
-**Step 4**: Therefore h_μν must be pure gauge:
+**Step 4**: Therefore hᵤᵥ must be pure gauge:
 
 $$h_{\mu\nu} = \nabla_\mu \xi_\nu + \nabla_\nu \xi_\mu$$
 
-for some vector field ξ^μ.
+for some vector field ξᵘ.
 
 **Step 5**: This means g and g' differ by a diffeomorphism:
 
@@ -588,15 +594,15 @@ Hence the limit is unique up to diffeomorphism. ∎
 
 **Theorem 8.2** (Stability): The continuum limit is stable: small perturbations decay exponentially.
 
-*Proof*: Linearize the flow around equilibrium g^{(∞)}:
+*Proof*: Linearize the flow around equilibrium g^(∞):
 
 $$\frac{\partial h_{\mu\nu}}{\partial \tau} = \mathcal{L}[h_{\mu\nu}]$$
 
-where L is the linearized operator. The spectrum of L:
+where ℒ is the linearized operator. The spectrum of ℒ:
 
-$$\sigma(\mathcal{L}) \subset \{z \in \mathbb{C} : \text{Re}(z) \leq -\gamma\}$$
+$$\sigma(\mathcal{L}) \subset \left\{ z \in \mathbb{C} : \text{Re}(z) \leq -\gamma \right\}$$
 
-for some γ > 0, excluding gauge modes. Therefore perturbations decay as e^{-γτ}. ∎
+for some γ > 0, excluding gauge modes. Therefore perturbations decay as e^{−γτ}. ∎
 
 ---
 
@@ -604,7 +610,7 @@ for some γ > 0, excluding gauge modes. Therefore perturbations decay as e^{-γ�
 
 ### 9.1 Elliptic Regularity
 
-**Theorem 9.1** (Smoothness): The continuum limit g^{(0)}_μν ∈ C^∞.
+**Theorem 9.1** (Smoothness): The continuum limit g^(0)_μν ∈ C^∞.
 
 *Proof*:
 
@@ -612,17 +618,17 @@ for some γ > 0, excluding gauge modes. Therefore perturbations decay as e^{-γ�
 
 $$\mathcal{E}_{\mu\nu}[g] := R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}R - \frac{8\pi G}{c^4}T^{(I)}_{\mu\nu} = 0$$
 
-**Step 2**: In harmonic gauge (∇^μ g_μν = ½∂_ν(g^{αβ}g_{αβ})):
+**Step 2**: In harmonic gauge (∇ᵘgᵤᵥ = ½∂ᵥ(gᵅᵝgᵅᵝ)):
 
 $$g^{\alpha\beta}\partial_\alpha\partial_\beta g_{\mu\nu} = F_{\mu\nu}(g, \partial g)$$
 
 where F is smooth in its arguments.
 
-**Step 3**: Elliptic regularity: If g ∈ W^{k,p} and F ∈ W^{k-1,p}, then g ∈ W^{k+1,p}.
+**Step 3**: Elliptic regularity: If g ∈ W^{k,p} and F ∈ W^{k−1,p}, then g ∈ W^{k+1,p}.
 
 **Step 4**: Bootstrap: Start with W^{1,2} (from Lemma 7.1), conclude W^{2,2}, then W^{3,2}, etc.
 
-**Step 5**: Sobolev embedding: W^{k,2} ⊂ C^{k-2} for k > 4.
+**Step 5**: Sobolev embedding: W^{k,2} ⊂ C^{k−2} for k > 4.
 
 Therefore g ∈ C^∞. ∎
 
@@ -632,7 +638,7 @@ Therefore g ∈ C^∞. ∎
 
 *Proof*: 
 
-**Step 1**: Suppose a singularity exists at point p with |R_μνρσ| → ∞.
+**Step 1**: Suppose a singularity exists at point p with |Rᵤᵥᵨσ| → ∞.
 
 **Step 2**: Near p, the information density:
 
@@ -670,7 +676,7 @@ $$\Delta I(n_0) = I(n_0^+) - I(n_0^-) \neq 0$$
 
 $$\frac{d}{d\tau}\int_{\text{near } n_0} I = -\oint_{\partial} J_I \cdot dA$$
 
-**Step 3**: The flux J_I cannot be infinite, so the interior integral must be finite.
+**Step 3**: The flux Jᵢ cannot be infinite, so the interior integral must be finite.
 
 **Step 4**: But discontinuous I gives undefined interior integral.
 
@@ -687,7 +693,7 @@ $$\tau_{\text{heal}} \sim \frac{\ell_p^2}{\mu} = \frac{\ell_p^2}{\ell_p^2/2} = 2
 | Singularity | Neck pinch | UV divergence | δ(π,e,√2) |
 | Detection | Manual (curvature blowup) | Regularization scheme | Automatic (I discontinuity) |
 | Surgery action | Cut + cap | Add counterterm | Diffusive healing |
-| Constraint | W non-decreasing | Renormalizability | I conserved |
+| Constraint | 𝒲 non-decreasing | Renormalizability | I conserved |
 | Freedom | Where to cut | Which scheme | None |
 | Timescale | Arbitrary | Scale-dependent | τ ~ t_Planck |
 
@@ -699,7 +705,7 @@ $$\tau_{\text{heal}} \sim \frac{\ell_p^2}{\mu} = \frac{\ell_p^2}{\ell_p^2/2} = 2
 
 $$\frac{\partial g}{\partial \tau} = -\frac{\delta \mathcal{F}}{\delta g}$$
 
-with F uniquely determined by:
+with ℱ uniquely determined by:
 1. Information conservation (fourth Noether law)
 2. Covariance (tensor structure)
 3. Locality (finite range of Δ)
@@ -714,7 +720,7 @@ No free parameters remain after fixing fundamental constants (G, ℏ, c). ∎
 
 The mathematical framework establishes that healing must occur, but leaves open a physical question: **What carries the repair instructions?** The healing flow equation:
 
-$\frac{\partial g_{\mu\nu}}{\partial \tau} = -\frac{\delta \mathcal{F}}{\delta g^{\mu\nu}}$
+$$\frac{\partial g_{\mu\nu}}{\partial \tau} = -\frac{\delta \mathcal{F}}{\delta g^{\mu\nu}}$$
 
 describes how geometry evolves, but does not specify the physical carrier of this evolution.
 
@@ -724,11 +730,11 @@ describes how geometry evolves, but does not specify the physical carrier of thi
 
 **Definition 11.1** (Repair Carrier): A graviton is the minimal quantum of geometric repair instruction, emerging wherever:
 
-$|\nabla I(x)| > I_{\text{threshold}}$
+$$|\nabla I(x)| > I_{\text{threshold}}$$
 
 The graviton flux is determined by the information gradient:
 
-$\Phi_{\text{graviton}}^\mu(x) = \kappa \cdot \nabla^\mu I(x) = \kappa \cdot \nabla^\mu \rho_{\mathcal{D}}(x)$
+$$\Phi_{\text{graviton}}^\mu(x) = \kappa \cdot \nabla^\mu I(x) = \kappa \cdot \nabla^\mu \rho_{\mathcal{D}}(x)$$
 
 where κ is a coupling constant determined by fundamental units.
 
@@ -737,13 +743,14 @@ where κ is a coupling constant determined by fundamental units.
 *Proof*:
 
 **Step 1**: The healing flow redistributes information:
-$\frac{\partial I}{\partial \tau} = D^{\mu\nu}\nabla_\mu\nabla_\nu I$
+
+$$\frac{\partial I}{\partial \tau} = D^{\mu\nu}\nabla_\mu\nabla_\nu I$$
 
 **Step 2**: Information redistribution requires carriers (cannot occur instantaneously).
 
 **Step 3**: Carriers must be:
 - Massless (to not create new defects—Appendix G, Theorem 2.1)
-- Spin-2 (to repair symmetric tensor g_μν—Appendix G, Theorem 2.2)
+- Spin-2 (to repair symmetric tensor gᵤᵥ—Appendix G, Theorem 2.2)
 - Carry ~2.32 bits (minimal repair instruction—Appendix G, Proposition 2.1)
 
 **Step 4**: These properties uniquely specify gravitons.
@@ -764,7 +771,7 @@ The complete healing process:
 
 **Stage 3 - Propagation**:
 - Graviton carries repair instruction at velocity c
-- Information content: I_g ≈ 2.32 bits
+- Information content: Iᵍ ≈ 2.32 bits
 
 **Stage 4 - Absorption**:
 - Graviton reaches region requiring repair
@@ -779,31 +786,31 @@ The complete healing process:
 
 **Theorem 11.2** (Micro-Macro Correspondence): The macroscopic healing flow emerges from microscopic graviton dynamics:
 
-$\left\langle \frac{\partial g_{\mu\nu}}{\partial \tau} \right\rangle_{\text{gravitons}} = -\frac{\delta \mathcal{F}}{\delta g^{\mu\nu}}$
+$$\left\langle \frac{\partial g_{\mu\nu}}{\partial \tau} \right\rangle_{\text{gravitons}} = -\frac{\delta \mathcal{F}}{\delta g^{\mu\nu}}$$
 
 *Proof*: The diffusive term in the healing flow:
 
-$\mu \Delta_{\text{lat}} g_{\mu\nu}$
+$$\mu \Delta_{\text{lat}} g_{\mu\nu}$$
 
 is the **coarse-grained effect** of graviton-mediated repair:
 
-$\mu \Delta_{\text{lat}} g_{\mu\nu} = \lim_{N \to \infty} \frac{1}{N}\sum_{i=1}^{N} \delta g_{\mu\nu}^{(i)}$
+$$\mu \Delta_{\text{lat}} g_{\mu\nu} = \lim_{N \to \infty} \frac{1}{N}\sum_{i=1}^{N} \delta g_{\mu\nu}^{(i)}$$
 
-where δg^{(i)} is the metric correction from the i-th graviton. Statistical averaging of the graviton ensemble reproduces the continuum flow. ∎
+where δg^(i) is the metric correction from the i-th graviton. Statistical averaging of the graviton ensemble reproduces the continuum flow. ∎
 
 ### 11.5 Graviton Flux Equation
 
 **Proposition 11.1**: The graviton number flux satisfies:
 
-$\frac{\partial n_g}{\partial t} + \nabla \cdot \vec{j}_g = \sigma_g - \alpha_g$
+$$\frac{\partial n_g}{\partial t} + \nabla \cdot \vec{j}_g = \sigma_g - \alpha_g$$
 
 where:
-- n_g = graviton number density
-- j_g = graviton current
-- σ_g = source term (defect creation rate)
-- α_g = absorption term (healing completion rate)
+- nᵍ = graviton number density
+- jᵍ = graviton current
+- σᵍ = source term (defect creation rate)
+- αᵍ = absorption term (healing completion rate)
 
-At equilibrium (healed spacetime): σ_g = α_g (continuous maintenance).
+At equilibrium (healed spacetime): σᵍ = αᵍ (continuous maintenance).
 
 ### 11.6 Implications for Unshieldability
 
@@ -813,7 +820,7 @@ At equilibrium (healed spacetime): σ_g = α_g (continuous maintenance).
 
 1. Defects inside Ω still form (computational truncation continues)
 2. No gravitons can enter to repair
-3. Defects accumulate: ρ_D(t) → ∞
+3. Defects accumulate: ρ_𝒟(t) → ∞
 4. Information conservation violated: I_Ω → undefined
 5. Spacetime inside Ω becomes singular
 
@@ -822,23 +829,23 @@ Therefore shields cannot exist—information conservation forbids them. ∎
 ### 11.7 Black Holes and Hawking Radiation
 
 At black hole horizons:
-- Defect density: ρ_D → ρ_max
+- Defect density: ρ_𝒟 → ρ_max
 - Information gradient: |∇I| → maximum
-- Graviton production: Φ_g → Φ_max
+- Graviton production: Φᵍ → Φ_max
 
 **Proposition 11.2** (Hawking Radiation as Repair Overflow): Hawking radiation represents gravitons (and other repair modes) that cannot be absorbed locally due to defect saturation:
 
-$\frac{dN_{\text{Hawking}}}{dt} = \Phi_g(r_s) - \alpha_g^{\text{max}} = \text{overflow}$
+$$\frac{dN_{\text{Hawking}}}{dt} = \Phi_g(r_s) - \alpha_g^{\text{max}} = \text{overflow}$$
 
 ### 11.8 Scope: Gravitational Healing Only
 
-**Important Clarification**: This paper concerns **gravitational** self-healing exclusively. Gravitons repair **geometric defects** in the metric tensor g_μν. 
+**Important Clarification**: This paper concerns **gravitational** self-healing exclusively. Gravitons repair **geometric defects** in the metric tensor gᵤᵥ. 
 
 Other coherence mechanisms exist:
 
 | Mechanism | Domain | This Paper? |
 |-----------|--------|-------------|
-| Gravitons | 4D geometry (g_μν) | **YES** |
+| Gravitons | 4D geometry (gᵤᵥ) | **YES** |
 | Quantum entanglement | D_ent adjacency | No (see Appendix E) |
 | Photons | EM phase U(1) | No |
 | W±, Z bosons | Weak SU(2) | No |
@@ -855,7 +862,7 @@ One can transmit information via radio waves, via quantum entanglement, or by th
 
 ### 12.1 Metric Fluctuations
 
-**Prediction 11.1**: Residual quantum fluctuations:
+**Prediction 12.1**: Residual quantum fluctuations:
 
 $$\langle \delta g_{\mu\nu}(x) \delta g_{\alpha\beta}(y) \rangle = \frac{\ell_p^2}{|x-y|^2} \cdot P_{\mu\nu\alpha\beta}(x,y)$$
 
@@ -863,25 +870,25 @@ where P is a projection tensor onto physical modes.
 
 ### 12.2 Healing Signatures
 
-**Prediction 11.2**: Near high-curvature regions:
+**Prediction 12.2**: Near high-curvature regions:
 
 $$\delta g_{\mu\nu} \sim \ell_p^2 R_{\mu\nu} \cdot \delta(\pi, e, \sqrt{2})$$
 
-**Prediction 11.3**: Gravitational wave dispersion:
+**Prediction 12.3**: Gravitational wave dispersion:
 
-$$v_{\text{gw}}(f) = c\left[1 - \alpha\left(\frac{f}{f_{\text{Planck}}}\right)^2\right]$$
+$$v_{\text{gw}}(f) = c\left[ 1 - \alpha\left( \frac{f}{f_{\text{Planck}}} \right)^2 \right]$$
 
 with α ~ O(1) calculable from the healing flow.
 
 ### 12.3 Cosmological Implications
 
-**Prediction 11.4**: Early universe defect density:
+**Prediction 12.4**: Early universe defect density:
 
-$$\rho_{\mathcal{D}}(t) \propto T(t)^4 / E_{\text{Planck}}^4$$
+$$\rho_{\mathcal{D}}(t) \propto \frac{T(t)^4}{E_{\text{Planck}}^4}$$
 
 Higher temperature → more defects → more healing events.
 
-**Prediction 11.5**: CMB signatures from primordial healing:
+**Prediction 12.5**: CMB signatures from primordial healing:
 
 $$\frac{\delta T}{T} \sim 10^{-5} \times f(\text{healing history})$$
 
@@ -909,9 +916,9 @@ This provides the first complete mathematical proof that continuous spacetime em
 
 ---
 
-## 13. Quantitative Energetics of Spacetime Deformation and Graviton Healing
+## 14. Quantitative Energetics of Spacetime Deformation and Graviton Healing
 
-### 13.1 The Central Energy Budget Question
+### 14.1 The Central Energy Budget Question
 
 The framework establishes that: (1) massive particles must reshape spacetime geometry during quantum jumps, (2) this reshaping creates defects from computational incompleteness, and (3) these defects must heal to preserve information conservation. A complete theory requires quantitative answers to:
 
@@ -919,52 +926,56 @@ The framework establishes that: (1) massive particles must reshape spacetime geo
 2. **What energy does a graviton carry?**
 3. **How is spacetime continuity maintained when defects are far below the graviton emission threshold?**
 
-### 13.2 Graviton Energy: Derivation from Information Content
+### 14.2 Graviton Energy: Derivation from Information Content
 
 The graviton's role is **topological**: it stitches spacetime to ensure information flow is not disrupted. Therefore, its energy must be derived from the information it carries, not from thermodynamic considerations.
 
-**Proposition 13.1** (Graviton Information Content): A graviton carries the minimal information required for one topological stitch: $I_g \approx 2.32$ bits (from Appendix G, Proposition 2.1).
+**Proposition 14.1** (Graviton Information Content): A graviton carries the minimal information required for one topological stitch: Iᵍ ≈ 2.32 bits (from Appendix G, Proposition 2.1).
 
-**Theorem 13.1** (Graviton Energy from Holographic Principle): The graviton energy is:
+**Theorem 14.1** (Graviton Energy from Holographic Principle): The graviton energy is:
 
-$\boxed{E_g = \frac{E_P}{2} \approx 10^9 \text{ J}}$
+$$\boxed{E_g = \frac{E_P}{2} \approx 10^9 \text{ J}}$$
 
 *Derivation*:
 
 **Step 1**: The holographic bound (Bekenstein) gives the maximum information in a Planck-sized region:
 
-$I_{\max} = \frac{A}{4\ell_P^2 \ln 2} = \frac{4\pi\ell_P^2}{4\ell_P^2 \ln 2} = \frac{\pi}{\ln 2} \approx 4.53 \text{ bits}$
+$$I_{\max} = \frac{A}{4\ell_P^2 \ln 2} = \frac{4\pi\ell_P^2}{4\ell_P^2 \ln 2} = \frac{\pi}{\ln 2} \approx 4.53 \text{ bits}$$
 
-**Step 2**: A Planck-sized region has energy $E_P = \sqrt{\hbar c^5/G} \approx 2 \times 10^9$ J.
+**Step 2**: A Planck-sized region has energy Eₚ = √(ℏc⁵/G) ≈ 2 × 10⁹ J.
 
 **Step 3**: Information-energy correspondence at Planck scale:
 
-$\frac{E_g}{E_P} = \frac{I_g}{I_{\max}} = \frac{2.32}{4.53} \approx 0.51$
+$$\frac{E_g}{E_P} = \frac{I_g}{I_{\max}} = \frac{2.32}{4.53} \approx 0.51$$
 
 **Step 4**: Therefore:
 
-$E_g = 0.51 \times E_P \approx \frac{E_P}{2} \approx 10^9 \text{ J}$ □
+$$E_g = 0.51 \times E_P \approx \frac{E_P}{2} \approx 10^9 \text{ J}$$
 
-**Corollary 13.1** (Fixed Graviton Energy): Unlike the erroneous temperature-dependent derivation, the graviton energy is **constant**:
-- Every graviton carries the same energy: $E_g = E_P/2$
+∎
+
+**Corollary 14.1** (Fixed Graviton Energy): Unlike the erroneous temperature-dependent derivation, the graviton energy is **constant**:
+- Every graviton carries the same energy: Eᵍ = Eₚ/2
 - Observable wave frequencies (e.g., 100 Hz at LIGO) describe **patterns** of gravitons, not individual graviton energies
-- For GW150914: $N_g = E_{\text{total}}/E_g = 5 \times 10^{47} / 10^9 \approx 5 \times 10^{38}$ gravitons arranged in a 100 Hz pattern
+- For GW150914: Nᵍ = E_total/Eᵍ = 5 × 10⁴⁷ / 10⁹ ≈ 5 × 10³⁸ gravitons arranged in a 100 Hz pattern
 
-### 13.3 Empirical Confirmation: Absence of Micro-Black Holes
+### 14.3 Empirical Confirmation: Absence of Micro-Black Holes
 
-**Theorem 13.2** (Micro-Black Hole Exclusion): The absence of spontaneous micro-black holes from everyday computational stress empirically confirms $E_g \sim E_P/2$.
+**Theorem 14.2** (Micro-Black Hole Exclusion): The absence of spontaneous micro-black holes from everyday computational stress empirically confirms Eᵍ ~ Eₚ/2.
 
 *Proof by contradiction*:
 
-Suppose graviton energy were low, e.g., $E_g \sim k_B T \sim 10^{-21}$ J.
+Suppose graviton energy were low, e.g., Eᵍ ~ kᵦT ~ 10⁻²¹ J.
 
-**Consequence 1**: Defects from everyday quantum jumps ($E_{\text{defect}} \sim 10^{-143}$ J) could trigger graviton emission.
+**Consequence 1**: Defects from everyday quantum jumps (E_defect ~ 10⁻¹⁴³ J) could trigger graviton emission.
 
 **Consequence 2**: Graviton production rate would be enormous:
-$\dot{N}_g \sim \frac{E_{\text{defect}}}{E_g} \times f_{\text{jump}} \sim \frac{10^{-143}}{10^{-21}} \times 10^{43} \sim 10^{-79} \text{ gravitons/s per particle}$
+
+$$\dot{N}_g \sim \frac{E_{\text{defect}}}{E_g} \times f_{\text{jump}} \sim \frac{10^{-143}}{10^{-21}} \times 10^{43} \sim 10^{-79} \text{ gravitons/s per particle}$$
 
 For Avogadro's number of particles:
-$\dot{N}_g^{\text{total}} \sim 10^{-79} \times 10^{23} \sim 10^{-56} \text{ gravitons/s}$
+
+$$\dot{N}_g^{\text{total}} \sim 10^{-79} \times 10^{23} \sim 10^{-56} \text{ gravitons/s}$$
 
 **Consequence 3**: Defect accumulation could create micro-black holes wherever computational stress concentrates.
 
@@ -973,111 +984,116 @@ $\dot{N}_g^{\text{total}} \sim 10^{-79} \times 10^{23} \sim 10^{-56} \text{ grav
 - No detectable graviton background from everyday processes
 - No quantum gravity effects at laboratory scales
 
-**Conclusion**: Graviton energy must be high enough ($E_g \sim E_P/2$) that defect energies from everyday processes are **far below threshold** for graviton emission. □
+**Conclusion**: Graviton energy must be high enough (Eᵍ ~ Eₚ/2) that defect energies from everyday processes are **far below threshold** for graviton emission. ∎
 
-| Prediction (if $E_g$ small) | Observation |
+| Prediction (if Eᵍ small) | Observation |
 |-----------------------------|--------------|
 | Spontaneous micro-black holes | **NONE** |
 | Detectable graviton background | **NONE** |
 | Quantum gravity in labs | **NONE** |
 | Spacetime instabilities | **NONE** |
 
-### 13.4 The Hierarchy of Healing Mechanisms
+### 14.4 The Hierarchy of Healing Mechanisms
 
-**Critical Question**: If $E_g = E_P/2 \sim 10^9$ J and defect energies are $E_{\text{defect}} \sim 10^{-143}$ J, how is spacetime continuity maintained?
+**Critical Question**: If Eᵍ = Eₚ/2 ~ 10⁹ J and defect energies are E_defect ~ 10⁻¹⁴³ J, how is spacetime continuity maintained?
 
 **Answer**: There exist **two distinct healing mechanisms**:
 
 #### Mechanism I: Diffusive Geometric Healing (Sub-Threshold)
 
-For $E_{\text{defect}} \ll E_g$:
+For E_defect ≪ Eᵍ:
 
-**Definition 13.1** (Geometric Diffusion): The healing flow contains a diffusive term:
+**Definition 14.1** (Geometric Diffusion): The healing flow contains a diffusive term:
 
-$\frac{\partial g_{\mu\nu}}{\partial \tau} = \mu \Delta_{\text{lat}} g_{\mu\nu} + \ldots$
+$$\frac{\partial g_{\mu\nu}}{\partial \tau} = \mu \Delta_{\text{lat}} g_{\mu\nu} + \ldots$$
 
-where $\mu \Delta_{\text{lat}} g_{\mu\nu}$ is the discrete Laplacian acting on the metric.
+where μΔ_lat gᵤᵥ is the discrete Laplacian acting on the metric.
 
-**Theorem 13.3** (Automatic Sub-Threshold Healing): Defects with $E_{\text{defect}} < E_P/2$ are healed by diffusive geometric relaxation without graviton emission.
+**Theorem 14.3** (Automatic Sub-Threshold Healing): Defects with E_defect < Eₚ/2 are healed by diffusive geometric relaxation without graviton emission.
 
 *Proof*:
 
 **Step 1**: The diffusion term smooths metric gradients automatically:
-$\Delta_{\text{lat}} g_{\mu\nu}(n) = \sum_\mu \frac{g_{\mu\nu}(n+\ell_P\hat{e}_\mu) + g_{\mu\nu}(n-\ell_P\hat{e}_\mu) - 2g_{\mu\nu}(n)}{\ell_P^2}$
+
+$$\Delta_{\text{lat}} g_{\mu\nu}(n) = \sum_\mu \frac{g_{\mu\nu}(n+\ell_P\hat{e}_\mu) + g_{\mu\nu}(n-\ell_P\hat{e}_\mu) - 2g_{\mu\nu}(n)}{\ell_P^2}$$
 
 **Step 2**: Characteristic timescale:
-$\tau_{\text{diffusion}} = \frac{\ell_P^2}{\mu} \sim t_P \approx 5.4 \times 10^{-44} \text{ s}$
 
-**Step 3**: Defects form with frequency $f_{\text{jump}} \sim c/\ell_P \sim 10^{43}$ Hz.
+$$\tau_{\text{diffusion}} = \frac{\ell_P^2}{\mu} \sim t_P \approx 5.4 \times 10^{-44} \text{ s}$$
 
-**Step 4**: Since $\tau_{\text{diffusion}} \sim 1/f_{\text{jump}} \sim t_P$, defects are healed as fast as they form.
+**Step 3**: Defects form with frequency f_jump ~ c/ℓₚ ~ 10⁴³ Hz.
+
+**Step 4**: Since τ_diffusion ~ 1/f_jump ~ tₚ, defects are healed as fast as they form.
 
 **Step 5**: No graviton emission occurs because the energy never accumulates to reach threshold.
 
 **Analogy**: This is like thermal conduction vs. thermal radiation:
 - Heat conducts through a solid **without emitting photons**
 - Similarly, geometry "conducts" through the Planck lattice **without emitting gravitons**
-- Photon/graviton emission occurs only when energy exceeds the emission threshold □
+- Photon/graviton emission occurs only when energy exceeds the emission threshold
+
+∎
 
 #### Mechanism II: Graviton Emission (Above Threshold)
 
-For $E_{\text{defect}} \geq E_g = E_P/2$:
+For E_defect ≥ Eᵍ = Eₚ/2:
 
-**Definition 13.2** (Graviton Emission Threshold): Real gravitons are emitted when:
+**Definition 14.2** (Graviton Emission Threshold): Real gravitons are emitted when:
 
-$mc^2 \cdot \delta(\pi, e, \sqrt{2}) \cdot \frac{R}{R_P} \geq \frac{E_P}{2}$
+$$mc^2 \cdot \delta(\pi, e, \sqrt{2}) \cdot \frac{R}{R_P} \geq \frac{E_P}{2}$$
 
 This requires:
-$m \cdot \delta \cdot \frac{R}{R_P} \geq \frac{M_P}{2} \approx 10^{-8} \text{ kg}$
 
-**Theorem 13.4** (Threshold Locations): Graviton emission occurs only:
-1. Near Planck-mass black holes ($R/R_P \sim 1$, $\delta \sim 1$)
-2. In the very early universe ($T \sim T_P$)
+$$m \cdot \delta \cdot \frac{R}{R_P} \geq \frac{M_P}{2} \approx 10^{-8} \text{ kg}$$
+
+**Theorem 14.4** (Threshold Locations): Graviton emission occurs only:
+1. Near Planck-mass black holes (R/Rₚ ~ 1, δ ~ 1)
+2. In the very early universe (T ~ Tₚ)
 3. During extreme events (black hole mergers)
 
 *Numerical verification*:
 
-| Location | $m$ | $\delta$ | $R/R_P$ | $m \cdot \delta \cdot R/R_P$ | vs $M_P/2$ |
+| Location | m | δ | R/Rₚ | m · δ · R/Rₚ | vs Mₚ/2 |
 |----------|-----|----------|---------|------------------------------|------------|
-| Earth surface | $10^{-27}$ kg | $10^{-40}$ | $10^{-93}$ | $10^{-160}$ kg | $\ll M_P/2$ |
-| Neutron star | $10^{-27}$ kg | $10^{-20}$ | $10^{-37}$ | $10^{-84}$ kg | $\ll M_P/2$ |
-| Solar BH horizon | $10^{-27}$ kg | $10^{-5}$ | $10^{-76}$ | $10^{-108}$ kg | $\ll M_P/2$ |
-| **Planck BH** | $M_P$ | $1$ | $1$ | $M_P$ | $\geq M_P/2$ ✓ |
+| Earth surface | 10⁻²⁷ kg | 10⁻⁴⁰ | 10⁻⁹³ | 10⁻¹⁶⁰ kg | ≪ Mₚ/2 |
+| Neutron star | 10⁻²⁷ kg | 10⁻²⁰ | 10⁻³⁷ | 10⁻⁸⁴ kg | ≪ Mₚ/2 |
+| Solar BH horizon | 10⁻²⁷ kg | 10⁻⁵ | 10⁻⁷⁶ | 10⁻¹⁰⁸ kg | ≪ Mₚ/2 |
+| **Planck BH** | Mₚ | 1 | 1 | Mₚ | ≥ Mₚ/2 ✓ |
 
-### 13.5 Topological Argument for Spacetime Continuity
+### 14.5 Topological Argument for Spacetime Continuity
 
-**Theorem 13.5** (Topological Continuity): Sub-threshold defects cannot create topological discontinuities in spacetime.
+**Theorem 14.5** (Topological Continuity): Sub-threshold defects cannot create topological discontinuities in spacetime.
 
 *Proof*:
 
-**Step 1**: A topological "hole" in spacetime requires excising a region of at least Planck size $\ell_P$.
+**Step 1**: A topological "hole" in spacetime requires excising a region of at least Planck size ℓₚ.
 
-**Step 2**: The minimum energy to excise a Planck-sized region is $\sim E_P$.
+**Step 2**: The minimum energy to excise a Planck-sized region is ~ Eₚ.
 
-**Step 3**: A defect with $E_{\text{defect}} \ll E_P$ represents a **perturbation within** a Planck cell, not a **removal of** the cell.
+**Step 3**: A defect with E_defect ≪ Eₚ represents a **perturbation within** a Planck cell, not a **removal of** the cell.
 
 **Step 4**: Perturbations within cells are smoothed by diffusive dynamics (Mechanism I).
 
-**Step 5**: Only when $E_{\text{defect}} \geq E_P/2$ can the defect constitute a potential topological discontinuity requiring graviton-mediated repair.
+**Step 5**: Only when E_defect ≥ Eₚ/2 can the defect constitute a potential topological discontinuity requiring graviton-mediated repair.
 
-**Corollary 13.2**: Spacetime continuity at macroscopic scales is **automatic** from diffusive healing, not dependent on graviton emission. □
+**Corollary 14.2**: Spacetime continuity at macroscopic scales is **automatic** from diffusive healing, not dependent on graviton emission. ∎
 
-### 13.6 The Complete Healing Picture
+### 14.6 The Complete Healing Picture
 
-**Figure 13.1: Two-Tier Healing Architecture**
+**Figure 14.1: Two-Tier Healing Architecture**
 
 ```
                     DEFECT CREATED
-                    (E_defect = mc²·δ·R/R_P)
+                    (E_defect = mc²·δ·R/Rₚ)
                            │
                            ▼
               ┌────────────────────────┐
-              │  E_defect vs E_P/2 ?   │
+              │  E_defect vs Eₚ/2 ?    │
               └────────────────────────┘
                            │
           ┌────────────────┴────────────────┐
           ▼                                 ▼
-   E_defect << E_P/2                 E_defect ≥ E_P/2
+   E_defect ≪ Eₚ/2                   E_defect ≥ Eₚ/2
    (99.999...% of cases)            (Planck-scale only)
           │                                 │
           ▼                                 ▼
@@ -1085,9 +1101,9 @@ $m \cdot \delta \cdot \frac{R}{R_P} \geq \frac{M_P}{2} \approx 10^{-8} \text{ kg
 │  MECHANISM I:        │        │  MECHANISM II:       │
 │  Diffusive Healing   │        │  Graviton Emission   │
 │                      │        │                      │
-│  • μΔ_lat g_μν term  │        │  • Real graviton     │
-│  • τ ~ t_P           │        │  • E_g = E_P/2       │
-│  • No particle       │        │  • I_g = 2.32 bits   │
+│  • μΔ_lat gᵤᵥ term   │        │  • Real graviton     │
+│  • τ ~ tₚ            │        │  • Eᵍ = Eₚ/2         │
+│  • No particle       │        │  • Iᵍ = 2.32 bits    │
 │    emission          │        │  • Carries repair    │
 │  • Automatic         │        │    instruction       │
 │  • Local             │        │  • Can propagate     │
@@ -1102,78 +1118,85 @@ $m \cdot \delta \cdot \frac{R}{R_P} \geq \frac{M_P}{2} \approx 10^{-8} \text{ kg
             SMOOTH 4D SPACETIME EMERGES
 ```
 
-### 13.7 Why No Micro-Black Holes Form
+### 14.7 Why No Micro-Black Holes Form
 
-**Theorem 13.6** (Micro-Black Hole Prevention): The high graviton emission threshold ($E_g = E_P/2$) prevents spontaneous micro-black hole formation from computational stress.
+**Theorem 14.6** (Micro-Black Hole Prevention): The high graviton emission threshold (Eᵍ = Eₚ/2) prevents spontaneous micro-black hole formation from computational stress.
 
 *Proof*:
 
 **Step 1**: For a micro-black hole to form, defects must accumulate to create a region where:
-$\rho_{\text{defect}} \cdot V \geq M_P c^2$
+
+$$\rho_{\text{defect}} \cdot V \geq M_P c^2$$
 
 **Step 2**: Defect density in normal matter:
-$\rho_{\text{defect}} = n \cdot E_{\text{defect/particle}} = \frac{N}{V} \cdot mc^2 \cdot \delta \cdot \frac{R}{R_P}$
 
-**Step 3**: For $N \sim 10^{23}$ particles in volume $V \sim 1$ cm³:
-$\rho_{\text{defect}} \cdot V \sim 10^{23} \times 10^{-10} \times 10^{-40} \times 10^{-93} \text{ J} \sim 10^{-120} \text{ J}$
+$$\rho_{\text{defect}} = n \cdot E_{\text{defect/particle}} = \frac{N}{V} \cdot mc^2 \cdot \delta \cdot \frac{R}{R_P}$$
+
+**Step 3**: For N ~ 10²³ particles in volume V ~ 1 cm³:
+
+$$\rho_{\text{defect}} \cdot V \sim 10^{23} \times 10^{-10} \times 10^{-40} \times 10^{-93} \text{ J} \sim 10^{-120} \text{ J}$$
 
 **Step 4**: Compare to threshold:
-$\frac{\rho_{\text{defect}} \cdot V}{M_P c^2} \sim \frac{10^{-120}}{10^9} \sim 10^{-129}$
 
-**Step 5**: The defect energy is $10^{129}$ times smaller than needed for micro-black hole formation.
+$$\frac{\rho_{\text{defect}} \cdot V}{M_P c^2} \sim \frac{10^{-120}}{10^9} \sim 10^{-129}$$
 
-**Step 6**: Diffusive healing (Mechanism I) prevents accumulation—defects heal as fast as they form. □
+**Step 5**: The defect energy is 10¹²⁹ times smaller than needed for micro-black hole formation.
 
-### 13.8 Hawking Radiation Reinterpreted
+**Step 6**: Diffusive healing (Mechanism I) prevents accumulation—defects heal as fast as they form. ∎
 
-**Theorem 13.7** (Hawking Radiation as Threshold Crossing): Near Planck-mass black holes, defect energies cross the graviton emission threshold, producing Hawking radiation.
+### 14.8 Hawking Radiation Reinterpreted
+
+**Theorem 14.7** (Hawking Radiation as Threshold Crossing): Near Planck-mass black holes, defect energies cross the graviton emission threshold, producing Hawking radiation.
 
 *Derivation*:
 
-At the horizon of a black hole with mass $M$:
-- Curvature: $R/R_P \sim (M_P/M)^2$
-- Computational error: $\delta \sim (M_P/M)$ (fewer iterations possible at higher action density)
-- Effective mass experiencing defect: $m_{\text{eff}} \sim M_P$ (virtual particles at horizon)
+At the horizon of a black hole with mass M:
+- Curvature: R/Rₚ ~ (Mₚ/M)²
+- Computational error: δ ~ (Mₚ/M) (fewer iterations possible at higher action density)
+- Effective mass experiencing defect: m_eff ~ Mₚ (virtual particles at horizon)
 
 Defect energy:
-$E_{\text{defect}} \sim M_P c^2 \cdot \frac{M_P}{M} \cdot \frac{M_P^2}{M^2} = E_P \cdot \frac{M_P^3}{M^3}$
 
-Threshold crossing ($E_{\text{defect}} \geq E_P/2$) when:
-$\frac{M_P^3}{M^3} \geq \frac{1}{2} \implies M \leq M_P \cdot 2^{1/3} \approx 1.26 M_P$
+$$E_{\text{defect}} \sim M_P c^2 \cdot \frac{M_P}{M} \cdot \frac{M_P^2}{M^2} = E_P \cdot \frac{M_P^3}{M^3}$$
 
-**Interpretation**: For black holes with $M \lesssim M_P$, defects at the horizon trigger graviton emission—this is Hawking radiation.
+Threshold crossing (E_defect ≥ Eₚ/2) when:
+
+$$\frac{M_P^3}{M^3} \geq \frac{1}{2} \implies M \leq M_P \cdot 2^{1/3} \approx 1.26 M_P$$
+
+**Interpretation**: For black holes with M ≲ Mₚ, defects at the horizon trigger graviton emission—this is Hawking radiation.
 
 The Hawking temperature formula emerges:
-$T_H = \frac{\hbar c^3}{8\pi G M k_B} \propto \frac{M_P^2}{M}$
 
-Smaller $M$ → higher $T_H$ → more defects cross threshold → faster evaporation. □
+$$T_H = \frac{\hbar c^3}{8\pi G M k_B} \propto \frac{M_P^2}{M}$$
 
-### 13.9 Summary: The Complete Energetics
+Smaller M → higher Tₕ → more defects cross threshold → faster evaporation. ∎
+
+### 14.9 Summary: The Complete Energetics
 
 | Quantity | Value | Origin |
 |----------|-------|--------|
-| Graviton information | $I_g = 2.32$ bits | Topological: minimum for one stitch |
-| Planck region capacity | $I_{\max} = 4.53$ bits | Holographic bound |
-| **Graviton energy** | $E_g = E_P/2 \approx 10^9$ J | $E_g/E_P = I_g/I_{\max}$ |
-| Emission threshold | $E_{\text{defect}} \geq E_P/2$ | Minimum topological discontinuity |
-| Sub-threshold healing | Diffusive, $\tau \sim t_P$ | $\mu\Delta_{\text{lat}}g_{\mu\nu}$ term |
-| Above-threshold healing | Graviton emission | Real particle with $I_g$, $E_g$ |
+| Graviton information | Iᵍ = 2.32 bits | Topological: minimum for one stitch |
+| Planck region capacity | I_max = 4.53 bits | Holographic bound |
+| **Graviton energy** | Eᵍ = Eₚ/2 ≈ 10⁹ J | Eᵍ/Eₚ = Iᵍ/I_max |
+| Emission threshold | E_defect ≥ Eₚ/2 | Minimum topological discontinuity |
+| Sub-threshold healing | Diffusive, τ ~ tₚ | μΔ_lat gᵤᵥ term |
+| Above-threshold healing | Graviton emission | Real particle with Iᵍ, Eᵍ |
 
 **The unified picture**:
 
-1. **Everyday processes**: Defects are $\sim 10^{-143}$ J, healed by diffusion in $\sim t_P$, no gravitons emitted
+1. **Everyday processes**: Defects are ~ 10⁻¹⁴³ J, healed by diffusion in ~ tₚ, no gravitons emitted
 
-2. **Extreme processes**: Near Planck-scale black holes, defects reach $\sim E_P$, gravitons emitted
+2. **Extreme processes**: Near Planck-scale black holes, defects reach ~ Eₚ, gravitons emitted
 
 3. **Spacetime continuity**: Guaranteed by diffusive healing (Mechanism I), not by graviton emission
 
 4. **No micro-black holes**: High graviton threshold prevents defect accumulation
 
-5. **Empirical consistency**: Absence of quantum gravity effects at laboratory scales confirms $E_g \sim E_P/2$
+5. **Empirical consistency**: Absence of quantum gravity effects at laboratory scales confirms Eᵍ ~ Eₚ/2
 
 **Gravity is a two-tier system**:
 - **Tier 1 (always active)**: Diffusive geometric healing—maintains continuity invisibly
-- **Tier 2 (Planck-scale only)**: Graviton emission—discrete repair quanta with fixed energy $E_P/2$
+- **Tier 2 (Planck-scale only)**: Graviton emission—discrete repair quanta with fixed energy Eₚ/2
 
 ---
 
@@ -1185,17 +1208,17 @@ Smaller $M$ → higher $T_H$ → more defects cross threshold → faster evapora
 - Repeated indices summed (Einstein convention)
 
 ### A.2 Signature
-- Metric signature (-,+,+,+)
-- Minkowski: η_μν = diag(-1,1,1,1)
+- Metric signature (−,+,+,+)
+- Minkowski: ηᵤᵥ = diag(−1,1,1,1)
 
 ### A.3 Units
-- Planck units: ℏ = c = G = k_B = 1 (where convenient)
+- Planck units: ℏ = c = G = kᵦ = 1 (where convenient)
 - SI units restored for physical predictions
 
 ### A.4 Discrete vs. Continuous
-- Δ_μ: discrete derivative
-- ∂_μ: continuous derivative
-- ∇_μ: covariant derivative
+- Δᵤ: discrete derivative
+- ∂ᵤ: continuous derivative
+- ∇ᵤ: covariant derivative
 
 ---
 
@@ -1208,16 +1231,19 @@ $$\sum_{n \in \Lambda} f(n) \Delta_\mu^+ g(n) = -\sum_{n \in \Lambda} g(n) \Delt
 ### Lemma B.2 (Discrete Sobolev Embedding)
 
 For k > d/2 + m:
+
 $$W^{k,2}(\Lambda) \hookrightarrow C^m(\Lambda)$$
 
 ### Lemma B.3 (Discrete Elliptic Estimate)
 
 If Δ_lat u = f, then:
+
 $$\|u\|_{W^{2,p}} \leq C(\|f\|_{L^p} + \|u\|_{L^p})$$
 
 ### Lemma B.4 (Energy Decay)
 
-Under the healing flow with F coercive:
+Under the healing flow with ℱ coercive:
+
 $$\mathcal{F}[g(\tau)] \leq \mathcal{F}[g(0)] e^{-\gamma\tau}$$
 
 ---
