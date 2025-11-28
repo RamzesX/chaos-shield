@@ -37,17 +37,13 @@ We propose that action quantization imposes computational deadlines. When a quan
 
 ### 2.1 Action Accumulation
 
-For any quantum system with Lagrangian L, action accumulates according to:
+For any quantum system with Lagrangian $L$, action accumulates according to:
 
-```
-dS/dt = L
-```
+$\frac{dS}{dt} = L$
 
-For systems with positive energy (E > 0) and typical potentials, the Lagrangian satisfies L > 0 for most trajectories, implying monotonic action growth:
+For systems with positive energy ($E > 0$) and typical potentials, the Lagrangian satisfies $L > 0$ for most trajectories, implying monotonic action growth:
 
-```
-S(t) = S₀ + ∫₀ᵗ L(t') dt'
-```
+$S(t) = S_0 + \int_0^t L(t') \, dt'$
 
 **Key observation**: Action accumulation cannot be halted without reducing the system's energy to zero. This creates an inexorable progression toward each successive quantum threshold.
 
@@ -55,28 +51,22 @@ S(t) = S₀ + ∫₀ᵗ L(t') dt'
 
 We postulate that quantum transitions occur at action thresholds:
 
-```
-S_n = nℏ,  n ∈ ℤ⁺
-```
+$S_n = n\hbar, \quad n \in \mathbb{Z}^+$
 
 This quantization is consistent with:
-- The path integral formulation (phase factors e^{iS/ℏ})
+- The path integral formulation (phase factors $e^{iS/\hbar}$)
 - Bohr-Sommerfeld quantization
 - The quantum of action in standard quantum mechanics
 
 ### 2.3 The Computational Deadline
 
-Given current action S_current and Lagrangian L, the time until the next threshold is:
+Given current action $S_{\text{current}}$ and Lagrangian $L$, the time until the next threshold is:
 
-```
-T_deadline = (S_next - S_current) / L = ΔS / L
-```
+$T_{\text{deadline}} = \frac{S_{\text{next}} - S_{\text{current}}}{L} = \frac{\Delta S}{L}$
 
-For the interval between thresholds (ΔS = ℏ):
+For the interval between thresholds ($\Delta S = \hbar$):
 
-```
-T_deadline = ℏ / L
-```
+$T_{\text{deadline}} = \frac{\hbar}{L}$
 
 **Proposition 2.1**: The computational deadline T_deadline represents the maximum time available for geometric calculations before a forced quantum transition.
 
@@ -128,21 +118,17 @@ Computing an irrational number to n digits of precision requires O(f(n)) iterati
 
 ### 3.4 The Computational Bottleneck
 
-**Proposition 3.1**: Given finite time T and finite computational rate R (operations per unit time), the maximum achievable precision is bounded:
+**Proposition 3.1**: Given finite time $T$ and finite computational rate $R$ (operations per unit time), the maximum achievable precision is bounded:
 
-```
-ε_min ≥ g(R × T)
-```
+$\varepsilon_{\min} \geq g(R \times T)$
 
-where g is a monotonically decreasing function specific to each constant.
+where $g$ is a monotonically decreasing function specific to each constant.
 
-For Planck-scale computation with rate R ~ 1/t_Planck and deadline T = T_deadline:
+For Planck-scale computation with rate $R \sim 1/t_{\text{Planck}}$ and deadline $T = T_{\text{deadline}}$:
 
-```
-N_iterations = T_deadline / t_Planck = ℏ / (L × t_Planck)
-```
+$N_{\text{iterations}} = \frac{T_{\text{deadline}}}{t_{\text{Planck}}} = \frac{\hbar}{L \cdot t_{\text{Planck}}}$
 
-The precision achievable for each irrational is limited by N_iterations.
+The precision achievable for each irrational is limited by $N_{\text{iterations}}$.
 
 ---
 
@@ -150,34 +136,27 @@ The precision achievable for each irrational is limited by N_iterations.
 
 ### 4.1 Definition of Action Density
 
-**Definition 4.1**: The action density ρ_S is the action per unit volume:
+**Definition 4.1**: The action density $\rho_S$ is the action per unit volume:
 
-```
-ρ_S = S / V
-```
+$\rho_S = \frac{S}{V}$
 
-For a thermal system with N particles at temperature T in volume V:
+For a thermal system with $N$ particles at temperature $T$ in volume $V$:
 
-```
-⟨L⟩ ≈ N k_B T  (equipartition theorem)
-```
+$\langle L \rangle \approx N k_B T \quad \text{(equipartition theorem)}$
 
 Therefore:
-```
-ρ_S = ⟨L⟩ t / V = (N k_B T × t) / V
-```
+
+$\rho_S = \frac{\langle L \rangle \cdot t}{V} = \frac{N k_B T \cdot t}{V}$
 
 The rate of action density growth is:
-```
-dρ_S/dt = (N k_B T) / V
-```
+
+$\frac{d\rho_S}{dt} = \frac{N k_B T}{V}$
 
 ### 4.2 Computational Time vs. Action Density
 
 The time between thresholds is:
-```
-T_deadline = ℏ / ⟨L⟩ = ℏ / (N k_B T)
-```
+
+$T_{\text{deadline}} = \frac{\hbar}{\langle L \rangle} = \frac{\hbar}{N k_B T}$
 
 **Observation**: Higher temperature (or particle density) implies:
 - Faster action accumulation
@@ -190,37 +169,28 @@ T_deadline = ℏ / ⟨L⟩ = ℏ / (N k_B T)
 
 The number of computational iterations available is:
 
-```
-N_max = T_deadline / t_Planck 
-      = ℏ / (N k_B T × t_Planck)
-      = ℏ / (N k_B T) × (c⁵/ℏG)^{1/2}
-      = (ℏ c⁵ / G)^{1/2} / (N k_B T)
-```
+$N_{\max} = \frac{T_{\text{deadline}}}{t_{\text{Planck}}} = \frac{\hbar}{N k_B T \cdot t_{\text{Planck}}} = \frac{\hbar}{N k_B T} \cdot \sqrt{\frac{c^5}{\hbar G}} = \frac{\sqrt{\hbar c^5 / G}}{N k_B T}$
 
 Numerically:
-```
-N_max ≈ 1.2 × 10⁴³ K / (N × T)
-```
 
-For a single particle (N = 1):
-- At T = 10 mK: N_max ≈ 10⁴⁵ iterations
-- At T = 300 K: N_max ≈ 4 × 10⁴⁰ iterations
-- At T = 10⁷ K: N_max ≈ 10³⁶ iterations
+$N_{\max} \approx \frac{1.2 \times 10^{43} \text{ K}}{N \times T}$
+
+For a single particle ($N = 1$):
+- At $T = 10$ mK: $N_{\max} \approx 10^{45}$ iterations
+- At $T = 300$ K: $N_{\max} \approx 4 \times 10^{40}$ iterations
+- At $T = 10^7$ K: $N_{\max} \approx 10^{36}$ iterations
 
 ### 4.4 Precision Scaling
 
 Assuming roughly one digit of precision per iteration (order-of-magnitude estimate):
 
-```
-ε_irrational ~ 10^{-N_max}
-```
+$\varepsilon_{\text{irrational}} \sim 10^{-N_{\max}}$
 
 More precisely, for iterative algorithms with geometric convergence:
-```
-ε ~ e^{-αN_max}
-```
 
-where α depends on the algorithm's convergence rate.
+$\varepsilon \sim e^{-\alpha N_{\max}}$
+
+where $\alpha$ depends on the algorithm's convergence rate.
 
 ---
 
@@ -228,42 +198,33 @@ where α depends on the algorithm's convergence rate.
 
 ### 5.1 Derivation
 
-Consider a quantum system preparing to undergo a transition. The geometric calculations required involve π, e, and √2 with achievable precision ε_i for each.
+Consider a quantum system preparing to undergo a transition. The geometric calculations required involve $\pi$, $e$, and $\sqrt{2}$ with achievable precision $\varepsilon_i$ for each.
 
 The position uncertainty from computational imprecision is:
 
-```
-Δx_comp = ℓ_Planck × max(ε_π, ε_e, ε_√2)
-```
+$\Delta x_{\text{comp}} = \ell_{\text{Planck}} \times \max(\varepsilon_\pi, \varepsilon_e, \varepsilon_{\sqrt{2}})$
 
 The momentum uncertainty follows from:
-```
-Δp_comp = (ℏ / ℓ_Planck) × max(ε_π, ε_e, ε_√2)
-```
+
+$\Delta p_{\text{comp}} = \frac{\hbar}{\ell_{\text{Planck}}} \times \max(\varepsilon_\pi, \varepsilon_e, \varepsilon_{\sqrt{2}})$
 
 **Theorem 5.1** (Extended Uncertainty Principle): The total uncertainty satisfies:
 
-```
-Δx Δp ≥ ℏ/2 + δ_comp(ρ_S, T)
-```
+$\Delta x \, \Delta p \geq \frac{\hbar}{2} + \delta_{\text{comp}}(\rho_S, T)$
 
 where the computational correction term is:
 
-```
-δ_comp = ℏ × f(ε_π, ε_e, ε_√2)
-```
+$\delta_{\text{comp}} = \hbar \times f(\varepsilon_\pi, \varepsilon_e, \varepsilon_{\sqrt{2}})$
 
 ### 5.2 Temperature Dependence
 
-Since N_max ∝ 1/T, we have ε ∝ exp(-α/T) for small T.
+Since $N_{\max} \propto 1/T$, we have $\varepsilon \propto \exp(-\alpha/T)$ for small $T$.
 
 In the high-temperature limit (linear approximation):
-```
-δ_comp ≈ α × k_B T / E_Planck × ℏ
-        = α × T / T_Planck × ℏ
-```
 
-where T_Planck = E_Planck / k_B ≈ 1.4 × 10³² K.
+$\delta_{\text{comp}} \approx \alpha \cdot \frac{k_B T}{E_{\text{Planck}}} \cdot \hbar = \alpha \cdot \frac{T}{T_{\text{Planck}}} \cdot \hbar$
+
+where $T_{\text{Planck}} = E_{\text{Planck}} / k_B \approx 1.4 \times 10^{32}$ K.
 
 **Key result**: The computational uncertainty term scales linearly with temperature in the regime relevant for laboratory experiments.
 
@@ -271,12 +232,9 @@ where T_Planck = E_Planck / k_B ≈ 1.4 × 10³² K.
 
 Combining all contributions:
 
-```
-ε_quantum(ρ_S, T, N) = α × (N k_B T) / E_Planck
-                     = α × ρ_S × V / E_Planck
-```
+$\varepsilon_{\text{quantum}}(\rho_S, T, N) = \alpha \cdot \frac{N k_B T}{E_{\text{Planck}}} = \alpha \cdot \frac{\rho_S \cdot V}{E_{\text{Planck}}}$
 
-where α is a dimensionless constant of order unity that encodes the geometry-dependent weighting of π, e, and √2 contributions.
+where $\alpha$ is a dimensionless constant of order unity that encodes the geometry-dependent weighting of $\pi$, $e$, and $\sqrt{2}$ contributions.
 
 ---
 
@@ -286,17 +244,15 @@ where α is a dimensionless constant of order unity that encodes the geometry-de
 
 **Prediction**: Gate fidelity in quantum computers should exhibit a component that scales linearly with temperature:
 
-```
-F(T) = F₀ / (1 + α × T / T₀)
-```
+$F(T) = \frac{F_0}{1 + \alpha \cdot T / T_0}$
 
-where T₀ is a characteristic temperature scale.
+where $T_0$ is a characteristic temperature scale.
 
 **Distinguishing feature**: Classical thermal noise predicts exponential scaling (Arrhenius-type), while our framework predicts linear scaling from computational deadline effects.
 
 **Proposed test**:
 1. Measure gate fidelity at multiple temperatures (10 mK - 1 K)
-2. Fit to both F = F₀ exp(-E_a/k_BT) and F = F₀/(1 + αT)
+2. Fit to both $F = F_0 \exp(-E_a/k_BT)$ and $F = F_0/(1 + \alpha T)$
 3. Compare goodness-of-fit
 
 ### 6.2 Atomic Clock Comparisons
@@ -321,11 +277,9 @@ The computational deadline mechanism connects to observer blindness (main paper,
 
 The reshaping energy formula (main paper, Section 2.4):
 
-```
-E_reshape = mc² × f(R, π, e, √2, N_iterations)
-```
+$E_{\text{reshape}} = mc^2 \times f(R, \pi, e, \sqrt{2}, N_{\text{iterations}})$
 
-now has a concrete interpretation: N_iterations is determined by the action density, and the function f encodes the precision limitations on irrational geometric factors.
+now has a concrete interpretation: $N_{\text{iterations}}$ is determined by the action density, and the function $f$ encodes the precision limitations on irrational geometric factors.
 
 ### 7.3 Connection to Time Emergence
 
@@ -452,37 +406,32 @@ The central insight—that the universe operates under computational deadlines i
 ### A.1 Quantum Computer at 10 mK
 
 Parameters:
-- T = 10 mK = 10⁻² K
-- N = 1 (single qubit)
-- V = (100 nm)³ = 10⁻²¹ m³
+- $T = 10$ mK $= 10^{-2}$ K
+- $N = 1$ (single qubit)
+- $V = (100 \text{ nm})^3 = 10^{-21}$ m³
 
 Calculation:
-```
-T_deadline = ℏ / (k_B T) = 1.05 × 10⁻³⁴ / (1.38 × 10⁻²³ × 10⁻²) 
-           = 7.6 × 10⁻¹⁰ s
 
-N_max = T_deadline / t_Planck = 7.6 × 10⁻¹⁰ / 5.4 × 10⁻⁴⁴
-      = 1.4 × 10³⁴ iterations
-```
+$T_{\text{deadline}} = \frac{\hbar}{k_B T} = \frac{1.05 \times 10^{-34}}{1.38 \times 10^{-23} \times 10^{-2}} = 7.6 \times 10^{-10} \text{ s}$
 
-Precision: ε ~ 10⁻³⁴ (effectively exact for all practical purposes)
+$N_{\max} = \frac{T_{\text{deadline}}}{t_{\text{Planck}}} = \frac{7.6 \times 10^{-10}}{5.4 \times 10^{-44}} = 1.4 \times 10^{34} \text{ iterations}$
 
-### A.2 Plasma at 10⁷ K
+Precision: $\varepsilon \sim 10^{-34}$ (effectively exact for all practical purposes)
+
+### A.2 Plasma at $10^7$ K
 
 Parameters:
-- T = 10⁷ K
-- N = 10²⁰ particles
-- V = 1 m³
+- $T = 10^7$ K
+- $N = 10^{20}$ particles
+- $V = 1$ m³
 
 Calculation:
-```
-T_deadline = ℏ / (N k_B T) = 1.05 × 10⁻³⁴ / (10²⁰ × 1.38 × 10⁻²³ × 10⁷)
-           = 7.6 × 10⁻³⁹ s
 
-N_max = 7.6 × 10⁻³⁹ / 5.4 × 10⁻⁴⁴ = 1.4 × 10⁵ iterations
-```
+$T_{\text{deadline}} = \frac{\hbar}{N k_B T} = \frac{1.05 \times 10^{-34}}{10^{20} \times 1.38 \times 10^{-23} \times 10^7} = 7.6 \times 10^{-39} \text{ s}$
 
-Precision: ε ~ 10⁻⁵ (potentially observable in precision measurements)
+$N_{\max} = \frac{7.6 \times 10^{-39}}{5.4 \times 10^{-44}} = 1.4 \times 10^5 \text{ iterations}$
+
+Precision: $\varepsilon \sim 10^{-5}$ (potentially observable in precision measurements)
 
 ---
 
