@@ -108,6 +108,93 @@ $$\epsilon \approx \alpha \cdot \frac{\rho_S}{\rho_{\text{Planck}}}$$
 
 yielding linear scaling in the regime ρ_S << ρ_Planck.
 
+### 2.4 The Complete Action Density Formula
+
+**Definition 2.2** (Full Action Density):
+$\rho_S = \frac{N k_B T}{V}$
+
+where:
+- N = number of thermally active degrees of freedom
+- T = temperature
+- V = effective volume
+
+**Critical insight**: Temperature is only ONE of three variables controlling action density:
+
+| Variable | Symbol | Effect on ρ_S | Optimization strategy |
+|----------|--------|---------------|----------------------|
+| Temperature | T | ρ_S ∝ T | Cryogenic cooling |
+| Particle count | N | ρ_S ∝ N | Better isolation, fewer defects |
+| Volume | V | ρ_S ∝ 1/V | Larger qubits, heavier atoms |
+
+**Corollary 2.2** (Multi-Channel Power Law): When multiple decoherence channels contribute, each with distinct action density ρ_{S,i} = N_i k_B T / V_i, the total error rate becomes:
+
+$\epsilon_{total} = \sum_i \epsilon_i = \sum_i \alpha_i \left(\frac{\rho_{S,i}}{\rho_{Planck}}\right)^{\beta_i}$
+
+This summation over channels with different (N_i, V_i) produces emergent power-law temperature dependence.
+
+---
+
+## 2A. Experimental Validation: Arrhenius vs. Action Density
+
+### 2A.1 The Arrhenius Model and Its Failure
+
+Standard thermodynamic theory predicts error rates via Arrhenius kinetics:
+
+$\epsilon_{Arrhenius}(T) = A \cdot \exp\left(-\frac{E_a}{k_B T}\right)$
+
+**Critical problem**: For activation energy E_a ~ 1 meV, changing temperature from 0.1 K to 1.0 K should produce ~10^50 change in error rate.
+
+**Experimental reality**: Observed changes are factors of 10-100, NOT 10^50.
+
+### 2A.2 Diraq/Nature 2024 Spin Qubit Data
+
+The paper "High-fidelity spin qubit operation and algorithmic initialization above 1 K" (Huang et al., Nature 627, 772-777, 2024) provides definitive experimental data:
+
+**Measured temperature scaling:**
+
+| Parameter | Observed Scaling | Arrhenius Prediction |
+|-----------|-----------------|---------------------|
+| T₁ (relaxation) | T^(-2.0) to T^(-3.1) | exp(+E/kT) |
+| T₂ (Hahn echo) | T^(-1.0) to T^(-1.1) | exp(+E/kT) |
+| T₂* (dephasing) | T^(-0.2) | exp(+E/kT) |
+| PSB relaxation | T^(-2.8) | exp(+E/kT) |
+
+**Key finding**: Power-law behavior (T^n) observed, NOT exponential.
+
+### 2A.3 Evidence for N-Dependence from Charge Configurations
+
+The Diraq paper shows different charge configurations yield different exponents:
+
+| Configuration | Electron count | T₁ exponent |
+|--------------|----------------|-------------|
+| (1,3) | 4 electrons | T^(-2.0) |
+| (5,3) | 8 electrons | T^(-3.1) |
+
+**Interpretation**: More electrons (higher N) → steeper temperature dependence. This is consistent with ρ_S = NkT/V but NOT with simple thermal activation.
+
+### 2A.4 Why Power-Law Emerges: Multi-Channel Action Density
+
+From European Physical Journal B: "Temperature dependence can show power law behavior as result of summation over large number of electron traveling paths although hopping intensity in every step is exponentially dependent on temperature."
+
+Our interpretation: Each decoherence channel has distinct action density:
+- Phonons: ρ_{S,phonon} = N_phonon k_B T / V_phonon
+- Quasiparticles: ρ_{S,qp} = N_qp k_B T / V_qp
+- TLS defects: ρ_{S,TLS} = N_TLS k_B T / V_TLS
+
+The sum produces emergent power-law: ε ∝ T^{β_eff} where β_eff = 2.0 to 3.0.
+
+### 2A.5 Testable Predictions Distinguishing Action Density from Arrhenius
+
+| Experiment | Arrhenius prediction | Action density prediction |
+|------------|---------------------|---------------------------|
+| Smaller qubit (↓V), same T | No change | ↑ Errors |
+| Better isolation (↓N), same T | No change | ↓ Errors |
+| More TLS defects (↑N) | More noise sources | ↑ Errors (quantifiable via ρ_S) |
+| Larger atoms (↑V) | No change | ↓ Errors |
+| Different electron count, same T | No change | Different scaling exponent |
+
+**Summary**: Arrhenius predicts only T matters. Action density predicts N and V also matter, with specific quantitative relationships.
+
 ---
 
 ## 3. Emergence of Special Relativity

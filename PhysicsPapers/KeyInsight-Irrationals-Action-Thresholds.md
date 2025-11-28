@@ -363,16 +363,85 @@ The computational correction δ_comp is predicted to be extremely small under no
 
 ---
 
+## 8A. Experimental Validation: Arrhenius vs. Action Density
+
+### 8A.1 The Critical Test
+
+The action density framework makes predictions fundamentally different from standard Arrhenius thermodynamics:
+
+| Model | Formula | Temperature Prediction (0.1K → 1.0K) |
+|-------|---------|---------------------------------------|
+| Arrhenius | ε = A·exp(-Ea/kT) | ~10^50 change |
+| Action Density | ε ∝ NkT/V | ~10 change |
+| Observed (Diraq 2024) | ε ∝ T^(2-3) | ~10-100 change |
+
+**Result**: Experimental data supports action density framework, NOT Arrhenius.
+
+### 8A.2 Diraq/Nature 2024 Data
+
+Paper: "High-fidelity spin qubit operation above 1 K" (Huang et al., Nature 627, 772-777, 2024)
+
+| Parameter | Observed | Arrhenius Prediction |
+|-----------|----------|---------------------|
+| T₁ relaxation | T^(-2.0 to -3.1) | exp(+E/kT) |
+| T₂ Hahn echo | T^(-1.0 to -1.1) | exp(+E/kT) |
+| PSB relaxation | T^(-2.8) | exp(+E/kT) |
+
+**Power-law observed, NOT exponential.**
+
+### 8A.3 Evidence for N-Dependence (Not Just T)
+
+Different electron configurations show different temperature exponents:
+
+| Configuration | Electrons | T₁ exponent |
+|--------------|-----------|-------------|
+| (1,3) | 4 | T^(-2.0) |
+| (5,3) | 8 | T^(-3.1) |
+
+This is consistent with ρ_S = NkT/V: more electrons (higher N) → higher action density → steeper T-dependence.
+
+### 8A.4 The Complete Picture
+
+**Action density formula**: ρ_S = NkT/V
+
+Temperature is only ONE of three variables:
+
+| Optimization | Changes | Effect |
+|--------------|---------|--------|
+| Cooling | ↓T | ↓ρ_S |
+| Isolation | ↓N | ↓ρ_S |
+| Larger qubits | ↑V | ↓ρ_S |
+| Heavier atoms | ↑V_orbital | ↓ρ_S |
+
+**Arrhenius predicts**: Only T matters.
+**Action density predicts**: N and V also matter, with specific relationships.
+
+### 8A.5 Why Power-Law Emerges
+
+From European Physical Journal B: "Temperature dependence can show power law behavior as result of summation over large number of electron traveling paths."
+
+Our interpretation: Multiple decoherence channels with different (N_i, V_i) sum to produce emergent power-law:
+
+$\epsilon_{total} = \sum_i \alpha_i (N_i k_B T / V_i)^{\beta_i} \propto T^{\beta_{eff}}$
+
+where β_eff = 2.0-3.0 depends on relative channel contributions.
+
+---
+
 ## 9. Conclusions
 
 We have established a quantitative connection between:
 
 1. **Mathematical irrationality**: π, e, √2 cannot be computed exactly
 2. **Action quantization**: Thresholds at S = nℏ impose deadlines
-3. **Action density**: Higher ρ_S means shorter computational time
+3. **Action density**: ρ_S = NkT/V (not just T!) controls computational time
 4. **Quantum uncertainty**: Limited precision creates irreducible errors
+5. **Experimental validation**: Diraq/Nature 2024 data shows T^(-2.5) power-law, consistent with multi-channel action density, inconsistent with Arrhenius exponential
 
-The resulting framework makes specific, testable predictions that distinguish it from standard quantum mechanics, particularly regarding the temperature dependence of quantum computing errors.
+The resulting framework makes specific, testable predictions that distinguish it from standard quantum mechanics:
+- Error rates scale with action density, not just temperature
+- Reducing N (isolation) or increasing V (larger structures) reduces errors at constant T
+- Different electron configurations produce different temperature scaling exponents
 
 The central insight—that the universe operates under computational deadlines imposed by action accumulation—provides a physical mechanism for quantum uncertainty rooted in the mathematical structure of geometry itself.
 

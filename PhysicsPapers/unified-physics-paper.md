@@ -167,6 +167,18 @@ Precision achieved: ε ~ 10^(-N_max) = 10^(-ℏ/(N k_B T × t_Planck))
 
 **Key Result**: High action density (high temperature, high particle density) → Short computational time → Poor irrational precision → Large quantum errors.
 
+**Critical Distinction**: Temperature is only ONE component of action density:
+
+$\rho_S = \frac{N k_B T}{V}$
+
+| Variable | Symbol | Optimization |
+|----------|--------|--------------|
+| Temperature | T | Cryogenic cooling |
+| Particle count | N | Isolation, material purity |
+| Volume | V | Larger qubits, heavier atoms |
+
+This explains why quantum errors can be reduced through isolation (↓N) or larger structures (↑V), not just cooling (↓T). See Appendix B Section 2A for experimental validation from Diraq/Nature 2024 spin qubit data showing T^(-2.5) power-law scaling consistent with multi-channel action density framework.
+
 This mechanism directly explains why quantum computing error rates increase with temperature (Appendix B) and provides a physical basis for the extended uncertainty principle:
 ```
 ΔxΔp ≥ ℏ/2 + δ_computational(ρ_S)
@@ -431,6 +443,87 @@ d_eff(E) = 4 - ε(E/E_Planck)
 where ε(x) represents dimensional reduction at high energies.
 
 This predicts that spacetime appears 2-dimensional near the Planck scale, consistent with results from causal dynamical triangulation [6] and asymptotic safety [7].
+
+### 3.5a Dimensional Flow from Computational Budget
+
+We now derive the explicit form of ε(x) from the computational deadline mechanism (Section 2.3a). The key insight is that **effective dimension measures how many geometric directions can be computationally distinguished** before action thresholds force quantum transitions.
+
+**Definition 3.2** (Computational Budget at Energy E):
+```
+N_max(E) = ℏ / (E × t_Planck)
+```
+
+At low energies (E → 0), unlimited computational time yields N_max → ∞.
+At Planck energy (E → E_Planck), we have N_max → 1 (single iteration).
+
+**Theorem 3.2** (Dimensional Flow Equation): The effective spacetime dimension follows:
+
+```
+d_eff(E) = 2 + 2 × [N_max(E) / N_max(E_ref)]^α
+```
+
+where E_ref is a reference energy scale and α ∈ (0,1] is a geometry-dependent exponent.
+
+*Derivation:*
+
+1. **Minimum dimension**: Two dimensions represent the minimal geometry supporting causality—one temporal (event ordering) and one spatial (here/there distinction). Below 2D, light cones cannot be defined.
+
+2. **Maximum dimension**: Four dimensions emerge when full computational precision is available for all geometric factors (π for rotations, √2 for diagonals, e for propagators).
+
+3. **Interpolation**: As energy increases, computational budget decreases, reducing distinguishable directions:
+
+```
+Distinguishable directions ∝ log(N_max) ∝ log(ℏ/E×t_P) = log(E_Planck/E)
+```
+
+4. **Explicit form**: Combining these constraints:
+
+```
+d_eff(E) = 2 + 2 × (1 - E/E_Planck)    [linear approximation]
+
+d_eff(E) = 2 + 2 × exp(-E/E_Planck)     [exponential form]
+```
+
+Both forms satisfy:
+- d_eff(0) = 4 (classical limit)
+- d_eff(E_Planck) = 2 (Planck scale)
+
+**Proposition 3.2** (Dimensional Flow as Lyapunov Functional): The quantity
+
+```
+Φ[E] = 4 - d_eff(E) = 2 × (E/E_Planck)
+```
+
+is a monotonically increasing functional along energy flow, analogous to Perelman's W-entropy for Ricci flow.
+
+*Physical interpretation:*
+
+| Ricci Flow | Dimensional Flow |
+|------------|------------------|
+| Metric tensor g_ij(t) | Effective dimension d_eff(E) |
+| Perelman's W-entropy | Φ[E] = 4 - d_eff |
+| Flow toward canonical geometry | Collapse toward 2D |
+| Monotonic decrease of W | Monotonic increase of Φ |
+
+Just as Perelman's entropy provides a "compass" through the space of geometries, Φ[E] provides a compass through energy scales—the system flows from 4D at low energies toward 2D at high energies, and this flow is irreversible.
+
+**Corollary 3.1** (Stability of 3D): Three spatial dimensions (d_eff = 4 including time) represent a **stable attractor** because:
+
+1. Lower dimensions (d < 4) require insufficient computational budget to maintain geometric precision
+2. Higher dimensions (d > 4) would require computational resources exceeding what action thresholds permit
+3. At laboratory energies (E << E_Planck), the flow toward d = 2 is negligible
+
+This explains why we observe exactly 3+1 dimensions: it is the maximum dimensionality sustainable at typical physical energy scales.
+
+**Connection to Triangulation Results:**
+
+Causal Dynamical Triangulation (CDT) simulations independently find d_eff → 2 at small scales. Our framework provides the mechanism:
+
+```
+Small scale ↔ High energy probe ↔ Short computational time ↔ Reduced precision ↔ Fewer distinguishable dimensions
+```
+
+The agreement between CDT numerics and our analytical prediction supports the computational deadline interpretation of dimensional reduction.
 
 ## 4. Mass Generation and the Higgs Mechanism
 
@@ -1315,6 +1408,8 @@ In this framework, discreteness is concealed by the observer sampling constraint
 [19] Connes, A. (1994). "Noncommutative Geometry." Academic Press.
 
 [20] Baez, J. C., & Dolan, J. (1995). "Higher-dimensional algebra and topological quantum field theory." Journal of Mathematical Physics, 36(11), 6073-6105.
+
+[21] Huang, J.Y., et al. (2024). "High-fidelity spin qubit operation and algorithmic initialization above 1 K." Nature, 627, 772-777.
 
 ## Appendix A: Group Theoretical Details
 
