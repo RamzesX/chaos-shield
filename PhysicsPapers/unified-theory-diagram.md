@@ -1,445 +1,659 @@
-# Visual Summary: The Discrete Spacetime Framework
-## Architecture of Geometric Reshaping and Computational Time
+# Visual Summary: The Complete Ω-Theory Framework
+## From Discrete Foundation to Standard Model and Spacetime
 
 ---
 
-This document provides a visual overview of the unified discrete spacetime framework. The diagrams illustrate the hierarchical structure from algebraic foundations to experimental predictions.
+This document provides a visual overview of the complete Ω-Theory framework, showing how all physics emerges from a single discrete foundation through the algebraic structure Ω.
 
 ---
 
-## Level 0: The Algebraic Foundation
-
-```
-┌─────────────────────────────────────────────────────────────────────────────────────────────────────────┐
-│                                    THE ALGEBRAIC SPACE Ω                                                │
-│                            (Following Noether's Program: Physics from Symmetries)                       │
-│                                                                                                         │
-│     ╔═══════════════════════════════════════════════════════════════════════════════╗                   │
-│     ║                                       Ω                                       ║                   │
-│     ║                                                                               ║                   │
-│     ║    ┌─────────────┐   ┌─────────────┐   ┌─────────────┐   ┌─────────────┐      ║                   │
-│     ║    │  Candidate  │   │   Hopf      │   │  Category   │   │ Non-Comm.   │      ║                   │
-│     ║    │  Structures │   │  Algebras   │   │   Theory    │   │  Geometry   │      ║                   │
-│     ║    └─────────────┘   └─────────────┘   └─────────────┘   └─────────────┘      ║                   │
-│     ║                           ↓                                                   ║                   │
-│     ║               Generates via projection:                                       ║                   │
-│     ║    ╔═══════════════════════════════════════════════════════════╗              ║                   │
-│     ║    ║  G_unified = Poincaré × G_Standard_Model × H_hidden       ║              ║                   │
-│     ║    ╚═══════════════════════════════════════════════════════════╝              ║                   │
-│     ║                                                                               ║                   │
-│     ╚═══════════════════════════════════════════════════════════════════════════════╝                   │
-│                                                                                                         │
-│     STATUS: Structure to be determined through theoretical and experimental investigation               │
-│     APPROACH: Physics-first (testable predictions) → Algebra-second (determine structure)               │
-│                                                                                                         │
-└─────────────────────────────────────────────────────────────────────────────────────────────────────────┘
-```
-
----
-
-## Level 1: The Discrete Substrate
-
-```
-┌─────────────────────────────────────────────────────────────────────────────────────────────────────────┐
-│                                  PLANCK-SCALE DISCRETE LATTICE Λ                                        │
-│                                                                                                         │
-│     ●━━━●━━━●━━━●━━━●           FUNDAMENTAL SCALES:                                                     │
-│     ┃ ╱ ┃ ╱ ┃ ╱ ┃ ╱ ┃                                                                                   │
-│     ●━━━●━━━●━━━●━━━●           • Length:   ℓ_p = √(ℏG/c³) ≈ 1.6 × 10⁻³⁵ m                              │
-│     ┃ ╱ ┃ ╱ ┃ ╱ ┃ ╱ ┃           • Time:     t_p = √(ℏG/c⁵) ≈ 5.4 × 10⁻⁴⁴ s                              │
-│     ●━━━●━━━●━━━●━━━●           • Energy:   E_p = √(ℏc⁵/G) ≈ 2.0 × 10⁹ J                                │
-│     ┃ ╱ ┃ ╱ ┃ ╱ ┃ ╱ ┃           • Rate:     c/ℓ_p ≈ 1.9 × 10⁴³ Hz                                       │
-│     ●━━━●━━━●━━━●━━━●                                                                                   │
-│         4D Integer Lattice                                                                              │
-│                                                                                                         │
-│     METRIC: ds² = -c²t_p²(Δn₀)² + ℓ_p²[(Δn₁)² + (Δn₂)² + (Δn₃)²]                                        │
-│                                                                                                         │
-│     ┌──────────────────────────────────────────────────────────────────────────┐                        │
-│     │                    IRRATIONAL GEOMETRIC CONSTANTS                        │                        │
-│     │                                                                          │                        │
-│     │   π = 3.14159265358979... (circles, spheres, rotations)                  │                        │
-│     │   e = 2.71828182845904... (exponentials, propagators)                    │                        │
-│     │  √2 = 1.41421356237309... (diagonals, boosts)                            │                        │
-│     │                                                                          │                        │
-│     │   These constants have infinite, non-repeating decimal expansions        │                        │
-│     │   → Cannot be computed exactly in finite time                            │                        │
-│     │   → Creates fundamental precision limits under deadlines                 │                        │
-│     └──────────────────────────────────────────────────────────────────────────┘                        │
-│                                                                                                         │
-└─────────────────────────────────────────────────────────────────────────────────────────────────────────┘
-```
-
----
-
-## Level 2: Action-Threshold Dynamics
-
-```
-┌─────────────────────────────────────────────────────────────────────────────────────────────────────────┐
-│                               TIME FROM ACTION ACCUMULATION                                             │
-│                                                                                                         │
-│     STANDARD VIEW                             PROPOSED VIEW                                             │
-│     ─────────────                             ─────────────                                             │
-│     Time (fundamental)                        Action accumulation (fundamental)                         │
-│         ↓                                         ↓                                                     │
-│     Action (integral)                         Thresholds S = nℏ (force transitions)                     │
-│         ↓                                         ↓                                                     │
-│     Quantum states                            Time dt = dS/L (emerges from counting)                    │
-│                                                   ↓                                                     │
-│                                               Quantum jumps (occur at thresholds)                       │
-│                                                                                                         │
-│     ╔═════════════════════════════════════════════════════════════════════════════╗                     │
-│     ║                      ACTION ACCUMULATION MECHANISM                          ║                     │
-│     ╠═════════════════════════════════════════════════════════════════════════════╣                     │
-│     ║                                                                             ║                     │
-│     ║   dS/dt = L ≥ 0        (Monotonic for positive energy systems)              ║                     │
-│     ║                                                                             ║                     │
-│     ║   S ═══════════════════════════════►  nℏ  (THRESHOLD)                       ║                     │
-│     ║   ▲                                    │                                    ║                     │
-│     ║   │                                    ▼                                    ║                     │
-│     ║   │                        FORCED QUANTUM TRANSITION                        ║                     │
-│     ║   │                     (Independent of calculation status)                 ║                     │
-│     ║   │                                                                         ║                     │
-│     ║   Action grows                                                              ║                     │
-│     ║   continuously                                                              ║                     │
-│     ╚═════════════════════════════════════════════════════════════════════════════╝                     │
-│                                                                                                         │
-│     ┌─────────────────────────────────────────────────────────────────────────────┐                     │
-│     │                     TIME EMERGENCE EQUATIONS                                │                     │
-│     │                                                                             │                     │
-│     │   Physical time: dt = dS/L                                                  │                     │
-│     │   Threshold count: t_physical = S_total/ℏ                                   │                     │
-│     │   Time's arrow: dS/dt > 0 (irreversibility from action monotonicity)        │                     │
-│     └─────────────────────────────────────────────────────────────────────────────┘                     │
-│                                                                                                         │
-└─────────────────────────────────────────────────────────────────────────────────────────────────────────┘
-```
-
----
-
-## Level 3: The Computational Deadline Mechanism
-
-```
-┌─────────────────────────────────────────────────────────────────────────────────────────────────────────┐
-│                    COMPUTATIONAL CONSTRAINTS FROM ACTION THRESHOLDS                                     │
-│                                                                                                         │
-│     THE MECHANISM:                                                                                      │
-│                                                                                                         │
-│     STEP 1: Action Accumulates                                                                          │
-│     ┌─────────────────────────┐                                                                         │
-│     │  S_current approaching  │                                                                         │
-│     │  next threshold nℏ      │  ═══▶  Action grows toward transition point                             │
-│     └─────────────────────────┘                                                                         │
-│                                                                                                         │
-│     STEP 2: Deadline Computed                                                                           │
-│     ┌─────────────────────────┐                                                                         │
-│     │  T_deadline = ΔS/L      │                                                                         │
-│     │            = ℏ/L        │  ═══▶  Time until forced transition                                     │
-│     └─────────────────────────┘                                                                         │
-│                                                                                                         │
-│     STEP 3: Computational Budget                                                                        │
-│     ┌─────────────────────────┐                                                                         │
-│     │  N_max = T_deadline/t_p │                                                                         │
-│     │        = ℏ/(L × t_p)    │  ═══▶  Maximum iterations for geometric calculations                    │
-│     └─────────────────────────┘                                                                         │
-│                                                                                                         │
-│     STEP 4: Precision Limits                                                                            │
-│     ┌─────────────────────────┐                                                                         │
-│     │  π: N_max digits        │                                                                         │
-│     │  e: N_max terms         │  ═══▶  Precision achieved ~ 10^{-N_max}                                 │
-│     │  √2: N_max iterations   │                                                                         │
-│     └─────────────────────────┘                                                                         │
-│                                                                                                         │
-│     STEP 5: Forced Transition                                                                           │
-│     ╔═════════════════════════════════════════════════════════════════════════════╗                     │
-│     ║                       At S = nℏ: Transition occurs                          ║                     │
-│     ║                                                                             ║                     │
-│     ║   π computed to N_max digits       ───▶  Finite precision                   ║                     │
-│     ║   e summed to N_max terms          ───▶  Series truncated                   ║                     │
-│     ║   √2 converged to N_max steps      ───▶  Approximation only                 ║                     │
-│     ║                                                                             ║                     │
-│     ║   Transition with incomplete geometry ───▶ Uncertainty in outcome           ║                     │
-│     ╚═════════════════════════════════════════════════════════════════════════════╝                     │
-│                                                                                                         │
-│     RESULT: Extended Uncertainty Principle                                                              │
-│     ┌─────────────────────────────────────────────────────────────────────────────┐                     │
-│     │                                                                             │                     │
-│     │   Δx × Δp ≥ ℏ/2  +  δ(π, e, √2)                                             │                     │
-│     │                       ↑                                                     │                     │
-│     │                COMPUTATIONAL TERM                                           │                     │
-│     │                                                                             │                     │
-│     │   where δ ∝ ρ_S ∝ T (temperature dependence)                                │                     │
-│     │                                                                             │                     │
-│     │   High T → High ρ_S → Short time → Few iterations → Larger uncertainty      │                     │
-│     │   Low T  → Low ρ_S  → Long time  → Many iterations → Smaller uncertainty    │                     │
-│     └─────────────────────────────────────────────────────────────────────────────┘                     │
-│                                                                                                         │
-└─────────────────────────────────────────────────────────────────────────────────────────────────────────┘
-```
-
----
-
-## Level 4: Geometric Reshaping
-
-```
-┌─────────────────────────────────────────────────────────────────────────────────────────────────────────┐
-│                                THE GEOMETRIC RESHAPING MECHANISM                                        │
-│                                                                                                         │
-│   MASSLESS PHOTON (γ)                              MASSIVE PARTICLE (m)                                 │
-│   ═══════════════════════▶                         ∼∼∼∼∼∼∼∼∼∼∼∼∼∼∼∼∼▶                                   │
-│   Direct propagation                                Must deform local geometry                          │
-│   No reshaping cost                                 Reshaping cost = mc²                                │
-│                                                                                                         │
-│      ● ────────────────────▶ ●                         ● ≈≈≈≈≈≈≈≈≈≈≈≈▶ ●                                │
-│      Jumps at rate c/ℓ_p                               Effective rate reduced by 1/γ                    │
-│      Effective velocity = c                            Effective velocity = v < c                       │
-│                                                                                                         │
-│     ╔═══════════════════════════════════════════════════════════════════════════════╗                   │
-│     ║                        RESHAPING ENERGY FORMULA                               ║                   │
-│     ╠═══════════════════════════════════════════════════════════════════════════════╣                   │
-│     ║                                                                               ║                   │
-│     ║   E_reshape = mc² × f(R, π, e, √2, N_iterations)                              ║                   │
-│     ║                                                                               ║                   │
-│     ║   where:                                                                      ║                   │
-│     ║   f = 1 + (R/R_Planck) × [                                                    ║                   │
-│     ║       α_π × truncation_error(π, N)  +                                         ║                   │
-│     ║       α_e × series_error(e, N)  +                                             ║                   │
-│     ║       α_√2 × convergence_error(√2, N)                                         ║                   │
-│     ║   ]                                                                           ║                   │
-│     ║                                                                               ║                   │
-│     ║   N_iterations = ℏ/(ρ_S × V × t_Planck)                                       ║                   │
-│     ╚═══════════════════════════════════════════════════════════════════════════════╝                   │
-│                                                                                                         │
-│     EMERGENT RELATIVISTIC EFFECTS:                                                                      │
-│                                                                                                         │
-│     Jump Probability:        P(jump|m,E) = 1 - mc²/E = 1/γ                                              │
-│                                                                                                         │
-│     Effective Velocity:      v_eff = c × P(jump) = c/γ = c√(1 - v²/c²)                                  │
-│                                                                                                         │
-│     This recovers the relativistic velocity-momentum relation.                                          │
-│                                                                                                         │
-└─────────────────────────────────────────────────────────────────────────────────────────────────────────┘
-```
-
----
-
-## Level 5: Observer Sampling Constraints
-
-```
-┌─────────────────────────────────────────────────────────────────────────────────────────────────────────┐
-│                              OBSERVER CONSTRAINTS ON DISCRETENESS                                       │
-│                    (Physical Sampling Limit, Not Perceptual Limitation)                                 │
-│                                                                                                         │
-│     THE NYQUIST-SHANNON CONSTRAINT:                                                                     │
-│                                                                                                         │
-│     Observer sampling rate:       f_obs = c/ℓ_p ≈ 10⁴³ Hz                                               │
-│     Discrete event rate:          f_event = c/ℓ_p ≈ 10⁴³ Hz                                             │
-│     Detection requirement:        f_obs > 2×f_event (Nyquist criterion)                                 │
-│                                                                                                         │
-│     Since f_obs = f_event, direct resolution of individual events is impossible.                        │
-│                                                                                                         │
-│     ╔═══════════════════════════════════════════════════════════════════════════════╗                   │
-│     ║                         THE PERCEPTION TRANSITION                             ║                   │
-│     ╠═══════════════════════════════════════════════════════════════════════════════╣                   │
-│     ║                                                                               ║                   │
-│     ║   FUNDAMENTAL REALITY           OBSERVED BY DISCRETE OBSERVER                 ║                   │
-│     ║   ──────────────────           ──────────────────────────────                 ║                   │
-│     ║   ┌┬┬┬┬┬┬┬┬┬┬┬┬┬┐                      ___________                            ║                   │
-│     ║   ├┼┼┼┼┼┼┼┼┼┼┼┼┼┤     ALIASING       ╱           ╲                            ║                   │
-│     ║   ├┼┼┼┼┼┼┼┼┼┼┼┼┼┤    ═══════════▶   │   SMOOTH    │                           ║                   │
-│     ║   ├┼┼┼┼┼┼┼┼┼┼┼┼┼┤                    │   MANIFOLD  │                          ║                   │
-│     ║   └┴┴┴┴┴┴┴┴┴┴┴┴┴┘                     ╲___________╱                           ║                   │
-│     ║   Discrete lattice                    Continuous spacetime                    ║                   │
-│     ╚═══════════════════════════════════════════════════════════════════════════════╝                   │
-│                                                                                                         │
-│     INDIRECT DETECTION METHODS:                                                                         │
-│                                                                                                         │
-│     1. Statistical ensemble averaging (patterns emerge over many events)                                │
-│     2. Quantum interference effects (discrete signatures in patterns)                                   │
-│     3. Renormalization group flow (UV divergences signal discreteness)                                  │
-│     4. High-energy anomalies (Planck-scale corrections)                                                 │
-│     5. Temperature-dependent quantum errors (action density correlations)                               │
-│                                                                                                         │
-└─────────────────────────────────────────────────────────────────────────────────────────────────────────┘
-```
-
----
-
-## Level 6: Experimental Program
-
-```
-┌─────────────────────────────────────────────────────────────────────────────────────────────────────────┐
-│                                    TESTABLE PREDICTIONS                                                 │
-│                        (Ranked by Feasibility from Error Analysis)                                      │
-│                                                                                                         │
-│     ═══════════════════════════════════════════════════════════════════════════════                     │
-│                               TIER 1: NEAR-TERM (Current Technology)                                    │
-│     ═══════════════════════════════════════════════════════════════════════════════                     │
-│                                                                                                         │
-│     ┌──────────────────────────────────────────────────────────────────────────────┐                    │
-│     │  QUANTUM COMPUTER FIDELITY VS TEMPERATURE                                    │                    │
-│     │  ════════════════════════════════════════════                                │                    │
-│     │  Predicted signal: ΔF ~ 3% over T range                                      │                    │
-│     │  Estimated SNR: ~30                                                          │                    │
-│     │  Estimated cost: ~$500K          Timeline: 2 years                           │                    │
-│     │                                                                              │                    │
-│     │  KEY TEST: Linear F(T) scaling (computational) vs Exponential (thermal)      │                    │
-│     │  Prediction: F(T) = F₀/(1 + αT) with α ≈ 0.065                               │                    │
-│     └──────────────────────────────────────────────────────────────────────────────┘                    │
-│                                                                                                         │
-│     ┌──────────────────────────────────────────────────────────────────────────────┐                    │
-│     │  MEMS OSCILLATOR PHASE DRIFT                                                 │                    │
-│     │  ══════════════════════════════                                              │                    │
-│     │  Predicted signal: Δφ ~ 10⁻⁴ rad/year                                        │                    │
-│     │  Estimated SNR: ~10³                                                         │                    │
-│     │  Estimated cost: ~$300K          Timeline: 2 years                           │                    │
-│     │                                                                              │                    │
-│     │  KEY TEST: Cumulative phase error from irrational computation limits         │                    │
-│     └──────────────────────────────────────────────────────────────────────────────┘                    │
-│                                                                                                         │
-│     ═══════════════════════════════════════════════════════════════════════════════                     │
-│                              TIER 2: DATA MINING (Existing Data)                                        │
-│     ═══════════════════════════════════════════════════════════════════════════════                     │
-│                                                                                                         │
-│     ┌──────────────────────────────────────────────────────────────────────────────┐                    │
-│     │  LIGO NOISE SPECTRUM ANALYSIS   │  BAYESIAN MODEL COMPARISON                 │                    │
-│     │  Est. cost: ~$150K              │  Est. cost: ~$100K                         │                    │
-│     │  Timeline: 1 year               │  Timeline: 1 year                          │                    │
-│     │  Uses existing public data      │  Statistical framework comparison          │                    │
-│     │  Publishable even if null       │  Publishable even if null                  │                    │
-│     └──────────────────────────────────────────────────────────────────────────────┘                    │
-│                                                                                                         │
-│     ═══════════════════════════════════════════════════════════════════════════════                     │
-│                           TIER 3: LONG-TERM (Technology-Limited)                                        │
-│     ═══════════════════════════════════════════════════════════════════════════════                     │
-│                                                                                                         │
-│     ┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐                     │
-│     │  ATOMIC CLOCK   │ │ NUCLEAR CLOCK   │ │ PHASE QUANTUM   │ │  GRAVITATIONAL  │                     │
-│     │  Comparison     │ │  Comparison     │ │  ESTIMATION     │ │  DECOHERENCE    │                     │
-│     │                 │ │                 │ │                 │ │                 │                     │
-│     │ SNR: ~0.01      │ │ SNR: ~0.3       │ │ SNR: ~10⁻¹²     │ │ SNR: ~10⁻⁷⁸      │                     │
-│     │ Cost: ~$5M      │ │ Cost: ~$3M      │ │ Cost: ~$5M      │ │ Cost: ~$20M     │                     │
-│     │ Timeline: 5-7yr │ │ Timeline: 2030s │ │ Timeline: 2030s │ │ Timeline: 10+yr │                     │
-│     └─────────────────┘ └─────────────────┘ └─────────────────┘ └─────────────────┘                     │
-│                                                                                                         │
-└─────────────────────────────────────────────────────────────────────────────────────────────────────────┘
-```
-
----
-
-## The Complete Causal Architecture
+## Level 0: The Single Postulate
 
 ```
 ╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-║                              THE FRAMEWORK'S LOGICAL STRUCTURE                                            ║
+║                                      THE SINGLE POSTULATE                                                 ║
 ╠═══════════════════════════════════════════════════════════════════════════════════════════════════════════╣
 ║                                                                                                           ║
-║                                    ALGEBRAIC SPACE Ω                                                      ║
-║                                          │                                                                ║
-║                                          ▼                                                                ║
-║                              ┌──────────────────────┐                                                     ║
-║                              │  DISCRETE LATTICE Λ  │                                                     ║
-║                              │   (ℓ_p, t_p quanta)  │                                                     ║
-║                              └──────────────────────┘                                                     ║
-║                                          │                                                                ║
-║                          ┌───────────────┴───────────────┐                                                ║
-║                          ▼                               ▼                                                ║
-║              ┌────────────────────┐        ┌────────────────────┐                                         ║
-║              │   ACTION QUANTA    │        │  IRRATIONAL MATH   │                                         ║
-║              │      S = nℏ        │        │    π, e, √2        │                                         ║
-║              └────────────────────┘        └────────────────────┘                                         ║
-║                          │                               │                                                ║
-║                          └───────────────┬───────────────┘                                                ║
-║                                          ▼                                                                ║
-║                              ┌──────────────────────┐                                                     ║
-║                              │ COMPUTATIONAL STRESS │                                                     ║
-║                              │   (Deadline at nℏ)   │                                                     ║
-║                              └──────────────────────┘                                                     ║
-║                                          │                                                                ║
-║                          ┌───────────────┴───────────────┐                                                ║
-║                          ▼                               ▼                                                ║
-║              ┌────────────────────┐        ┌────────────────────┐                                         ║
-║              │  TIME EMERGENCE    │        │   QUANTUM ERROR    │                                         ║
-║              │    dt = dS/L       │        │     ε ∝ T          │                                         ║
-║              └────────────────────┘        └────────────────────┘                                         ║
-║                          │                               │                                                ║
-║                          ▼                               ▼                                                ║
-║              ┌────────────────────┐        ┌────────────────────┐                                         ║
-║              │ GEOMETRIC RESHAPING│        │   OBSERVER LIMIT   │                                         ║
-║              │   E = mc²/γ        │        │   (Sampling Bound) │                                         ║
-║              └────────────────────┘        └────────────────────┘                                         ║
-║                          │                               │                                                ║
-║                          └───────────────┬───────────────┘                                                ║
-║                                          ▼                                                                ║
-║                              ┌──────────────────────┐                                                     ║
-║                              │  CONTINUOUS PHYSICS  │                                                     ║
-║                              │   (Emergent regime)  │                                                     ║
-║                              └──────────────────────┘                                                     ║
-║                                          │                                                                ║
-║                          ┌───────┬───────┼───────┬───────┐                                                ║
-║                          ▼       ▼       ▼       ▼       ▼                                                ║
-║                       ┌─────┐ ┌─────┐ ┌─────┐ ┌─────┐ ┌─────┐                                             ║
-║                       │ QM  │ │ GR  │ │ SM  │ │ QFT │ │Cosmo│                                             ║
-║                       └─────┘ └─────┘ └─────┘ └─────┘ └─────┘                                             ║
+║                              ╔═══════════════════════════════════╗                                        ║
+║                              ║                                   ║                                        ║
+║                              ║    EVERYTHING IS DISCRETE         ║                                        ║
+║                              ║                                   ║                                        ║
+║                              ║    Λ = ℓ_P · ℤ⁴                   ║                                        ║
+║                              ║                                   ║                                        ║
+║                              ╚═══════════════════════════════════╝                                        ║
+║                                              │                                                            ║
+║                                              │                                                            ║
+║                                              ▼                                                            ║
+║                                                                                                           ║
+║     From this single postulate, combined with the mathematical necessity of geometry,                     ║
+║     ALL of physics follows.                                                                               ║
 ║                                                                                                           ║
 ╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 ```
 
 ---
 
-## Core Mathematical Formalism
+## Level 1: The Emergence Chain
 
 ```
 ╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-║                                      FUNDAMENTAL EQUATIONS                                                ║
+║                                   HOW PHYSICS EMERGES FROM DISCRETENESS                                   ║
 ╠═══════════════════════════════════════════════════════════════════════════════════════════════════════════╣
 ║                                                                                                           ║
-║   DISCRETE METRIC:                                                                                        ║
-║   ds² = -c²t_p²(Δn₀)² + ℓ_p²[(Δn₁)² + (Δn₂)² + (Δn₃)²]      where n_μ ∈ ℤ                                 ║
-║                                                                                                           ║
-║   ACTION-TIME EMERGENCE:                                                                                  ║
-║   dS/dt = L ≥ 0          (Monotonic action accumulation)                                                  ║
-║   dt = dS/L              (Time emerges from action)                                                       ║
-║   T = ℏ/L                (Computational deadline)                                                         ║
-║                                                                                                           ║
-║   COMPUTATIONAL BUDGET:                                                                                   ║
-║   N_max = ℏ/(Nk_BT × t_Planck)      (Maximum iterations available)                                        ║
-║   ε_irrational ~ 10^{-N_max}         (Achievable precision)                                               ║
-║                                                                                                           ║
-║   RESHAPING ENERGY:                                                                                       ║
-║   E_reshape = mc² × f(R, π, e, √2, N_iterations)                                                          ║
-║                                                                                                           ║
-║   JUMP PROBABILITY:                                                                                       ║
-║   P(jump|m,E) = 1 - mc²/E = 1/γ     (Recovers Lorentz factor)                                             ║
-║                                                                                                           ║
-║   EXTENDED UNCERTAINTY:                                                                                   ║
-║   ΔxΔp ≥ ℏ/2 + δ(π, e, √2)          where δ ∝ ρ_S ∝ T                                                     ║
-║                                                                                                           ║
-║   ACTION DENSITY:                                                                                         ║
-║   ρ_S = (Nk_BT)/V                   (Determines computational stress)                                     ║
-║   Error scaling: ε = α × (ρ_S/ρ_Planck) ≈ α × T                                                           ║
-║                                                                                                           ║
-║   QUANTUM COMPUTING PREDICTION:                                                                           ║
-║   F(T) = F₀/(1 + α×T)               with α ≈ 0.065                                                        ║
+║                                    DISCRETENESS (Λ = ℓ_P · ℤ⁴)                                            ║
+║                                              │                                                            ║
+║                          ┌───────────────────┴───────────────────┐                                        ║
+║                          ▼                                       ▼                                        ║
+║              ┌─────────────────────┐                 ┌─────────────────────┐                              ║
+║              │  Counting requires  │                 │  Geometry requires  │                              ║
+║              │     INTEGERS        │                 │  π, e, √2           │                              ║
+║              │                     │                 │  (IRRATIONALS)      │                              ║
+║              └─────────────────────┘                 └─────────────────────┘                              ║
+║                          │                                       │                                        ║
+║                          ▼                                       ▼                                        ║
+║              ┌─────────────────────┐                 ┌─────────────────────┐                              ║
+║              │  Information is     │                 │  Cannot compute     │                              ║
+║              │  COUNTABLE          │                 │  exactly in finite  │                              ║
+║              │                     │                 │  time               │                              ║
+║              └─────────────────────┘                 └─────────────────────┘                              ║
+║                          │                                       │                                        ║
+║                          ▼                                       ▼                                        ║
+║              ┌─────────────────────┐                 ┌─────────────────────┐                              ║
+║              │  CONSERVATION       │                 │  COMPUTATIONAL      │                              ║
+║              │  LAWS               │                 │  DEADLINES          │                              ║
+║              │  (∂_μJ^μ_I = 0)     │                 │  (τ = ℏ/E)          │                              ║
+║              └─────────────────────┘                 └─────────────────────┘                              ║
+║                          │                                       │                                        ║
+║                          └───────────────────┬───────────────────┘                                        ║
+║                                              ▼                                                            ║
+║                              ┌─────────────────────────────┐                                              ║
+║                              │    FORCED TRANSITIONS       │                                              ║
+║                              │    AT ACTION THRESHOLD      │                                              ║
+║                              │         S = nℏ              │                                              ║
+║                              └─────────────────────────────┘                                              ║
+║                                              │                                                            ║
+║                          ┌───────────────────┼───────────────────┐                                        ║
+║                          ▼                   ▼                   ▼                                        ║
+║              ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                                ║
+║              │      TIME       │  │   UNCERTAINTY   │  │    HEALING      │                                ║
+║              │    emerges      │  │    emerges      │  │     FLOW        │                                ║
+║              │  (tick count)   │  │   (truncation)  │  │   (repair)      │                                ║
+║              └─────────────────┘  └─────────────────┘  └─────────────────┘                                ║
+║                          │                   │                   │                                        ║
+║                          └───────────────────┼───────────────────┘                                        ║
+║                                              ▼                                                            ║
+║                              ┌─────────────────────────────┐                                              ║
+║                              │       ALL PHYSICS           │                                              ║
+║                              │   (QM, GR, SM, Forces)      │                                              ║
+║                              └─────────────────────────────┘                                              ║
 ║                                                                                                           ║
 ╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 ```
 
 ---
 
-## Summary
+## Level 2: The Omega Space Ω
 
-This framework proposes that:
-
-1. Spacetime is fundamentally discrete at the Planck scale
-2. Time emerges from action threshold counting
-3. Computational deadlines from action quantization limit precision of irrational geometric calculations
-4. This creates irreducible quantum uncertainty scaling with action density
-5. Continuous physics emerges as a statistical limit visible to discrete observers
-
-The framework makes specific, testable predictions—particularly regarding temperature-dependent quantum computing errors—that distinguish it from standard quantum mechanics.
+```
+╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║                                    THE ALGEBRAIC SPACE Ω                                                  ║
+║                          (The Standard Model IS the Alphabet of Reality)                                  ║
+╠═══════════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                                           ║
+║     THE GENERATORS:                                                                                       ║
+║     ═══════════════                                                                                       ║
+║                                                                                                           ║
+║         ╔═══════════════════════════════════════════════════════════════════════════╗                     ║
+║         ║                           Ω = ⟨1, 2, 3⟩                                   ║                     ║
+║         ╠═══════════════════════════════════════════════════════════════════════════╣                     ║
+║         ║                                                                           ║                     ║
+║         ║    1 → U(1)    Phase, Charge, Identity, Time (1D)                         ║                     ║
+║         ║                                                                           ║                     ║
+║         ║    2 → SU(2)   Duality, Spin, Chirality, Weak Force                       ║                     ║
+║         ║                                                                           ║                     ║
+║         ║    3 → SU(3)   Closure, Color, Space (3D), Strong Force                   ║                     ║
+║         ║                                                                           ║                     ║
+║         ╚═══════════════════════════════════════════════════════════════════════════╝                     ║
+║                                                                                                           ║
+║     DERIVED NUMBERS:                                                                                      ║
+║     ═══════════════                                                                                       ║
+║                                                                                                           ║
+║         4 = 3 + 1       →  Spacetime dimensions (3 space + 1 time)                                        ║
+║         6 = 3 × 2       →  Quark types per generation (color × chirality)                                 ║
+║         8 = 3² - 1      →  Gluons (adjoint of SU(3))                                                      ║
+║         3 generations   →  Topological sectors (π₁ = ℤ₃)                                                  ║
+║                                                                                                           ║
+║     FULL GENERATOR SET:                                                                                   ║
+║     ═══════════════════                                                                                   ║
+║                                                                                                           ║
+║         Ω = ⟨ U(1), SU(2), SU(3), I, H, E ⟩                                                               ║
+║                                                                                                           ║
+║         where:  I = Information conservation generator                                                    ║
+║                 H = Healing flow generator (2D → 4D)                                                      ║
+║                 E = Entanglement generator (D_ent)                                                        ║
+║                                                                                                           ║
+╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+```
 
 ---
 
-**Document Status**: Visual summary of theoretical framework
-**Related Papers**: Main paper, Appendices A-H
-**Keywords**: Discrete spacetime, action thresholds, computational deadlines, geometric reshaping, quantum gravity
+## Level 3: The Three Projections
+
+```
+╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║                                  THE THREE PROJECTIONS OF Ω                                               ║
+╠═══════════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                                           ║
+║                                              Ω                                                            ║
+║                               (Complete algebraic structure)                                              ║
+║                                              │                                                            ║
+║              ┌───────────────────────────────┼───────────────────────────────┐                            ║
+║              │                               │                               │                            ║
+║              ▼                               ▼                               ▼                            ║
+║   ╔═════════════════════════╗   ╔═════════════════════════╗   ╔═════════════════════════╗                 ║
+║   ║   SPACETIME PROJECTION  ║   ║    GAUGE PROJECTION     ║   ║    D_ent PROJECTION     ║                 ║
+║   ╠═════════════════════════╣   ╠═════════════════════════╣   ╠═════════════════════════╣                 ║
+║   ║                         ║   ║                         ║   ║                         ║                 ║
+║   ║  Coordinates: (x,y,z,t) ║   ║  Charges: Q, T_i, λ_a   ║   ║  Entanglement structure ║                 ║
+║   ║                         ║   ║                         ║   ║                         ║                 ║
+║   ║  Contains:              ║   ║  Contains:              ║   ║  Contains:              ║                 ║
+║   ║  • Mass                 ║   ║  • Electric charge      ║   ║  • Quantum correlations ║                 ║
+║   ║  • Energy               ║   ║  • Weak isospin         ║   ║  • Wormhole geometry    ║                 ║
+║   ║  • Geometry             ║   ║  • Color charge         ║   ║  • Non-local connections║                 ║
+║   ║  • Gravity              ║   ║  • Force carriers       ║   ║                         ║                 ║
+║   ║                         ║   ║                         ║   ║                         ║                 ║
+║   ║  Appears as:            ║   ║  Appears as:            ║   ║  Appears as:            ║                 ║
+║   ║  General Relativity     ║   ║  Standard Model         ║   ║  Quantum Mechanics      ║                 ║
+║   ║                         ║   ║                         ║   ║  "Spooky action"        ║                 ║
+║   ╚═════════════════════════╝   ╚═════════════════════════╝   ╚═════════════════════════╝                 ║
+║              │                               │                               │                            ║
+║              └───────────────────────────────┼───────────────────────────────┘                            ║
+║                                              │                                                            ║
+║                                              ▼                                                            ║
+║                               ╔═════════════════════════════════╗                                         ║
+║                               ║       OBSERVED PHYSICS          ║                                         ║
+║                               ╠═════════════════════════════════╣                                         ║
+║                               ║                                 ║                                         ║
+║                               ║  All three projections overlaid ║                                         ║
+║                               ║  = Complete physical reality    ║                                         ║
+║                               ║                                 ║                                         ║
+║                               ╚═════════════════════════════════╝                                         ║
+║                                                                                                           ║
+║   KEY INSIGHT: Spacetime and Standard Model are not separate theories to be unified.                      ║
+║                They are DUAL PROJECTIONS of the same underlying structure Ω.                              ║
+║                Spacetime IS the Standard Model seen geometrically.                                        ║
+║                                                                                                           ║
+╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+```
+
+---
+
+## Level 4: Entanglement as Wormholes (ER = EPR)
+
+```
+╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║                                   ENTANGLEMENT = WORMHOLES                                                ║
+║                                        (ER = EPR)                                                         ║
+╠═══════════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                                           ║
+║   IN THE D_ent PROJECTION:                        IN THE SPACETIME PROJECTION:                            ║
+║   ═══════════════════════                         ════════════════════════════                            ║
+║                                                                                                           ║
+║   Entangled particles A and B                     Entangled particles A and B                             ║
+║   are ADJACENT (d ≈ ℓ_P)                          appear SEPARATED (d = large)                            ║
+║                                                                                                           ║
+║         A ●━━━━━● B                                    A ●─ ─ ─ ─ ─ ─ ─● B                                ║
+║           d ≈ ℓ_P                                         \           /                                   ║
+║                                                            \         /                                    ║
+║                                                             \       /                                     ║
+║                                                              ╲     ╱                                      ║
+║                                                            WORMHOLE                                       ║
+║                                                             (d ≈ 0)                                       ║
+║                                                                                                           ║
+║   THE ENERGY BUDGET:                                                                                      ║
+║   ═════════════════                                                                                       ║
+║                                                                                                           ║
+║   ┌────────────────┬─────────────────────┬────────────────────────────────────┐                           ║
+║   │     Phase      │    Energy Cost      │        Wormhole Effect             │                           ║
+║   ├────────────────┼─────────────────────┼────────────────────────────────────┤                           ║
+║   │  CREATION      │    E_create         │   Wormhole forms (short)           │                           ║
+║   ├────────────────┼─────────────────────┼────────────────────────────────────┤                           ║
+║   │  SEPARATION    │    E_stretch ~ αd   │   Wormhole stretches (longer)      │                           ║
+║   ├────────────────┼─────────────────────┼────────────────────────────────────┤                           ║
+║   │  EVOLUTION     │    E_complex ~ βt   │   Complexity grows                 │                           ║
+║   ├────────────────┼─────────────────────┼────────────────────────────────────┤                           ║
+║   │  MEASUREMENT   │    E_measure (tiny) │   Uses PRE-BUILT geometry          │                           ║
+║   └────────────────┴─────────────────────┴────────────────────────────────────┘                           ║
+║                                                                                                           ║
+║   NOTHING IS FREE:                                                                                        ║
+║   ═══════════════                                                                                         ║
+║   • Creating entanglement costs energy (builds wormhole)                                                  ║
+║   • Separating particles costs MORE energy (stretches wormhole)                                           ║
+║   • "Instant" correlation uses pre-paid geometry                                                          ║
+║                                                                                                           ║
+╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+```
+
+---
+
+## Level 5: What "Instant" Really Means
+
+```
+╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║                              THE TRUE NATURE OF "INSTANTANEOUS"                                           ║
+║                          (One Planck Tick Through Adjacent Points)                                        ║
+╠═══════════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                                           ║
+║   NOTHING IS TRULY INSTANTANEOUS                                                                          ║
+║   ══════════════════════════════                                                                          ║
+║                                                                                                           ║
+║   In D_ent projection, entangled particles are ADJACENT (separated by ℓ_P).                               ║
+║   Information propagates at c between them.                                                               ║
+║                                                                                                           ║
+║   Time required:                                                                                          ║
+║   ┌─────────────────────────────────────────────────────────────────────────────┐                         ║
+║   │                                                                             │                         ║
+║   │    Δt_correlation = ℓ_P / c = t_P ≈ 5.4 × 10⁻⁴⁴ seconds                     │                         ║
+║   │                                                                             │                         ║
+║   │    = ONE PLANCK TICK                                                        │                         ║
+║   │                                                                             │                         ║
+║   └─────────────────────────────────────────────────────────────────────────────┘                         ║
+║                                                                                                           ║
+║   WHY IT APPEARS INSTANTANEOUS: DISCRETE OBSERVER BLINDNESS                                               ║
+║   ═══════════════════════════════════════════════════════════                                             ║
+║                                                                                                           ║
+║   Any physical observer is made of discrete components at Planck scale:                                   ║
+║                                                                                                           ║
+║      f_observer = c/ℓ_P ≈ 1.9 × 10⁴³ Hz  (observer's sampling rate)                                       ║
+║      f_signal   = c/ℓ_P ≈ 1.9 × 10⁴³ Hz  (correlation propagation rate)                                   ║
+║                                                                                                           ║
+║   NYQUIST-SHANNON THEOREM:                                                                                ║
+║   ════════════════════════                                                                                ║
+║   To resolve a signal of frequency f, must sample at rate > 2f                                            ║
+║                                                                                                           ║
+║   Since f_observer = f_signal (not > 2f_signal):                                                          ║
+║   → The single-tick delay CANNOT BE RESOLVED                                                              ║
+║   → One Planck tick is operationally indistinguishable from zero                                          ║
+║                                                                                                           ║
+║   ┌─────────────────────────────────────────────────────────────────────────────┐                         ║
+║   │                                                                             │                         ║
+║   │    ACTUAL:    A ──[one tick]──▶ B    (propagation at c, Δt = t_P)           │                         ║
+║   │                                                                             │                         ║
+║   │    OBSERVED:  A ════════════════▶ B   (appears instantaneous due to         │                         ║
+║   │                                        sampling limitation)                 │                         ║
+║   │                                                                             │                         ║
+║   └─────────────────────────────────────────────────────────────────────────────┘                         ║
+║                                                                                                           ║
+║   CONSEQUENCES:                                                                                           ║
+║   ═════════════                                                                                           ║
+║                                                                                                           ║
+║   ┌────────────────────────────────────────┬────────────────────────────────────┐                         ║
+║   │           Statement                    │            Status                  │                         ║
+║   ├────────────────────────────────────────┼────────────────────────────────────┤                         ║
+║   │ "Correlation is instantaneous"         │ Observationally true (below res.)  │                         ║
+║   ├────────────────────────────────────────┼────────────────────────────────────┤                         ║
+║   │ "Nothing travels faster than c"        │ Fundamentally true (c in D_ent)    │                         ║
+║   ├────────────────────────────────────────┼────────────────────────────────────┤                         ║
+║   │ "Relativity is violated"               │ FALSE                              │                         ║
+║   ├────────────────────────────────────────┼────────────────────────────────────┤                         ║
+║   │ "Information transfer is free"         │ FALSE (geometry was pre-paid)      │                         ║
+║   └────────────────────────────────────────┴────────────────────────────────────┘                         ║
+║                                                                                                           ║
+║   EINSTEIN'S "SPOOKY ACTION" EXPLAINED:                                                                   ║
+║   ═════════════════════════════════════                                                                   ║
+║   There is no action at a distance.                                                                       ║
+║   There is ordinary propagation at c through pre-built geometry,                                          ║
+║   with the single-tick delay hidden by discrete observer blindness.                                       ║
+║                                                                                                           ║
+╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+```
+
+---
+
+## Level 6: The Noether-Mendeleev Periodic Table
+
+```
+╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║                              THE Ω PERIODIC TABLE OF PARTICLES                                            ║
+║                     Organized by D (dimension), S (scale), τ (topology)                                   ║
+╠═══════════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                                           ║
+║   HIDDEN GENERATORS (deduced from closure, like finding Rubik's cube moves):                              ║
+║   ═══════════════════════════════════════════════════════════════════════════                             ║
+║                                                                                                           ║
+║   ┌──────────────┬────────┬──────────────────────────────────────────────────┐                            ║
+║   │  Generator   │ Symbol │           What It Explains                       │                            ║
+║   ├──────────────┼────────┼──────────────────────────────────────────────────┤                            ║
+║   │  Dimension   │   D    │  Mass (dimensional mismatch), d_eff flow         │                            ║
+║   │  Topology    │   τ    │  Three generations (π₁ = ℤ₃)                     │                            ║
+║   │  Scale       │   S    │  Mass hierarchy (cascade levels)                 │                            ║
+║   │  Unification │   U    │  GUT structure                                   │                            ║
+║   └──────────────┴────────┴──────────────────────────────────────────────────┘                            ║
+║                                                                                                           ║
+║   THE TABLE (τ = 0, 1, 2 layers):                                                                         ║
+║   ════════════════════════════════                                                                        ║
+║                                                                                                           ║
+║   LAYER τ = 0 (Generation 1 + Bosons)                                                                     ║
+║   ───────────────────────────────────                                                                     ║
+║              │  S=1        │  S=2        │  S=3        │  S=4        │                                    ║
+║              │  (Planck)   │  (GUT)      │  (Weak)     │  (QCD)      │                                    ║
+║   ───────────┼─────────────┼─────────────┼─────────────┼─────────────┤                                    ║
+║   D = 2      │  graviton   │  graviton   │  graviton   │  graviton   │  ← Massless (d_req ≤ d_avail)      ║
+║              │  photon     │  photon     │  photon     │  photon     │                                    ║
+║   ───────────┼─────────────┼─────────────┼─────────────┼─────────────┤                                    ║
+║   D = 2.5    │     -       │  gluon(GUT) │  gluon      │  gluon      │  ← Confined                        ║
+║   ───────────┼─────────────┼─────────────┼─────────────┼─────────────┤                                    ║
+║   D = 3      │     -       │  W,Z (GUT)  │  W±, Z, H   │  (decoupled)│  ← Massive (weak scale)            ║
+║   ───────────┼─────────────┼─────────────┼─────────────┼─────────────┤                                    ║
+║   D = 4      │     -       │     -       │  e, ν_e     │  u, d       │  ← Fermions need full 4D           ║
+║                                                                                                           ║
+║   LAYER τ = 1 (Generation 2)            LAYER τ = 2 (Generation 3)                                        ║
+║   ──────────────────────────            ──────────────────────────                                        ║
+║   D = 4: μ, ν_μ, c, s                   D = 4: τ, ν_τ, t, b                                               ║
+║                                                                                                           ║
+║   LAYER τ = 3 (Generation 4) — FORBIDDEN BY TOPOLOGY                                                      ║
+║   ──────────────────────────────────────────────────────                                                  ║
+║   D = 4: ✗ (τ³ = 1 ⟹ only 3 eigenvalues exist)                                                           ║
+║                                                                                                           ║
+║   KEY PREDICTIONS:                                                                                        ║
+║   ═══════════════                                                                                         ║
+║   • No 4th generation (topological prohibition)                                                           ║
+║   • Mass = dimensional mismatch                                                                           ║
+║   • Photon/graviton massless (d_req = 2, fits all d_avail)                                                ║
+║   • W/Z massive (d_req = 3, must pay cost)                                                                ║
+║                                                                                                           ║
+╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+```
+
+---
+
+## Level 7: Dimensional Flow
+
+```
+╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║                                    DIMENSIONAL FLOW                                                       ║
+║                           d_eff(E) = 4 - 2(E/E_P)                                                         ║
+╠═══════════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                                           ║
+║   d_eff                                                                                                   ║
+║     │                                                                                                     ║
+║   4 ┤━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━●  Full SM (quarks, leptons)                                       ║
+║     │                                 ╱                                                                   ║
+║     │                               ╱                                                                     ║
+║   3 ┤─────────────────────────────●────  W, Z, Higgs                                                      ║
+║     │                           ╱                                                                         ║
+║     │                         ╱                                                                           ║
+║ 2.5 ┤───────────────────────●──────────  Gluons (QCD)                                                     ║
+║     │                     ╱                                                                               ║
+║     │                   ╱                                                                                 ║
+║   2 ┤━━━━━━━━━━━━━━━━━●━━━━━━━━━━━━━━━━  Graviton, Photon (always fit)                                    ║
+║     │               ╱                                                                                     ║
+║     │             ╱                                                                                       ║
+║     └───────────┴───────────┴───────────┴───────────┴──────────▶ E                                        ║
+║               QCD        Weak       GUT        Planck                                                     ║
+║               (~1 GeV)   (~100 GeV) (~10¹⁶)    (10¹⁹ GeV)                                                 ║
+║                                                                                                           ║
+║   OBSERVED EVIDENCE:                                                                                      ║
+║   ═════════════════                                                                                       ║
+║   • CDT simulations (Ambjørn 2005): d_eff → 2 at high E                                                   ║
+║   • Asymptotic Safety (Reuter): d_eff → 2 at UV fixed point                                               ║
+║   • Hořava-Lifshitz gravity: Anisotropic scaling → 2D                                                     ║
+║   • Loop Quantum Gravity: Area quantization fundamental                                                   ║
+║                                                                                                           ║
+║   2D IS NOT ASSUMED — IT IS OBSERVED.                                                                     ║
+║                                                                                                           ║
+╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+```
+
+---
+
+## Level 8: The Master Conservation Law
+
+```
+╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║                                 THE FOURTH NOETHER LAW                                                    ║
+║                               (Master Conservation Principle)                                             ║
+╠═══════════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                                           ║
+║                              ╔═══════════════════════════════════╗                                        ║
+║                              ║                                   ║                                        ║
+║                              ║        ∂_μ J^μ_I = 0              ║                                        ║
+║                              ║                                   ║                                        ║
+║                              ║   Information Conservation        ║                                        ║
+║                              ║                                   ║                                        ║
+║                              ╚═══════════════════════════════════╝                                        ║
+║                                              │                                                            ║
+║                                              │ Projects to:                                               ║
+║                                              │                                                            ║
+║               ┌──────────────────────────────┼──────────────────────────────┐                             ║
+║               │                              │                              │                             ║
+║               ▼                              ▼                              ▼                             ║
+║   ┌─────────────────────┐      ┌─────────────────────┐      ┌─────────────────────┐                       ║
+║   │  Energy-Momentum    │      │  Charge             │      │  Color              │                       ║
+║   │  Conservation       │      │  Conservation       │      │  Conservation       │                       ║
+║   │                     │      │                     │      │                     │                       ║
+║   │  ∂_μ T^μν = 0       │      │  ∂_μ j^μ_em = 0     │      │  D_μ j^μ_a = 0      │                       ║
+║   │                     │      │                     │      │                     │                       ║
+║   │  (Spacetime sector) │      │  (U(1) sector)      │      │  (SU(3) sector)     │                       ║
+║   └─────────────────────┘      └─────────────────────┘      └─────────────────────┘                       ║
+║                                                                                                           ║
+║   All conservation laws are PROJECTIONS of information conservation onto specific sectors of Ω.           ║
+║                                                                                                           ║
+╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+```
+
+---
+
+## Level 9: The Complete Causal Architecture
+
+```
+╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║                              THE COMPLETE CAUSAL STRUCTURE                                                ║
+╠═══════════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                                           ║
+║                                    DISCRETENESS (Λ = ℓ_P · ℤ⁴)                                            ║
+║                                              │                                                            ║
+║                                              ▼                                                            ║
+║                              ┌──────────────────────────┐                                                 ║
+║                              │  IRRATIONALS IN GEOMETRY │                                                 ║
+║                              │      π, e, √2            │                                                 ║
+║                              └──────────────────────────┘                                                 ║
+║                                              │                                                            ║
+║                                              ▼                                                            ║
+║                              ┌──────────────────────────┐                                                 ║
+║                              │  COMPUTATIONAL DEADLINES │                                                 ║
+║                              │      τ = ℏ/E             │                                                 ║
+║                              └──────────────────────────┘                                                 ║
+║                                              │                                                            ║
+║                          ┌───────────────────┼───────────────────┐                                        ║
+║                          ▼                   ▼                   ▼                                        ║
+║              ┌────────────────────┐ ┌────────────────────┐ ┌────────────────────┐                         ║
+║              │   TIME EMERGENCE   │ │  QUANTUM ERROR     │ │  HEALING FLOW      │                         ║
+║              │    dt = dS/L       │ │    ε ∝ T           │ │   2D → 4D          │                         ║
+║              └────────────────────┘ └────────────────────┘ └────────────────────┘                         ║
+║                          │                   │                   │                                        ║
+║                          └───────────────────┼───────────────────┘                                        ║
+║                                              ▼                                                            ║
+║                              ╔══════════════════════════╗                                                 ║
+║                              ║           Ω              ║                                                 ║
+║                              ║    ⟨U(1), SU(2), SU(3),  ║                                                 ║
+║                              ║      I, H, E⟩            ║                                                 ║
+║                              ╚══════════════════════════╝                                                 ║
+║                                              │                                                            ║
+║                          ┌───────────────────┼───────────────────┐                                        ║
+║                          ▼                   ▼                   ▼                                        ║
+║              ┌────────────────────┐ ┌────────────────────┐ ┌────────────────────┐                         ║
+║              │    SPACETIME       │ │      GAUGE         │ │      D_ent         │                         ║
+║              │    PROJECTION      │ │    PROJECTION      │ │    PROJECTION      │                         ║
+║              └────────────────────┘ └────────────────────┘ └────────────────────┘                         ║
+║                          │                   │                   │                                        ║
+║                          └───────────────────┼───────────────────┘                                        ║
+║                                              ▼                                                            ║
+║                               ╔═════════════════════════════╗                                             ║
+║                               ║    OBSERVED PHYSICS         ║                                             ║
+║                               ║    ══════════════════       ║                                             ║
+║                               ║    QM + GR + SM unified     ║                                             ║
+║                               ╚═════════════════════════════╝                                             ║
+║                                                                                                           ║
+╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+```
+
+---
+
+## Level 10: Fundamental Equations
+
+```
+╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║                                    FUNDAMENTAL EQUATIONS                                                  ║
+╠═══════════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                                           ║
+║   MASTER CONSERVATION:                                                                                    ║
+║   ════════════════════                                                                                    ║
+║       ∂_μ J^μ_I = 0                       Information conservation (all others derive)                    ║
+║                                                                                                           ║
+║   DIMENSIONAL FLOW:                                                                                       ║
+║   ═════════════════                                                                                       ║
+║       d_eff(E) = 4 - 2(E/E_P)             Derived from computational deadlines                            ║
+║                                                                                                           ║
+║   TIME EMERGENCE:                                                                                         ║
+║   ═══════════════                                                                                         ║
+║       dt = dS/L                           Time emerges from action accumulation                           ║
+║       T = ℏ/L                             Computational deadline                                          ║
+║                                                                                                           ║
+║   GRAVITON ENERGY:                                                                                        ║
+║   ════════════════                                                                                        ║
+║       E_g = (I_g/I_max) × E_P             Derived from information content                                ║
+║           = (2.32/4.53) × E_P ≈ E_P/2                                                                     ║
+║                                                                                                           ║
+║   MASS FROM DIMENSION:                                                                                    ║
+║   ════════════════════                                                                                    ║
+║       m = M_P × f(d_required - d_available)   Mass is dimensional mismatch                                ║
+║                                                                                                           ║
+║   ENTANGLEMENT ENERGY:                                                                                    ║
+║   ════════════════════                                                                                    ║
+║       E_ent = E_create + α·d + β·log(complexity)  Wormhole creation + stretching                          ║
+║                                                                                                           ║
+║   QUANTUM FIDELITY:                                                                                       ║
+║   ═════════════════                                                                                       ║
+║       F(T) = F₀/(1 + αT)                  Temperature dependence (confirmed Diraq 2024)                   ║
+║                                                                                                           ║
+║   CORRELATION TIME:                                                                                       ║
+║   ═════════════════                                                                                       ║
+║       Δt_correlation = t_P = ℓ_P/c        One Planck tick (below observer resolution)                     ║
+║                       ≈ 5.4 × 10⁻⁴⁴ s                                                                     ║
+║                                                                                                           ║
+║   OBSERVER BLINDNESS:                                                                                     ║
+║   ═══════════════════                                                                                     ║
+║       f_observer = f_signal               Single tick unresolvable (Nyquist-Shannon)                      ║
+║                                                                                                           ║
+╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+```
+
+---
+
+## Level 11: Experimental Predictions
+
+```
+╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║                                    FALSIFIABLE PREDICTIONS                                                ║
+╠═══════════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                                           ║
+║   ABSOLUTE PREDICTIONS (Framework fails if wrong):                                                        ║
+║   ═══════════════════════════════════════════════                                                         ║
+║                                                                                                           ║
+║   ┌────────────────────────────────┬─────────────────────┬────────────────────────────┐                   ║
+║   │         Prediction             │   Current Status    │      Falsification         │                   ║
+║   ├────────────────────────────────┼─────────────────────┼────────────────────────────┤                   ║
+║   │ No 4th generation              │   No evidence ✓     │ Any 4th gen discovery      │                   ║
+║   ├────────────────────────────────┼─────────────────────┼────────────────────────────┤                   ║
+║   │ CPT exactly conserved          │   10⁻¹⁸ limit ✓     │ Any CPT violation          │                   ║
+║   ├────────────────────────────────┼─────────────────────┼────────────────────────────┤                   ║
+║   │ d_eff = 2 at Planck            │   CDT confirms ✓    │ d_eff ≠ 2 observed         │                   ║
+║   ├────────────────────────────────┼─────────────────────┼────────────────────────────┤                   ║
+║   │ F(T) = F₀/(1+αT)               │   Diraq 2024 ✓      │ Non-linear F(T)            │                   ║
+║   └────────────────────────────────┴─────────────────────┴────────────────────────────┘                   ║
+║                                                                                                           ║
+║   SPECIFIC PREDICTIONS (Test the details):                                                                ║
+║   ═══════════════════════════════════════                                                                 ║
+║                                                                                                           ║
+║   ┌────────────────────────────────┬─────────────────────┬────────────────────────────┐                   ║
+║   │         Prediction             │       Formula       │           Test             │                   ║
+║   ├────────────────────────────────┼─────────────────────┼────────────────────────────┤                   ║
+║   │ Proton decay                   │   τ ~ 10³⁴⁻³⁶ yr    │ Hyper-K, DUNE              │                   ║
+║   ├────────────────────────────────┼─────────────────────┼────────────────────────────┤                   ║
+║   │ Graviton energy                │   E_g = E_P/2       │ Gravitational waves        │                   ║
+║   ├────────────────────────────────┼─────────────────────┼────────────────────────────┤                   ║
+║   │ Entanglement distance limit    │   d_crit ~ 10¹⁵ m   │ Satellite experiments      │                   ║
+║   ├────────────────────────────────┼─────────────────────┼────────────────────────────┤                   ║
+║   │ Correlation time               │   Δt = t_P          │ Sub-Planck (impossible)    │                   ║
+║   └────────────────────────────────┴─────────────────────┴────────────────────────────┘                   ║
+║                                                                                                           ║
+╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+```
+
+---
+
+## Summary: The Complete Framework
+
+```
+╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║                                    THE Ω-THEORY IN ONE DIAGRAM                                            ║
+╠═══════════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                                           ║
+║                                      "Everything is discrete"                                             ║
+║                                              │                                                            ║
+║                                              ▼                                                            ║
+║                                   Geometry needs irrationals                                              ║
+║                                              │                                                            ║
+║                                              ▼                                                            ║
+║                                   Cannot compute exactly                                                  ║
+║                                              │                                                            ║
+║                                              ▼                                                            ║
+║                       ┌──────────────────────┼──────────────────────┐                                     ║
+║                       │                      │                      │                                     ║
+║                       ▼                      ▼                      ▼                                     ║
+║                     TIME               UNCERTAINTY              FORCES                                    ║
+║                    emerges               emerges                emerge                                    ║
+║                       │                      │                      │                                     ║
+║                       └──────────────────────┼──────────────────────┘                                     ║
+║                                              │                                                            ║
+║                                              ▼                                                            ║
+║                                ╔════════════════════════════╗                                             ║
+║                                ║            Ω               ║                                             ║
+║                                ║      = ⟨1, 2, 3⟩           ║                                             ║
+║                                ║   Standard Model IS the    ║                                             ║
+║                                ║   alphabet of reality      ║                                             ║
+║                                ╚════════════════════════════╝                                             ║
+║                                              │                                                            ║
+║                       ┌──────────────────────┼──────────────────────┐                                     ║
+║                       │                      │                      │                                     ║
+║                       ▼                      ▼                      ▼                                     ║
+║                  SPACETIME              GAUGE                  D_ent                                      ║
+║                  (mirror)              (forces)             (wormholes)                                   ║
+║                       │                      │                      │                                     ║
+║                       └──────────────────────┼──────────────────────┘                                     ║
+║                                              │                                                            ║
+║                                              ▼                                                            ║
+║                                ╔════════════════════════════╗                                             ║
+║                                ║      OBSERVED PHYSICS      ║                                             ║
+║                                ║      ═════════════════     ║                                             ║
+║                                ║      QM + GR + SM          ║                                             ║
+║                                ║      UNIFIED               ║                                             ║
+║                                ╚════════════════════════════╝                                             ║
+║                                                                                                           ║
+║═══════════════════════════════════════════════════════════════════════════════════════════════════════════║
+║                                                                                                           ║
+║   KEY INSIGHT: Spacetime and Standard Model are not separate theories to be unified.                      ║
+║                They are dual projections of Ω. Spacetime IS the Standard Model seen geometrically.        ║
+║                Entanglement is ordinary propagation at c through pre-built geometry (wormholes),          ║
+║                with the one-tick delay hidden by discrete observer blindness.                             ║
+║                                                                                                           ║
+╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+```
+
+---
+
+**Document Status**: Complete visual summary of Ω-Theory framework
+**Related Papers**: Main paper (Complete-Omega-Theory-Unified-Framework.md), Appendices A-H
+**Keywords**: Omega space, Standard Model, discrete spacetime, ER=EPR, wormholes, information conservation, Noether symmetry
+
