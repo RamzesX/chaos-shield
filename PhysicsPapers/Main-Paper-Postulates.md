@@ -8,7 +8,7 @@
 
 ## Abstract
 
-We present a unified framework resting on a single foundational claim: **spacetime is discrete at the Planck scale**. From this postulate, combined with the mathematical necessity of geometry, we derive four operational principles that generate known physics. The central thesis is that **all particles attempt to propagate at the speed of light c**, but massive particles must expend energy reshaping local spacetime geometry with each discrete transition—this reshaping cost manifests as mass. The Standard Model is not a theory requiring unification with gravity—it generates spacetime geometry. Gravity is the output, not a missing input.
+We present a unified framework resting on a single foundational claim: **spacetime is discrete at the Planck scale**. From this postulate, combined with the mathematical necessity of geometry, we derive five operational principles that generate known physics. The central thesis is that **all particles attempt to propagate at the speed of light c**, but massive particles must expend energy reshaping local spacetime geometry with each discrete transition—this reshaping cost manifests as mass. The Standard Model is not a theory requiring unification with gravity—it generates spacetime geometry. Gravity is the output, not a missing input.
 
 The framework makes concrete experimental predictions validated by recent data: quantum error rates scale with action density ρ_S = NkT/V (not temperature alone), producing power-law temperature dependence T^(-2.5) as observed in Diraq/Nature 2024 spin qubit experiments—definitively inconsistent with Arrhenius exponential scaling. We provide falsifiable predictions and reference detailed appendices for full mathematical development.
 
@@ -35,6 +35,7 @@ At the Planck scale, spacetime is discrete—a lattice of possibilities. Massles
 From this single insight, the entire framework unfolds:
 - Why particles have rest mass (reshaping cost)
 - Why quantum mechanics is probabilistic (truncated geometric calculations)
+- Why time exists and flows forward (forced threshold crossings)
 - Why entanglement seems nonlocal (hidden dimensional adjacency)
 - Why black holes are stable (self-feeding wormholes)
 - Why time travel is impossible (information conservation)
@@ -65,7 +66,7 @@ Spacetime is a 4-dimensional integer lattice with Planck spacing:
 - $\ell_P = \sqrt{\hbar G/c^3} \approx 1.616 \times 10^{-35}$ m
 - $t_P = \ell_P/c \approx 5.391 \times 10^{-44}$ s
 
-From this postulate, combined with the mathematical structure of geometry, all physics follows through four derived principles.
+From this postulate, combined with the mathematical structure of geometry, all physics follows through five derived principles.
 
 ---
 
@@ -117,7 +118,7 @@ No dimensional mismatch → no reshaping cost → no mass → propagation at $c$
 
 ---
 
-## 4. The Four Derived Principles
+## 4. The Five Derived Principles
 
 ### Principle 1: Standard Model Generates Geometry
 
@@ -210,6 +211,62 @@ $$\boxed{\partial_\mu J^\mu_I = 0}$$
 **Implication**: Black hole information paradox resolves—information transforms through geometric reshaping but is never destroyed.
 
 *Derivation*: See Appendix F.
+
+---
+
+### Principle 5: Time Emergence from Computational Incompleteness
+
+$\boxed{dt = \frac{dS}{L}}$
+
+**Intuitive motivation**: We have always measured time as the count of repeated events. One year = one orbit around the Sun ≈ 365 Earth rotations. One second = 9,192,631,770 cesium-133 transitions. We measure one process by counting cycles of another.
+
+This intuition was correct—but physics lacked the underlying mechanism. Einstein showed THAT time is local (time dilation, spacetime curvature). The equations work with extraordinary precision. But WHY is time local? What makes clocks tick slower in gravitational fields?
+
+This framework provides the "why":
+1. All processes share the same underlying mechanism (action threshold crossings at S = nℏ)
+2. Action density ρ_S = NkT/V determines local tick rate
+3. In everyday experience, ρ_S is approximately constant → time appears uniform
+4. Near massive objects or at high velocities, ρ_S changes → time dilation emerges
+
+What we call "one second" is simply a large number of Planck-scale ticks, calibrated against cesium transitions. The locality of time is not a mysterious geometric effect—it is the direct consequence of varying action density.
+
+**Statement**: Time is not fundamental. Time emerges as a consequence of forced quantum transitions when action thresholds are reached before geometric calculations complete.
+
+**The complete causal chain**:
+
+```
+Discrete spacetime (Λ = ℓ_P · ℤ⁴)
+        ↓
+Geometry requires π, e, √2
+        ↓
+These are irrational — cannot be computed exactly in finite steps
+        ↓
+But action accumulates: dS/dt = L > 0
+        ↓
+Action reaches threshold: S → nℏ
+        ↓
+System MUST transition (regardless of calculation state)
+        ↓
+Each forced transition = one TICK
+        ↓
+Sum of ticks = TIME
+```
+
+**The emergence equation**:
+
+$dt = \frac{dS}{L}$
+
+Time is the derivative of action with respect to Lagrangian—not the reverse.
+
+**Why time flows forward**: For any system with energy, $L > 0$, so action only increases. Threshold crossings cannot be undone. There is no mechanism to "subtract" a crossed threshold.
+
+**Why time is universal**: Every system with mass-energy has $L > 0$. Every such system accumulates action. Every such system is forced through thresholds. This is not an external clock imposed on physics—it is an internal consequence of having energy in discrete spacetime.
+
+**Physical interpretation**: Wheeler asked "Why time?" The answer: because π is irrational and action has thresholds. The impossibility of completing geometric calculations, combined with the inexorable accumulation of action, forces discrete transitions. We call the counting of these transitions "time."
+
+**Connection to time dilation**: Systems with higher kinetic energy have larger $L$, crossing thresholds faster. More ticks per unit coordinate time = time dilation. Special relativity emerges from $dt = dS/L$ and action invariance.
+
+*Derivation*: See Appendix A §2.1, §3; KeyInsight document §7.3.
 
 ---
 
@@ -421,7 +478,7 @@ States principles, demonstrates consistency, provides predictions.
 
 | Appendix | Content | Key Result |
 |----------|---------|------------|
-| A | Action Density and Quantum Errors | ρ_S = NkT/V, time emergence |
+| A | Action Density and Time Emergence | dt = dS/L, ρ_S = NkT/V |
 | B | Quantum Computing Temperature | F(T) = F₀/(1+αT), Diraq validation |
 | C | Catalog of 39 Functionals | Complete mathematical machinery |
 | D | Topological Surgery | Two-tier healing, Lyapunov stability |
@@ -457,6 +514,8 @@ Spacetime and the Standard Model are dual projections of a single algebraic stru
 
 **Quantum uncertainty is not mysterious**—it is computational truncation of π, e, √2.
 
+**Time is not fundamental**—it emerges from forced threshold crossings.
+
 **Temperature dependence is not Arrhenius**—it is action density.
 
 ---
@@ -469,8 +528,9 @@ From a single postulate—**spacetime is discrete**—we derive:
 2. **Computational deadlines** from irrationals (π, e, √2 truncation)
 3. **Dimensional flow** (d_eff = 4 - 2E/E_P)
 4. **Information conservation** (fourth Noether law)
-5. **Self-healing geometry** (two-tier mechanism)
-6. **Action density** determines quantum errors (ρ_S = NkT/V)
+5. **Time emergence** from computational incompleteness (dt = dS/L)
+6. **Self-healing geometry** (two-tier mechanism)
+7. **Action density** determines quantum errors (ρ_S = NkT/V)
 
 The framework is validated by Diraq/Nature 2024: power-law temperature scaling T^(-2.5) observed, Arrhenius exponential inconsistent with data. Different electron configurations show different exponents, confirming N-dependence beyond simple temperature effects.
 

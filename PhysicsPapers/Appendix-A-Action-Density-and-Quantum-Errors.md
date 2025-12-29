@@ -38,6 +38,16 @@ Our framework inverts the conventional hierarchy of physical concepts:
 
 This inversion provides a natural explanation for action quantization, the occurrence of quantum jumps, the origin of uncertainty, and the arrow of time.
 
+### 1.3 Time as Counting: From Intuition to Mechanism
+
+The idea that time is fundamentally about counting repeated events is not new. One year equals one orbit around the Sun. One day equals one Earth rotation. One second equals 9,192,631,770 cesium-133 transitions. Throughout history, we have always measured time by counting cycles of one process against another.
+
+General relativity provided an extraordinarily precise description of how time behaves—time dilation near massive objects, the relativity of simultaneity, the curvature of spacetime. These predictions have been confirmed to remarkable accuracy.
+
+What this framework adds is a proposed mechanism: action density ρ_S = NkT/V as the quantity that determines local tick rate. In everyday conditions, ρ_S is approximately constant, so time appears to flow uniformly. When ρ_S varies—near massive objects or at high velocities—time dilation emerges as a natural consequence.
+
+This connects the ancient intuition (time = counting events) with relativistic phenomena through a concrete physical quantity that can be measured and tested.
+
 ---
 
 ## 2. Mathematical Framework
