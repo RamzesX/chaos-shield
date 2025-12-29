@@ -2,6 +2,7 @@
 
 ## Mathematics: Conv(ℚ) Framework
 
+### Core Essays (00-09)
 1. [`00_Introduction.md`](ConvQMath/00_Introduction.md) - Overview of constructive mathematics with only rationals
 2. [`01_The_Two_Sins.md`](ConvQMath/01_The_Two_Sins.md) - Problems with classical mathematics
 3. [`02_Constructive_Foundations.md`](ConvQMath/02_Constructive_Foundations.md) - Rigorous foundations
@@ -12,10 +13,14 @@
 8. [`07_Computer_Science_Conv.md`](ConvQMath/07_Computer_Science_Conv.md) - CS connections
 9. [`08_Advanced_Mathematics_Conv.md`](ConvQMath/08_Advanced_Mathematics_Conv.md) - Higher mathematics
 10. [`09_Grand_Unification_Conv.md`](ConvQMath/09_Grand_Unification_Conv.md) - Unified theory
+
+### Extensions and Philosophy (10-15)
 11. [`10_Digital_Physis_Connection.md`](ConvQMath/10_Digital_Physis_Connection.md) - Digital physics
 12. [`11_Philosophical_Stand.md`](ConvQMath/11_Philosophical_Stand.md) - Philosophy
 13. [`12_Open_Problems.md`](ConvQMath/12_Open_Problems.md) - Unsolved problems
 14. [`13_Quantum_Integers.md`](ConvQMath/13_Quantum_Integers.md) - Quantum extensions
+15. [`14_Arbitrary_Precision_Operator.md`](ConvQMath/14_Arbitrary_Precision_Operator.md) - **NEW: APO** - Bridging Conv(ℚ) and ℝ, solving IVT constructively
+16. [`15_Computational_Debt.md`](ConvQMath/15_Computational_Debt.md) - **NEW: Computational Debt** - Gödel's theorems as resource economics
 
 ## Physics: Discrete Spacetime Framework (Ω-Theory)
 
@@ -47,7 +52,7 @@
 17. [`README-Document-Structure.md`](PhysicsPapers/README-Document-Structure.md) - **Reading Guide**: Document hierarchy and reading order
 
 ### Legacy Document
-18. [`unified-physics-paper.md`](PhysicsPapers/unified-physics-paper.md) - **Original Extended Paper**: 62 pages (superseded by postulational reorganization)
+~~`unified-physics-paper.md`~~ - **DELETED** (superseded by postulational reorganization)
 
 ## Quantum Security
 
@@ -108,6 +113,6 @@
 
 ---
 
-*Total Physics Papers: 18 documents*
-*Total Mathematics Papers: 14 documents*
+*Total Physics Papers: 17 documents*
+*Total Mathematics Papers: 16 documents*
 *Total Security Papers: 3 documents*

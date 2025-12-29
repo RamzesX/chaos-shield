@@ -4,7 +4,7 @@
 
 This collection presents a revolutionary framework for understanding the fundamental nature of reality, proposing that spacetime is discrete at the Planck scale and that mass emerges from geometric reshaping costs during quantum propagation. The theory unifies quantum mechanics and general relativity while explaining numerous physics mysteries through elegant geometric principles.
 
-**Total Papers**: 18 documents (1 main + 11 appendices + 6 supporting documents)
+**Total Papers**: 17 documents (1 main + 11 appendices + 5 supporting documents)
 
 ## The Genesis
 
@@ -218,9 +218,7 @@ This simple question started it all. From this single insight, the entire framew
 **File**: `PhysicsPapers/README-Document-Structure.md`
 - **Purpose**: Reading order and document hierarchy
 
-### 18. **Original Extended Paper**
-**File**: `PhysicsPapers/unified-physics-paper.md`
-- **Status**: Superseded by postulational reorganization, retained for reference
+*Note: The original `unified-physics-paper.md` (62 pages) has been deleted. Its content has been reorganized into the postulational framework above.*
 
 ## How the Ideas Connect
 

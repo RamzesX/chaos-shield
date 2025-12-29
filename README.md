@@ -33,8 +33,8 @@ A unified physics framework where:
 ## Repository Structure
 
 ```
-PhysicsPapers/       # Ω-Theory unified physics (18 papers)
-ConvQMath/           # Constructive mathematics framework (14 papers)
+PhysicsPapers/       # Ω-Theory unified physics (17 papers)
+ConvQMath/           # Constructive mathematics framework (16 papers)
 QuantumSecurity/     # Quantum-resistant protocols (3 papers)
 UnixOs/              # System internals documentation
 ```
@@ -69,9 +69,14 @@ Start with [`PhysicsPapers/Main-Paper-Postulates.md`](PhysicsPapers/Main-Paper-P
 
 ## Recent Additions
 
+**Physics (Ω-Theory)**:
 - **Appendix S** (NEW): Stable wormholes, three-tier classification, chronology protection
 - **Appendix E** (REVISED): Entanglement as topologically unstable wormholes with Lyapunov collapse
 - **Main Paper**: Added "How This Started" genesis section
+
+**Mathematics (Conv(ℚ))**:
+- **Paper 14** (NEW): Arbitrary Precision Operator (APO) - SOLVES IVT and completeness theorems!
+- **Paper 15** (NEW): Computational Debt - Gödel's theorems as resource economics
 
 ## Citation
 

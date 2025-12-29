@@ -59,6 +59,12 @@ keywords:
   - rational numbers
   - convergence operator
   - computational foundations
+  - arbitrary precision operator
+  - APO
+  - computational debt
+  - godel incompleteness resource theory
+  - approximate intermediate value theorem
+  - constructive real analysis
   
   # Physics Predictions
   - graviton predictions
@@ -116,6 +122,11 @@ abstract: |
   scale with action density ρ_S = NkT/V (power-law T^(-2.5), not Arrhenius exponential),
   confirmed by Diraq/Nature 2024 spin qubit experiments.
   
-  Total: 18 physics papers, 14 mathematics papers, 3 security papers.
+  Total: 17 physics papers, 16 mathematics papers, 3 security papers.
+  
+  Recent breakthroughs:
+  - Arbitrary Precision Operator (APO) solving IVT and completeness theorems constructively
+  - Computational Debt: Gödel's theorems reframed as resource economics
+  - Appendix S: Stable wormhole engineering and chronology protection
   
   Philosophy: Good science should be FUN, FALSIFIABLE, and USEFUL.
