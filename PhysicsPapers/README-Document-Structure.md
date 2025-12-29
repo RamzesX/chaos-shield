@@ -75,7 +75,7 @@ Diagrams showing:
 | **H** | Renormalization Correspondence | UV cutoff interpretation, hierarchy resolution |
 | **I** | Experimental Tests | Protocols, testable predictions |
 | **Lorentz-Doppler** | Lorentz-Doppler Equivalence | Time dilation as wave mechanics |
-| **S** | Stable Wormholes and Chronology Protection | Three-tier classification, maintenance requirements, time paradox prevention |
+| **S** | Stable Wormholes and Chronology Protection | Extends E: three-tier wormhole classification, maintenance requirements, chronology protection from information conservation |
 
 ---
 

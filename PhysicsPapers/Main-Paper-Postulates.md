@@ -488,6 +488,7 @@ States principles, demonstrates consistency, provides predictions.
 | H | Renormalization | UV cutoff = 1/ℓ_P, hierarchy resolution |
 | I | Experimental Tests | Protocols for validation |
 | Lorentz-Doppler | Time Dilation | Reshaping wave mechanics |
+| S | Stable Wormholes & Chronology | Extends E: three-tier classification, engineering requirements, time travel impossibility |
 
 ### Supporting Document
 **KeyInsight-Irrationals-Action-Thresholds.md**: Complete derivation connecting π, e, √2 to quantum uncertainty through computational deadlines.
