@@ -16,6 +16,33 @@ The framework makes concrete experimental predictions validated by recent data: 
 
 ---
 
+## How This Started: A Simple Question
+
+> *What if everything wants to teleport at the Planck scale at the speed of light—but we can't, because we have mass, and need to expend energy to reshape the geometry around us?*
+
+This was the seed.
+
+Photons move at c effortlessly. They don't reshape anything—they ride the geometry as it is. But electrons, quarks, protons—they have mass. They're slower. Why?
+
+The standard answer invokes the Higgs field: particles interact with it, gain mass, slow down. But this describes the mechanism without explaining the cost. What IS mass, geometrically?
+
+The simple question led to a simple answer:
+
+**Mass is what you pay when you can't move freely.**
+
+At the Planck scale, spacetime is discrete—a lattice of possibilities. Massless particles hop freely, always at c. Massive particles must reshape the local geometry with each hop, paying a toll in energy. This toll accumulates. We call it mass.
+
+From this single insight, the entire framework unfolds:
+- Why particles have rest mass (reshaping cost)
+- Why quantum mechanics is probabilistic (truncated geometric calculations)
+- Why entanglement seems nonlocal (hidden dimensional adjacency)
+- Why black holes are stable (self-feeding wormholes)
+- Why time travel is impossible (information conservation)
+
+One question. One answer. Everything follows.
+
+---
+
 ## 1. Introduction: The Reframing
 
 For a century, theoretical physics has pursued the question: **How do we quantize gravity?**

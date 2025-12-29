@@ -1,109 +1,121 @@
-# Contributing to Chaos Shield
+# Contributing to Chaos Shield (Ω-Theory)
 
-First off, thank you for considering contributing to Chaos Shield! It's people like you who help advance theoretical computer science and mathematics.
+Thank you for considering contributing! This project spans theoretical physics, mathematics, and quantum computing.
 
 ## How Can I Contribute?
 
+### 🔬 Physics Contributions
+
+**Experimental Validation**:
+- Run quantum computing experiments testing F(T) = F₀/(1 + αT) scaling
+- Test entanglement fidelity temperature dependence
+- Analyze existing datasets for framework predictions
+- Share experimental results
+
+**Theoretical Extensions**:
+- Derive new predictions from the framework
+- Connect to other approaches (loop quantum gravity, string theory, etc.)
+- Identify additional experimental tests
+- Extend wormhole engineering analysis
+
+**Critical Analysis**:
+- Find logical inconsistencies
+- Propose falsifying experiments
+- Challenge assumptions constructively
+
 ### 🐛 Reporting Issues
 
-- **Mathematical Errors**: If you find errors in proofs or theorems, please open an issue with:
-  - The specific file and section
-  - A clear description of the error
-  - If possible, a suggested correction
-
-- **Conceptual Clarifications**: If something is unclear or could be explained better:
-  - Reference the specific section
-  - Explain what's confusing
-  - Suggest how it might be improved
+- **Mathematical Errors**: Specify file, section, and suggested correction
+- **Physical Inconsistencies**: Reference relevant appendix and physical principle violated
+- **Clarity Issues**: Explain what's confusing and suggest improvements
 
 ### 💡 Suggesting Enhancements
 
-- **New Theorems or Proofs**: We welcome extensions to the theoretical framework
-- **Applications**: Practical implementations of the concepts
-- **Connections**: Links to other areas of mathematics or computer science
+- **New Appendices**: Propose extensions (e.g., cosmological implications, particle physics details)
+- **Experimental Protocols**: Design specific tests for predictions
+- **Engineering Applications**: Develop practical implications of wormhole/quantum computing results
 
 ### 📝 Direct Contributions
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingIdea`)
-3. Make your changes
-4. Ensure your work is properly documented
-5. Commit your changes (`git commit -m 'Add some AmazingIdea'`)
-6. Push to the branch (`git push origin feature/AmazingIdea`)
-7. Open a Pull Request
+2. Create feature branch (`git checkout -b feature/NewIdea`)
+3. Make changes with proper documentation
+4. Commit (`git commit -m 'Add NewIdea'`)
+5. Push (`git push origin feature/NewIdea`)
+6. Open Pull Request
 
 ## Contribution Guidelines
 
-### For Theoretical Work
+### For Physics Papers
 
-- **Rigor**: Mathematical claims should be properly justified
-- **Clarity**: Explanations should be accessible to the target audience
-- **Originality**: Cite sources for existing work
-- **Constructiveness**: Align with the constructive philosophy when applicable
+- **Consistency**: Align with core postulates (discrete spacetime, information conservation)
+- **Falsifiability**: Include testable predictions where possible
+- **Cross-Reference**: Connect to existing appendices
+- **Notation**: Use established notation (ρ_S, W[g], ∂_μJ^μ_I, etc.)
 
-### For Code Examples
+### For Mathematics
 
-- **Documentation**: Include clear comments explaining the concepts
-- **Simplicity**: Prefer clarity over cleverness
-- **Testing**: If applicable, include test cases
-- **Compatibility**: Use standard libraries where possible
+- **Rigor**: Proper theorem-proof structure
+- **Constructive**: Align with Conv(ℚ) philosophy where applicable
+- **Clarity**: Accessible to physics audience
 
-### Writing Style
+### For Code/Simulations
 
-- Use clear, concise language
-- Define technical terms on first use
-- Include examples where helpful
-- Maintain consistent notation throughout
+- **Documentation**: Clear comments explaining physics
+- **Reproducibility**: Include parameters and random seeds
+- **Validation**: Compare against analytical predictions
 
-## What We're Looking For
+## High Priority Contributions
 
-### High Priority
-
-- **Implementations** of Conv(ℚ) in proof assistants (Coq, Lean, Agda)
-- **Applications** to real-world problems
-- **Improvements** to the quantum chaos protocols
-- **Clarifications** of complex concepts
+### Immediate Need
+- [ ] Experimental data from quantum computers (temperature scaling)
+- [ ] Numerical simulations of Lyapunov wormhole collapse
+- [ ] Connection to CDT lattice simulations
+- [ ] Standard Model coupling derivations
 
 ### Research Directions
+- [ ] Cosmological implications (early universe wormholes?)
+- [ ] Dark matter/energy interpretation
+- [ ] Hawking radiation information recovery
+- [ ] Wormhole engineering feasibility studies
 
-- Computational alternatives to classical theorems
-- Connections to quantum computing
-- Applications in cryptography
-- Digital physics implications
+### Long-Term
+- [ ] Complete Ω algebraic structure identification
+- [ ] Experimental graviton detection strategies
+- [ ] Quantum computing optimization from action density
 
 ## Recognition
 
-Contributors will be acknowledged in:
-- The project README
-- Relevant papers or publications
-- Release notes for significant contributions
+Contributors acknowledged in:
+- AUTHORS file
+- Relevant paper acknowledgments
+- Release notes
 
-## Questions?
+## Philosophy
 
-Feel free to open an issue tagged with 'question' if you need clarification on anything.
+> *"Good science should be fun, falsifiable, and useful."*
+
+We welcome contributions that:
+- Make the framework more testable
+- Find errors (falsification is valuable!)
+- Extend applications
+- Improve clarity
+
+Even if you think the framework is wrong—tell us WHY. That's valuable science.
 
 ## Code of Conduct
 
-### Our Standards
-
-- Be respectful of different viewpoints and experiences
-- Accept constructive criticism gracefully
-- Focus on what's best for the advancement of knowledge
-- Show empathy towards other contributors
-
-### Unacceptable Behavior
-
-- Harassment or discriminatory language
-- Personal attacks
-- Trolling or deliberately unconstructive criticism
-- Publishing others' private information
+- Respectful scientific discourse
+- Constructive criticism welcome
+- Focus on ideas, not individuals
+- Acknowledge uncertainty honestly
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the same CC BY 4.0 license that covers the project.
+Contributions licensed under CC BY 4.0 (same as project).
 
 ---
 
-*"In mathematics, you don't understand things. You just get used to them."* — John von Neumann
+*"One question. One answer. Everything follows."*
 
-*"But in constructive mathematics, you build things. And through building, understanding emerges."* — The Conv(ℚ) Philosophy
+*Questions? Open an issue tagged 'question'.*

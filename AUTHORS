@@ -3,16 +3,44 @@
 ## Primary Author
 
 **Norbert Marchewka**
-*Creator and primary researcher*  
-- Developed the Conv(ℚ) constructive mathematics framework
+*Creator and primary researcher*
+
+### Contributions
+
+**Physics (Ω-Theory)**:
+- Originated the central thesis: "What if everything wants to teleport at c but can't because of mass?"
+- Developed discrete spacetime framework with mass as geometric reshaping cost
+- Derived information conservation as fourth Noether law (∂_μJ^μ_I = 0)
+- Created three-tier wormhole classification (natural/information/mass)
+- Established chronology protection from information conservation
+- Proposed quantum entanglement as topologically unstable wormholes
+- Connected action density to quantum computing temperature limits
+
+**Mathematics (Conv(ℚ) Framework)**:
+- Developed constructive mathematics using only rational numbers
 - Designed quantum chaos security protocols
-- Authored theoretical physics papers
+
+**Systems**:
 - Created Unix/OS educational content
 
-## Contributors
+## AI Collaboration
 
-*Contributors will be listed here as the project grows. See CONTRIBUTING.md for how to contribute.*
+**Claude (Anthropic)**
+*Research assistant and co-developer*
+
+- Assisted in formalizing mathematical frameworks
+- Helped develop Lyapunov stability analysis for entanglement
+- Contributed to Appendix S (Stable Wormholes) formalization
+- Provided literature research and cross-referencing
 
 ---
 
-*"The Tao that can be programmed is the true Tao."*
+## Philosophy
+
+> *"Good science should be fun, falsifiable, and useful."*
+
+> *"One question. One answer. Everything follows."*
+
+---
+
+*Contributors welcome. See CONTRIBUTING.md for how to participate.*

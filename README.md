@@ -1,74 +1,104 @@
-# Chaos Shield 🛡️
+# Chaos Shield: Ω-Theory 🛡️
 
-> *A collection of theoretical frameworks for computational mathematics, quantum security, and system understanding*
+> *"What if everything wants to teleport at the speed of light—but we can't, because we have mass, and need to expend energy to reshape the geometry around us?"*
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+This simple question started it all.
+
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-## What is this?
+## What is Ω-Theory?
 
-**Chaos Shield** explores what happens when we take computability seriously as the foundation of mathematics and physics. The project contains original research on:
+A unified physics framework where:
 
-- **Conv(ℚ)**: Mathematics using only rational numbers and convergent sequences
-- **Discrete Spacetime**: Quantum gravity through geometric reshaping at the Planck scale
-- **Quantum Chaos Protocols**: Post-quantum security via economic exhaustion
-- **Unix/OS Internals**: Deep dives into how systems actually work
+- **Mass = reshaping cost** — Particles pay energy to reshape local geometry at each Planck-scale jump
+- **Quantum uncertainty = truncated irrationals** — π, e, √2 can't be computed before action thresholds force transitions
+- **Entanglement = unstable wormholes** — D_ent connections collapse upon measurement (Lyapunov instability)
+- **Black holes = hungry wormholes** — Devastating because they self-feed on mass
+- **Time travel = impossible** — CTCs violate information conservation (fourth Noether law)
+
+**One question. One answer. Everything follows.**
 
 ## Key Ideas
 
-1. **All particles want to travel at light speed** - Mass is just the energy cost of reshaping spacetime
-2. **Real numbers don't exist** - Everything computable uses rationals anyway
-3. **Make attacks too expensive** - Generate 10⁶ fake operations per real one
-4. **The universe is discrete** - Spacetime is a lattice at 10⁻³⁵ meters
+| Insight | Consequence |
+|---------|-------------|
+| Spacetime is discrete (ℓ_P lattice) | All physics emerges from Planck-scale jumps |
+| All particles want to move at c | Mass is what you pay when you can't |
+| Action accumulates to S = nℏ | Computational deadlines create quantum uncertainty |
+| Information is conserved (∂_μJ^μ_I = 0) | Fourth Noether law; chronology protection automatic |
+| Entanglement wormholes are unstable | Measurement triggers collapse; no-signaling explained |
+| Safe wormholes need external energy | Unlike black holes (self-feeding), engineered wormholes require maintenance |
 
 ## Repository Structure
 
 ```
+PhysicsPapers/       # Ω-Theory unified physics (18 papers)
 ConvQMath/           # Constructive mathematics framework (14 papers)
 QuantumSecurity/     # Quantum-resistant protocols (3 papers)
-PhysicsPapers/       # Unified physics theory (13 papers: 1 main + 9 appendices + 3 supporting)
 UnixOs/              # System internals documentation
 ```
 
-**Full paper list**: See [`PAPERS.md`](PAPERS.md) for complete index.
-**Physics papers summary**: See [`Physics-Papers-Summary.md`](Physics-Papers-Summary.md) for detailed overview.
+**Full paper index**: [`PAPERS.md`](PAPERS.md)  
+**Physics summary**: [`Physics-Papers-Summary.md`](Physics-Papers-Summary.md)
 
 ## Quick Start
 
-**Mathematicians**: Start with [`ConvQMath/00_Introduction.md`](ConvQMath/00_Introduction.md)
+### The Genesis Story
+Start with [`PhysicsPapers/Main-Paper-Postulates.md`](PhysicsPapers/Main-Paper-Postulates.md) — includes "How This Started"
 
-**Physicists**:
-- Overview: [`Physics-Papers-Summary.md`](Physics-Papers-Summary.md)
-- Core mechanism: [`PhysicsPapers/CRITICAL-CONNECTION-Irrationals-Action-Thresholds.md`](PhysicsPapers/CRITICAL-CONNECTION-Irrationals-Action-Thresholds.md)
-- Main paper: [`PhysicsPapers/unified-physics-paper.md`](PhysicsPapers/unified-physics-paper.md)
+### Core Mechanism
+[`PhysicsPapers/KeyInsight-Irrationals-Action-Thresholds.md`](PhysicsPapers/KeyInsight-Irrationals-Action-Thresholds.md) — How π, e, √2 create quantum uncertainty
 
-**Quantum Computing Engineers**: [`PhysicsPapers/Appendix-B-Quantum-Computing-Temperature-Limits.md`](PhysicsPapers/Appendix-B-Quantum-Computing-Temperature-Limits.md) - $1.4B industry impact potential
+### Practical Applications
+[`PhysicsPapers/Appendix-B-Quantum-Computing-Temperature-Limits.md`](PhysicsPapers/Appendix-B-Quantum-Computing-Temperature-Limits.md) — $1.4B industry impact potential
 
-**Security Researchers**: See [`QuantumSecurity/quantum-chaos-protocols.md`](QuantumSecurity/quantum-chaos-protocols.md)
+### NEW: Stable Wormholes
+[`PhysicsPapers/Appendix-S-Stable-Wormholes-And-Chronology-Protection.md`](PhysicsPapers/Appendix-S-Stable-Wormholes-And-Chronology-Protection.md) — Three-tier classification, time paradox prevention
 
-**Philosophers**: Begin with [`ConvQMath/11_Philosophical_Stand.md`](ConvQMath/11_Philosophical_Stand.md)
+## Testable Predictions
 
-## Contributing
+| Prediction | Status | How to Test |
+|------------|--------|-------------|
+| F(T) = F₀/(1 + αT) linear scaling | ✓ Diraq 2024 data matches | Quantum computers |
+| Power-law T^(-2.5) not Arrhenius | ✓ Confirmed | Temperature sweeps |
+| Entanglement fidelity F_ent(T) | Testable | Ion traps, superconducting qubits |
+| No time travel possible | Consistent | Any CTC observation would falsify |
 
-Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+**Philosophy**: Good science should be **FUN**, **FALSIFIABLE**, and **USEFUL**.
+
+## Recent Additions
+
+- **Appendix S** (NEW): Stable wormholes, three-tier classification, chronology protection
+- **Appendix E** (REVISED): Entanglement as topologically unstable wormholes with Lyapunov collapse
+- **Main Paper**: Added "How This Started" genesis section
 
 ## Citation
 
 ```bibtex
-@misc{chaos-shield-2025,
-  author = {Norbert},
-  title = {Chaos Shield: Constructive Mathematics and Quantum Security Frameworks},
+@misc{omega-theory-2025,
+  author = {Marchewka, Norbert},
+  title = {Ω-Theory: Discrete Spacetime and Mass as Geometric Reshaping},
   year = {2025},
   url = {https://github.com/RamzesX/chaos-shield}
 }
 ```
 
+## Contributing
+
+Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+We especially need:
+- Experimental validation (quantum computing temperature data)
+- Critical analysis (find the errors!)
+- Extensions (cosmology, particle physics)
+
 ## License
 
-[MIT](LICENSE) - Free open source license
+[CC BY 4.0](LICENSE) — Free to share and adapt with attribution
 
 ---
 
-*"Make everything as simple as possible, but not simpler."* — Einstein
+> *"The universe whispers its secrets through every quantum error, every thermal decoherence event. The message: I am discrete, I am computational, I am under deadlines."*
 
-*"The Tao that can be programmed is the true Tao."* — Modern interpretation
+> *"One question. One answer. Everything follows."*

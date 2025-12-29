@@ -4,7 +4,13 @@
 
 This collection presents a revolutionary framework for understanding the fundamental nature of reality, proposing that spacetime is discrete at the Planck scale and that mass emerges from geometric reshaping costs during quantum propagation. The theory unifies quantum mechanics and general relativity while explaining numerous physics mysteries through elegant geometric principles.
 
-**Total Papers**: 13 documents (1 main paper + 9 appendices + 3 supporting documents)
+**Total Papers**: 18 documents (1 main + 11 appendices + 6 supporting documents)
+
+## The Genesis
+
+> *What if everything wants to teleport at the Planck scale at the speed of light—but we can't, because we have mass, and need to expend energy to reshape the geometry around us?*
+
+This simple question started it all. From this single insight, the entire framework unfolds.
 
 ## Core Revolutionary Ideas
 
@@ -40,382 +46,284 @@ This collection presents a revolutionary framework for understanding the fundame
 
 ### 6. **Information as Fundamental**
 - Information flow is more fundamental than energy
-- Fourth conservation law: ∇·I = 0
+- Fourth conservation law: ∂_μJ^μ_I = 0
 - Gravity emerges from information flow disruption
 - The universe "computes itself" through discrete updates
 
-### 7. **Quantum Entanglement as Higher-Dimensional Proximity**
-- Entangled particles remain adjacent in hidden dimension D_ent
-- "Spooky action at a distance" is local connection in unseen dimension
-- Resolves EPR paradox without violating relativity
+### 7. **Quantum Entanglement as Topologically Unstable Wormholes**
+- Entangled particles maintain adjacency in hidden dimension D_ent
+- These connections are wormholes that WANT to collapse (Lyapunov instability)
+- Measurement provides energy to trigger collapse
+- Resolves EPR paradox, no-communication theorem, and wavefunction collapse
+
+### 8. **Stable Wormholes and Chronology Protection** (NEW)
+- Black holes are natural wormholes—devastating because they self-feed on mass
+- Safe wormholes need external energy maintenance, not mass consumption
+- Time travel impossible: CTCs violate information conservation
+- Three-tier classification: Natural (devastating) → Information → Mass transport
 
 ## The Papers
 
-### 1. **Main Paper: Discrete Spacetime and Mass as Geometric Reshaping**
-**File**: `PhysicsPapers/unified-physics-paper.md`
-- **Core Thesis**: Comprehensive framework unifying quantum mechanics and general relativity
+### 1. **Entry Point: Postulational Summary**
+**File**: `PhysicsPapers/Main-Paper-Postulates.md`
+- **Core Thesis**: Mass is what you pay when you can't move freely
+- **New Section**: "How This Started: A Simple Question"
 - **Key Innovations**:
-  - Mass emerges from spacetime reshaping energy costs
-  - Irrational numbers create fundamental uncertainty under computational deadlines
-  - Observer blindness as physical sampling constraint
-  - Algebraic space Ω generates physical laws (Noether's heritage)
-- **Length**: 62 pages with detailed mathematical framework
-- **Status**: Core theoretical foundation
+  - Central thesis from discrete spacetime
+  - Four derived principles
+  - Action density formula: ρ_S = NkT/V
+  - Experimental validation (Diraq/Nature 2024)
+- **Length**: ~25 pages
+- **Status**: Entry point for new readers
 
-### 2. **Appendix A: Action-Threshold Physics and Quantum Error Density**
-**File**: `PhysicsPapers/Appendix-A-Action-Density-and-Quantum-Errors.md`
-- **Core Discovery**: Time emerges from action accumulation at quantum thresholds S = nℏ
-- **Revolutionary Insight**: Hamilton's integration bounds are computational deadlines
-- **Key Findings**:
-  - Stress-energy tensor emerges as Lagrange multipliers
-  - Quantum errors scale with action density (ε ∝ ρ_S)
-  - Time = counting threshold crossings
-  - Particles "can't stop" accumulating action
-- **Testable Today**: IBM Quantum computers (free cloud access)
-- **Predictions**: Gate fidelity = F₀/(1 + α·ρ_qubit)
-
-### 3. **Appendix B: Quantum Computing Temperature Limits**
-**File**: `PhysicsPapers/Appendix-B-Quantum-Computing-Temperature-Limits.md`
-- **Core Discovery**: Cooling quantum computers = buying computational time for π calculations
-- **Revolutionary Insight**: Temperature directly determines action density and computational deadlines
-- **Key Findings**:
-  - Error rate scales linearly: ε(T) = ε₀ + α·T (not exponential!)
-  - Room temperature QC fundamentally impossible (insufficient computational time)
-  - IBM data fit: F(T) = 0.999/(1 + 0.065×T), R² = 0.98
-  - Industry impact: $1.4B cooling cost reduction potential
-- **Six Alternative Strategies**:
-  - Volume expansion (sparse layouts)
-  - Topological qubits (lower intrinsic energy)
-  - Faster gates (less action per operation)
-  - Energy-level engineering (ground state computation)
-  - Hybrid classical-quantum (reduced qubit count)
-  - Temporal modulation (pulsed operations)
-- **Length**: 47 pages with engineering roadmaps
-- **Status**: Ready for Physical Review Applied submission
-
-### 4. **Appendix C: Quantum Entanglement as Higher-Dimensional Proximity**
-**File**: `PhysicsPapers/Appendix-E-Quantum-Entanglement-Dimensional-Theory.md`
-- **Core Insight**: Entangled particles are NOT separated—they remain adjacent in hidden dimension D_ent
-- **Revolutionary Claim**: "Spooky action at a distance" is local connection we cannot perceive
-- **Key Mechanisms**:
-  - Extended metric: ds² = -c²dt² + dx² + dy² + dz² + f(Ψ_ent)·dw_ent²
-  - Distance function: d_ent(A,B) = d₀·(1 - |⟨Ψ_AB⟩|²)
-  - For maximally entangled states: d_ent = 0 (touching!)
-- **Paradoxes Resolved**:
-  - EPR paradox (local in D_ent)
-  - No-communication theorem (geometric binding, not mechanical coupling)
-  - Bell inequality violations (local in 5D, non-local projection)
-  - Monogamy of entanglement (limited D_ent connection points)
-- **Testable Predictions**:
-  - Temperature-dependent entanglement fidelity: F(T) = F₀/(1 + 0.08×T)
-  - SNR: ~50 (excellent!)
-  - Cost: $400K
-  - Timeline: 2 years
-- **Length**: 28 pages
-- **Status**: Complete theoretical framework with experimental protocol
-
-### 5. **Appendix D: The Lorentz-Doppler Unification**
-**File**: `PhysicsPapers/Appendix-LorentzDopplerEquivalence.md`
-- **Core Insight**: Time dilation is the Doppler effect for geometric reshaping waves
-- **Key Analogy**: Moving clocks tick slowly like ambulance sirens change pitch
-- **Educational Value**: Makes relativity intuitive through wave mechanics
-- **Twin Paradox Resolution**: Twin who reshapes LESS (fewer pulses) ages less
-
-### 6. **Appendix E: Information Flow Conservation**
-**File**: `PhysicsPapers/Appendix-F-Information-Flow-Conservation.md`
-- **Core Discovery**: Fourth fundamental conservation law—information flow
-- **Mathematical Form**: ∇·I = 0 (information flow is conserved)
-- **Revolutionary Claim**: Information, not energy, is the fundamental conserved quantity
-- **Key Insights**:
-  - Mass as information density: m = I_bound/c²
-  - Einstein's equations reinterpreted: curvature = difficulty preserving information flow
-  - T_μν as Lagrange multipliers enforcing Noether constraints
-- **Applications**:
-  - Resolves black hole information paradox
-  - Explains holographic principle
-  - Connects consciousness to information flow
-
-### 7. **Appendix F: The Graviton Predictions**
-**File**: `PhysicsPapers/Appendix-G-Graviton-Predictions.md`
-- **Core Concept**: Gravitons are quantum geometric update instructions (not particles, but messages)
-- **Derived Properties**:
-  - Mass = 0 (to avoid infinite reshaping regress)
-  - Spin = 2ℏ (from symmetric tensor R_μν)
-  - Information content = 2.32 bits (log₂(5) from spin-2 states)
-- **Key Predictions**:
-  - Individual gravitons undetectable due to observer blindness
-  - Gravity's weakness: α_grav ≈ 10⁻³⁹ (double reshaping requirement)
-  - Only coherent states (gravitational waves) observable
-- **Testable**: Specific predictions for gravitational wave observations
-
-### 8. **Appendix G: Renormalization as Hidden Discreteness**
-**File**: `PhysicsPapers/Appendix-H-Renormalization-Correspondence.md`
-- **Core Revelation**: Renormalization isn't a trick—it's how we handle discrete spacetime
-- **Key Insight**: Every infinity in quantum field theory signals discreteness
-- **Correspondence Table**:
-  - UV divergences → Discrete spacetime at ℓ_p
-  - Regularization → Recognition of discreteness
-  - Running couplings → Energy-dependent reshaping costs
-  - Cutoff Λ → Λ = 1/ℓ_p exactly
-  - Gravity non-renormalizable → IS the geometry itself
-- **Paradigm Shift**: Physics has been unconsciously using discrete methods for 80 years
-- **Hierarchy Problem Resolved**: Cascading reshaping costs naturally produce mass hierarchy
-
-### 9. **Appendix H: Experimental Tests**
-**File**: `PhysicsPapers/Appendix-I-Experimental-Tests.md`
-- **Purpose**: Comprehensive experimental program to validate the theory
-- **Scope**: 30+ experiments using current and near-future technology
-- **Categories**:
-  - Ultra-precision atomic clocks
-  - Quantum interference tests
-  - Gravitational wave detectors
-  - High-energy physics
-  - Quantum computing limits
-  - Astrophysical observations
-- **Tier 1 Priorities** (NOW!):
-  - Quantum computer gate fidelity vs temperature (SNR: 30, Cost: $500K)
-  - MEMS oscillator long-term phase drift (SNR: 10³, Cost: $300K)
-- **Total Tier 1 Cost**: $900K for 15-30% detection probability
-
-### 10. **CRITICAL CONNECTION: Irrationals and Action Thresholds**
-**File**: `PhysicsPapers/CRITICAL-CONNECTION-Irrationals-Action-Thresholds.md`
-- **Purpose**: Establishes rigorous connection between irrational numbers and physical uncertainty
-- **The Complete Mechanism**:
-  1. Action accumulates: dS/dt = L ≥ 0
-  2. Threshold approaches: S → nℏ
-  3. Deadline calculated: T = (nℏ - S)/L
-  4. Computational budget: N_max = T/t_Planck
-  5. Irrationals computed: π ≈ N_max digits, e ≈ N_max terms
-  6. FORCED transition: Jump with incomplete geometry
-  7. Result: Fundamental uncertainty ∝ T (temperature!)
+### 2. **Core Mechanism Document**
+**File**: `PhysicsPapers/KeyInsight-Irrationals-Action-Thresholds.md`
+- **Core Discovery**: How π, e, √2 create uncertainty under computational deadlines
 - **Key Equations**:
   - Action density: ρ_S = (Nk_BT)/V
   - Computational time: T_compute = ℏ/(Nk_BT)
   - Enhanced uncertainty: ΔxΔp ≥ ℏ/2 + δ(π,e,√2)
-- **Cross-Reference**: Core document for understanding all papers
 - **Length**: 44 pages
+- **Status**: ESSENTIAL READING for understanding mechanism
 
-### 11. **Visual Diagrams: Quantum Entanglement**
+### 3. **Appendix A: Action-Threshold Physics**
+**File**: `PhysicsPapers/Appendix-A-Action-Density-and-Quantum-Errors.md`
+- **Core Discovery**: Time emerges from action accumulation at S = nℏ
+- **Key Findings**:
+  - Stress-energy tensor as Lagrange multipliers
+  - Quantum errors scale with action density (ε ∝ ρ_S)
+  - Time = counting threshold crossings
+- **Testable Today**: IBM Quantum computers
+
+### 4. **Appendix B: Quantum Computing Temperature Limits**
+**File**: `PhysicsPapers/Appendix-B-Quantum-Computing-Temperature-Limits.md`
+- **Core Discovery**: Cooling = buying computational time for π calculations
+- **Key Findings**:
+  - Error rate scales linearly: ε(T) = ε₀ + α·T (not exponential!)
+  - IBM data fit: F(T) = 0.999/(1 + 0.065×T), R² = 0.98
+  - Industry impact: $1.4B cooling cost reduction potential
+- **Length**: 47 pages
+- **Status**: Ready for Physical Review Applied
+
+### 5. **Appendix C: Catalog of Evolution Functionals**
+**File**: `PhysicsPapers/Appendix-C-Catalog-Of-Evolution-Functionals.md`
+- **Content**: 39 Perelman-inspired functionals for geometric flow
+- **Purpose**: Mathematical machinery for topological healing
+
+### 6. **Appendix D: Topological Surgery and Information Healing**
+**File**: `PhysicsPapers/Appendix-D-Topological-Surgery-And-Information-Healing.md`
+- **Core Discovery**: Two-tier healing mechanism (diffusive + graviton)
+- **Key Concepts**:
+  - Lyapunov functional W[g] with monotonicity
+  - Mandatory surgery when defects form
+  - Graviton as physical carrier: E_g = E_P/2
+- **Status**: Foundation for entanglement and wormhole papers
+
+### 7. **Appendix E: Quantum Entanglement as Topologically Unstable Wormholes** (REVISED)
+**File**: `PhysicsPapers/Appendix-E-Quantum-Entanglement-Dimensional-Theory.md`
+- **Core Insight**: D_ent connections are wormholes that WANT TO COLLAPSE
+- **Revolutionary Claim**: Lyapunov functional drives toward disconnection
+- **Key Mechanisms**:
+  - W[connected] > W[disconnected] → healing flow destroys connection
+  - Measurement kicks system over energy barrier
+  - Collapse completes in ~t_P (appears instantaneous)
+- **Paradoxes Resolved**:
+  - EPR paradox (local in D_ent, but unstable)
+  - Wavefunction collapse (topology collapse via Lyapunov flow)
+  - No-communication (one-use tunnel self-destructs)
+  - Monogamy (topology constraint on D_ent capacity)
+- **Recent Support (2024-2025)**:
+  - Neukart: Geometry-information duality
+  - Vienna group: Earth rotation with entangled photons
+  - Korean team: Emergent AdS geometry from anyons
+- **Testable Predictions**: F(T) = F₀/(1 + 0.08×T)
+- **Status**: REVISED with Perelman-style stability analysis
+
+### 8. **Appendix E Visual Diagrams** (REVISED)
 **File**: `PhysicsPapers/appendix-E-visual-diagrams.md`
-- **Purpose**: Enhanced visualizations for D_ent theory
-- **Contents**:
-  - Complete dimensional structure (3D+1 vs 5D+)
-  - Paper folding analogy extended
-  - Energy landscape with computational stress
-  - Entanglement creation and swapping mechanisms
-  - Temperature effects on entanglement fidelity
-  - Information flow in D_ent
-  - Integration with main framework architecture
-- **Educational Value**: Makes abstract concepts visually intuitive
-- **Length**: 28 pages of detailed ASCII diagrams
+- **New Content**:
+  - Lyapunov energy landscape (metastable vs stable)
+  - Measurement → collapse timeline
+  - One-use tunnel mechanism
+  - Healing flow sequence
+- **Status**: REVISED with stability diagrams
 
-### 12. **Comprehensive Visual Diagram of Unified Framework**
+### 9. **Appendix F: Information Flow Conservation**
+**File**: `PhysicsPapers/Appendix-F-Information-Flow-Conservation.md`
+- **Core Discovery**: Fourth Noether law: ∂_μJ^μ_I = 0
+- **Key Insights**:
+  - Mass as information density: m = I_bound/c²
+  - Curvature = difficulty preserving information flow
+- **Applications**: Black hole information paradox, holographic principle
+
+### 10. **Appendix G: Graviton Predictions**
+**File**: `PhysicsPapers/Appendix-G-Graviton-Predictions.md`
+- **Derived Properties**:
+  - Mass = 0, Spin = 2ℏ
+  - Information content = 2.32 bits
+  - E_g = E_P/2 ≈ 10⁹ J
+
+### 11. **Appendix H: Renormalization Correspondence**
+**File**: `PhysicsPapers/Appendix-H-Renormalization-Correspondence.md`
+- **Core Revelation**: Every infinity signals discreteness
+- **Hierarchy Problem**: Resolved by cascading reshaping costs
+
+### 12. **Appendix I: Experimental Tests**
+**File**: `PhysicsPapers/Appendix-I-Experimental-Tests.md`
+- **Scope**: 30+ experiments using current technology
+- **Tier 1 Cost**: $900K for 15-30% detection probability
+
+### 13. **Appendix Lorentz-Doppler**
+**File**: `PhysicsPapers/Appendix-LorentzDopplerEquivalence.md`
+- **Core Insight**: Time dilation = Doppler effect for reshaping waves
+- **Educational Value**: Makes relativity intuitive
+
+### 14. **Appendix S: Stable Wormholes and Chronology Protection** (NEW)
+**File**: `PhysicsPapers/Appendix-S-Stable-Wormholes-And-Chronology-Protection.md`
+- **Core Insight**: Black holes are hungry wormholes (devastating because self-feeding)
+- **Three-Tier Classification**:
+
+| Tier | Type | Stability Source | Safe? | Power Required |
+|------|------|------------------|-------|----------------|
+| 0 | Black Hole | Mass consumption | No | 0 (self-feeding) |
+| 1 | Information | External energy | Yes | ~10¹⁵ W |
+| 2 | Mass Transport | External energy | Yes | ~10²⁵ W |
+
+- **Key Results**:
+  - Safe wormholes need external energy, NOT mass consumption
+  - Latency reduction possible (λ ~ 0.01-0.1), instant impossible (E → ∞)
+  - Graceful collapse protocol prevents black hole on failure
+  - CTCs forbidden by information conservation
+- **Chronology Protection**:
+  - Information loops violate ∂_μJ^μ_I = 0
+  - W → ∞ for CTC-approaching configurations
+  - Mass that stabilizes also prevents time manipulation
+- **Engineering Requirements**:
+  - Maintenance stations with fusion/antimatter power
+  - Information matching I(A) = I(B) at endpoints
+  - Graceful collapse triggers
+- **Length**: 45 pages
+- **Status**: NEW - Complete theoretical framework
+
+### 15. **Visual Framework Diagram**
 **File**: `PhysicsPapers/unified-theory-diagram.md`
-- **Purpose**: Complete visual architecture of entire theoretical framework
-- **Structure** (10 Levels):
-  - Level 0: Algebraic Foundation (Unknown Ω)
-  - Level 1: Planck-Scale Discrete Lattice
-  - Level 2: Action-Threshold Physics (Time Emergence)
-  - Level 3: Computational Deadline Mechanism
-  - Level 4: Geometric Reshaping Dynamics
-  - Level 5: Observer Blindness
-  - Level 6: Information Flow Conservation
-  - Level 7: Graviton as Information Quantum
-  - Level 8: Renormalization as Discrete Evidence
-  - Level 9: Quantum Computing Application
-  - Level 10: Experimental Program
-- **Includes**: Complete causal architecture, mathematical formalism, philosophical implications
-- **Length**: 56 pages of comprehensive diagrams and equations
+- **Structure**: 11 levels from Ω to experiments
+- **Length**: 56 pages
 
-### 13. **Updated Comprehensive Review**
-**File**: `PhysicsPapers/UPDATED-COMPREHENSIVE-REVIEW.md`
-- **Purpose**: Critical analysis and publication strategy for all papers
-- **Key Assessments**:
-  - Re-evaluated "weaknesses" (Ω vagueness, observer blindness, irrationals)
-  - All three concerns now properly addressed
-  - Framework is "bold, testable, and internally consistent"
-- **Publication Strategy**:
-  - Phase 1 (1-6 months): Appendix B → Phys. Rev. Applied (strongest)
-  - Phase 2 (6-12 months): Main Paper → Phys. Rev. D
-  - Phase 3 (12-24 months): Complete framework publication
-- **Verdict**: "STRONG WORK, READY FOR PUBLICATION WITH REVISIONS"
-- **Comparison**: Work resembles Wilson's renormalization group breakthrough
-- **Length**: 48 pages with detailed action items
+### 16. **Complete Framework Document**
+**File**: `PhysicsPapers/Complete-Omega-Theory-Unified-Framework.md`
+- **Content**: Full technical treatment, 50+ pages
+
+### 17. **Document Structure Guide**
+**File**: `PhysicsPapers/README-Document-Structure.md`
+- **Purpose**: Reading order and document hierarchy
+
+### 18. **Original Extended Paper**
+**File**: `PhysicsPapers/unified-physics-paper.md`
+- **Status**: Superseded by postulational reorganization, retained for reference
 
 ## How the Ideas Connect
 
 ```
-                            ALGEBRAIC SPACE Ω
-                                    │
-                                    ▼
-                        DISCRETE LATTICE Λ (ℓ_p, t_p)
-                                    │
-                    ┌───────────────┴───────────────┐
-                    ▼                               ▼
-            ACTION QUANTA                   IRRATIONAL MATH
-               S = nℏ                         π, e, √2
-                    │                               │
-                    └───────────────┬───────────────┘
-                                    ▼
-                        COMPUTATIONAL STRESS
-                        (Deadline at threshold)
-                                    │
-                    ┌───────────────┴───────────────┐
-                    ▼                               ▼
-            TIME EMERGENCE                  QUANTUM ERRORS
-              dt = dS/L                        ε ∝ T
-                    │                               │
-                    ▼                               ▼
-          GEOMETRIC RESHAPING              OBSERVER BLINDNESS
-            E = mc²/γ                      (Sampling Limit)
-                    │                               │
-                    └───────────────┬───────────────┘
-                                    ▼
-                        CONTINUOUS PHYSICS
-                        (What we observe)
-                                    │
-                    ┌───────┬───────┼───────┬───────┐
-                    ▼       ▼       ▼       ▼       ▼
-                   QM      GR      SM      QFT    Cosmology
+                            SIMPLE QUESTION
+               "What if we all want to teleport at c
+                but can't because of mass?"
+                                │
+                                ▼
+                        DISCRETE SPACETIME
+                        Λ = ℓ_P × ℤ⁴
+                                │
+                    ┌───────────┴───────────┐
+                    ▼                       ▼
+            ACTION QUANTA           IRRATIONAL MATH
+               S = nℏ                 π, e, √2
+                    │                       │
+                    └───────────┬───────────┘
+                                ▼
+                    COMPUTATIONAL DEADLINES
+                                │
+            ┌───────────────────┼───────────────────┐
+            ▼                   ▼                   ▼
+    MASS = RESHAPING     QUANTUM ERRORS      LYAPUNOV FLOW
+         COST               ε ∝ T              W[g] → min
+            │                   │                   │
+            │                   │         ┌─────────┴─────────┐
+            │                   │         ▼                   ▼
+            │                   │   ENTANGLEMENT         STABLE
+            │                   │   (unstable             WORMHOLES
+            │                   │    wormholes)          (maintained)
+            │                   │         │                   │
+            │                   │         └─────────┬─────────┘
+            │                   │                   │
+            └───────────────────┴───────────────────┘
+                                │
+                                ▼
+                    INFORMATION CONSERVATION
+                        ∂_μJ^μ_I = 0
+                                │
+                    ┌───────────┴───────────┐
+                    ▼                       ▼
+            CHRONOLOGY              EVERYTHING
+            PROTECTION              EMERGES
+            (no CTCs)               (QM, GR, SM)
 ```
 
 ## Key Predictions (Ranked by Feasibility)
 
-### Tier 1: Testable NOW (Excellent SNR)
-1. **Quantum computer gate fidelity vs temperature**: F(T) = F₀/(1 + α·T) - LINEAR scaling
-   - SNR: 30, Cost: $500K, Timeline: 2 years
-   - IBM data already matches: R² = 0.98
-2. **MEMS oscillator phase drift**: Cumulative π computation errors
-   - SNR: 10³, Cost: $300K, Timeline: 2 years
-3. **Entanglement fidelity vs temperature**: F_ent(T) = F₀/(1 + 0.08×T)
-   - SNR: ~50, Cost: $400K, Timeline: 2 years
+### Tier 1: Testable NOW
+1. **Gate fidelity vs temperature**: F(T) = F₀/(1 + α·T) - SNR: 30
+2. **Entanglement fidelity vs temperature**: F_ent(T) = F₀/(1 + 0.08×T) - SNR: 50
+3. **MEMS oscillator phase drift** - SNR: 10³
 
-### Tier 2: Data Mining (Low Cost)
-4. **LIGO noise spectrum analysis**: Look for unexpected anomalies
-   - Cost: $150K, Timeline: 1 year
-5. **Bayesian model comparison**: Formal model selection on existing datasets
-   - Cost: $100K, Timeline: 1 year
+**Total Tier 1 Investment**: $900K
 
-### Tier 3: Medium-Term
-6. **Velocity corrections** for ultra-high energy particles: Δv/c ~ 10^-19
-7. **Coherence time scaling**: T₂ = T₂⁰/(1 + T/T_critical)
-8. **Gravitational decoherence**: Γ ∝ g_local
-9. **Maximum entanglement distance**: Sharp cutoff at d_crit ≈ 10¹⁵ m
+### Tier 2: Medium-Term
+4. Velocity corrections for ultra-high energy particles
+5. Coherence time scaling
+6. Maximum entanglement distance cutoff
 
-### Tier 4: Long-Term Technology
-10. **Gravitational wave** spectrum anomalies at Planck frequencies
-11. **Modified black hole** thermodynamics with irrational corrections
-12. **Atomic clock** discrepancies at extreme velocities/gravity
-
-**Total Tier 1 Investment**: $900K for 15-30% detection probability
-
-## Why This Matters
-
-This framework doesn't just solve technical physics problems—it fundamentally reconceptualizes reality:
-
-- **Reality is computational**: The universe is a discrete computer calculating itself under deadlines
-- **Cooling = Buying time**: Temperature reduction gives universe more time to compute π
-- **Free will possibility**: Self-prediction impossibility from irrational processes
-- **Consciousness connection**: Information integration and flow patterns in D_ent
-- **Practical applications**: $1.4B quantum computing savings, navigation, fundamental physics
-- **Paradigm shift**: Every infinity signals discreteness knocking at the door
+### Tier 3: Long-Term
+7. Gravitational wave spectrum anomalies
+8. Wormhole formation signatures
+9. CTC prevention mechanisms
 
 ## Reading Order
 
-### For Physicists New to the Theory:
-1. Start with this summary
-2. Read **CRITICAL-CONNECTION** document (essential for understanding mechanism)
-3. Read **Appendix B** (Quantum Computing) for practical implications
-4. Study **Appendix A** (Action-Threshold) for time emergence concept
-5. Read **Main Paper** sections 1-7 for core framework
-6. Explore **unified-theory-diagram.md** for complete visual architecture
-7. Review **Appendix H** (Experimental Tests) for validation paths
+### For New Readers:
+1. `Main-Paper-Postulates.md` - "How This Started"
+2. `KeyInsight-Irrationals-Action-Thresholds.md` - Core mechanism
+3. `Appendix-B` - Practical quantum computing implications
+4. `unified-theory-diagram.md` - Visual architecture
+
+### For Wormhole/Entanglement Focus:
+1. `Appendix-D` - Topological healing (Lyapunov)
+2. `Appendix-E` - Entanglement as unstable wormholes
+3. `Appendix-S` - Stable wormholes (NEW)
 
 ### For Experimentalists:
-1. Read **Appendix B**, Section 6 (Experimental Protocols)
-2. Access IBM Quantum (free account)
-3. Run temperature-scaling experiment (2-4 hours setup)
-4. Test prediction: F(T) = F₀/(1 + 0.065×T)
-5. Compare to linear vs exponential fit (signature of computational mechanism)
-6. Share results with community
+1. `Appendix-I` - Experimental protocols
+2. `Appendix-B` - Quantum computing tests
+3. `Appendix-E` - Entanglement fidelity tests
 
-### For Quantum Computing Industry:
-1. Read **Appendix B** in full (47 pages, engineering focus)
-2. Study six alternative cooling strategies
-3. Review cost-benefit analysis ($1.4B savings potential)
-4. Implement action-density optimization in system design
-5. Consider topological qubit investment (100-1000× improvement possible)
+## Framework Summary
 
-### For Philosophers of Physics:
-1. Read **Main Paper** Section 7 (Observer Blindness)
-2. Read **Appendix E** (Information Flow Conservation)
-3. Study **CRITICAL-CONNECTION** for computational reality view
-4. Explore **unified-theory-diagram.md** Level 10 (philosophical implications)
+### The Simple Question
+"What if everything wants to teleport at c but can't because of mass?"
 
-## Publication Strategy
+### The Simple Answer
+Mass is what you pay when you can't move freely.
 
-### Phase 1: Establish Credibility (Months 1-6)
-- **Appendix B** → Physical Review Applied (strongest practical predictions)
-- **Appendix A** → Physical Review Letters (revolutionary time emergence)
-- **Lorentz-Doppler** → American Journal of Physics (pedagogical)
+### Everything Follows
+- Mass = reshaping cost
+- Quantum uncertainty = truncated irrationals
+- Entanglement = unstable wormholes
+- Black holes = hungry wormholes
+- Time travel = impossible (information conservation)
 
-### Phase 2: Framework Foundation (Months 6-12)
-- **Main Paper** (shortened to 30 pages) → Physical Review D
-- **Renormalization Correspondence** → Physical Review D
+**Good science should be: FUN, FALSIFIABLE, and USEFUL.**
 
-### Phase 3: Complete Picture (Months 12-24)
-- **Information Flow Conservation** → Physical Review D
-- **Graviton Predictions** → Classical and Quantum Gravity
-- **Experimental Tests** → Living Reviews in Relativity
-
-## Status
-
-This is a theoretical framework with:
-
-**Strengths**:
-- **Mathematical consistency**: Rigorous theorem-proof structure throughout
-- **Experimental predictions**: 30+ specific tests, 3 with SNR > 10
-- **Practical applications**: $1.4B industry impact potential
-- **Internal coherence**: All papers cross-reference consistently
-- **Explanatory power**: Resolves EPR paradox, black hole information, hierarchy problem
-- **Honest limitations**: Ω structure acknowledged as unknown (research direction)
-
-**Cleared Concerns**:
-- ✅ Ω ambiguity → Research direction following Noether's heritage
-- ✅ Observer blindness → Physical sampling constraint (Nyquist theorem)
-- ✅ Irrational uncertainty → Complete mechanism via computational deadlines
-
-**Remaining Work**:
-- Standard Model connection (medium priority)
-- Experimental protocol completion (high priority)
-- Quantitative error budgets (high priority)
-- Ω candidate structures (long-term)
-
-**Historical Comparison**: Framework most resembles Wilson's renormalization group breakthrough—taking something physicists use but don't understand (cooling, renormalization) and revealing the deep physics (discrete spacetime, computational deadlines).
-
-**Verdict**: "STRONG WORK, READY FOR PUBLICATION WITH REVISIONS"
+This framework is all three.
 
 ---
 
-## Quick Reference
-
-| Paper | Core Insight | Testable? | Priority |
-|-------|-------------|-----------|----------|
-| Main Paper | Mass = geometric reshaping cost | Yes | High |
-| Appendix A | Time = action threshold counting | YES - IBM Quantum | **HIGHEST** |
-| Appendix B | Cooling = buying computational time | YES - Temperature scaling | **HIGHEST** |
-| Appendix C (Entanglement) | Adjacent in D_ent dimension | Yes - Fidelity vs T | High |
-| Appendix D (Lorentz-Doppler) | Time dilation = Doppler of reshaping | Pedagogical | Medium |
-| Appendix E (Information) | 4th conservation law: ∇·I = 0 | Indirect | Medium |
-| Appendix F (Graviton) | 2.32 bits geometric message | LIGO anomalies | Low |
-| Appendix G (Renormalization) | Infinities = discreteness | Paradigm shift | Medium |
-| Appendix H (Experiments) | 30+ validation protocols | Roadmap | High |
-| CRITICAL-CONNECTION | π computation under deadlines | Foundation | **ESSENTIAL** |
-
----
-
-*"The universe whispers its secrets through every infinity, every quantum error, every thermal decoherence event. The message: 'I am discrete, I am computational, I am under deadlines.'"*
-
-*"We are discrete patterns of information trying to understand the algebraic space Ω from which we emerge."*
-
-*"Every cooling cycle you run on your quantum computer is the universe asking for more time to compute π."*
+*"One question. One answer. Everything follows."*

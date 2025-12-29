@@ -1,96 +1,121 @@
 cff-version: 1.2.0
 message: "If you use this work, please cite it as below."
-title: "Chaos Shield: Constructive Mathematics and Quantum Security Frameworks"
+title: "Chaos Shield: Ω-Theory - Discrete Spacetime, Mass as Geometric Reshaping, and Unified Physics"
 authors:
-- family-names: "Norbert"
-  given-names: ""
+- family-names: "Marchewka"
+  given-names: "Norbert"
 type: software
 repository-code: "https://github.com/RamzesX/chaos-shield"
 keywords:
-  # Core Frameworks
+  # Core Framework (Ω-Theory)
+  - discrete spacetime
+  - quantum gravity
+  - mass as geometric reshaping
+  - omega theory
+  - planck scale physics
+  - unified field theory
+  
+  # Central Thesis
+  - geometric reshaping cost
+  - action threshold physics
+  - computational deadlines
+  - irrational number uncertainty
+  
+  # Information Conservation
+  - fourth noether law
+  - information flow conservation
+  - fourth conservation law
+  
+  # Quantum Entanglement
+  - quantum entanglement dimensional theory
+  - topologically unstable wormholes
+  - lyapunov stability
+  - entanglement wormhole collapse
+  - D_ent hidden dimension
+  
+  # Stable Wormholes (NEW)
+  - stable wormholes
+  - wormhole engineering
+  - chronology protection
+  - time paradox prevention
+  - wormhole maintenance
+  - graceful collapse protocol
+  - three-tier wormhole classification
+  - black holes as natural wormholes
+  - information wormholes
+  - mass wormholes
+  - exotic matter alternatives
+  
+  # Quantum Computing
+  - quantum computing temperature limits
+  - action density optimization
+  - gate fidelity scaling
+  - temperature dependent quantum errors
+  - cryogenic cooling alternatives
+  
+  # Mathematical Framework
   - constructive mathematics
   - Conv(Q) framework
-  - quantum gravity
-  - discrete spacetime
-  - quantum chaos protocols
-  
-  # Mathematical Concepts
   - rational numbers
   - convergence operator
   - computational foundations
-  - potential infinity
-  - mathematical minimalism
-  - computable analysis
-  - constructive proofs
-  - quantum integers
   
-  # Physics & Cosmology
-  - planck scale physics
-  - mass generation
-  - geometric reshaping
-  - unified field theory
-  - emergent relativity
-  - higgs mechanism
-  - causal sets
-  - noether theorem
-  - spacetime lattice
-  - lorentz invariance
-  - action threshold physics
-  - computational deadlines
-  - time emergence
-  - observer blindness
-  - irrational number uncertainty
-  - information flow conservation
+  # Physics Predictions
   - graviton predictions
   - renormalization correspondence
-  - quantum entanglement dimensional theory
-  - temperature dependent quantum errors
   - lorentz doppler unification
   - stress energy tensor emergence
-  - fourth conservation law
   - holographic principle
+  - observer blindness
+  - time emergence
   
-  # Quantum Computing & Security
+  # Quantum Security
   - post-quantum cryptography
+  - quantum chaos protocols
   - traffic obfuscation
-  - differential privacy
-  - quantum resistance
-  - harvest now decrypt later
-  - quantum decoherence
   - economic exhaustion
-  - quantum computing temperature limits
-  - action density optimization
-  - topological qubits
-  - gate fidelity scaling
-  - cryogenic cooling alternatives
-  - qubit error rates
   
   # Philosophy
   - digital physics
   - it from bit
   - computational universe
-  - constructivism
-  - finite information
-  - bekenstein bound
   - emergent spacetime
   
-  # Systems & Implementation
-  - unix philosophy
-  - operating systems
-  - tao of programming
-  - computational thinking
 license: CC-BY-4.0
 date-released: 2025-01-01
+version: "2.0.0"
 abstract: |
-  Chaos Shield is a collection of theoretical frameworks exploring the intersection
-  of mathematics, quantum computing, physics, and security. It introduces Conv(ℚ), a
-  constructive mathematical framework that restricts mathematics to computationally
-  meaningful objects, presents novel quantum-resistant security protocols based
-  on economic exhaustion through traffic obfuscation, and proposes a revolutionary
-  discrete spacetime theory where mass emerges from geometric reshaping costs and
-  quantum uncertainty arises from computational deadlines imposed by action thresholds.
-  The physics framework (13 papers) includes testable predictions for quantum computing
-  error rates, explains why cryogenic cooling buys computational time for irrational
-  number calculations, and resolves quantum entanglement paradoxes through hidden
-  dimensional proximity. The work bridges theoretical physics, mathematical philosophy,
-  quantum computing engineering, and practical system design.
+  Ω-Theory (Chaos Shield) presents a unified physics framework originating from a simple
+  question: "What if everything wants to teleport at the speed of light—but we can't,
+  because we have mass, and need to expend energy to reshape the geometry around us?"
+  
+  From this insight, the framework develops:
+  
+  1. DISCRETE SPACETIME: Reality is a Planck-scale lattice (Λ = ℓ_P × ℤ⁴)
+  
+  2. MASS AS RESHAPING COST: Massive particles pay energy to reshape local geometry
+     with each quantum jump—this toll manifests as rest mass (E = mc²)
+  
+  3. QUANTUM UNCERTAINTY: Arises from computational truncation of irrational numbers
+     (π, e, √2) under action threshold deadlines (S = nℏ)
+  
+  4. INFORMATION CONSERVATION: Fourth Noether law (∂_μJ^μ_I = 0) from which other
+     conservation laws derive
+  
+  5. QUANTUM ENTANGLEMENT: Topologically unstable wormholes in hidden dimension D_ent
+     that collapse upon measurement via Lyapunov healing flow
+  
+  6. STABLE WORMHOLES: Three-tier classification—natural (black holes, devastating),
+     information (maintained, safe), mass (heavily maintained, traversable). Time travel
+     impossible because CTCs violate information conservation.
+  
+  7. CHRONOLOGY PROTECTION: Automatic—the same mass that stabilizes wormholes prevents
+     relativistic manipulation into time machines.
+  
+  The framework makes testable predictions validated by recent data: quantum error rates
+  scale with action density ρ_S = NkT/V (power-law T^(-2.5), not Arrhenius exponential),
+  confirmed by Diraq/Nature 2024 spin qubit experiments.
+  
+  Total: 18 physics papers, 14 mathematics papers, 3 security papers.
+  
+  Philosophy: Good science should be FUN, FALSIFIABLE, and USEFUL.

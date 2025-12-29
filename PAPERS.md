@@ -17,28 +17,37 @@
 13. [`12_Open_Problems.md`](ConvQMath/12_Open_Problems.md) - Unsolved problems
 14. [`13_Quantum_Integers.md`](ConvQMath/13_Quantum_Integers.md) - Quantum extensions
 
-## Physics: Discrete Spacetime Framework (13 papers)
+## Physics: Discrete Spacetime Framework (Ω-Theory)
 
 **Full Summary**: See [`Physics-Papers-Summary.md`](Physics-Papers-Summary.md) for comprehensive overview with reading orders and publication strategy.
 
-### Main Paper
-1. [`unified-physics-paper.md`](PhysicsPapers/unified-physics-paper.md) - **Discrete Spacetime and Mass as Geometric Reshaping** (62 pages)
+### Entry Point
+1. [`Main-Paper-Postulates.md`](PhysicsPapers/Main-Paper-Postulates.md) - **Postulational Summary**: Central thesis, four principles, "How This Started"
 
-### Appendices
-2. [`Appendix-A-Action-Density-and-Quantum-Errors.md`](PhysicsPapers/Appendix-A-Action-Density-and-Quantum-Errors.md) - **Action-Threshold Physics**: Time emerges from action accumulation S = nℏ
-3. [`Appendix-B-Quantum-Computing-Temperature-Limits.md`](PhysicsPapers/Appendix-B-Quantum-Computing-Temperature-Limits.md) - **Quantum Computing Temperature Limits**: Cooling = buying computational time ($1.4B impact)
-4. [`Appendix-E-Quantum-Entanglement-Dimensional-Theory.md`](PhysicsPapers/Appendix-E-Quantum-Entanglement-Dimensional-Theory.md) - **Quantum Entanglement as Higher-Dimensional Proximity**: D_ent hidden dimension
-5. [`Appendix-LorentzDopplerEquivalence.md`](PhysicsPapers/Appendix-LorentzDopplerEquivalence.md) - **Lorentz-Doppler Unification**: Time dilation as Doppler effect
-6. [`Appendix-F-Information-Flow-Conservation.md`](PhysicsPapers/Appendix-F-Information-Flow-Conservation.md) - **Information Flow Conservation**: Fourth fundamental conservation law ∇·I = 0
-7. [`Appendix-G-Graviton-Predictions.md`](PhysicsPapers/Appendix-G-Graviton-Predictions.md) - **Graviton Predictions**: 2.32 bits geometric message
-8. [`Appendix-H-Renormalization-Correspondence.md`](PhysicsPapers/Appendix-H-Renormalization-Correspondence.md) - **Renormalization as Hidden Discreteness**: Infinities signal discrete spacetime
-9. [`Appendix-I-Experimental-Tests.md`](PhysicsPapers/Appendix-I-Experimental-Tests.md) - **Experimental Tests**: 30+ validation protocols
+### Core Mechanism
+2. [`KeyInsight-Irrationals-Action-Thresholds.md`](PhysicsPapers/KeyInsight-Irrationals-Action-Thresholds.md) - **CRITICAL**: How π, e, √2 create uncertainty under computational deadlines
+
+### Technical Appendices
+3. [`Appendix-A-Action-Density-and-Quantum-Errors.md`](PhysicsPapers/Appendix-A-Action-Density-and-Quantum-Errors.md) - **Action-Threshold Physics**: Time emerges from S = nℏ
+4. [`Appendix-B-Quantum-Computing-Temperature-Limits.md`](PhysicsPapers/Appendix-B-Quantum-Computing-Temperature-Limits.md) - **Quantum Computing Limits**: Cooling = buying computational time
+5. [`Appendix-C-Catalog-Of-Evolution-Functionals.md`](PhysicsPapers/Appendix-C-Catalog-Of-Evolution-Functionals.md) - **Evolution Functionals**: 39 Perelman-inspired functionals
+6. [`Appendix-D-Topological-Surgery-And-Information-Healing.md`](PhysicsPapers/Appendix-D-Topological-Surgery-And-Information-Healing.md) - **Topological Surgery**: Two-tier healing, Lyapunov stability
+7. [`Appendix-E-Quantum-Entanglement-Dimensional-Theory.md`](PhysicsPapers/Appendix-E-Quantum-Entanglement-Dimensional-Theory.md) - **Quantum Entanglement**: D_ent as topologically unstable wormholes, Lyapunov collapse mechanism
+8. [`appendix-E-visual-diagrams.md`](PhysicsPapers/appendix-E-visual-diagrams.md) - **Visual Diagrams**: Stability landscapes, collapse mechanism diagrams
+9. [`Appendix-F-Information-Flow-Conservation.md`](PhysicsPapers/Appendix-F-Information-Flow-Conservation.md) - **Information Conservation**: Fourth Noether law ∂_μJ^μ_I = 0
+10. [`Appendix-G-Graviton-Predictions.md`](PhysicsPapers/Appendix-G-Graviton-Predictions.md) - **Graviton Predictions**: E_g = E_P/2, 2.32 bits geometric message
+11. [`Appendix-H-Renormalization-Correspondence.md`](PhysicsPapers/Appendix-H-Renormalization-Correspondence.md) - **Renormalization**: UV cutoff as discrete spacetime signature
+12. [`Appendix-I-Experimental-Tests.md`](PhysicsPapers/Appendix-I-Experimental-Tests.md) - **Experimental Tests**: 30+ validation protocols
+13. [`Appendix-LorentzDopplerEquivalence.md`](PhysicsPapers/Appendix-LorentzDopplerEquivalence.md) - **Lorentz-Doppler**: Time dilation as wave mechanics
+14. [`Appendix-S-Stable-Wormholes-And-Chronology-Protection.md`](PhysicsPapers/Appendix-S-Stable-Wormholes-And-Chronology-Protection.md) - **NEW: Stable Wormholes**: Three-tier classification, maintenance requirements, time paradox prevention
 
 ### Supporting Documents
-10. [`CRITICAL-CONNECTION-Irrationals-Action-Thresholds.md`](PhysicsPapers/CRITICAL-CONNECTION-Irrationals-Action-Thresholds.md) - **Core Mechanism**: How π, e, √2 create uncertainty under computational deadlines (ESSENTIAL READING)
-11. [`appendix-E-visual-diagrams.md`](PhysicsPapers/appendix-E-visual-diagrams.md) - **Visual Diagrams**: Enhanced visualizations for D_ent theory
-12. [`unified-theory-diagram.md`](PhysicsPapers/unified-theory-diagram.md) - **Comprehensive Framework Diagram**: Complete 10-level visual architecture
-13. [`UPDATED-COMPREHENSIVE-REVIEW.md`](PhysicsPapers/UPDATED-COMPREHENSIVE-REVIEW.md) - **Critical Analysis**: Publication strategy and peer review assessment
+15. [`unified-theory-diagram.md`](PhysicsPapers/unified-theory-diagram.md) - **Visual Architecture**: Complete 11-level framework diagram
+16. [`Complete-Omega-Theory-Unified-Framework.md`](PhysicsPapers/Complete-Omega-Theory-Unified-Framework.md) - **Full Technical Treatment**: 50+ pages comprehensive development
+17. [`README-Document-Structure.md`](PhysicsPapers/README-Document-Structure.md) - **Reading Guide**: Document hierarchy and reading order
+
+### Legacy Document
+18. [`unified-physics-paper.md`](PhysicsPapers/unified-physics-paper.md) - **Original Extended Paper**: 62 pages (superseded by postulational reorganization)
 
 ## Quantum Security
 
@@ -50,3 +59,55 @@
 
 - [`HowShellWorks/`](UnixOs/HowShellWorks/) - Shell internals
 - [`HowTheOsWakeUp/`](UnixOs/HowTheOsWakeUp/) - Boot process
+
+---
+
+## Paper Connections
+
+```
+                    ┌─────────────────────────────────────┐
+                    │  Main-Paper-Postulates.md           │
+                    │  "How This Started: A Simple        │
+                    │   Question about Mass"              │
+                    └─────────────────┬───────────────────┘
+                                      │
+              ┌───────────────────────┼───────────────────────┐
+              │                       │                       │
+              ▼                       ▼                       ▼
+   ┌──────────────────┐   ┌──────────────────┐   ┌──────────────────┐
+   │ KeyInsight       │   │ unified-theory-  │   │    Appendices    │
+   │ (Mechanism)      │   │ diagram.md       │   │    A through S   │
+   └────────┬─────────┘   └──────────────────┘   └────────┬─────────┘
+            │                                             │
+            │         ┌───────────────────────────────────┤
+            │         │                                   │
+            │         ▼                                   ▼
+            │   ┌──────────────┐                 ┌──────────────────┐
+            │   │ Appendix D   │────────────────▶│ Appendix E       │
+            │   │ (Topology)   │  Lyapunov       │ (Entanglement as │
+            │   │              │  Stability      │  Unstable        │
+            │   └──────────────┘                 │  Wormholes)      │
+            │                                    └────────┬─────────┘
+            │                                             │
+            │                                             ▼
+            │                                    ┌──────────────────┐
+            │                                    │ Appendix S (NEW) │
+            │                                    │ (Stable Wormholes│
+            │                                    │  & Chronology    │
+            │                                    │  Protection)     │
+            │                                    └──────────────────┘
+            │
+            └─────────────────────┬───────────────────────┘
+                                  │
+                                  ▼
+                    ┌─────────────────────────────────────┐
+                    │  Complete-Omega-Theory-Unified-     │
+                    │  Framework.md                       │
+                    └─────────────────────────────────────┘
+```
+
+---
+
+*Total Physics Papers: 18 documents*
+*Total Mathematics Papers: 14 documents*
+*Total Security Papers: 3 documents*
