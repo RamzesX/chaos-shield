@@ -48,6 +48,11 @@ structure LatticeIndex where
   coords : Fin spacetimeDim → ℤ
   deriving DecidableEq
 
+/-- Extensionality for LatticeIndex -/
+@[ext]
+theorem LatticeIndex.ext {p q : LatticeIndex} (h : p.coords = q.coords) : p = q := by
+  cases p; cases q; simp_all
+
 namespace LatticeIndex
 
 /-- The origin of the lattice -/
@@ -108,6 +113,11 @@ structure LatticePoint where
   /-- The underlying integer coordinates -/
   index : LatticeIndex
   deriving DecidableEq
+
+/-- Extensionality for LatticePoint -/
+@[ext]
+theorem LatticePoint.ext {p q : LatticePoint} (h : p.index = q.index) : p = q := by
+  cases p; cases q; simp_all
 
 namespace LatticePoint
 

@@ -6,7 +6,7 @@ package DiscreteSpacetime where
     ⟨`pp.unicode.fun, true⟩,
     ⟨`autoImplicit, false⟩,
     ⟨`linter.docPrime, false⟩,
-    ⟨`diagnostics, true⟩
+    ⟨`diagnostics, false⟩
   ]
 
 require mathlib from git

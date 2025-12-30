@@ -51,6 +51,16 @@ structure LatticeSymmetry where
   /-- Right inverse -/
   right_inv : ∀ p, transform (inverse p) = p
 
+/-- Extensionality for LatticeSymmetry: two symmetries are equal if their
+    transform and inverse functions are equal. -/
+@[ext]
+theorem LatticeSymmetry.ext {σ τ : LatticeSymmetry}
+    (h_transform : σ.transform = τ.transform)
+    (h_inverse : σ.inverse = τ.inverse) : σ = τ := by
+  cases σ; cases τ
+  simp only [mk.injEq]
+  exact ⟨h_transform, h_inverse⟩
+
 /-- Identity symmetry -/
 def identitySymmetry : LatticeSymmetry where
   transform := id
@@ -100,14 +110,14 @@ def latticeTranslation (μ : Fin 4) (n : ℤ) : LatticeSymmetry where
   inverse := fun p => ⟨shiftIndexCoord p.index μ (-n)⟩
   left_inv := fun p => by
     simp only [shiftIndexCoord]
-    congr 1
-    ext ν
-    split_ifs with h <;> ring
+    ext i
+    simp only [LatticePoint.mk.injEq, LatticeIndex.mk.injEq, LatticeIndex.coords]
+    split_ifs with h1 <;> ring
   right_inv := fun p => by
     simp only [shiftIndexCoord]
-    congr 1
-    ext ν
-    split_ifs with h <;> ring
+    ext i
+    simp only [LatticePoint.mk.injEq, LatticeIndex.mk.injEq, LatticeIndex.coords]
+    split_ifs with h1 <;> ring
 
 /-- Spatial translation (μ ∈ {1,2,3}) -/
 def spatialTranslation (μ : Fin 3) (n : ℤ) : LatticeSymmetry :=
@@ -121,23 +131,30 @@ def timeTranslation (n : ℤ) : LatticeSymmetry :=
 theorem latticeTranslation_zero (μ : Fin 4) :
     latticeTranslation μ 0 = identitySymmetry := by
   simp only [latticeTranslation, identitySymmetry, shiftIndexCoord]
-  constructor <;> {
+  congr 1 <;> {
     funext p
     congr 1
-    ext ν
+    ext i
+    simp only [LatticeIndex.mk.injEq, LatticeIndex.coords, id_eq]
     split_ifs <;> ring
   }
 
 /-- Composition of translations is additive -/
 theorem latticeTranslation_add (μ : Fin 4) (m n : ℤ) :
     (latticeTranslation μ m).comp (latticeTranslation μ n) = latticeTranslation μ (m + n) := by
-  simp only [LatticeSymmetry.comp, latticeTranslation, shiftIndexCoord, Function.comp_apply]
-  constructor <;> {
+  apply LatticeSymmetry.ext
+  · -- transform
     funext p
-    congr 1
-    ext ν
-    split_ifs <;> ring
-  }
+    simp only [LatticeSymmetry.comp, latticeTranslation, shiftIndexCoord, Function.comp_apply]
+    congr 1; congr 1
+    funext ν
+    split_ifs with h <;> ring
+  · -- inverse
+    funext p
+    simp only [LatticeSymmetry.comp, latticeTranslation, shiftIndexCoord, Function.comp_apply]
+    congr 1; congr 1
+    funext ν
+    split_ifs with h <;> ring
 
 /-! ## Lagrangian Invariance -/
 
@@ -258,7 +275,6 @@ theorem translation_implies_momentum_conservation (μ : Fin 4)
       -- P_μ is the conserved momentum (constant along optimal paths)
       True := by
   use fun _ => 0  -- Placeholder for actual momentum
-  trivial
 
 /-- Corollary: Time translation symmetry → Energy conservation -/
 theorem time_translation_implies_energy_conservation
@@ -268,7 +284,6 @@ theorem time_translation_implies_energy_conservation
       -- Ham is the conserved energy
       True := by
   use fun _ => 0  -- Placeholder for actual Hamiltonian
-  trivial
 
 /-! ## Gauge Symmetry and Information Conservation -/
 
@@ -285,14 +300,17 @@ def trivialGauge : GaugeTransformation where
   Lambda := fun _ => 0
   isHarmonic := fun _ => by
     unfold discreteLaplacian secondDeriv
-    simp only [sub_self, mul_zero, zero_div, Finset.sum_const_zero]
+    simp only [sub_self, mul_zero, zero_div, add_zero, zero_add,
+               Finset.sum_const, Finset.card_fin, spacetimeDim, nsmul_eq_mul]
 
 /-- Constant gauge transformation -/
 noncomputable def constantGauge (val : ℝ) : GaugeTransformation where
   Lambda := fun _ => val
-  isHarmonic := fun _ => by
+  isHarmonic := fun p => by
     unfold discreteLaplacian secondDeriv
-    simp only [sub_self, mul_zero, zero_div, Finset.sum_const_zero]
+    apply Finset.sum_eq_zero
+    intro _ _
+    ring
 
 /-- Composition of gauge transformations -/
 def GaugeTransformation.comp (Λ₁ Λ₂ : GaugeTransformation) : GaugeTransformation where
@@ -302,19 +320,16 @@ def GaugeTransformation.comp (Λ₁ Λ₂ : GaugeTransformation) : GaugeTransfor
     have h2 := Λ₂.isHarmonic p
     unfold discreteLaplacian secondDeriv at *
     simp only [Pi.add_apply]
-    -- Laplacian is linear
-    have : ∀ μ : Fin 4,
+    -- Use linearity: rewrite each summand
+    have lin : ∀ μ : Fin 4,
       ((Λ₁.Lambda (p.shiftPos μ) + Λ₂.Lambda (p.shiftPos μ)) -
        2 * (Λ₁.Lambda p + Λ₂.Lambda p) +
        (Λ₁.Lambda (p.shiftNeg μ) + Λ₂.Lambda (p.shiftNeg μ))) / (ℓ_P ^ 2) =
       (Λ₁.Lambda (p.shiftPos μ) - 2 * Λ₁.Lambda p + Λ₁.Lambda (p.shiftNeg μ)) / (ℓ_P ^ 2) +
       (Λ₂.Lambda (p.shiftPos μ) - 2 * Λ₂.Lambda p + Λ₂.Lambda (p.shiftNeg μ)) / (ℓ_P ^ 2) := by
-      intro μ
-      ring
-    simp_rw [this]
-    rw [Finset.sum_add_distrib]
-    rw [h1, h2]
-    ring
+      intro μ; ring
+    conv_lhs => arg 2; ext μ; rw [lin μ]
+    rw [Finset.sum_add_distrib, h1, h2, add_zero]
 
 /-- The information Lagrangian density.
     L_I = (1/2)|∇ρ_I|² - V(ρ_I)
@@ -364,22 +379,22 @@ theorem information_gauge_symmetry (ρ_I : LatticeScalarField)
     (symmetricDiff Λ.Lambda μ p)^2 := fun μ => by ring
   simp_rw [expand]
   rw [Finset.sum_add_distrib, Finset.sum_add_distrib]
-  -- Algebraic rearrangement
-  ring_nf
-  sorry -- Complex algebraic rearrangement needed
+  -- (1/2) * (Σ a² + Σ 2ab + Σ b²) = (1/2) * Σ a² + Σ ab + (1/2) * Σ b²
+  have factor_2 : Finset.univ.sum (fun μ => 2 * symmetricDiff ρ_I μ p * symmetricDiff Λ.Lambda μ p) =
+    2 * Finset.univ.sum (fun μ => symmetricDiff ρ_I μ p * symmetricDiff Λ.Lambda μ p) := by
+    rw [Finset.mul_sum]
+    congr 1
+    funext μ
+    ring
+  rw [factor_2]
+  ring
 
 /-- For constant gauge, Lagrangian is exactly invariant -/
 theorem informationLagrangian_constant_gauge_invariant (ρ_I : LatticeScalarField) (val : ℝ)
     (p : LatticePoint) :
     informationLagrangian (fun q => ρ_I q + val) p = informationLagrangian ρ_I p := by
-  unfold informationLagrangian
-  congr 1
-  apply Finset.sum_congr rfl
-  intro μ _
-  have h : symmetricDiff (fun q => ρ_I q + val) μ p = symmetricDiff ρ_I μ p := by
-    unfold symmetricDiff
-    ring
-  rw [h]
+  unfold informationLagrangian symmetricDiff
+  simp only [add_sub_add_right_eq_sub]
 
 /-! ## Fourth Law from Noether's Theorem -/
 
@@ -496,9 +511,7 @@ theorem energy_conservation (TIG : TranslationInvariantGraph)
 theorem spin_info_from_chiral_symmetry :
     -- The spin current is a (possibly anomalous) Noether current
     -- In the non-anomalous limit, it is exactly conserved
-    ∃ (chiralCurrentIsNoether : Prop), True := by
-  use True
-  trivial
+    ∃ (chiralCurrentIsNoether : Prop), True := ⟨True, trivial⟩
 
 /-! ## Properties of Discrete Laplacian -/
 
@@ -506,46 +519,58 @@ theorem spin_info_from_chiral_symmetry :
 theorem discreteLaplacian_const (val : ℝ) (p : LatticePoint) :
     discreteLaplacian (fun _ => val) p = 0 := by
   unfold discreteLaplacian secondDeriv
-  simp only [sub_self, mul_zero, zero_div, Finset.sum_const_zero]
+  apply Finset.sum_eq_zero
+  intro _ _
+  ring
 
 /-- Discrete Laplacian is linear -/
 theorem discreteLaplacian_linear (f g : LatticeScalarField) (a b : ℝ) (p : LatticePoint) :
     discreteLaplacian (fun q => a * f q + b * g q) p =
     a * discreteLaplacian f p + b * discreteLaplacian g p := by
   unfold discreteLaplacian secondDeriv
-  simp only [Pi.add_apply, Pi.mul_apply]
-  -- This requires detailed algebraic manipulation
-  sorry
+  rw [Finset.mul_sum, Finset.mul_sum, ← Finset.sum_add_distrib]
+  apply Finset.sum_congr rfl
+  intro μ _
+  ring
 
 /-- Helper: shiftPos expands to coordinate addition -/
 theorem shiftPos_coords (p : LatticePoint) (ν μ : Fin 4) :
     (p.shiftPos ν).index.coords μ = p.index.coords μ + if ν = μ then 1 else 0 := by
-  simp only [LatticePoint.shiftPos, LatticeIndex.shiftPos, LatticeIndex.unitVector]
-  sorry  -- Requires understanding of LatticeIndex structure
+  unfold LatticePoint.shiftPos LatticeIndex.shiftPos LatticeIndex.unitVector
+  simp_all only [HAdd.hAdd, Add.add, LatticeIndex.coords]
 
 /-- Helper: shiftNeg expands to coordinate subtraction -/
 theorem shiftNeg_coords (p : LatticePoint) (ν μ : Fin 4) :
     (p.shiftNeg ν).index.coords μ = p.index.coords μ - if ν = μ then 1 else 0 := by
-  simp only [LatticePoint.shiftNeg, LatticeIndex.shiftNeg, LatticeIndex.unitVector]
-  sorry  -- Requires understanding of LatticeIndex structure
+  unfold LatticePoint.shiftNeg LatticeIndex.shiftNeg LatticeIndex.unitVector
+  simp_all only [HSub.hSub, Sub.sub, LatticeIndex.coords, Neg.neg]
 
 /-- Discrete Laplacian of linear function along one axis is zero.
     This is because the second derivative of a linear function vanishes. -/
 theorem discreteLaplacian_linear_function (μ : Fin 4) (p : LatticePoint) :
     discreteLaplacian (fun q => (q.index.coords μ : ℝ)) p = 0 := by
   unfold discreteLaplacian secondDeriv
-  -- For each direction ν, the second derivative of x_μ in direction ν is 0
-  -- This requires detailed coordinate manipulation
-  sorry
+  apply Finset.sum_eq_zero
+  intro ν _
+  simp only [shiftPos_coords, shiftNeg_coords, Int.cast_add, Int.cast_sub, Int.cast_ite,
+             Int.cast_one, Int.cast_zero]
+  split_ifs with h1 <;> ring
 
 /-- Discrete Laplacian of quadratic function -/
 theorem discreteLaplacian_quadratic (μ : Fin 4) (p : LatticePoint) :
     discreteLaplacian (fun q => (q.index.coords μ : ℝ)^2) p =
     2 / (ℓ_P ^ 2) := by
   unfold discreteLaplacian secondDeriv
-  -- For quadratic x_μ², the second derivative in direction μ is 2,
-  -- and 0 in other directions
-  sorry
+  have h : ∀ ν : Fin 4,
+    ((((p.shiftPos ν).index.coords μ : ℝ)^2 -
+      2 * (p.index.coords μ : ℝ)^2 +
+      ((p.shiftNeg ν).index.coords μ : ℝ)^2) / (ℓ_P ^ 2)) =
+    if ν = μ then 2 / (ℓ_P ^ 2) else 0 := by
+    intro ν
+    simp only [shiftPos_coords, shiftNeg_coords, Int.cast_add, Int.cast_sub, Int.cast_ite,
+               Int.cast_one, Int.cast_zero]
+    split_ifs with h1 <;> ring
+  simp only [h, Finset.sum_ite_eq', Finset.mem_univ, ite_true]
 
 /-- Discrete Green's identity (integration by parts on lattice) -/
 theorem discrete_greens_identity (f_field g_field : LatticeScalarField) (p : LatticePoint) :
@@ -560,28 +585,37 @@ theorem discrete_greens_identity (f_field g_field : LatticeScalarField) (p : Lat
 theorem latticeTranslation_comm (μ ν : Fin 4) (m n : ℤ) :
     (latticeTranslation μ m).comp (latticeTranslation ν n) =
     (latticeTranslation ν n).comp (latticeTranslation μ m) := by
-  simp only [LatticeSymmetry.comp, latticeTranslation, shiftIndexCoord, Function.comp_apply]
-  constructor <;> {
+  apply LatticeSymmetry.ext
+  · -- transform
     funext p
-    congr 1
-    ext ξ
+    simp only [LatticeSymmetry.comp, latticeTranslation, shiftIndexCoord, Function.comp_apply]
+    congr 1; congr 1
+    funext i
     split_ifs <;> ring
-  }
+  · -- inverse
+    funext p
+    simp only [LatticeSymmetry.comp, latticeTranslation, shiftIndexCoord, Function.comp_apply]
+    congr 1; congr 1
+    funext i
+    split_ifs <;> ring
 
 /-- Inverse translation -/
 theorem latticeTranslation_inv (μ : Fin 4) (n : ℤ) :
     (latticeTranslation μ n).inv = latticeTranslation μ (-n) := by
-  simp only [LatticeSymmetry.inv, latticeTranslation, shiftIndexCoord]
-  constructor <;> {
+  apply LatticeSymmetry.ext
+  · -- transform: inverse's transform = (-n)'s transform
     funext p
-    congr 1
-    ext ν
+    simp only [LatticeSymmetry.inv, latticeTranslation, shiftIndexCoord]
+  · -- inverse: inverse's inverse = (-n)'s inverse
+    funext p
+    simp only [LatticeSymmetry.inv, latticeTranslation, shiftIndexCoord]
+    congr 1; congr 1
+    funext i
     split_ifs <;> ring
-  }
 
-/-! ## Summary -/
+/-! ## Summary
 
-/-- Summary: Discrete Noether's Theorem
+Summary: Discrete Noether's Theorem
 
     1. SYMMETRIES ON LATTICE
        - Translation: lattice shifts in direction μ
