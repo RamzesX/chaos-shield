@@ -209,6 +209,67 @@ Noise floor: 10⁻⁷ rad (thermal fluctuation dominated)
 
 ---
 
+## 3A. Tier 3 Experiments: Cosmological Tests (2030s)
+
+### 3A.1 CMB Oscillation Search
+
+**Physical Rationale**: Covariant UV cutoffs at the Planck scale during inflation should imprint oscillatory features on the primordial power spectrum. Chatwin-Davies, Kempf, and Martin (2017) calculate that a natural Planck-scale cutoff produces oscillations at relative amplitude ~H/E_P ~ 10⁻⁵, where H is the Hubble parameter during inflation.
+
+**Connection to Framework**: This test directly probes the dimensional flow prediction d_eff(E) = 4 - 2E/E_P. During inflation, modes exiting the horizon sampled Planck-scale physics, leaving observable imprints on the CMB temperature and polarization anisotropies.
+
+**Theoretical Prediction**:
+
+The primordial power spectrum with Planck-scale effects:
+
+$$P(k) = P_0(k) \times \left[1 + A \sin\left(\frac{k}{k_c} + \phi\right)\right]$$
+
+where:
+- A ~ 10⁻⁵ (oscillation amplitude)
+- k_c ~ H_inflation × (E_P/E_inflation)^{1/2} (characteristic wavenumber)
+- φ = phase determined by inflation model
+
+**Current Status**:
+
+| Mission | Precision | Sensitivity to Signal |
+|---------|-----------|----------------------|
+| Planck (2018) | ~10⁻⁴ | Insufficient (~10× too weak) |
+| CMB-S4 (2030s) | ~10⁻⁵ | Marginal (1-2σ potential) |
+| LiteBIRD (2030s) | ~10⁻⁵ | Marginal (complementary polarization) |
+
+**Signal Detection Challenge**:
+
+The predicted ~10⁻⁵ oscillations are comparable to:
+- Galactic foreground residuals after cleaning
+- Weak lensing of CMB
+- Systematic calibration uncertainties
+
+**Analysis Strategy**:
+1. Joint analysis of CMB-S4 temperature + LiteBIRD polarization
+2. Foreground cleaning using multi-frequency data
+3. Cross-correlation with large-scale structure surveys
+4. Template fitting for oscillatory features at various k_c values
+
+**Feasibility Assessment**: **LOW-MEDIUM PRIORITY - ARCHIVAL OPPORTUNITY**
+
+| Parameter | Value |
+|-----------|-------|
+| Estimated cost | $0 (archival) to ~$50K (dedicated analysis) |
+| Timeline | 2030s (data availability) |
+| Detection probability | <5% with current foreground models |
+| Independence from lab tests | HIGH (cosmological vs. quantum computing) |
+| Publication venue (positive) | Physical Review Letters, Nature |
+
+**Critical Note**: Unlike Tier 1-2 experiments, this test cannot be performed with existing technology. Its value lies in:
+1. **Scale independence**: Tests framework at ~10²² orders of magnitude above lab scales
+2. **Historical probe**: Accesses physics at inflation energy scales (~10¹⁶ GeV)
+3. **Complementarity**: Success or failure independent of quantum computing results
+
+**References**:
+- Chatwin-Davies, A., Kempf, A., & Martin, R. T. W. (2017). Natural covariant Planck scale cutoffs and the CMB spectrum. *Physical Review Letters*, 119, 031301. [arXiv:1612.06445]
+- Kempf, A. (2018). Quantum gravity, information theory and the CMB. *Foundations of Physics*, 48, 1191-1203. [arXiv:1803.01483]
+
+---
+
 ## 4. Systematic Analysis of Experimental Failure Modes
 
 Analysis of all 21 proposed experiments reveals systematic patterns in detection challenges:

@@ -27,3 +27,4 @@ venv/
 # Temporary
 *.tmp
 *.temp
+/PhysicsPapers/LeanFormalization/.lake/

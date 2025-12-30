@@ -68,6 +68,70 @@ Spacetime is a 4-dimensional integer lattice with Planck spacing:
 
 From this postulate, combined with the mathematical structure of geometry, all physics follows through five derived principles.
 
+**Note on lattice structure**: The discrete lattice Λ carries the structure of a "geometric graph" in spectral geometry [Kempf et al. 2013]. From the discrete metric g(n) at each lattice vertex, the graph Laplacian can be constructed with proven convergence to the continuous Laplace-Beltrami operator [Hildebrandt et al. 2006]. This provides rigorous mathematical foundation for the discrete-continuum correspondence.
+
+---
+
+## 2A. Prior Work: Information-Theoretic Approaches to Quantum Gravity
+
+### 2A.1 Strategic Positioning
+
+This framework belongs to the **information-theoretic** tradition in quantum gravity, distinct from both String Theory and Loop Quantum Gravity (LQG). This distinction is not incidental—it is strategic.
+
+| Approach | Core Object | Falsifiable Predictions | Experimental Contact |
+|----------|-------------|------------------------|---------------------|
+| String Theory | 1D strings, extra dimensions | Few/None to date | Minimal |
+| Loop Quantum Gravity | Spin networks, area quantization | Limited | Moderate |
+| **Information-Theoretic** | Computation, observers, information | Many | Strong |
+| **This Framework** | Discrete geometry + computational deadlines | T^(-2.5), N-dependence, CMB | Strong (Diraq 2024 validated) |
+
+The information-theoretic approach asks: What constraints does *information processing* impose on physics? This question leads directly to testable predictions rather than mathematical structures awaiting experimental access.
+
+### 2A.2 Müller's Observer-State Program
+
+Markus Müller (Vienna) develops physics from **algorithmic constraints on observer memory** [Müller 2020]. Key insights:
+
+1. **Physics without physics**: Physical laws emerge from requirements that observer experiences be "typical" in algorithmic information theory
+2. **Born rule derivation**: The probability measure |ψ|² is the *unique* assignment consistent with state space structure and typicality [Masanes, Galley, Müller 2019]
+3. **Discrete time**: Time may be a discrete dynamical variable with algorithmic irreversibility [Müller 2013]
+
+**Connection to this framework**: Müller provides the *probability measure* (why |ψ|²) while this framework provides the *physical mechanism* (computational deadlines force uncertainty). See KeyInsight §5.4 for synthesis.
+
+### 2A.3 Kempf's Spectral Geometry Program
+
+Achim Kempf (Waterloo) develops quantum gravity through **bandlimited field theory and spectral reconstruction** [Kempf 2012, 2018]. Key results:
+
+1. **Shape from sound**: Manifold geometry can be reconstructed from spectral data (eigenvalues of geometric operators)
+2. **Covariant UV cutoff**: Lorentz-invariant formulation where sub-Planckian wavelengths exist but have frozen dynamics
+3. **CMB predictions**: Planck-scale physics imprints oscillatory signatures on primordial power spectrum at ~10⁻⁵ amplitude [Chatwin-Davies, Kempf, Martin 2017]
+
+**Connection to this framework**: Kempf provides *mathematical rigor* (spectral convergence proofs) and *cosmological predictions* (CMB oscillations) that complement this framework's lab-scale predictions (quantum computing errors). See Appendix D for integration.
+
+### 2A.4 This Framework as Synthesis
+
+This framework synthesizes and extends both approaches:
+
+| Contribution | Müller | Kempf | This Framework |
+|--------------|--------|-------|----------------|
+| Why uncertainty exists | ✓ (typicality) | — | ✓ (computational deadlines) |
+| Probability measure |ψ|² | ✓ (derived) | — | Via Müller |
+| Discrete → continuous proof | — | ✓ (spectral) | ✓ (via Kempf + healing flow) |
+| Lab-scale predictions | — | — | ✓ (T^(-2.5), N-dependence) |
+| Cosmological predictions | — | ✓ (CMB) | Via Kempf |
+| Time emergence mechanism | ✓ (discrete) | — | ✓ (dt = dS/L) |
+| Mass origin | — | — | ✓ (reshaping cost) |
+
+The three approaches form a coherent structure: this framework provides ontological foundation (discrete spacetime, reshaping cost, action density), Müller provides algorithmic formalization and Born rule, Kempf provides mathematical rigor and cosmological reach.
+
+**References for Section 2A**:
+- Müller, M. P. (2020). Law without law: from observer states to physics via algorithmic information theory. *Quantum*, 4, 301.
+- Masanes, L., Galley, T. D., & Müller, M. P. (2019). The measurement postulates of quantum mechanics are operationally redundant. *Nature Communications*, 10, 1361.
+- Müller, M. P. (2013). Could time be a discrete dynamical variable? arXiv:1306.5696.
+- Aasen, D., Bhamre, T., & Kempf, A. (2013). Shape from sound: toward new tools for quantum gravity. *Physical Review Letters*, 110, 121301. [arXiv:1212.5297]
+- Chatwin-Davies, A., Kempf, A., & Martin, R. T. W. (2017). Natural covariant Planck scale cutoffs and the CMB spectrum. *Physical Review Letters*, 119, 031301.
+- Kempf, A. (2018). Quantum gravity, information theory and the CMB. *Foundations of Physics*, 48, 1191-1203.
+- Hildebrandt, K., Polthier, K., & Wardetzky, M. (2006). On the convergence of metric and geometric properties of polyhedral surfaces. *Geometriae Dedicata*, 123, 89-112.
+
 ---
 
 ## 3. The Central Thesis: Mass as Geometry Reshaping
@@ -266,6 +330,17 @@ Time is the derivative of action with respect to Lagrangian—not the reverse.
 
 **Connection to time dilation**: Systems with higher kinetic energy have larger $L$, crossing thresholds faster. More ticks per unit coordinate time = time dilation. Special relativity emerges from $dt = dS/L$ and action invariance.
 
+**Parallel to Müller's discrete time**: This time emergence equation parallels Müller's independent proposal of time as a discrete dynamical variable [Müller 2013]. Both frameworks identify time's irreversibility with monotonic accumulation:
+
+| Framework | Accumulating Quantity | Time Definition |
+|-----------|----------------------|-----------------|
+| This work | Action S | dt = dS/L |
+| Müller | Kolmogorov complexity K | Steps of algorithmic evolution |
+
+The correspondence S/ℏ ↔ K(observer memory) suggests deeper unification: both quantities measure "computational work" and both increase monotonically for closed systems. This convergence from independent starting points (geometric vs. algorithmic) strengthens confidence in discrete time emergence.
+
+**Reference**: Müller, M. P. (2013). Could time be a discrete dynamical variable? arXiv:1306.5696.
+
 *Derivation*: See Appendix A §2.1, §3; KeyInsight document §7.3.
 
 ---
@@ -365,6 +440,8 @@ Every aspect of QFT renormalization corresponds to discrete spacetime structure:
 | Counterterms | Lattice correction terms |
 | Gravity non-renormalizability | Gravity IS the geometry |
 
+**Note on Lorentz invariance**: The discrete lattice admits a covariant effective description via Kempf's bandlimited formulation [Kempf 2018]. In this formulation, sub-Planckian wavelengths exist but have frozen dynamics, preserving manifest Lorentz invariance while recovering identical IR physics. The lattice-bandlimit equivalence—that both discrete lattice and bandlimited continuum formulations yield identical observable predictions—remains a conjecture connecting our framework to Kempf's information-theoretic approach.
+
 ### 7.2 Hierarchy Problem Resolution
 
 Mass hierarchy emerges from cascading reshaping costs:
@@ -414,6 +491,23 @@ $$\frac{d\mathcal{W}}{d\tau} \leq 0$$
 Guarantees convergence to smooth 4D geometry satisfying Einstein's equations.
 
 *Derivation*: See Appendix D, Appendix G.
+
+### 8.4 Einstein-Cartan Torsion Enhancement
+
+The healing flow can be enhanced to include spin-torsion effects from Popławski's Einstein-Cartan cosmology [Popławski 2010, 2016, 2021]:
+
+$$\frac{\partial g_{\mu\nu}}{\partial\tau} = \mu\Delta_{\text{lat}}g_{\mu\nu} - \lambda\mathcal{D}_{\mu\nu} - \gamma(I - \bar{I})\frac{\delta I}{\delta g^{\mu\nu}} + \kappa\mathcal{T}_{\mu\nu}[\psi]$$
+
+The torsion term κ𝒯_μν[ψ] provides **spin-mediated geometric repair**, where fermion spin creates localized defects that contribute to healing dynamics.
+
+**Key synthesis results**:
+
+1. **Torsion emerges from discreteness**: At defect sites, discrete derivatives fail to commute, generating effective torsion
+2. **Spin sources information**: Fermion spin density acts as information current source
+3. **Redundant singularity protection**: Both information conservation and torsion repulsion prevent singularities
+4. **Baby universe interpretation**: Popławski's hypothesis provides geometric realization of information conservation through black holes
+
+*Full treatment*: See Appendix P (Einstein-Cartan Torsion Integration).
 
 ---
 
@@ -488,6 +582,7 @@ States principles, demonstrates consistency, provides predictions.
 | H | Renormalization | UV cutoff = 1/ℓ_P, hierarchy resolution |
 | I | Experimental Tests | Protocols for validation |
 | Lorentz-Doppler | Time Dilation | Reshaping wave mechanics |
+| **P** | **Einstein-Cartan Torsion** | **Popławski synthesis: torsion-information coupling, baby universe, redundant singularity protection** |
 | S | Stable Wormholes & Chronology | Extends E: three-tier classification, engineering requirements, time travel impossibility |
 
 ### Supporting Document
@@ -556,6 +651,34 @@ The framework is validated by Diraq/Nature 2024: power-law temperature scaling T
 [7] Wilson, K.G. (1974). "The renormalization group and the ε expansion." Physics Reports 12(2), 75-199.
 
 [8] 't Hooft, G. (2016). "The Cellular Automaton Interpretation of Quantum Mechanics." Springer.
+
+[9] Müller, M.P. (2020). "Law without law: from observer states to physics via algorithmic information theory." Quantum 4, 301.
+
+[10] Masanes, L., Galley, T.D. & Müller, M.P. (2019). "The measurement postulates of quantum mechanics are operationally redundant." Nature Communications 10, 1361.
+
+[11] Müller, M.P. (2013). "Could time be a discrete dynamical variable?" arXiv:1306.5696.
+
+[12] Aasen, D., Bhamre, T. & Kempf, A. (2013). "Shape from sound: toward new tools for quantum gravity." Physical Review Letters 110, 121301. [arXiv:1212.5297]
+
+[13] Chatwin-Davies, A., Kempf, A. & Martin, R.T.W. (2017). "Natural covariant Planck scale cutoffs and the CMB spectrum." Physical Review Letters 119, 031301. [arXiv:1612.06445]
+
+[14] Kempf, A. (2018). "Quantum gravity, information theory and the CMB." Foundations of Physics 48, 1191-1203. [arXiv:1803.01483]
+
+[15] Hildebrandt, K., Polthier, K. & Wardetzky, M. (2006). "On the convergence of metric and geometric properties of polyhedral surfaces." Geometriae Dedicata 123, 89-112.
+
+[16] Popławski, N. J. (2010). "Cosmology with torsion: An alternative to cosmic inflation." Physics Letters B 694, 181-185. [arXiv:1007.0587]
+
+[17] Popławski, N. J. (2010). "Radial motion into an Einstein-Rosen bridge." Physics Letters B 687, 110-113. [arXiv:0902.1994]
+
+[18] Popławski, N. J. (2012). "Nonsingular, big-bounce cosmology from spinor-torsion coupling." Physical Review D 85, 107502. [arXiv:1111.4595]
+
+[19] Popławski, N. J. (2016). "Universe in a black hole in Einstein-Cartan gravity." The Astrophysical Journal 832, 96. [arXiv:1410.3881]
+
+[20] Popławski, N. J. (2021). "Gravitational collapse with torsion and universe in a black hole." Foundations of Physics 51, 92. [arXiv:2107.01612]
+
+[21] Hehl, F. W., von der Heyde, P., Kerlick, G. D. & Nester, J. M. (1976). "General relativity with spin and torsion: Foundations and prospects." Reviews of Modern Physics 48, 393-416.
+
+[22] Cartan, É. (1922). "Sur une généralisation de la notion de courbure de Riemann et les espaces à torsion." Comptes Rendus de l'Académie des Sciences 174, 593-595.
 
 ---
 

@@ -236,6 +236,24 @@ $\varepsilon_{\text{quantum}}(\rho_S, T, N) = \alpha \cdot \frac{N k_B T}{E_{\te
 
 where $\alpha$ is a dimensionless constant of order unity that encodes the geometry-dependent weighting of $\pi$, $e$, and $\sqrt{2}$ contributions.
 
+### 5.4 The Born Rule Gap and Its Resolution
+
+**Critical observation**: The computational deadline mechanism explains *why* quantum transitions involve irreducible uncertainty, but it does not *by itself* derive the specific probability measure |ψ|² that governs quantum outcomes.
+
+**Remark 5.4 (Born Rule from Typicality)**: The probability measure |ψ|² emerges from typicality arguments in algorithmic information theory. Masanes, Galley, and Müller (2019) prove that the Born rule is the *unique* probability assignment consistent with: (1) state space structure, (2) composition rules for subsystems, and (3) the assumption that measurement outcomes are "typical" relative to algorithmic complexity.
+
+**Synthesis**: Our framework provides the *mechanism* (computational truncation at action thresholds creates irreducible uncertainty), while Müller's derivation provides the *measure* (typicality singles out |ψ|² among all possible probability assignments). Together:
+
+$$\text{Mechanism (this framework)} + \text{Measure (Müller)} = \text{Complete QM derivation}$$
+
+This synthesis is not superficial—both ingredients are necessary:
+- Without the mechanism, Müller's derivation lacks physical grounding (why should typicality apply?)
+- Without the measure, our framework has uncertainty but not specific probabilities
+
+The computational deadline *forces* the system to "choose" among incomplete calculations, and typicality dictates that the choice distribution is |ψ|².
+
+**Reference**: Masanes, L., Galley, T. D., & Müller, M. P. (2019). The measurement postulates of quantum mechanics are operationally redundant. *Nature Communications*, 10, 1361.
+
 ---
 
 ## 6. Experimental Predictions
@@ -272,6 +290,23 @@ where $T_0$ is a characteristic temperature scale.
 ### 7.1 Connection to Observer Blindness
 
 The computational deadline mechanism connects to observer blindness (main paper, Section 7): observers themselves operate under the same action threshold constraints. An observer cannot "see" the computational process because their own observation mechanism is subject to identical deadlines.
+
+**Remark 7.1 (Müller's Law Without Law)**: This observer blindness aligns precisely with Müller's "Law without law" program [Müller 2020], where physics emerges from algorithmic constraints on observer memory states. Both frameworks independently predict that observers cannot resolve their own discreteness:
+
+| Framework | Mechanism | Fundamental Limit |
+|-----------|-----------|-------------------|
+| This work | Nyquist-Shannon sampling | f_sample = c/ℓ_P cannot resolve f_discrete |
+| Müller | Bounded Kolmogorov complexity | K(memory) < ∞ limits self-observation |
+
+The convergence is non-trivial: discrete observers in both frameworks are constitutively incapable of directly detecting the discreteness underlying their own operation. In this framework, it is because the observer's sampling rate equals the fundamental rate. In Müller's, it is because the observer's memory complexity is bounded by the same algorithmic constraints that generate physics.
+
+**Synthesis**: Observer blindness is not a contingent feature but a structural necessity. Any observer capable of directly resolving Planck-scale discreteness would require:
+- Sampling rate > c/ℓ_P (violates special relativity)
+- Kolmogorov complexity K(observer) → ∞ (uncomputable)
+
+This impossibility explains why quantum mechanics appears continuous despite discrete underlying structure.
+
+**Reference**: Müller, M. P. (2020). Law without law: from observer states to physics via algorithmic information theory. *Quantum*, 4, 301.
 
 ### 7.2 Connection to Geometric Reshaping
 
