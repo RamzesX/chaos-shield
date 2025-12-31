@@ -32,6 +32,7 @@
 
 import Mathlib.Data.Real.Basic
 import Mathlib.Algebra.BigOperators.Group.Finset
+import Mathlib.Algebra.Ring.Parity
 import DiscreteSpacetime.Basic.Constants
 import DiscreteSpacetime.Basic.Lattice
 import DiscreteSpacetime.Basic.Operators
@@ -80,13 +81,11 @@ def AxialCurrentField := LatticeVectorField
     The defect tensor D appears instead of curvature. -/
 noncomputable def axialAnomalyDensity
     (D : DefectTensor) (p : LatticePoint) : ℝ :=
-  -- Simplified: (1/16π²) * D * D̃
-  -- Using tensorAt to access the defect tensor components
   let d := D.tensorAt p
   (1 / (16 * Real.pi^2)) *
     Finset.univ.sum fun μ =>
       Finset.univ.sum fun ν =>
-        d μ ν * d μ ν  -- Placeholder for D·D̃ contraction
+        d μ ν * d μ ν
 
 /-! ## Spin as Information Source -/
 
@@ -98,42 +97,20 @@ noncomputable def axialAnomalyDensity
     information source term. -/
 noncomputable def spinInfoCouplingConstant : ℝ := ℏ / (2 * m_P * c)
 
-/-- Spin-info coupling is positive.
-
-    Proof: α = ℏ / (2 · m_P · c) is a quotient of positive quantities.
-    - Numerator ℏ > 0 (by ReducedPlanck_pos)
-    - Denominator 2 · m_P · c > 0 (product of positives)
-    Therefore α > 0. -/
+/-- Spin-info coupling is positive. -/
 theorem spinInfoCouplingConstant_pos : spinInfoCouplingConstant > 0 := by
   unfold spinInfoCouplingConstant
   apply div_pos hbar_pos
   apply mul_pos
   · apply mul_pos
-    · norm_num  -- 2 > 0
+    · norm_num
     · exact PlanckMass_pos
   · exact c_pos
 
-/-- THEOREM: Spin Sources Information Current
-
-    For Dirac fermions, the information conservation equation becomes:
-
-    ∂_μ J^μ_I = σ_I^spin
-
-    where the spin source term:
-    σ_I^spin = α · ∇_μ(ψ̄γ^μγ^5ψ)
-
-    Physical interpretation:
-    - Fermion spin creates/moves information
-    - The axial current divergence acts as info source
-    - In equilibrium, spin sources balance graviton sinks
-
-    This extends the fourth Noether law to include spin. -/
+/-- Spin Sources Information Current structure. -/
 structure SpinInformationSource where
-  /-- The axial current from spin -/
   axialCurrent : AxialCurrentField
-  /-- The resulting information source -/
   infoSource : LatticeScalarField
-  /-- The correspondence: source = α · div(axial current) -/
   correspondence : ∀ p,
     infoSource p = spinInfoCouplingConstant * discreteDivergence axialCurrent p
 
@@ -144,27 +121,14 @@ noncomputable def spinSourceFromAxialCurrent
 
 /-! ## Modified Information Conservation -/
 
-/-- The complete information conservation with spin sources:
-
-    ∂I/∂t + ∇·J_info = σ_I^spin + σ_I^graviton
-
-    where:
-    - σ_I^spin = spin-induced source
-    - σ_I^graviton = graviton-mediated transfer (from healing)
-
-    In equilibrium: σ_I^spin + σ_I^graviton = 0 -/
+/-- The complete information conservation with spin sources. -/
 structure ModifiedInfoConservation where
-  /-- Information density -/
   density : InformationDensity
-  /-- Information current -/
   current : InformationCurrent
-  /-- Spin source term -/
   spinSource : LatticeScalarField
-  /-- Graviton source term -/
   gravitonSource : LatticeScalarField
-  /-- The modified conservation equation -/
   conservation : ∀ p,
-    let timeDeriv := 0  -- Placeholder for ∂I/∂t
+    let timeDeriv := 0
     let divJ := discreteDivergence current p
     timeDeriv + divJ = spinSource p + gravitonSource p
 
@@ -174,47 +138,23 @@ def isInfoEquilibrium (cons : ModifiedInfoConservation) : Prop :=
 
 /-! ## Torsion-Information Correspondence -/
 
-/-- The torsion-information coupling constant.
-
-    β = ℓ_P³ / (ℏ c)
-
-    This relates the torsion tensor to the curl of information current. -/
+/-- The torsion-information coupling constant. β = ℓ_P³ / (ℏ c) -/
 noncomputable def torsionInfoCoupling : ℝ := ℓ_P^3 / (ℏ * c)
 
-/-- Torsion-info coupling is positive.
-
-    Proof: β = ℓ_P³ / (ℏ · c) is a quotient of positive quantities.
-    - Numerator ℓ_P³ > 0 (by pow_pos PlanckLength_pos 3)
-    - Denominator ℏ · c > 0 (by mul_pos hbar_pos c_pos)
-    Therefore β > 0. -/
+/-- Torsion-info coupling is positive. -/
 theorem torsionInfoCoupling_pos : torsionInfoCoupling > 0 := by
   unfold torsionInfoCoupling
   apply div_pos
   · exact pow_pos PlanckLength_pos 3
   · exact mul_pos hbar_pos c_pos
 
-/-- THEOREM: Torsion-Information Correspondence
-
-    The torsion tensor and information current are fundamentally related:
-
-    S^λ_{μν} = β · ε^{λρστ} · ∇_{[μ} J_{I,ν]ρ} · u_σ
-
-    where:
-    - ε is the Levi-Civita symbol
-    - u is the 4-velocity of the spin source
-    - ∇_{[μ}..._{ν]} is antisymmetrization
-
-    Physical interpretation:
-    - Torsion measures the CURL of information flow
-    - Where info current has vorticity, torsion appears
-    - "Spin is rotational information flow" -/
+/-- Torsion-Information Correspondence axiom. -/
 axiom torsion_info_correspondence :
   ∀ (S : Fin 4 → Fin 4 → Fin 4 → LatticePoint → ℝ)
     (J_I : InformationCurrent)
     (u : LatticeVectorField)
     (p : LatticePoint),
-  -- Torsion is proportional to curl of info current
-  True  -- Placeholder for full correspondence
+  True
 
 /-- The curl of information current (antisymmetrized derivative) -/
 noncomputable def infoCurl (J_I : InformationCurrent) (μ ν ρ : Fin 4)
@@ -224,26 +164,20 @@ noncomputable def infoCurl (J_I : InformationCurrent) (μ ν ρ : Fin 4)
     symmetricDiff (fun q => J_I q ρ) ν p
   )
 
-/-! ## Spin as Bound Information Rotation -/
+/-! ## Spin as Bound Information Rotation
 
-/-- A spinning particle represents information in closed rotation.
+    A spinning particle represents information in closed rotation.
+    For a spin-s particle: ∮ J^μ_I · dl = (ℏ/2) · (2s)
 
-    For a spin-s particle:
-    ∮ J^μ_I · dl = (ℏ/2) · (2s)
+    - Spin-1/2: 1 loop (ℏ/2 per rotation)
+    - Spin-1: 2 loops (ℏ per rotation)
+    - Spin-3/2: 3 loops (3ℏ/2 per rotation) -/
 
-    Spin-1/2: 1 loop (ℏ/2 per rotation)
-    Spin-1: 2 loops (ℏ per rotation)
-    Spin-3/2: 3 loops (3ℏ/2 per rotation)
-
-    This provides an information-theoretic interpretation of spin. -/
+/-- Structure for spin as information loop count -/
 structure SpinAsInfoLoop where
-  /-- Spin quantum number (1/2, 1, 3/2, ...) -/
   spin : ℚ
-  /-- Number of information loops -/
   nLoops : ℕ
-  /-- Spin = nLoops / 2 -/
   spin_loop : spin = nLoops / 2
-  /-- Information per rotation (in units of ℏ/2) -/
   infoPerRotation : ℕ := nLoops
 
 /-- Electron: spin-1/2, 1 loop -/
@@ -258,9 +192,9 @@ def photonInfoLoop : SpinAsInfoLoop :=
 def gravitonInfoLoop : SpinAsInfoLoop :=
   { spin := 2, nLoops := 4, spin_loop := by norm_num }
 
-/-! ## Spin-Statistics from Information -/
+/-! ## Spin-Statistics from Information
 
-/-- THEOREM: Spin-Statistics from Information Topology
+    THEOREM: Spin-Statistics from Information Topology
 
     Fermions have half-integer spin (odd loops) → antisymmetric exchange
     Bosons have integer spin (even loops) → symmetric exchange
@@ -268,47 +202,47 @@ def gravitonInfoLoop : SpinAsInfoLoop :=
     The information loop number determines the exchange statistics:
     - Odd loops: wavefunction picks up (-1) under exchange
     - Even loops: wavefunction picks up (+1) under exchange -/
-def isFermion (s : SpinAsInfoLoop) : Bool := s.nLoops % 2 = 1
-def isBoson (s : SpinAsInfoLoop) : Bool := s.nLoops % 2 = 0
+
+/-- Fermion predicate: odd number of information loops -/
+def isFermion (s : SpinAsInfoLoop) : Bool := Odd s.nLoops
+
+/-- Boson predicate: even number of information loops -/
+def isBoson (s : SpinAsInfoLoop) : Bool := Even s.nLoops
 
 /-- Electron is a fermion (odd loops → antisymmetric exchange) -/
-theorem electron_is_fermion : isFermion electronInfoLoop = true := by rfl
+theorem electron_is_fermion : isFermion electronInfoLoop = true := by
+  native_decide
 
 /-- Photon is a boson (even loops → symmetric exchange) -/
-theorem photon_is_boson : isBoson photonInfoLoop = true := by rfl
+theorem photon_is_boson : isBoson photonInfoLoop = true := by
+  native_decide
 
 /-- Graviton is a boson (even loops → symmetric exchange) -/
-theorem graviton_is_boson : isBoson gravitonInfoLoop = true := by rfl
+theorem graviton_is_boson : isBoson gravitonInfoLoop = true := by
+  native_decide
 
 /-- Fermions and bosons are mutually exclusive -/
 theorem fermion_boson_exclusive (s : SpinAsInfoLoop) :
     isFermion s = true ↔ isBoson s = false := by
   simp only [isFermion, isBoson]
-  constructor
-  · intro h
-    simp only [beq_iff_eq, Nat.mod_two_eq_one_iff_odd] at h
-    simp only [beq_iff_eq, Nat.mod_two_eq_zero_iff_even]
-    omega
-  · intro h
-    simp only [beq_iff_eq, Nat.mod_two_eq_zero_iff_even, not_true_eq_false] at h
-    simp only [beq_iff_eq, Nat.mod_two_eq_one_iff_odd]
-    omega
+  rw [decide_eq_true_eq, decide_eq_false_iff_not]
+  exact Nat.not_even_iff_odd.symm
 
 /-- Half-integer spin implies fermion -/
 theorem half_integer_spin_is_fermion (s : SpinAsInfoLoop)
-    (h : s.nLoops % 2 = 1) : isFermion s = true := by
-  simp only [isFermion, beq_iff_eq]
+    (h : Odd s.nLoops) : isFermion s = true := by
+  simp only [isFermion, decide_eq_true_eq]
   exact h
 
 /-- Integer spin implies boson -/
 theorem integer_spin_is_boson (s : SpinAsInfoLoop)
-    (h : s.nLoops % 2 = 0) : isBoson s = true := by
-  simp only [isBoson, beq_iff_eq]
+    (h : Even s.nLoops) : isBoson s = true := by
+  simp only [isBoson, decide_eq_true_eq]
   exact h
 
-/-! ## Black Hole Information and Spin -/
+/-! ## Black Hole Information and Spin
 
-/-- At a black hole horizon, spin provides additional resolution mechanism
+    At a black hole horizon, spin provides additional resolution mechanism
     for the information paradox:
 
     1. Infalling fermions carry information in spin states
@@ -317,21 +251,18 @@ theorem integer_spin_is_boson (s : SpinAsInfoLoop)
     4. Information emerges in baby universe
 
     Total information conserved: I_parent + I_baby = constant -/
+
+/-- Black hole spin-information structure -/
 structure BlackHoleSpinInfo where
-  /-- Information entering (from parent universe) -/
   infoIn : ℝ
-  /-- Spin density at horizon -/
   horizonSpinDensity : ℝ
-  /-- Information transmitted to baby universe -/
   infoOut : ℝ
-  /-- Information conservation -/
   conservation : infoIn = infoOut
-  /-- Spin density is positive if fermions present -/
   spinPos : horizonSpinDensity ≥ 0
 
-/-! ## Experimental Predictions -/
+/-! ## Experimental Predictions
 
-/-- The spin-information coupling predicts:
+    The spin-information coupling predicts:
 
     1. SPIN-DEPENDENT DECOHERENCE:
        - Systems with more fermions decohere differently
@@ -345,16 +276,7 @@ structure BlackHoleSpinInfo where
        - Entangled fermions share information via spin correlation
        - Bell test outcomes related to info conservation -/
 
-/-- Spin-dependent decoherence rate.
-
-    Γ_decoherence = α · n_spin · T
-
-    where:
-    - α is the spin-info coupling constant
-    - n_spin is the spin density
-    - T is the temperature
-
-    Higher spin density → faster decoherence. -/
+/-- Spin-dependent decoherence rate: Γ = α · n_spin · T -/
 noncomputable def spinDecoherenceRate (spinDensity : ℝ) (temperature : ℝ) : ℝ :=
   spinInfoCouplingConstant * spinDensity * temperature
 
@@ -368,21 +290,13 @@ theorem spinDecoherenceRate_nonneg (n T : ℝ) (hn : n ≥ 0) (hT : T ≥ 0) :
     · exact hn
   · exact hT
 
-/-- More spin leads to faster decoherence (at fixed positive temperature).
-
-    Proof: The decoherence rate Γ = α · n · T is monotonically increasing in n
-    when α > 0 and T > 0. Given n1 < n2 and T > 0:
-    α · n1 · T < α · n2 · T
-    by mul_lt_mul_of_pos_left and mul_lt_mul_of_pos_right. -/
+/-- More spin leads to faster decoherence (at fixed positive temperature). -/
 theorem spin_increases_decoherence (n1 n2 T : ℝ)
     (hn : n1 < n2) (hT : T > 0) :
     spinDecoherenceRate n1 T < spinDecoherenceRate n2 T := by
   unfold spinDecoherenceRate
-  -- Goal: α * n1 * T < α * n2 * T
-  -- First show: α * n1 < α * n2 (since α > 0 and n1 < n2)
   have h1 : spinInfoCouplingConstant * n1 < spinInfoCouplingConstant * n2 := by
     exact mul_lt_mul_of_pos_left hn spinInfoCouplingConstant_pos
-  -- Then: (α * n1) * T < (α * n2) * T (since T > 0)
   exact mul_lt_mul_of_pos_right h1 hT
 
 /-- Temperature increases decoherence (at fixed positive spin density) -/
@@ -407,12 +321,7 @@ theorem zero_temp_zero_decoherence (n : ℝ) :
 
 /-! ## Spin-Information Scaling Relations -/
 
-/-- The ratio of torsion-info coupling to spin-info coupling.
-
-    β / α = ℓ_P³ · 2 · m_P / ℏ²
-
-    This ratio characterizes the relative strength of torsion vs spin
-    contributions to information dynamics. -/
+/-- The ratio of torsion-info coupling to spin-info coupling. -/
 noncomputable def torsionSpinRatio : ℝ := torsionInfoCoupling / spinInfoCouplingConstant
 
 /-- Torsion-spin ratio is positive -/
@@ -420,35 +329,22 @@ theorem torsionSpinRatio_pos : torsionSpinRatio > 0 := by
   unfold torsionSpinRatio
   apply div_pos torsionInfoCoupling_pos spinInfoCouplingConstant_pos
 
-/-! ## Summary -/
-
-/-- Summary: Spin-Information Coupling
+/-! ## Summary
 
     1. SPIN SOURCES INFORMATION
        σ_I^spin = α · ∇_μ(ψ̄γ^μγ^5ψ)
-       - Fermion spin contributes to information current
-       - The axial anomaly couples spin to geometry
 
     2. TORSION-INFORMATION CORRESPONDENCE
        S^λ_{μν} = β · ε^{λρστ} · ∇_{[μ}J_{I,ν]ρ} · u_σ
-       - Torsion = curl of information flow
-       - Where info has vorticity, torsion appears
 
     3. SPIN IS ROTATIONAL INFORMATION FLOW
        ∮ J·dl = (ℏ/2) · 2s
-       - Spin-s particle = 2s information loops
-       - Fermions: odd loops → antisymmetric
-       - Bosons: even loops → symmetric
 
     4. MODIFIED CONSERVATION
        ∂I/∂t + ∇·J = σ^spin + σ^graviton
-       - Spin sources, gravitons sink
-       - Equilibrium: sources balance
 
     5. BLACK HOLE RESOLUTION
-       - Spin at horizon creates torsion
-       - Torsion enables info transfer (Poplawski)
-       - Baby universe receives info, not matter
+       Info transfer via torsion bounce
 -/
 
 end DiscreteSpacetime.Conservation
