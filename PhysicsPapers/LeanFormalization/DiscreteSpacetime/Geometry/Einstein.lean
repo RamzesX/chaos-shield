@@ -56,10 +56,7 @@ theorem einstein_symmetric (g : DiscreteMetric)
   -- Use symmetry of Ricci tensor and metric
   have h_ricci : ricciTensor g μ ν p = ricciTensor g ν μ p :=
     ricci_symmetric g hSym hNd μ ν p
-  have h_metric : (g p) μ ν = (g p) ν μ := by
-    have := hSym p
-    unfold IsSymmetric at this
-    exact Matrix.IsSymm.eq this μ ν
+  have h_metric : (g p) μ ν = (g p) ν μ := ((hSym p).apply μ ν).symm
   rw [h_ricci, h_metric]
 
 /-- Trace of Einstein tensor: g^{μν} G_{μν} = -R.
@@ -151,7 +148,7 @@ theorem einstein_divergence_discrete (g : DiscreteMetric)
 theorem einstein_divergence_bound (g : DiscreteMetric)
     (hSym : DiscreteMetric.IsEverywhereSymmetric g)
     (hNd : DiscreteMetric.IsEverywhereNondegenerate g)
-    (hL : DiscreteMetric.IsEverywhereLorentzian g)
+    (_hL : DiscreteMetric.IsEverywhereLorentzian g)
     (ν : Fin 4) (p : LatticePoint) :
     |einsteinDivergence g ν p| ≤ ℓ_P := by
   obtain ⟨error, h_bound, h_eq⟩ := einstein_divergence_discrete g hSym hNd ν p
@@ -309,10 +306,7 @@ theorem perfectFluid_symmetric (g : DiscreteMetric)
     EnergyMomentumTensor.IsSymmetric (perfectFluidTensor g ρ P u) := by
   intros p μ ν
   unfold perfectFluidTensor
-  have h_metric : (g p) μ ν = (g p) ν μ := by
-    have := hSym p
-    unfold IsSymmetric at this
-    exact Matrix.IsSymm.eq this μ ν
+  have h_metric : (g p) μ ν = (g p) ν μ := ((hSym p).apply μ ν).symm
   rw [h_metric]
   ring
 
@@ -359,7 +353,7 @@ theorem discrete_corrections_exist (g : DiscreteMetric)
     (T : EnergyMomentumTensor)
     (hE : SatisfiesEinsteinEquations g T)
     (p : LatticePoint) :
-    ∃ (dc : DiscreteCorrections g T p), True := by
+    ∃ (_ : DiscreteCorrections g T p), True := by
   obtain ⟨div_err, div_bnd, _⟩ := einstein_divergence_discrete g hSym hNd 0 p
   obtain ⟨cons_err, cons_bnd, _⟩ := energy_momentum_conservation g hSym hNd T hE 0 p
   exact ⟨⟨div_err, cons_err, div_bnd, cons_bnd⟩, trivial⟩
