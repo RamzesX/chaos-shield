@@ -278,6 +278,27 @@ theorem shiftPos_shiftNeg (p : LatticeIndex) (μ : SpacetimeIndex) :
   · subst h; simp [shiftPos, shiftNeg]
   · simp [shiftPos, shiftNeg, unitVector_other h]
 
+/-- Shifts along different axes commute -/
+theorem shiftPos_shiftPos_comm (p : LatticeIndex) (μ ν : SpacetimeIndex) :
+    (p.shiftPos μ).shiftPos ν = (p.shiftPos ν).shiftPos μ := by
+  ext ρ
+  simp only [shiftPos, add_coords]
+  ring
+
+/-- Negative shifts along different axes commute -/
+theorem shiftNeg_shiftNeg_comm (p : LatticeIndex) (μ ν : SpacetimeIndex) :
+    (p.shiftNeg μ).shiftNeg ν = (p.shiftNeg ν).shiftNeg μ := by
+  ext ρ
+  simp only [shiftNeg, sub_coords]
+  ring
+
+/-- Mixed shifts commute -/
+theorem shiftPos_shiftNeg_comm (p : LatticeIndex) (μ ν : SpacetimeIndex) :
+    (p.shiftPos μ).shiftNeg ν = (p.shiftNeg ν).shiftPos μ := by
+  ext ρ
+  simp only [shiftPos, shiftNeg, add_coords, sub_coords]
+  ring
+
 /-! ### Manhattan Distance (L¹ norm) -/
 
 /-- Manhattan distance (L¹ norm on the lattice) -/
@@ -429,6 +450,40 @@ theorem shiftPos_ne_shiftNeg (p : LatticePoint) (μ ν : SpacetimeIndex) :
   intro h
   simp only [shiftPos, shiftNeg, LatticePoint.mk.injEq] at h
   exact LatticeIndex.shiftPos_ne_shiftNeg_any p.index μ ν h
+
+/-- Inverse operations at LatticePoint level -/
+@[simp]
+theorem shiftNeg_shiftPos (p : LatticePoint) (μ : SpacetimeIndex) :
+    (p.shiftPos μ).shiftNeg μ = p := by
+  apply LatticePoint.ext
+  show (p.index.shiftPos μ).shiftNeg μ = p.index
+  exact LatticeIndex.shiftNeg_shiftPos p.index μ
+
+@[simp]
+theorem shiftPos_shiftNeg (p : LatticePoint) (μ : SpacetimeIndex) :
+    (p.shiftNeg μ).shiftPos μ = p := by
+  apply LatticePoint.ext
+  show (p.index.shiftNeg μ).shiftPos μ = p.index
+  exact LatticeIndex.shiftPos_shiftNeg p.index μ
+
+/-- Shifts commute at LatticePoint level -/
+theorem shiftPos_comm (p : LatticePoint) (μ ν : SpacetimeIndex) :
+    (p.shiftPos μ).shiftPos ν = (p.shiftPos ν).shiftPos μ := by
+  apply LatticePoint.ext
+  show (p.index.shiftPos μ).shiftPos ν = (p.index.shiftPos ν).shiftPos μ
+  exact LatticeIndex.shiftPos_shiftPos_comm p.index μ ν
+
+theorem shiftNeg_comm (p : LatticePoint) (μ ν : SpacetimeIndex) :
+    (p.shiftNeg μ).shiftNeg ν = (p.shiftNeg ν).shiftNeg μ := by
+  apply LatticePoint.ext
+  show (p.index.shiftNeg μ).shiftNeg ν = (p.index.shiftNeg ν).shiftNeg μ
+  exact LatticeIndex.shiftNeg_shiftNeg_comm p.index μ ν
+
+theorem shiftPos_shiftNeg_comm (p : LatticePoint) (μ ν : SpacetimeIndex) :
+    (p.shiftPos μ).shiftNeg ν = (p.shiftNeg ν).shiftPos μ := by
+  apply LatticePoint.ext
+  show (p.index.shiftPos μ).shiftNeg ν = (p.index.shiftNeg ν).shiftPos μ
+  exact LatticeIndex.shiftPos_shiftNeg_comm p.index μ ν
 
 end LatticePoint
 
