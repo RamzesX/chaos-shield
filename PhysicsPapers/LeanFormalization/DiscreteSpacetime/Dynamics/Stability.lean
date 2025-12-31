@@ -10,9 +10,9 @@
   - ExponentialDecay: Defects decay exponentially
 
   The healing functional F[g] serves as a Lyapunov function:
-  - F[g] ≥ 0 (positive semi-definite)
-  - dF/dτ ≤ 0 along trajectories (monotone decreasing)
-  - dF/dτ = 0 only at equilibria
+  - F[g] >= 0 (positive semi-definite)
+  - dF/dt <= 0 along trajectories (monotone decreasing)
+  - dF/dt = 0 only at equilibria
 
   This guarantees that the healing dynamics are globally stable
   and converge to solutions of the equilibrium equations.
@@ -40,6 +40,7 @@ namespace DiscreteSpacetime.Dynamics
 
 open DiscreteSpacetime.Basic
 open DiscreteSpacetime.Geometry
+open DiscreteSpacetime.Axioms
 open Real
 
 /-! ## Lyapunov Functional
@@ -53,84 +54,84 @@ structure LyapunovFunctional where
   /-- The functional value -/
   functional : MetricPath → ℝ → ℝ
   /-- The functional is non-negative -/
-  nonneg : ∀ path τ, functional path τ ≥ 0
+  nonneg : ∀ path tau, functional path tau ≥ 0
   /-- The functional decreases along trajectories -/
-  decreasing : ∀ path, ∀ τ₁ τ₂, τ₁ ≤ τ₂ → functional path τ₂ ≤ functional path τ₁
+  decreasing : ∀ path, ∀ t1 t2, t1 ≤ t2 → functional path t2 ≤ functional path t1
 
 /-- The healing functional is a Lyapunov functional -/
 noncomputable def healingLyapunov (rho : InformationDensity)
     (exact : ExactMetric) (couplings : HealingCouplings)
     (points : Finset LatticePoint) : LyapunovFunctional :=
-  { functional := fun path τ =>
-      let D : DefectTensor := ⟨path.metric τ, exact, sorry⟩
+  { functional := fun path tau =>
+      let D : DefectTensor := ⟨path.metric tau, exact, sorry⟩
       healingFunctional rho D couplings points
-    nonneg := fun path τ => by
+    nonneg := fun path tau => by
       -- healingFunctional is positive semi-definite
       sorry
-    decreasing := fun path τ₁ τ₂ hτ => by
+    decreasing := fun path t1 t2 ht => by
       -- Under the healing flow, F decreases
       sorry
   }
 
 /-! ## Monotonicity of the Lyapunov Functional
 
-    THEOREM: dF/dτ ≤ 0 along trajectories of the healing flow.
+    THEOREM: dF/dt <= 0 along trajectories of the healing flow.
 
-    In fact, dF/dτ = -||∂g/∂τ||² ≤ 0, with equality only at equilibria.
+    In fact, dF/dt = -||dg/dt||^2 <= 0, with equality only at equilibria.
 -/
 
 /-- Time derivative of the healing functional along the flow -/
 noncomputable def healingFunctionalDerivative (path : MetricPath)
     (rho : InformationDensity) (exact : ExactMetric)
     (couplings : HealingCouplings) (points : Finset LatticePoint)
-    (τ : ℝ) : ℝ :=
-  -- Numerical derivative: [F(τ + δ) - F(τ)] / δ
-  let δ := t_P
-  let D_τ : DefectTensor := ⟨path.metric τ, exact, sorry⟩
-  let D_τδ : DefectTensor := ⟨path.metric (τ + δ), exact, sorry⟩
-  (healingFunctional rho D_τδ couplings points -
-   healingFunctional rho D_τ couplings points) / δ
+    (tau : ℝ) : ℝ :=
+  -- Numerical derivative: [F(tau + delta) - F(tau)] / delta
+  let delta := t_P
+  let D_tau : DefectTensor := ⟨path.metric tau, exact, sorry⟩
+  let D_tau_delta : DefectTensor := ⟨path.metric (tau + delta), exact, sorry⟩
+  (healingFunctional rho D_tau_delta couplings points -
+   healingFunctional rho D_tau couplings points) / delta
 
 /-- THEOREM: Lyapunov Monotonicity.
 
-    Under the healing flow, dF/dτ ≤ 0.
+    Under the healing flow, dF/dt <= 0.
 
     PROOF SKETCH:
-    1. F[g] = κ Var[I] + λ ||D||² + μ ||Δg||²
-    2. The flow is ∂g/∂τ = -δF/δg
-    3. Chain rule: dF/dτ = ⟨δF/δg, ∂g/∂τ⟩ = -||δF/δg||² ≤ 0
-    4. Equality holds iff δF/δg = 0 (equilibrium)
+    1. F[g] = kappa Var[I] + lambda ||D||^2 + mu ||Lap g||^2
+    2. The flow is dg/dt = -deltaF/deltag
+    3. Chain rule: dF/dt = <deltaF/deltag, dg/dt> = -||deltaF/deltag||^2 <= 0
+    4. Equality holds iff deltaF/deltag = 0 (equilibrium)
 -/
 theorem lyapunov_monotonicity (path : MetricPath)
     (rho : InformationDensity) (exact : ExactMetric)
     (couplings : HealingCouplings) (points : Finset LatticePoint)
     (hFlow : True)  -- path satisfies healing flow
-    (τ : ℝ) :
-    healingFunctionalDerivative path rho exact couplings points τ ≤ 0 := by
+    (tau : ℝ) :
+    healingFunctionalDerivative path rho exact couplings points tau ≤ 0 := by
   sorry
-  -- Proof requires showing dF/dτ = -||∂g/∂τ||² for the gradient flow
+  -- Proof requires showing dF/dt = -||dg/dt||^2 for the gradient flow
 
 /-- At equilibrium, the derivative is exactly zero -/
 theorem equilibrium_stationary (path : MetricPath)
     (rho : InformationDensity) (exact : ExactMetric)
     (couplings : HealingCouplings) (points : Finset LatticePoint)
     (hFlow : True)  -- path satisfies healing flow
-    (τ : ℝ)
-    (hEquil : ∀ p μ ν, healingRate path τ p μ ν = 0) :
-    healingFunctionalDerivative path rho exact couplings points τ = 0 := by
+    (tau : ℝ)
+    (hEquil : ∀ p mu nu, healingRate path tau p mu nu = 0) :
+    healingFunctionalDerivative path rho exact couplings points tau = 0 := by
   sorry
-  -- If ∂g/∂τ = 0, then dF/dτ = -||∂g/∂τ||² = 0
+  -- If dg/dt = 0, then dF/dt = -||dg/dt||^2 = 0
 
 /-! ## Global Convergence
 
     The Lyapunov monotonicity implies global convergence:
-    all trajectories approach equilibrium as τ → ∞.
+    all trajectories approach equilibrium as t -> infinity.
 -/
 
 /-- An equilibrium is a fixed point of the healing flow -/
 def IsEquilibrium (g : DiscreteMetric) (rho : InformationDensity)
     (exact : ExactMetric) (couplings : HealingCouplings) : Prop :=
-  ∀ p μ ν, variationalDerivative rho g exact couplings p = 0
+  ∀ p, variationalDerivative rho g exact couplings p = 0
 
 /-- The set of equilibria -/
 def EquilibriumSet (rho : InformationDensity)
@@ -142,20 +143,20 @@ def EquilibriumSet (rho : InformationDensity)
     Every solution of the healing flow converges to an equilibrium.
 
     PROOF STRATEGY (LaSalle's Invariance Principle):
-    1. F[g(τ)] is bounded below by 0
-    2. F[g(τ)] is monotone decreasing
-    3. Therefore F[g(τ)] has a limit as τ → ∞
-    4. The limit set is contained in {g : dF/dτ = 0}
-    5. dF/dτ = 0 implies g is an equilibrium
+    1. F[g(t)] is bounded below by 0
+    2. F[g(t)] is monotone decreasing
+    3. Therefore F[g(t)] has a limit as t -> infinity
+    4. The limit set is contained in {g : dF/dt = 0}
+    5. dF/dt = 0 implies g is an equilibrium
 -/
 theorem global_convergence (path : MetricPath)
     (rho : InformationDensity) (exact : ExactMetric)
     (couplings : HealingCouplings) (points : Finset LatticePoint)
     (hFlow : True)  -- path satisfies healing flow
-    (hBounded : ∃ M, ∀ τ ≥ 0, ∀ p μ ν, |path.metric τ p μ ν| ≤ M) :
-    ∃ (g_∞ : DiscreteMetric),
-      IsEquilibrium g_∞ rho exact couplings ∧
-      -- path.metric τ → g_∞ as τ → ∞ (in suitable topology)
+    (hBounded : ∃ M, ∀ tau, tau ≥ 0 → ∀ p mu nu, |path.metric tau p mu nu| ≤ M) :
+    ∃ (g_inf : DiscreteMetric),
+      IsEquilibrium g_inf rho exact couplings ∧
+      -- path.metric tau -> g_inf as tau -> infinity (in suitable topology)
       True := by
   sorry
   /-
@@ -167,54 +168,54 @@ theorem global_convergence (path : MetricPath)
 
 /-! ## Exponential Decay of Defects
 
-    For small defects, the decay is exponential with rate λ/ℓ_P.
+    For small defects, the decay is exponential with rate lambda/l_P.
 -/
 
 /-- Linearized healing rate around an equilibrium -/
 noncomputable def linearizedHealingRate (g_eq : DiscreteMetric)
     (perturbation : DiscreteMetric) (couplings : HealingCouplings)
-    (p : LatticePoint) (μ ν : Fin 4) : ℝ :=
-  -- Linearization of δF/δg around g_eq
-  -couplings.λ * 2 * perturbation p μ ν +
-   couplings.μ * 2 * discreteLaplacian (fun q => perturbation q μ ν) p
+    (p : LatticePoint) (mu nu : Fin 4) : ℝ :=
+  -- Linearization of deltaF/deltag around g_eq
+  -couplings.lam * 2 * perturbation p mu nu +
+   couplings.μ * 2 * discreteLaplacian (fun q => perturbation q mu nu) p
 
 /-- THEOREM: Exponential Decay of Small Perturbations.
 
     Near equilibrium, defects decay exponentially:
-    |D(τ)| ≤ |D(0)| exp(-λτ/ℓ_P)
+    |D(t)| <= |D(0)| exp(-lambda * t / l_P)
 
     PROOF SKETCH:
     1. Linearize the healing equation around equilibrium
-    2. The linear operator has negative eigenvalues (bounded by -λ/ℓ_P)
+    2. The linear operator has negative eigenvalues (bounded by -lambda/l_P)
     3. Solutions of linear equation decay exponentially
     4. Nonlinear terms are small for small perturbations
 -/
 theorem exponential_decay (path : MetricPath)
     (g_eq : DiscreteMetric)
     (rho : InformationDensity) (exact : ExactMetric)
-    (couplings : HealingCouplings) (hλ : couplings.λ > 0)
+    (couplings : HealingCouplings) (hLam : couplings.lam > 0)
     (points : Finset LatticePoint)
     (hFlow : True)  -- path satisfies healing flow
     (hEquil : IsEquilibrium g_eq rho exact couplings)
     (hSmall : True)  -- path starts near g_eq
-    (τ : ℝ) (hτ : τ ≥ 0) :
+    (tau : ℝ) (htau : tau ≥ 0) :
     -- Defect magnitude decays exponentially
-    ∃ (D₀ : ℝ), D₀ > 0 ∧
-    ∀ p, defectMagnitude ⟨path.metric τ, exact, sorry⟩ p ≤
-         D₀ * exp (-couplings.λ * τ / ℓ_P) := by
+    ∃ (D0 : ℝ), D0 > 0 ∧
+    ∀ p, defectMagnitude ⟨path.metric tau, exact, sorry⟩ p ≤
+         D0 * exp (-couplings.lam * tau / ℓ_P) := by
   sorry
 
 /-- The decay time scale -/
 noncomputable def decayTimeScale (couplings : HealingCouplings)
-    (hλ : couplings.λ > 0) : ℝ :=
-  ℓ_P / couplings.λ
+    (hLam : couplings.lam > 0) : ℝ :=
+  ℓ_P / couplings.lam
 
 /-- Decay time scale is positive -/
 theorem decayTimeScale_pos (couplings : HealingCouplings)
-    (hλ : couplings.λ > 0) :
-    decayTimeScale couplings hλ > 0 := by
+    (hLam : couplings.lam > 0) :
+    decayTimeScale couplings hLam > 0 := by
   unfold decayTimeScale
-  exact div_pos PlanckLength_pos hλ
+  exact div_pos PlanckLength_pos hLam
 
 /-! ## Stability of Equilibria
 
@@ -225,27 +226,31 @@ theorem decayTimeScale_pos (couplings : HealingCouplings)
 def IsLyapunovStable (g_eq : DiscreteMetric) (rho : InformationDensity)
     (exact : ExactMetric) (couplings : HealingCouplings)
     (points : Finset LatticePoint) : Prop :=
-  ∀ ε > 0, ∃ δ > 0, ∀ (path : MetricPath),
-    -- If path starts within δ of g_eq
-    (∀ p μ ν, |path.metric 0 p μ ν - g_eq p μ ν| < δ) →
-    -- Then path stays within ε for all time
-    ∀ τ ≥ 0, ∀ p μ ν, |path.metric τ p μ ν - g_eq p μ ν| < ε
+  ∀ eps, eps > 0 → ∃ delta, delta > 0 ∧ ∀ (path : MetricPath),
+    -- If path starts within delta of g_eq
+    (∀ p mu nu, |path.metric 0 p mu nu - g_eq p mu nu| < delta) →
+    -- Then path stays within eps for all time
+    ∀ tau, tau ≥ 0 → ∀ p mu nu, |path.metric tau p mu nu - g_eq p mu nu| < eps
+
+/-- Pointwise convergence of discrete metrics -/
+def MetricConvergesTo (path : MetricPath) (g_inf : DiscreteMetric) : Prop :=
+  ∀ p mu nu eps, eps > 0 → ∃ T, ∀ tau, tau ≥ T → |path.metric tau p mu nu - g_inf p mu nu| < eps
 
 /-- Asymptotic stability: solutions converge to equilibrium -/
 def IsAsymptoticallyStable (g_eq : DiscreteMetric) (rho : InformationDensity)
     (exact : ExactMetric) (couplings : HealingCouplings)
     (points : Finset LatticePoint) : Prop :=
   IsLyapunovStable g_eq rho exact couplings points ∧
-  ∃ δ > 0, ∀ (path : MetricPath),
-    (∀ p μ ν, |path.metric 0 p μ ν - g_eq p μ ν| < δ) →
-    Filter.Tendsto (fun τ => path.metric τ) Filter.atTop (nhds g_eq)
+  ∃ delta, delta > 0 ∧ ∀ (path : MetricPath),
+    (∀ p mu nu, |path.metric 0 p mu nu - g_eq p mu nu| < delta) →
+    MetricConvergesTo path g_eq
 
 /-- THEOREM: All equilibria are asymptotically stable.
 
     The Lyapunov structure guarantees asymptotic stability. -/
 theorem equilibria_asymptotically_stable (g_eq : DiscreteMetric)
     (rho : InformationDensity) (exact : ExactMetric)
-    (couplings : HealingCouplings) (hλ : couplings.λ > 0)
+    (couplings : HealingCouplings) (hLam : couplings.lam > 0)
     (points : Finset LatticePoint)
     (hEquil : IsEquilibrium g_eq rho exact couplings) :
     IsAsymptoticallyStable g_eq rho exact couplings points := by
@@ -274,7 +279,7 @@ theorem totalDissipation_nonneg (path : MetricPath)
     (T : ℝ) (hT : T ≥ 0) (hFlow : True) :
     totalDissipation path rho exact couplings points T hT ≥ 0 := by
   sorry
-  -- F(T) ≤ F(0) implies F(0) - F(T) ≥ 0
+  -- F(T) <= F(0) implies F(0) - F(T) >= 0
 
 /-- Total dissipation is bounded by initial energy -/
 theorem totalDissipation_bounded (path : MetricPath)
@@ -284,6 +289,6 @@ theorem totalDissipation_bounded (path : MetricPath)
     totalDissipation path rho exact couplings points T hT ≤
     healingFunctional rho ⟨path.metric 0, exact, sorry⟩ couplings points := by
   sorry
-  -- F(0) - F(T) ≤ F(0) since F(T) ≥ 0
+  -- F(0) - F(T) <= F(0) since F(T) >= 0
 
 end DiscreteSpacetime.Dynamics
