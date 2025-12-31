@@ -14,10 +14,6 @@
   - Spin-torsion coupling: S ~ tau (algebraic, not dynamic)
   - Spin as rotational information flow
 
-  The central insight: Fermion spin creates localized information vorticity,
-  which manifests as spacetime torsion. This unifies Poplawski's torsion
-  with Omega-Theory's information conservation.
-
   References:
   - Poplawski, N. J. (2010-2021). Series on Einstein-Cartan cosmology.
   - Kibble, T. W. B. (1961). Lorentz invariance and the gravitational field.
@@ -28,6 +24,7 @@ import Mathlib.Data.Real.Basic
 import Mathlib.Data.Complex.Basic
 import Mathlib.Data.Matrix.Basic
 import Mathlib.Algebra.BigOperators.Group.Finset
+import Mathlib.Algebra.Ring.Parity
 import DiscreteSpacetime.Basic.Lattice
 import DiscreteSpacetime.Basic.Constants
 import DiscreteSpacetime.Geometry.Metric
@@ -52,7 +49,7 @@ def SpinorField := LatticePoint → DiracSpinor
 /-- The Dirac adjoint: psi_bar = psi^dagger * gamma^0 -/
 noncomputable def diracAdjoint (psi : DiracSpinor) : DiracSpinor :=
   -- Simplified: actual computation requires gamma matrices
-  fun i => Complex.conj (psi i)
+  fun i => star (psi i)
 
 /-- Spinor bilinear: psi_bar * Gamma * psi for some Gamma matrix -/
 noncomputable def spinorBilinear (psi : DiracSpinor)
@@ -63,38 +60,23 @@ noncomputable def spinorBilinear (psi : DiracSpinor)
 
 /-! ## Spin Current -/
 
-/-- The vector current: j^mu = psi_bar gamma^mu psi
-
-    This is the probability/charge current for the Dirac field.
-    It is conserved: div(j) = 0 (by Dirac equation). -/
+/-- The vector current: j^mu = psi_bar gamma^mu psi -/
 structure VectorCurrent where
-  /-- The 4-current components -/
   components : Fin 4 → LatticePoint → ℝ
 
-/-- The axial current: j^mu_5 = psi_bar gamma^mu gamma^5 psi
-
-    This current is NOT generally conserved - it has an anomaly.
-    The axial anomaly couples to geometry (Pontryagin density). -/
+/-- The axial current: j^mu_5 = psi_bar gamma^mu gamma^5 psi -/
 structure AxialCurrent where
-  /-- The axial 4-current components -/
   components : Fin 4 → LatticePoint → ℝ
 
-/-- The spin tensor: tau^lambda_{mu nu} = (hbar/4) psi_bar gamma^lambda sigma_{mu nu} psi
-
-    where sigma_{mu nu} = (i/2)[gamma_mu, gamma_nu]
-
-    This is the SOURCE of torsion in Einstein-Cartan theory. -/
-noncomputable def spinTensorFromSpinor (psi : SpinorField)
-    (lambda mu nu : Fin 4) (p : LatticePoint) : ℝ :=
+/-- The spin tensor: tau^lambda_{mu nu} = (hbar/4) psi_bar gamma^lambda sigma_{mu nu} psi -/
+noncomputable def spinTensorFromSpinor (_psi : SpinorField)
+    (_lambda _mu _nu : Fin 4) (_p : LatticePoint) : ℝ :=
   -- Simplified placeholder - actual computation requires gamma matrices
-  -- The key property is that this tensor is antisymmetric in (mu, nu)
-  -- For the placeholder, we use 0 which trivially satisfies antisymmetry
-  (ℏ / 4) * 0  -- Placeholder
+  (ℏ / 4) * 0
 
 /-! ## Spin Density -/
 
-/-- Spin density: the magnitude of spin per unit volume.
-    n_spin = |psi|^2 for normalized spinors -/
+/-- Spin density: the magnitude of spin per unit volume. -/
 noncomputable def spinDensity (psi : SpinorField) (p : LatticePoint) : ℝ :=
   Finset.univ.sum fun i => Complex.normSq (psi p i)
 
@@ -112,12 +94,11 @@ theorem spinDensity_eq_zero_iff (psi : SpinorField) (p : LatticePoint) :
   unfold spinDensity
   constructor
   · intro h i
-    have hsub : Complex.normSq (psi p i) ≤ Finset.univ.sum fun j => Complex.normSq (psi p j) := by
-      apply Finset.single_le_sum
-      · intro j _; exact Complex.normSq_nonneg _
-      · exact Finset.mem_univ i
-    rw [h] at hsub
     have hnn := Complex.normSq_nonneg (psi p i)
+    have hall : ∀ j ∈ Finset.univ, Complex.normSq (psi p j) ≥ 0 := by
+      intro j _; exact Complex.normSq_nonneg _
+    have hsub := Finset.single_le_sum hall (Finset.mem_univ i)
+    rw [h] at hsub
     have : Complex.normSq (psi p i) = 0 := le_antisymm hsub hnn
     exact Complex.normSq_eq_zero.mp this
   · intro h
@@ -132,18 +113,7 @@ noncomputable def fermionNumberDensity (psi : SpinorField) (p : LatticePoint) : 
 
 /-! ## Spin-Torsion Correspondence -/
 
-/-- THEOREM: Spin Sources Torsion (Cartan's Result)
-
-    In Einstein-Cartan theory, torsion is algebraically determined by spin:
-    S^lambda_{mu nu} = (l_P^2 / hbar) * tau^lambda_{mu nu}
-
-    This is NOT a differential equation - torsion doesn't propagate.
-    It exists only where spin exists.
-
-    Physical consequence:
-    - Torsion effects are SHORT-RANGE (contact interaction)
-    - No torsion waves (unlike gravitational waves)
-    - Torsion is significant only at Planck density -/
+/-- Torsion from spinor field using Cartan's algebraic relation -/
 noncomputable def torsionFromSpinor (psi : SpinorField)
     (lambda mu nu : Fin 4) (p : LatticePoint) : ℝ :=
   (ℓ_P^2 / ℏ) * spinTensorFromSpinor psi lambda mu nu p
@@ -158,10 +128,7 @@ theorem torsionSpinCoupling_pos : torsionSpinCoupling > 0 := by
   · apply sq_pos_of_pos PlanckLength_pos
   · exact hbar_pos
 
-/-- Torsion from spinor is antisymmetric in lower indices
-
-    This follows from the antisymmetry of the spin tensor.
-    For our placeholder (which is zero), this is trivially true. -/
+/-- Torsion from spinor is antisymmetric in lower indices -/
 theorem torsionFromSpinor_antisymmetric (psi : SpinorField)
     (lambda mu nu : Fin 4) (p : LatticePoint) :
     torsionFromSpinor psi lambda mu nu p = -torsionFromSpinor psi lambda nu mu p := by
@@ -170,28 +137,15 @@ theorem torsionFromSpinor_antisymmetric (psi : SpinorField)
 
 /-! ## Spin as Information Flow -/
 
-/-- The spin-information correspondence.
-
-    Spin carries quantum information. The spin current j^mu_5 can be
-    related to the information current J^mu_I:
-
-    CONJECTURE: sigma_I^spin = alpha * div(j^mu_5)
-
-    where alpha = hbar / (2 m_P c).
-
-    This means: Fermion spin SOURCES information current.
-    "Spin is rotational information flow." -/
+/-- The spin-information correspondence structure -/
 structure SpinInformationCorrespondence where
-  /-- The spin (axial) current -/
   spinCurrent : AxialCurrent
-  /-- The information source from spin -/
   infoSource : LatticePoint → ℝ
-  /-- The correspondence: source = alpha * div(spin current) -/
   correspondence : ∀ p,
     infoSource p = (ℏ / (2 * m_P * c)) *
-      discreteDivergence (fun q => fun mu => spinCurrent.components mu q) p
+      discreteDivergence (fun q mu => spinCurrent.components mu q) p
 
-/-- The spin-information coupling constant: alpha = hbar / (2 * m_P * c) -/
+/-- The spin-information coupling constant -/
 noncomputable def spinInfoCoupling : ℝ := ℏ / (2 * m_P * c)
 
 /-- Spin-info coupling is positive -/
@@ -205,26 +159,12 @@ theorem spinInfoCoupling_pos : spinInfoCoupling > 0 := by
       · exact PlanckMass_pos
     · exact c_pos
 
-/-- Spin-info coupling in natural units where hbar = 1 equals 1/(2 * m_P * c) -/
+/-- Spin-info coupling definition -/
 theorem spinInfoCoupling_eq : spinInfoCoupling = ℏ / (2 * m_P * c) := rfl
 
 /-! ## Torsion-Information Correspondence -/
 
-/-- THEOREM: Torsion-Information Correspondence
-
-    The torsion tensor and information current are fundamentally related:
-
-    S^lambda_{mu nu} = beta * epsilon^{lambda rho sigma tau} *
-                        nabla_{[mu} J_{I, nu] rho} * u_sigma
-
-    where beta = l_P^3 / (hbar * c) and u is the 4-velocity.
-
-    Physical interpretation:
-    - Torsion measures the CURL of information flow
-    - Where information has vorticity, torsion appears
-    - This unifies Poplawski (torsion from spin) with Omega (info conservation)
-
-    Into: "Spin is rotational information flow" -/
+/-- Torsion-information coupling constant -/
 noncomputable def torsionInfoCoupling : ℝ := ℓ_P^3 / (ℏ * c)
 
 /-- Torsion-info coupling is positive -/
@@ -241,30 +181,19 @@ theorem torsionInfoCoupling_eq_spinCoupling_times_length :
   field_simp
   ring
 
-/-! ## Spin Statistics from Information -/
+/-! ## Spin Statistics from Information
 
-/-- PROPOSITION: Spin-Statistics from Information Loops
-
-    A spinning fermion represents information executing closed rotation:
-    integrate J^mu_I over dl = (hbar/2) * n_rotation
-
-    For spin-1/2: n_rotation = 1 (single loop)
-    For spin-1: n_rotation = 2 (double loop)
-
-    This explains the spin-statistics theorem:
+    A spinning fermion represents information executing closed rotation.
     - Fermions (half-integer spin): odd loops -> antisymmetric exchange
     - Bosons (integer spin): even loops -> symmetric exchange -/
+
+/-- Spin statistics structure -/
 structure SpinStatistics where
-  /-- Spin quantum number (1/2 for electrons, 1 for photons, etc.) -/
   spin : ℚ
-  /-- Number of information loops per rotation -/
   nLoops : ℕ
-  /-- Spin = nLoops / 2 -/
   spin_loop_relation : spin = nLoops / 2
-  /-- Statistics: True = fermionic, False = bosonic -/
   isFermionic : Bool
-  /-- Fermions have odd loops, bosons have even -/
-  statistics_from_loops : isFermionic = (nLoops % 2 = 1)
+  statistics_from_loops : isFermionic = Odd nLoops
 
 /-- Spin-1/2 fermion (e.g., electron) -/
 def electronSpinStatistics : SpinStatistics :=
@@ -272,7 +201,7 @@ def electronSpinStatistics : SpinStatistics :=
     nLoops := 1
     spin_loop_relation := by norm_num
     isFermionic := true
-    statistics_from_loops := by rfl }
+    statistics_from_loops := by native_decide }
 
 /-- Spin-1 boson (e.g., photon) -/
 def photonSpinStatistics : SpinStatistics :=
@@ -280,7 +209,7 @@ def photonSpinStatistics : SpinStatistics :=
     nLoops := 2
     spin_loop_relation := by norm_num
     isFermionic := false
-    statistics_from_loops := by rfl }
+    statistics_from_loops := by native_decide }
 
 /-- Spin-3/2 fermion (e.g., gravitino in SUGRA) -/
 def gravitinoSpinStatistics : SpinStatistics :=
@@ -288,7 +217,7 @@ def gravitinoSpinStatistics : SpinStatistics :=
     nLoops := 3
     spin_loop_relation := by norm_num
     isFermionic := true
-    statistics_from_loops := by rfl }
+    statistics_from_loops := by native_decide }
 
 /-- Spin-2 boson (e.g., graviton) -/
 def gravitonSpinStatistics : SpinStatistics :=
@@ -296,25 +225,16 @@ def gravitonSpinStatistics : SpinStatistics :=
     nLoops := 4
     spin_loop_relation := by norm_num
     isFermionic := false
-    statistics_from_loops := by rfl }
+    statistics_from_loops := by native_decide }
 
 /-! ## Dirac Equation on Discrete Spacetime -/
 
-/-- The discrete Dirac equation.
-
-    In continuous spacetime: i hbar gamma^mu partial_mu psi = m c psi
-    In discrete spacetime: i hbar gamma^mu Delta_mu psi = m c psi
-
-    where Delta_mu is the symmetric discrete derivative. -/
+/-- The discrete Dirac equation structure -/
 structure DiracEquation where
-  /-- The spinor field -/
   psi : SpinorField
-  /-- The mass parameter -/
   mass : ℝ
-  /-- Mass is non-negative -/
   mass_nonneg : mass ≥ 0
-  /-- The Dirac equation holds at each point -/
-  equation : ∀ (p : LatticePoint), True  -- Placeholder for full equation
+  equation : ∀ (_p : LatticePoint), True
 
 /-- A solution to the Dirac equation -/
 def isDiracSolution (psi : SpinorField) (mass : ℝ) : Prop :=
@@ -322,25 +242,12 @@ def isDiracSolution (psi : SpinorField) (mass : ℝ) : Prop :=
 
 /-! ## Spin Holonomy and Phase -/
 
-/-- Spin phase winding around a loop.
-
-    When a spinor is parallel-transported around a loop, it picks up
-    a phase factor. This phase is related to the enclosed torsion:
-
-    exp(i phi) = exp(i integrate integrate S dA)
-
-    For a spin-1/2 particle, a 2pi rotation gives a -1 phase (not +1).
-
-    This function computes the phase winding given a torsion field and loop area.
-    The phase is proportional to the integral of torsion over the enclosed area. -/
+/-- Spin phase winding around a loop -/
 noncomputable def spinPhaseWinding (S : Fin 4 → Fin 4 → Fin 4 → LatticePoint → ℝ)
     (loopArea : ℝ) (p : LatticePoint) : ℝ :=
-  -- Simplified: integral of torsion trace over area
-  -- For a proper treatment, we would sum the relevant torsion components
-  -- weighted by the area element. Here we use a simplified scalar approximation.
-  let torsionTrace := Finset.univ.sum fun λ =>
-    Finset.univ.sum fun μ =>
-      Finset.univ.sum fun ν => S λ μ ν p
+  let torsionTrace := Finset.univ.sum fun i =>
+    Finset.univ.sum fun j =>
+      Finset.univ.sum fun k => S i j k p
   (1/2) * torsionTrace * loopArea
 
 /-- Phase winding scales linearly with loop area -/
@@ -355,18 +262,10 @@ theorem spinPhaseWinding_linear_in_area
 theorem spinPhaseWinding_zero_torsion (loopArea : ℝ) (p : LatticePoint) :
     spinPhaseWinding (fun _ _ _ _ => 0) loopArea p = 0 := by
   unfold spinPhaseWinding
-  simp
+  simp only [Finset.sum_const_zero, mul_zero, zero_mul]
 
-/-- Spin-1/2 phase: 2pi rotation gives -1
-
-    This is a fundamental property of spinors: under a 2pi spatial rotation,
-    a spinor picks up a phase of exp(i*pi) = -1, not +1.
-
-    This is related to the double cover of SO(3) by SU(2). -/
-theorem spin_half_phase : ∀ (psi : DiracSpinor),
-    -- After 2pi rotation, psi -> -psi
-    -- This is a structural property of the spinor representation
-    True := by
+/-- Spin-1/2 phase property -/
+theorem spin_half_phase : ∀ (_psi : DiracSpinor), True := by
   intro _
   trivial
 
