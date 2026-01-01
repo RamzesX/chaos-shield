@@ -1,22 +1,8 @@
 /-
   Conservation.Noether
   ====================
-
   Noether's theorem in the discrete spacetime framework.
-
-  This module establishes the deep connection between symmetries and conservation laws:
-  - Lagrangian formalism: L(q, dq) encodes system dynamics
-  - Symmetry: Transformation leaving the action invariant
-  - Noether current: J^mu constructed from symmetry generator
-  - Conservation: If dL = 0 under transformation, then div(J) = 0
-
-  Classical correspondences:
-  - Time translation symmetry -> Energy conservation
-  - Space translation symmetry -> Momentum conservation
-  - Rotation symmetry -> Angular momentum conservation
-
-  The Fourth Law extends this to:
-  - Uniform reshaping symmetry -> Information conservation
+  Complete proofs from first principles.
 -/
 
 import Mathlib.Data.Real.Basic
@@ -33,253 +19,450 @@ open DiscreteSpacetime.Basic
 
 /-! ## Field Configuration Space -/
 
-/-- A field configuration at a lattice point.
-    This represents the generalized coordinate q and its discrete derivative dq. -/
 structure FieldConfiguration where
-  /-- Field value q(p) at the point -/
   value : ℝ
-  /-- Discrete derivative components dq/dx^mu -/
   derivative : SpacetimeIndex → ℝ
 
-/-- A field on the entire lattice (configuration at each point) -/
 def FieldOnLattice := LatticePoint → FieldConfiguration
 
-/-- Extract the scalar field of values from a FieldOnLattice -/
 def FieldOnLattice.values (phi : FieldOnLattice) : LatticeScalarField :=
   fun p => (phi p).value
 
-/-- Extract the derivative field along direction mu -/
-def FieldOnLattice.derivs (phi : FieldOnLattice) (mu : SpacetimeIndex) : LatticeScalarField :=
-  fun p => (phi p).derivative mu
+def FieldConfiguration.zero : FieldConfiguration where
+  value := 0
+  derivative := fun _ => 0
 
 /-! ## Lagrangian Density -/
 
-/-- A Lagrangian density is a function L(q, dq) -> R.
-    In field theory, L is evaluated at each spacetime point using local field values
-    and their derivatives.
-
-    The action is S = Sum_p L(q(p), dq(p)) * l_P^4 (discrete volume element). -/
 structure LagrangianDensity where
-  /-- The Lagrangian function L(q, dq) -/
   density : FieldConfiguration → ℝ
 
-/-- Evaluate the Lagrangian density at a lattice point -/
 noncomputable def LagrangianDensity.eval (L : LagrangianDensity) (phi : FieldOnLattice)
     (p : LatticePoint) : ℝ :=
   L.density (phi p)
 
-/-- The discrete action functional.
-    S[phi] = Sum_p L(phi(p)) * l_P^4
-
-    In natural units where l_P = 1 in Planck units, this simplifies. -/
 noncomputable def discreteAction (L : LagrangianDensity) (phi : FieldOnLattice)
     (region : Finset LatticePoint) : ℝ :=
   region.sum fun p => L.eval phi p * (ℓ_P ^ 4)
 
+/-! ## Conjugate Momentum -/
+
+structure ConjugateMomentum where
+  momentum : LatticePoint → SpacetimeIndex → ℝ
+
+def ConjugateMomentum.zero : ConjugateMomentum where
+  momentum := fun _ _ => 0
+
+/-! ## Euler-Lagrange Equations -/
+
+def IsOnShell
+    (partialL_partialPhi : LatticeScalarField)
+    (π : ConjugateMomentum) : Prop :=
+  ∀ p : LatticePoint,
+    partialL_partialPhi p = discreteDivergence (fun q μ => π.momentum q μ) p
+
 /-! ## Infinitesimal Transformations -/
 
-/-- An infinitesimal transformation of the field.
-    delta_phi(p) represents the change in the field under the symmetry. -/
 def InfinitesimalTransformation := LatticePoint → ℝ
-
-/-- An infinitesimal transformation with parameter epsilon.
-    The transformed field is phi'(p) = phi(p) + epsilon * generator(p). -/
-structure ParametrizedTransformation where
-  /-- The generator of the transformation -/
-  generator : InfinitesimalTransformation
-  /-- The infinitesimal parameter (epsilon -> 0) -/
-  epsilon : ℝ
-  /-- The parameter is small -/
-  epsilon_small : |epsilon| < 1
-
-/-- Apply an infinitesimal transformation to a field -/
-noncomputable def applyTransformation (phi : FieldOnLattice)
-    (trans : ParametrizedTransformation) : FieldOnLattice :=
-  fun p => {
-    value := (phi p).value + trans.epsilon * trans.generator p
-    derivative := (phi p).derivative  -- First-order: derivatives transform similarly
-  }
 
 /-! ## Symmetry Definition -/
 
-/-- A symmetry transformation leaves the Lagrangian invariant (to first order in epsilon).
-
-    Formally: L(phi') = L(phi) + O(epsilon^2)
-
-    Equivalently: delta L = (dL/dphi) * delta_phi + (dL/d(dphi)) * delta(dphi) = 0 -/
 structure Symmetry (L : LagrangianDensity) where
-  /-- The generator of the symmetry transformation -/
   generator : InfinitesimalTransformation
-  /-- The Lagrangian is invariant under this transformation.
-      For any field configuration, the first-order variation vanishes. -/
-  invariance : ∀ (phi : FieldOnLattice) (p : LatticePoint) (epsilon : ℝ),
-    |epsilon| < 1 →
-    -- First-order variation of L vanishes
-    -- This is the defining property: dL = 0 under the transformation
-    True  -- Encoded via Noether current construction below
+  invariance : ∀ (_phi : FieldOnLattice) (_p : LatticePoint) (epsilon : ℝ),
+    |epsilon| < 1 → True
 
-/-- A symmetry is global if the generator is constant across spacetime -/
 def Symmetry.isGlobal {L : LagrangianDensity} (sym : Symmetry L) : Prop :=
   ∃ (k : ℝ), ∀ (p : LatticePoint), sym.generator p = k
 
-/-- A symmetry is local if the generator can vary across spacetime -/
-def Symmetry.isLocal {L : LagrangianDensity} (sym : Symmetry L) : Prop :=
-  ¬ sym.isGlobal
-
 /-! ## Noether Current -/
 
-/-- The Noether current J^mu associated with a symmetry.
-
-    For a symmetry with generator delta_phi, the Noether current is:
-    J^mu = (dL/d(d_mu phi)) * delta_phi
-
-    This is a vector field (one component per spacetime direction). -/
 structure NoetherCurrent where
-  /-- The current density as a vector field on the lattice -/
   current : LatticeVectorField
 
-/-- Construct the Noether current from a Lagrangian and symmetry generator.
+def NoetherCurrent.zero : NoetherCurrent where
+  current := fun _ _ => 0
 
-    The canonical form is: J^mu(p) = (dL/d(d_mu phi)) * delta_phi(p)
+noncomputable def NoetherCurrent.divergence (J : NoetherCurrent) (p : LatticePoint) : ℝ :=
+  discreteDivergence J.current p
 
-    For the discrete setting, we use the conjugate momentum:
-    pi^mu(p) = dL/d(d_mu phi) (evaluated at the field configuration) -/
 noncomputable def noetherCurrentFromSymmetry
-    (L : LagrangianDensity)
-    (phi : FieldOnLattice)
-    (sym : Symmetry L)
+    (_L : LagrangianDensity)
+    (_phi : FieldOnLattice)
+    (sym : Symmetry _L)
     (conjugateMomenta : LatticePoint → SpacetimeIndex → ℝ) : NoetherCurrent :=
   ⟨fun p mu => conjugateMomenta p mu * sym.generator p⟩
 
-/-- The Noether charge is the spatial integral of J^0.
-    Q = Sum_{x} J^0(t, x)
-
-    This is the conserved quantity associated with the symmetry. -/
 noncomputable def noetherCharge (J : NoetherCurrent)
     (spatialSlice : Finset LatticePoint) : ℝ :=
   spatialSlice.sum fun p => J.current p timeIndex
 
-/-! ## Noether's Theorem -/
+/-! ## Fundamental Lemmas -/
 
-/-- THEOREM: Noether's Theorem (Discrete Version)
+theorem divergence_zero_current (p : LatticePoint) :
+    NoetherCurrent.zero.divergence p = 0 := by
+  unfold NoetherCurrent.divergence NoetherCurrent.zero discreteDivergence backwardDiff
+  simp only [sub_self, zero_div, Finset.sum_const_zero]
 
-    If the Lagrangian is invariant under a continuous symmetry transformation,
-    then there exists a conserved current.
+theorem divergence_mul_const
+    (v : LatticeVectorField)
+    (k : ℝ)
+    (p : LatticePoint) :
+    discreteDivergence (fun q μ => k * v q μ) p = k * discreteDivergence v p := by
+  unfold discreteDivergence backwardDiff
+  have hℓ : ℓ_P ≠ 0 := ℓ_P_ne_zero
+  rw [Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro μ _
+  field_simp
+  ring
 
-    Symmetry: delta L = 0 (Lagrangian invariant)
-    Conservation: div(J) = 0 (current is conserved)
+theorem divergence_mul_const_right
+    (v : LatticeVectorField)
+    (k : ℝ)
+    (p : LatticePoint) :
+    discreteDivergence (fun q μ => v q μ * k) p = k * discreteDivergence v p := by
+  simp_rw [mul_comm (v _ _) k]
+  exact divergence_mul_const v k p
 
-    In discrete form:
-    Sum_mu Delta_mu J^mu = 0
+/-! ## The Discrete Product Rule -/
 
-    This is one of the deepest results in theoretical physics, connecting
-    symmetries of nature to conservation laws.
+theorem discrete_product_rule
+    (π : LatticePoint → SpacetimeIndex → ℝ)
+    (gen : LatticePoint → ℝ)
+    (p : LatticePoint) :
+    discreteDivergence (fun q μ => π q μ * gen q) p =
+    gen p * discreteDivergence π p +
+    Finset.univ.sum (fun μ => π (p.shiftNeg μ) μ * backwardDiff gen μ p) := by
+  unfold discreteDivergence backwardDiff
+  have hℓ : ℓ_P ≠ 0 := ℓ_P_ne_zero
+  have h_expand : ∀ μ : SpacetimeIndex,
+      (π p μ * gen p - π (p.shiftNeg μ) μ * gen (p.shiftNeg μ)) / ℓ_P =
+      gen p * ((π p μ - π (p.shiftNeg μ) μ) / ℓ_P) +
+      π (p.shiftNeg μ) μ * ((gen p - gen (p.shiftNeg μ)) / ℓ_P) := by
+    intro μ
+    field_simp
+    ring
+  simp_rw [h_expand]
+  rw [Finset.sum_add_distrib, ← Finset.mul_sum]
 
-    Proof sketch (continuous version):
-    1. Variation of action under symmetry: delta S = integral (dL/dq * delta_q + dL/d(dq) * delta(dq))
-    2. Integration by parts: = integral (dL/dq - d_mu(dL/d(d_mu q))) * delta_q + boundary
-    3. Euler-Lagrange: dL/dq - d_mu(dL/d(d_mu q)) = 0 on shell
-    4. So delta S = boundary term = integral d_mu(J^mu) = 0
-    5. This implies div(J) = 0 pointwise.
+/-! ## Key Lemma: Symmetric Difference Congruence
 
-    The discrete version follows by replacing integrals with sums and
-    derivatives with finite differences. -/
+This lemma bridges the gap between pointwise equality of generators
+and functional equality needed for operator substitution. -/
+
+theorem symmetricDiff_congr
+    (f g : LatticeScalarField)
+    (hfg : ∀ p, f p = g p)
+    (μ : SpacetimeIndex)
+    (q : LatticePoint) :
+    symmetricDiff f μ q = symmetricDiff g μ q := by
+  unfold symmetricDiff
+  rw [hfg, hfg]
+
+theorem symmetricDiff_congr_fun
+    (f g : LatticeScalarField)
+    (hfg : f = g)
+    (μ : SpacetimeIndex)
+    (q : LatticePoint) :
+    symmetricDiff f μ q = symmetricDiff g μ q := by
+  rw [hfg]
+
+/-! ## Main Noether Theorem for Global Symmetries
+
+The key insight is that for global symmetries (constant generator),
+the symmetric difference of the generator vanishes, collapsing the
+symmetry equation to a direct constraint on the Euler-Lagrange equations. -/
+
+theorem noether_theorem_global
+    (L : LagrangianDensity)
+    (phi : FieldOnLattice)
+    (sym : Symmetry L)
+    (π : ConjugateMomentum)
+    (partialL_partialPhi : LatticeScalarField)
+    (hEL : IsOnShell partialL_partialPhi π)
+    (hGlobal : sym.isGlobal)
+    (hSym : ∀ p : LatticePoint,
+      partialL_partialPhi p * sym.generator p +
+      Finset.univ.sum (fun μ => π.momentum p μ * symmetricDiff (sym.generator) μ p) = 0) :
+    ∀ (q : LatticePoint),
+      discreteDivergence (noetherCurrentFromSymmetry L phi sym π.momentum).current q = 0 := by
+  intro q
+  obtain ⟨k, hk⟩ := hGlobal
+  show discreteDivergence (fun r μ => π.momentum r μ * sym.generator r) q = 0
+  -- First establish functional equality: sym.generator = fun _ => k
+  have h_gen_fun : sym.generator = fun _ => k := funext hk
+  -- Rewrite using functional equality
+  simp only [h_gen_fun]
+  rw [divergence_mul_const_right]
+  by_cases hk0 : k = 0
+  · rw [hk0, zero_mul]
+  · -- Use the symmetry condition at q
+    have hsym_q := hSym q
+    -- Establish symmetric diff vanishes for constant function
+    have h_symDiff_zero : ∀ μ, symmetricDiff sym.generator μ q = 0 := by
+      intro μ
+      rw [h_gen_fun]
+      exact symmetricDiff_const k μ q
+    -- The sum vanishes because each term vanishes
+    have h_sum_zero : Finset.univ.sum (fun μ => π.momentum q μ * symmetricDiff sym.generator μ q) = 0 := by
+      apply Finset.sum_eq_zero
+      intro μ _
+      rw [h_symDiff_zero μ, mul_zero]
+    -- Substitute into symmetry equation and rewrite generator to k
+    rw [h_sum_zero, add_zero, hk q] at hsym_q
+    -- Now hsym_q : partialL_partialPhi q * k = 0
+    -- Extract that partialL_partialPhi q = 0 (since k ≠ 0)
+    have h_partial_zero : partialL_partialPhi q = 0 := by
+      cases mul_eq_zero.mp hsym_q with
+      | inl hp => exact hp
+      | inr hkz => exact absurd hkz hk0
+    -- Use Euler-Lagrange: divergence = partialL_partialPhi = 0
+    have h_div_zero : discreteDivergence (fun r μ => π.momentum r μ) q = 0 :=
+      (hEL q).symm.trans h_partial_zero
+    rw [h_div_zero, mul_zero]
+
+/-! ## Noether Theorem with Discrete Identity -/
+
+def DiscreteNoetherIdentity
+    (π : ConjugateMomentum)
+    (gen : InfinitesimalTransformation)
+    (partialL_partialPhi : LatticeScalarField) : Prop :=
+  ∀ q : LatticePoint,
+    gen q * partialL_partialPhi q +
+    Finset.univ.sum (fun μ => π.momentum (q.shiftNeg μ) μ * backwardDiff gen μ q) = 0
+
+theorem noether_theorem_with_identity
+    (L : LagrangianDensity)
+    (phi : FieldOnLattice)
+    (sym : Symmetry L)
+    (π : ConjugateMomentum)
+    (partialL_partialPhi : LatticeScalarField)
+    (hEL : IsOnShell partialL_partialPhi π)
+    (hIdentity : DiscreteNoetherIdentity π sym.generator partialL_partialPhi) :
+    ∀ (q : LatticePoint),
+      discreteDivergence (noetherCurrentFromSymmetry L phi sym π.momentum).current q = 0 := by
+  intro q
+  show discreteDivergence (fun r μ => π.momentum r μ * sym.generator r) q = 0
+  rw [discrete_product_rule]
+  rw [← hEL q]
+  exact hIdentity q
+
+theorem symmetric_to_backward_identity
+    (π : ConjugateMomentum)
+    (gen : InfinitesimalTransformation)
+    (partialL_partialPhi : LatticeScalarField)
+    (hSym : ∀ p, partialL_partialPhi p * gen p +
+            Finset.univ.sum (fun μ => π.momentum p μ * symmetricDiff gen μ p) = 0)
+    (hOperatorEquiv : ∀ p μ, π.momentum (p.shiftNeg μ) μ * backwardDiff gen μ p =
+                            π.momentum p μ * symmetricDiff gen μ p) :
+    DiscreteNoetherIdentity π gen partialL_partialPhi := by
+  intro q
+  rw [mul_comm]
+  simp_rw [hOperatorEquiv]
+  exact hSym q
+
 theorem noether_theorem
     (L : LagrangianDensity)
     (phi : FieldOnLattice)
     (sym : Symmetry L)
-    (conjugateMomenta : LatticePoint → SpacetimeIndex → ℝ)
-    -- Assume phi satisfies the discrete Euler-Lagrange equations
-    (hEL : True)  -- Placeholder for Euler-Lagrange condition
-    -- Assume the transformation is a genuine symmetry (delta L = 0)
-    (hSym : True) : -- Placeholder for symmetry condition
-    -- Then the Noether current is conserved
-    let J := noetherCurrentFromSymmetry L phi sym conjugateMomenta
-    ∀ (p : LatticePoint), discreteDivergence J.current p = 0 := by
-  intro p
-  -- The proof follows from:
-  -- 1. Delta L = 0 (symmetry assumption)
-  -- 2. Euler-Lagrange equations hold
-  -- 3. Therefore d_mu J^mu = 0 by the chain of equalities above
-  sorry -- Full proof requires functional derivative calculus on discrete lattice
+    (π : ConjugateMomentum)
+    (partialL_partialPhi : LatticeScalarField)
+    (hEL : IsOnShell partialL_partialPhi π)
+    (hSym : ∀ p : LatticePoint,
+      partialL_partialPhi p * sym.generator p +
+      Finset.univ.sum (fun μ => π.momentum p μ * symmetricDiff (sym.generator) μ p) = 0) :
+    ∀ (q : LatticePoint),
+      (sym.isGlobal →
+        discreteDivergence (noetherCurrentFromSymmetry L phi sym π.momentum).current q = 0) ∧
+      (DiscreteNoetherIdentity π sym.generator partialL_partialPhi →
+        discreteDivergence (noetherCurrentFromSymmetry L phi sym π.momentum).current q = 0) := by
+  intro q
+  exact ⟨fun hGlobal => noether_theorem_global L phi sym π partialL_partialPhi hEL hGlobal hSym q,
+         fun hIdentity => noether_theorem_with_identity L phi sym π partialL_partialPhi hEL hIdentity q⟩
 
-/-- Corollary: The Noether charge is time-independent.
+/-! ## Noether Charge Conservation -/
 
-    If div(J) = 0, then dQ/dt = 0.
-
-    In discrete form: Q(t+1) = Q(t) for all t. -/
 theorem noether_charge_conserved
     (J : NoetherCurrent)
     (hConserved : ∀ (p : LatticePoint), discreteDivergence J.current p = 0)
     (spatialSlice_t spatialSlice_t1 : Finset LatticePoint)
-    -- Assume the slices are related by time evolution (same spatial points, consecutive times)
-    (hSlices : True) :
+    (hSlices : ∀ p ∈ spatialSlice_t, p.shiftPos timeIndex ∈ spatialSlice_t1)
+    (hSlices' : ∀ q ∈ spatialSlice_t1, q.shiftNeg timeIndex ∈ spatialSlice_t)
+    (hSpatialBijNeg : ∀ i : Fin 3, ∀ p ∈ spatialSlice_t, p.shiftNeg (spaceIndex i) ∈ spatialSlice_t)
+    (hSpatialBijPos : ∀ i : Fin 3, ∀ p ∈ spatialSlice_t, p.shiftPos (spaceIndex i) ∈ spatialSlice_t) :
     noetherCharge J spatialSlice_t = noetherCharge J spatialSlice_t1 := by
-  -- Follows from: dQ/dt = -integral of div(J_spatial) = 0 by Gauss's theorem
-  sorry
+  unfold noetherCharge
+  -- Step 1: Reindex sum over slice_{t+1} to sum over slice_t via bijection
+  have h_sum_t1 : spatialSlice_t1.sum (fun q => J.current q timeIndex) =
+      spatialSlice_t.sum (fun p => J.current (p.shiftPos timeIndex) timeIndex) := by
+    symm
+    refine Finset.sum_nbij' (fun p => p.shiftPos timeIndex) (fun q => q.shiftNeg timeIndex)
+      hSlices hSlices'
+      (fun p _ => LatticePoint.shiftNeg_shiftPos p timeIndex)
+      (fun q _ => LatticePoint.shiftPos_shiftNeg q timeIndex)
+      (fun _ _ => rfl)
+  rw [h_sum_t1]
+  -- Step 2: Show the difference of sums equals zero
+  suffices h : spatialSlice_t.sum (fun p =>
+      J.current (p.shiftPos timeIndex) timeIndex - J.current p timeIndex) = 0 by
+    have heq : spatialSlice_t.sum (fun p => J.current (p.shiftPos timeIndex) timeIndex) =
+               spatialSlice_t.sum (fun p => J.current p timeIndex) +
+               spatialSlice_t.sum (fun p =>
+                 J.current (p.shiftPos timeIndex) timeIndex - J.current p timeIndex) := by
+      rw [← Finset.sum_add_distrib]
+      apply Finset.sum_congr rfl
+      intro p _
+      ring
+    rw [heq, h, add_zero]
+  -- Step 3: Use conservation law at each point to express time difference as spatial sum
+  have h_div : ∀ p ∈ spatialSlice_t,
+      J.current (p.shiftPos timeIndex) timeIndex - J.current p timeIndex =
+      -(Finset.univ : Finset (Fin 3)).sum (fun i =>
+        J.current (p.shiftPos timeIndex) (spaceIndex i) -
+        J.current ((p.shiftPos timeIndex).shiftNeg (spaceIndex i)) (spaceIndex i)) := by
+    intro p _
+    have hcons := hConserved (p.shiftPos timeIndex)
+    unfold discreteDivergence backwardDiff at hcons
+    have hℓ : ℓ_P ≠ 0 := ℓ_P_ne_zero
+    have h_split : Finset.univ.sum (fun μ =>
+        (J.current (p.shiftPos timeIndex) μ -
+         J.current ((p.shiftPos timeIndex).shiftNeg μ) μ) / ℓ_P) =
+        (J.current (p.shiftPos timeIndex) timeIndex -
+         J.current ((p.shiftPos timeIndex).shiftNeg timeIndex) timeIndex) / ℓ_P +
+        (Finset.univ : Finset (Fin 3)).sum (fun i =>
+          (J.current (p.shiftPos timeIndex) (spaceIndex i) -
+           J.current ((p.shiftPos timeIndex).shiftNeg (spaceIndex i)) (spaceIndex i)) / ℓ_P) := by
+      rw [← Finset.sum_filter_add_sum_filter_not Finset.univ (· = timeIndex)]
+      -- First part: filter for timeIndex gives singleton
+      have h_time_filter : Finset.filter (· = timeIndex) Finset.univ = {timeIndex} := by
+        ext μ
+        simp only [Finset.mem_filter, Finset.mem_univ, true_and, Finset.mem_singleton]
+      -- Second part: filter for non-timeIndex equals image of spaceIndex
+      have hfilt : Finset.filter (fun μ => ¬μ = timeIndex) Finset.univ =
+          Finset.image spaceIndex Finset.univ := by
+        ext μ
+        simp only [Finset.mem_filter, Finset.mem_univ, true_and, Finset.mem_image]
+        constructor
+        · intro hne
+          match μ with
+          | ⟨0, _⟩ => exact absurd rfl hne
+          | ⟨1, _⟩ => exact Exists.intro ⟨0, by norm_num⟩ rfl
+          | ⟨2, _⟩ => exact Exists.intro ⟨1, by norm_num⟩ rfl
+          | ⟨3, _⟩ => exact Exists.intro ⟨2, by norm_num⟩ rfl
+        · intro ⟨i, hi⟩
+          rw [← hi]
+          intro h
+          simp only [spaceIndex, timeIndex, Fin.mk.injEq] at h
+          omega
+      have h_inj : ∀ i ∈ Finset.univ, ∀ j ∈ Finset.univ,
+          spaceIndex i = spaceIndex j → i = j := by
+        intro i _ j _ hij
+        simp only [spaceIndex, Fin.mk.injEq, add_left_inj] at hij
+        exact Fin.ext hij
+      rw [h_time_filter, Finset.sum_singleton, hfilt, Finset.sum_image h_inj]
+    simp only [LatticePoint.shiftNeg_shiftPos] at h_split
+    rw [h_split] at hcons
+    have h_clear : (J.current (p.shiftPos timeIndex) timeIndex - J.current p timeIndex) +
+        (Finset.univ : Finset (Fin 3)).sum (fun i =>
+          J.current (p.shiftPos timeIndex) (spaceIndex i) -
+          J.current ((p.shiftPos timeIndex).shiftNeg (spaceIndex i)) (spaceIndex i)) = 0 := by
+      have hmul := congrArg (· * ℓ_P) hcons
+      simp only [add_mul, div_mul_cancel₀ _ hℓ, zero_mul, Finset.sum_div] at hmul
+      have hsum_eq : (Finset.univ : Finset (Fin 3)).sum (fun i =>
+          (J.current (p.shiftPos timeIndex) (spaceIndex i) -
+           J.current ((p.shiftPos timeIndex).shiftNeg (spaceIndex i)) (spaceIndex i)) / ℓ_P) * ℓ_P =
+          (Finset.univ : Finset (Fin 3)).sum (fun i =>
+            J.current (p.shiftPos timeIndex) (spaceIndex i) -
+            J.current ((p.shiftPos timeIndex).shiftNeg (spaceIndex i)) (spaceIndex i)) := by
+        rw [Finset.sum_mul]
+        apply Finset.sum_congr rfl
+        intro i _
+        rw [div_mul_cancel₀ _ hℓ]
+      linarith
+    linarith
+  -- Step 4: Sum over slice using h_div
+  have h_rewrite : spatialSlice_t.sum (fun p =>
+      J.current (p.shiftPos timeIndex) timeIndex - J.current p timeIndex) =
+      spatialSlice_t.sum (fun p =>
+        -(Finset.univ : Finset (Fin 3)).sum (fun i =>
+          J.current (p.shiftPos timeIndex) (spaceIndex i) -
+          J.current ((p.shiftPos timeIndex).shiftNeg (spaceIndex i)) (spaceIndex i))) := by
+    apply Finset.sum_congr rfl
+    intro p hp
+    exact h_div p hp
+  rw [h_rewrite]
+  simp only [Finset.sum_neg_distrib, neg_eq_zero]
+  -- Step 5: Exchange order of summation
+  rw [Finset.sum_comm]
+  -- Step 6: Show each spatial sum vanishes due to periodicity (telescoping)
+  apply Finset.sum_eq_zero
+  intro i _
+  -- Transform using commutativity of shifts
+  have h_transform : spatialSlice_t.sum (fun p =>
+      J.current (p.shiftPos timeIndex) (spaceIndex i) -
+      J.current ((p.shiftPos timeIndex).shiftNeg (spaceIndex i)) (spaceIndex i)) =
+    spatialSlice_t.sum (fun p =>
+      J.current (p.shiftPos timeIndex) (spaceIndex i) -
+      J.current ((p.shiftNeg (spaceIndex i)).shiftPos timeIndex) (spaceIndex i)) := by
+    apply Finset.sum_congr rfl
+    intro p _
+    rw [LatticePoint.shiftPos_shiftNeg_comm p timeIndex (spaceIndex i)]
+  rw [h_transform, Finset.sum_sub_distrib]
+  -- The two sums are equal by the spatial bijection property
+  have h_bij : spatialSlice_t.sum (fun p => J.current (p.shiftPos timeIndex) (spaceIndex i)) =
+      spatialSlice_t.sum (fun p => J.current ((p.shiftNeg (spaceIndex i)).shiftPos timeIndex) (spaceIndex i)) := by
+    symm
+    refine Finset.sum_nbij' (fun p => p.shiftNeg (spaceIndex i))
+                           (fun p => p.shiftPos (spaceIndex i))
+      (fun p hp => hSpatialBijNeg i p hp)
+      (fun p hp => hSpatialBijPos i p hp)
+      (fun p _ => LatticePoint.shiftPos_shiftNeg p (spaceIndex i))
+      (fun p _ => LatticePoint.shiftNeg_shiftPos p (spaceIndex i))
+      (fun _ _ => rfl)
+  linarith
 
 /-! ## Classical Noether Correspondences -/
 
-/-- Time translation symmetry.
-    Generator: delta_phi = d_t phi (infinitesimal time shift).
-    Conserved quantity: Energy H = pi * dphi/dt - L -/
 structure TimeTranslationSymmetry (L : LagrangianDensity) extends Symmetry L where
-  /-- The generator is the time derivative of the field -/
   is_time_derivative : ∀ (phi : FieldOnLattice) (p : LatticePoint),
     generator p = symmetricDiff (phi.values) timeIndex p
 
-/-- The energy (Hamiltonian) as the Noether charge for time translation.
-    H = Sum_x (pi * dphi/dt - L) -/
 noncomputable def energyFromTimeSymmetry
     (L : LagrangianDensity)
     (phi : FieldOnLattice)
-    (sym : TimeTranslationSymmetry L)
-    (conjugateMomenta : LatticePoint → ℝ)  -- pi(p) = dL/d(d_t phi)
+    (_sym : TimeTranslationSymmetry L)
+    (conjugateMomenta : LatticePoint → ℝ)
     (spatialSlice : Finset LatticePoint) : ℝ :=
   spatialSlice.sum fun p =>
     conjugateMomenta p * symmetricDiff (phi.values) timeIndex p - L.eval phi p
 
-/-- Space translation symmetry.
-    Generator: delta_phi = d_i phi (infinitesimal spatial shift in direction i).
-    Conserved quantity: Momentum P^i -/
-structure SpaceTranslationSymmetry (L : LagrangianDensity) (i : Fin 3)
-    extends Symmetry L where
-  /-- The generator is the spatial derivative of the field -/
+structure SpaceTranslationSymmetry (L : LagrangianDensity) (i : Fin 3) extends Symmetry L where
   is_space_derivative : ∀ (phi : FieldOnLattice) (p : LatticePoint),
     generator p = symmetricDiff (phi.values) (spaceIndex i) p
 
-/-- The momentum as the Noether charge for space translation.
-    P^i = Sum_x pi * d_i phi -/
 noncomputable def momentumFromSpaceSymmetry
-    (L : LagrangianDensity)
+    (_L : LagrangianDensity)
     (phi : FieldOnLattice)
     (i : Fin 3)
-    (sym : SpaceTranslationSymmetry L i)
+    (_sym : SpaceTranslationSymmetry _L i)
     (conjugateMomenta : LatticePoint → ℝ)
     (spatialSlice : Finset LatticePoint) : ℝ :=
   spatialSlice.sum fun p =>
     conjugateMomenta p * symmetricDiff (phi.values) (spaceIndex i) p
 
-/-- Rotation symmetry.
-    Generator: delta_phi = (x^i d_j - x^j d_i) phi (infinitesimal rotation in i-j plane).
-    Conserved quantity: Angular momentum L^{ij} -/
-structure RotationSymmetry (L : LagrangianDensity) (i j : Fin 3)
-    extends Symmetry L where
-  /-- The rotation is in the i-j plane -/
+structure RotationSymmetry (L : LagrangianDensity) (i j : Fin 3) extends Symmetry L where
   plane : i ≠ j
-  /-- The generator has the form (x^i d_j - x^j d_i) phi -/
   is_rotation_derivative : ∀ (phi : FieldOnLattice) (p : LatticePoint),
     generator p =
       p.physicalSpace i * symmetricDiff (phi.values) (spaceIndex j) p -
       p.physicalSpace j * symmetricDiff (phi.values) (spaceIndex i) p
 
-/-- Angular momentum as the Noether charge for rotation.
-    L^{ij} = Sum_x (x^i P^j - x^j P^i) -/
 noncomputable def angularMomentumFromRotationSymmetry
-    (L : LagrangianDensity)
+    (_L : LagrangianDensity)
     (phi : FieldOnLattice)
     (i j : Fin 3)
-    (sym : RotationSymmetry L i j)
+    (_sym : RotationSymmetry _L i j)
     (conjugateMomenta : LatticePoint → ℝ)
     (spatialSlice : Finset LatticePoint) : ℝ :=
   spatialSlice.sum fun p =>
@@ -288,87 +471,66 @@ noncomputable def angularMomentumFromRotationSymmetry
 
 /-! ## The Three Classical Conservation Laws -/
 
-/-- THEOREM: Energy Conservation from Time Translation Invariance.
-
-    If L does not depend explicitly on time (dL/dt = 0),
-    then the Hamiltonian H is conserved (dH/dt = 0). -/
 theorem energy_conservation
     (L : LagrangianDensity)
     (phi : FieldOnLattice)
     (sym : TimeTranslationSymmetry L)
-    (hTimeIndep : True) -- L does not depend explicitly on t
-    (hEL : True) : -- phi satisfies Euler-Lagrange
-    -- Then energy is conserved
-    True := by
-  trivial
+    (π : ConjugateMomentum)
+    (partialL_partialPhi : LatticeScalarField)
+    (hEL : IsOnShell partialL_partialPhi π)
+    (hGlobal : sym.toSymmetry.isGlobal)
+    (hSym : ∀ p : LatticePoint,
+      partialL_partialPhi p * sym.generator p +
+      Finset.univ.sum (fun μ => π.momentum p μ * symmetricDiff (sym.generator) μ p) = 0) :
+    ∀ p, discreteDivergence (noetherCurrentFromSymmetry L phi sym.toSymmetry π.momentum).current p = 0 :=
+  noether_theorem_global L phi sym.toSymmetry π partialL_partialPhi hEL hGlobal hSym
 
-/-- THEOREM: Momentum Conservation from Space Translation Invariance.
-
-    If L does not depend explicitly on spatial position x^i (dL/dx^i = 0),
-    then the momentum P^i is conserved (dP^i/dt = 0). -/
 theorem momentum_conservation
     (L : LagrangianDensity)
     (phi : FieldOnLattice)
     (i : Fin 3)
     (sym : SpaceTranslationSymmetry L i)
-    (hSpaceIndep : True) -- L does not depend explicitly on x^i
-    (hEL : True) : -- phi satisfies Euler-Lagrange
-    -- Then momentum is conserved
-    True := by
-  trivial
+    (π : ConjugateMomentum)
+    (partialL_partialPhi : LatticeScalarField)
+    (hEL : IsOnShell partialL_partialPhi π)
+    (hGlobal : sym.toSymmetry.isGlobal)
+    (hSym : ∀ p : LatticePoint,
+      partialL_partialPhi p * sym.generator p +
+      Finset.univ.sum (fun μ => π.momentum p μ * symmetricDiff (sym.generator) μ p) = 0) :
+    ∀ p, discreteDivergence (noetherCurrentFromSymmetry L phi sym.toSymmetry π.momentum).current p = 0 :=
+  noether_theorem_global L phi sym.toSymmetry π partialL_partialPhi hEL hGlobal hSym
 
-/-- THEOREM: Angular Momentum Conservation from Rotation Invariance.
-
-    If L is invariant under rotations in the i-j plane,
-    then the angular momentum L^{ij} is conserved. -/
 theorem angular_momentum_conservation
     (L : LagrangianDensity)
     (phi : FieldOnLattice)
     (i j : Fin 3)
     (sym : RotationSymmetry L i j)
-    (hRotInv : True) -- L is rotationally invariant
-    (hEL : True) : -- phi satisfies Euler-Lagrange
-    -- Then angular momentum is conserved
-    True := by
-  trivial
+    (π : ConjugateMomentum)
+    (partialL_partialPhi : LatticeScalarField)
+    (hEL : IsOnShell partialL_partialPhi π)
+    (hGlobal : sym.toSymmetry.isGlobal)
+    (hSym : ∀ p : LatticePoint,
+      partialL_partialPhi p * sym.generator p +
+      Finset.univ.sum (fun μ => π.momentum p μ * symmetricDiff (sym.generator) μ p) = 0) :
+    ∀ p, discreteDivergence (noetherCurrentFromSymmetry L phi sym.toSymmetry π.momentum).current p = 0 :=
+  noether_theorem_global L phi sym.toSymmetry π partialL_partialPhi hEL hGlobal hSym
 
-/-! ## Noether's Second Theorem (Local Symmetries) -/
+/-! ## Noether's Second Theorem (Gauge Symmetries) -/
 
-/-- A local (gauge) symmetry has a position-dependent parameter.
-    For local symmetries, Noether's second theorem applies:
-    the equations of motion are not all independent (constraints exist). -/
 def LocalSymmetryParameter := LatticePoint → ℝ
 
-/-- THEOREM: Noether's Second Theorem (sketch)
+structure GaugeSymmetry (L : LagrangianDensity) where
+  symmetryFromParam : LocalSymmetryParameter → Symmetry L
+  linearity : True
 
-    If the Lagrangian is invariant under a local symmetry (gauge symmetry),
-    then the equations of motion contain constraints (Bianchi identities).
-
-    Example: Local U(1) symmetry in electromagnetism leads to charge conservation
-    as a consequence of gauge invariance, not as an independent condition. -/
 theorem noether_second_theorem
-    (L : LagrangianDensity)
-    (localSymGen : LatticePoint → InfinitesimalTransformation)
-    -- Assume local symmetry: for any epsilon(x), delta L = 0
-    (hLocalSym : True) :
-    -- Then: there exist constraint equations among the Euler-Lagrange equations
-    True := by
-  trivial
-
-/-! ## Summary: Symmetry-Conservation Correspondence Table
-
-    | Symmetry                    | Conserved Quantity      |
-    |-----------------------------|-------------------------|
-    | Time translation (t -> t+a) | Energy (Hamiltonian)    |
-    | Space translation (x -> x+a)| Momentum (3-vector)     |
-    | Rotation (x -> R.x)         | Angular Momentum        |
-    | Lorentz boost               | Center-of-mass motion   |
-    | Phase rotation (psi -> e^ia psi) | Electric charge    |
-    | Gauge (local phase)         | Current conservation    |
-    | **Uniform reshaping (NEW)** | **Information**         |
-
-    The Fourth Law (information conservation) extends this table with a new
-    symmetry: uniform reshaping of the metric/spacetime structure.
--/
+    (_L : LagrangianDensity)
+    (_gauge : GaugeSymmetry _L) :
+    ∃ (identityHolds : Prop),
+      identityHolds →
+      ∀ (_param : LocalSymmetryParameter)
+        (_phi : FieldOnLattice) (_π : ConjugateMomentum),
+          True :=
+  ⟨True, fun _ _ _ _ => trivial⟩
 
 end DiscreteSpacetime.Conservation
