@@ -59,6 +59,8 @@ import DiscreteSpacetime.Geometry.Torsion  -- NEW: Einstein-Cartan torsion
 
 -- Irrationality (computational bounds)
 import DiscreteSpacetime.Irrationality.Approximations
+import DiscreteSpacetime.Irrationality.BoundsLemmas
+import DiscreteSpacetime.Irrationality.Sqrt2Precision
 import DiscreteSpacetime.Irrationality.Bounds
 import DiscreteSpacetime.Irrationality.Uncertainty
 
