@@ -31,43 +31,58 @@
     </step>
     
     <step number="3">
+      <action>Sklasyfikuj każde sorry według trudności: TRIVIAL / MODERATE / HARD</action>
+      <rationale>Prioritize work - start with trivial, end with hard</rationale>
+      <trivial_indicators>Direct consequence of existing lemmas, simple algebraic facts, positivity</trivial_indicators>
+      <moderate_indicators>Requires building helper lemmas, algebraic manipulation chains</moderate_indicators>
+      <hard_indicators>Requires new mathematical insight, complex induction, alternating series</hard_indicators>
+    </step>
+    
+    <step number="4">
       <action>Podziel problem na czynniki pierwsze (factorial decomposition)</action>
       <rationale>Complex proofs = composition of simple lemmas</rationale>
     </step>
     
-    <step number="4">
+    <step number="5">
       <action>Zdefiniuj substancję: podstawowe typy, struktury, definicje</action>
       <rationale>Types before tactics</rationale>
     </step>
     
-    <step number="5">
+    <step number="6">
       <action>Stwórz lematy fundamentalne (building blocks)</action>
       <rationale>Small verified steps compound into complex proofs</rationale>
     </step>
     
-    <step number="6">
+    <step number="7">
       <action>Stwórz lematy mostkowe (bridges między reprezentacjami)</action>
       <rationale>Connect different mathematical views of same concept</rationale>
     </step>
     
-    <step number="7">
+    <step number="8">
       <action>Zbuduj dowody krok po kroku z have statements</action>
       <rationale>Explicit intermediate goals aid debugging</rationale>
     </step>
     
-    <step number="8">
+    <step number="9">
       <action>Oznacz noncomputable gdzie potrzeba</action>
       <rationale>Real numbers and limits are noncomputable</rationale>
     </step>
     
-    <step number="9">
+    <step number="10">
       <action>Prefixuj unused variables z _</action>
       <rationale>Clean linter output = confidence in proof</rationale>
     </step>
     
-    <step number="10">
-      <action>Testuj kompilację po każdej znaczącej zmianie</action>
-      <rationale>Fail fast, fix incrementally</rationale>
+    <step number="11">
+      <action>ONE SORRY AT A TIME - rozwiąż JEDNO sorry, skompiluj, potwierdź, następne</action>
+      <rationale>Incremental verification catches errors immediately. Never batch multiple sorry fixes without intermediate compilation.</rationale>
+      <workflow>
+        1. Pick ONE sorry (preferably easiest first)
+        2. Write the proof
+        3. Run lake build
+        4. Wait for user confirmation
+        5. Only then proceed to next sorry
+      </workflow>
     </step>
   </golden_rules>
 
@@ -83,6 +98,8 @@
     <never>Use sorry without documenting what is needed</never>
     <never>Ignore type mismatches - they indicate deeper issues</never>
     <never>Add techniques to graph without successful build confirmation</never>
+    <never>Fix multiple sorries at once without intermediate compilation - ONE AT A TIME</never>
+    <never>Proceed to next sorry before user confirms current one compiled</never>
   </anti_patterns>
 
   <neo4j_integration>

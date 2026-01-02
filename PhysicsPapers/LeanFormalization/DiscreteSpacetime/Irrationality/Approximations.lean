@@ -162,10 +162,47 @@ private lemma exp_one_error_bound (N : ℕ) (hN : 1 ≤ N) :
       _ = 2 * (N.factorial * N) := by ring
   exact h.trans hbound
 
-/-- 1/n! → 0 as n → ∞. Trivial: factorial grows faster than any polynomial. -/
+/-- Factorial is at least n for n ≥ 1 -/
+private lemma factorial_ge_self (n : ℕ) (hn : n ≥ 1) : n.factorial ≥ n := by
+  match n with
+  | 0 => omega
+  | 1 => simp [Nat.factorial]
+  | m + 2 =>
+    rw [Nat.factorial_succ]
+    -- Goal: (m + 2) * (m + 1)! ≥ m + 2
+    -- True because (m + 1)! ≥ 1
+    have hfact_pos : (m + 1).factorial ≥ 1 := Nat.one_le_of_lt (Nat.factorial_pos (m + 1))
+    calc (m + 2) * (m + 1).factorial
+        ≥ (m + 2) * 1 := Nat.mul_le_mul_left (m + 2) hfact_pos
+      _ = m + 2 := Nat.mul_one _
+
+/-- 1/n! → 0 as n → ∞. Proved via squeeze theorem: 0 ≤ 1/n! ≤ 1/n → 0 -/
 private lemma tendsto_one_div_factorial :
     Tendsto (fun N : ℕ => (1 : ℝ) / (N.factorial : ℝ)) atTop (nhds 0) := by
-  sorry -- trivial: n! → ∞ faster than any polynomial
+  rw [Metric.tendsto_atTop]
+  intro ε hε
+  -- Use that 1/N → 0
+  have h1N := tendsto_const_div_atTop_nhds_zero_nat 1
+  rw [Metric.tendsto_atTop] at h1N
+  obtain ⟨N₀, hN₀⟩ := h1N ε hε
+  use max N₀ 1
+  intro n hn
+  have hn1 : n ≥ 1 := le_of_max_le_right hn
+  have hnN0 : n ≥ N₀ := le_of_max_le_left hn
+  have hfact_pos : (0 : ℝ) < n.factorial := Nat.cast_pos.mpr (Nat.factorial_pos n)
+  have hn_pos : (0 : ℝ) < n := Nat.cast_pos.mpr (Nat.pos_of_ne_zero (Nat.one_le_iff_ne_zero.mp hn1))
+  have hfact_ge : n.factorial ≥ n := factorial_ge_self n hn1
+  -- 1/n! ≤ 1/n
+  have hle : (1 : ℝ) / n.factorial ≤ 1 / n := by
+    rw [div_le_div_iff hfact_pos hn_pos]
+    simp only [one_mul]
+    exact Nat.cast_le.mpr hfact_ge
+  -- |1/n! - 0| = 1/n! ≤ 1/n < ε
+  rw [Real.dist_eq, sub_zero, abs_of_pos (div_pos one_pos hfact_pos)]
+  have h1n_small := hN₀ n hnN0
+  simp only [Real.dist_eq, sub_zero] at h1n_small
+  rw [abs_of_pos (div_pos one_pos hn_pos)] at h1n_small
+  exact lt_of_le_of_lt hle h1n_small
 
 /-- 2/n! → 0 as n → ∞ -/
 private lemma tendsto_two_div_factorial :
