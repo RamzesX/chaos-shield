@@ -8,9 +8,9 @@ We identify a fourth fundamental conservation law arising from uniform motion sy
 
 The law arises from uniform reshaping invariance—the symmetry under which geometric reshaping patterns remain constant during motion at constant velocity. In this paper, we derive the general principle and then demonstrate its specific application to 4D spacetime geometry, where it manifests as the self-healing mechanism mediated by gravitons. However, the law itself is more fundamental than any particular application: it is a postulate of the algebraic structure Ω from which all physics emerges.
 
-We present quantitative predictions for information flow rates, provide natural resolution of the black hole information paradox, derive the holographic bound from first principles, and propose experimental tests distinguishing this framework from conventional thermodynamic treatments.
+We present quantitative predictions for information flow rates, provide natural resolution of the black hole information paradox, derive the holographic bound from first principles, and propose experimental tests distinguishing this framework from conventional thermodynamic treatments. A key application resolves the apparent paradox of gravitational redshift: photons do not "lose energy" to gravity but rather transform information channels, encoding geometric witness information about the spacetime through which they propagate.
 
-**Keywords**: Noether theorem, conservation laws, information theory, geometric reshaping, black hole information, holographic principle, fundamental postulates
+**Keywords**: Noether theorem, conservation laws, information theory, geometric reshaping, black hole information, holographic principle, fundamental postulates, gravitational redshift, photon propagation
 
 ---
 
@@ -76,6 +76,8 @@ We proceed as follows:
 - §2-4: Derive the general fourth Noether law from uniform reshaping invariance
 - §5-8: Apply to 4D geometry, deriving graviton-mediated healing
 - §9: Discuss gravitons as information carriers in the geometric sector
+- §9A: Connection to Einstein-Cartan torsion theory
+- §9B: Photon propagation and gravitational redshift as information encoding
 - §10-11: Broader implications and conclusions
 
 **The mathematical derivation is general; the geometric application is specific.**
@@ -603,6 +605,177 @@ This complements Section 5.1's treatment by providing the **physical mechanism**
 
 ---
 
+## 9B. Photon Propagation and Gravitational Redshift as Information Encoding
+
+### 9B.1 The Apparent Paradox
+
+Gravitational redshift presents an apparent puzzle within energy-centric frameworks: a photon climbing out of a gravitational well loses energy (frequency decreases), yet this energy does not appear to be deposited anywhere in the geometry. The stress-energy tensor T^EM_μν of the electromagnetic field couples to spacetime curvature, but individual photons do not seem to "pay" for their passage through curved geometry in the same way massive particles do.
+
+Within the geometric reshaping framework, this puzzle dissolves completely. The resolution hinges on a fundamental distinction established in §3.2:
+
+**Massive particles**: Store information in reshaping patterns (I_bound ≠ 0)
+**Massless particles**: Carry information without storing it (I_bound = 0)
+
+### 9B.2 Photons as Information Carriers, Not Storers
+
+**Definition 9B.1** (Photon Information Content): A photon carries information in three distinct channels:
+
+$I_{\text{photon}} = I_{\text{spectral}} + I_{\text{phase}} + I_{\text{polarization}}$
+
+where:
+- $I_{\text{spectral}} = \log_2(E/\Delta E)$ — spectral information (frequency resolution)
+- $I_{\text{phase}}$ — phase information relative to source
+- $I_{\text{polarization}} = 1$ bit — polarization state
+
+**Proposition 9B.1** (No Reshaping Cost for Photons): Photons propagating through discrete spacetime do not incur geometric reshaping costs.
+
+*Proof*:
+
+1. The reshaping energy (Main Paper §2.4) is:
+   $E_{\text{reshape}} = mc^2 \cdot f(R, \pi, e, \sqrt{2})$
+
+2. For photons, $m = 0$, therefore:
+   $E_{\text{reshape}}^{\text{photon}} = 0$
+
+3. Consequently, photons do not create computational defects δ(π, e, √2) during propagation.
+
+4. Without defects, no healing is required—photons do not emit gravitons. □
+
+**Physical interpretation**: Photons "surf" on the geometry created and maintained by massive objects. They witness the healing field (virtual gravitons) without participating in it.
+
+### 9B.3 Gravitational Redshift as Information Transformation
+
+**Theorem 9B.1** (Information Conservation for Photons): For a photon propagating along a null geodesic through a stationary gravitational field, total information is conserved:
+
+$\frac{dI_{\text{photon}}}{d\lambda} = 0$
+
+where λ is the affine parameter along the geodesic.
+
+*Proof*:
+
+**Step 1**: The photon frequency transforms as:
+$\frac{f_2}{f_1} = \sqrt{\frac{g_{00}(r_1)}{g_{00}(r_2)}} = \sqrt{\frac{1 - 2GM/r_1 c^2}{1 - 2GM/r_2 c^2}}$
+
+**Step 2**: The spectral width Δf transforms identically (same gravitational factor):
+$\frac{\Delta f_2}{\Delta f_1} = \frac{f_2}{f_1}$
+
+**Step 3**: Therefore the spectral information:
+$I_{\text{spectral}} = \log_2\left(\frac{f}{\Delta f}\right) = \text{invariant}$
+
+**Step 4**: Phase information transforms covariantly—the total accumulated phase:
+$\phi = \int k_\mu dx^\mu$
+is a scalar invariant along the geodesic.
+
+**Step 5**: Polarization is parallel-transported along the geodesic, preserving I_polarization.
+
+**Step 6**: Total information $I_{\text{photon}} = I_{\text{spectral}} + I_{\text{phase}} + I_{\text{polarization}}$ is conserved. □
+
+### 9B.4 Redshift as Geometric Witness
+
+**Key Insight**: The gravitational redshift Δf/f is not "lost energy"—it is **encoded information** about the geometry through which the photon passed.
+
+**Definition 9B.2** (Geometric Witness Information): A photon emerging from a gravitational field carries witness information:
+
+$I_{\text{witness}} = \log_2\left(\frac{f_1}{f_2}\right) = \log_2\left(\frac{1}{\sqrt{1 - 2GM/rc^2}}\right)$
+
+This encodes:
+- The mass M of the gravitating source
+- The emission radius r
+- The integrated gravitational potential along the path
+
+**Theorem 9B.2** (Information Budget Conservation): The total information budget satisfies:
+
+$I_{\text{spectral}}^{\text{observed}} + I_{\text{witness}} = I_{\text{spectral}}^{\text{emitted}}$
+
+*Interpretation*: The photon "trades" spectral sharpness for geometric witness information. The information is not lost—it is transformed from one channel to another.
+
+### 9B.5 Comparison: Massive vs. Massless Propagation
+
+| Property | Massive Particle | Photon |
+|----------|-----------------|--------|
+| Bound information | $I_{\text{bound}} = mc^2/(k_B T \ln 2)$ | $I_{\text{bound}} = 0$ |
+| Reshaping cost | $E_{\text{reshape}} = mc^2 \cdot f(R,\pi,e,\sqrt{2})$ | $E_{\text{reshape}} = 0$ |
+| Creates defects | Yes (δ(π,e,√2) truncation errors) | No |
+| Emits gravitons | Yes (above threshold) | No |
+| Participates in healing | Active participant | Passive witness |
+| Gravitational interaction | Creates + responds to curvature | Only responds to curvature |
+| Energy in gravity | Real exchange (kinetic ↔ potential) | Coordinate transformation |
+
+### 9B.6 Resolution of the "Lost Energy" Question
+
+**Classical puzzle**: "Where does the photon's energy go when it redshifts?"
+
+**Framework resolution**: The question is malformed. Energy is not a scalar in curved spacetime—it is observer-dependent. What IS invariant is information.
+
+The photon's information content remains constant:
+
+$I_{\text{photon}}^{\text{source}} = I_{\text{photon}}^{\text{observer}}$
+
+The apparent "energy loss" is a coordinate artifact. The real physical content—information—is conserved exactly as required by the fourth Noether law.
+
+**Analogy**: A letter passing through customs receives stamps at each border. The letter doesn't "lose weight" at borders—it gains information about its journey. Similarly, a photon's redshift is a "stamp" recording its passage through curved geometry.
+
+### 9B.7 Virtual Gravitons and Photon Propagation
+
+From §3.1 (Virtual Gravitons), the static gravitational field around a mass is maintained by virtual graviton standing waves:
+
+$R_{\text{virtual}}(n) = A \exp\left(-\frac{|n - n_{\text{source}}|}{\xi}\right)$
+
+**Proposition 9B.2** (Photon-Virtual Graviton Non-Interaction): Photons propagate through the virtual graviton field without absorption or emission.
+
+*Argument*:
+
+1. Virtual gravitons represent continuous local repair around masses (§3.1)
+2. Photons carry no bound information requiring repair
+3. Therefore photons do not couple to the healing mechanism
+4. Photons follow null geodesics determined by the healed geometry g_μν
+5. The photon "sees" the result of healing, not the healing process itself
+
+**Physical picture**: Massive objects create geometric strain requiring constant repair (virtual gravitons). Photons travel through the already-repaired geometry, experiencing its curvature but not participating in its maintenance.
+
+### 9B.8 Observational Implications
+
+**Prediction 9B.1** (Redshift as Complete Geometric Record): A photon's gravitational redshift contains sufficient information to reconstruct the integrated gravitational potential along its path:
+
+$\Phi_{\text{integrated}} = \int_{\text{path}} \Gamma^0_{0\mu} dx^\mu = -\frac{c^2}{2}\ln\left(\frac{f_{\text{obs}}}{f_{\text{emit}}}\right)^2$
+
+**Prediction 9B.2** (Information Preservation Through Absorption): When a redshifted photon is absorbed, its witness information must be transferred to the absorber:
+
+$I_{\text{witness}} \rightarrow I_{\text{absorber}}$
+
+This is required by the fourth Noether law—information cannot be destroyed.
+
+**Prediction 9B.3** (No Graviton Emission from Light Beams): Even intense electromagnetic fields (laser beams, gamma-ray bursts) should not emit gravitons directly, only through their coupling to massive matter. This distinguishes our framework from theories where T_μν^EM directly sources graviton production.
+
+### 9B.9 Connection to Hawking Radiation
+
+At black hole horizons, the situation changes qualitatively:
+
+1. **Infalling photons**: Approach the horizon, experiencing extreme blueshift
+2. **Information accumulation**: The witness information diverges as r → r_s
+3. **Horizon behavior**: The fourth Noether law requires this information to be preserved
+4. **Hawking radiation**: May carry the accumulated witness information of infalling photons
+
+**Conjecture 9B.1** (Information Recovery via Hawking Radiation): The gravitational witness information of photons absorbed by a black hole is encoded in correlations within Hawking radiation, consistent with §5.1.
+
+### 9B.10 Summary: Photons in the Information Framework
+
+The gravitational redshift of photons is reinterpreted within the fourth Noether law framework:
+
+| Classical View | Information Framework View |
+|----------------|---------------------------|
+| Photon "loses energy" | Photon transforms information channels |
+| Energy goes "into the field" | Information is conserved exactly |
+| Redshift is energy transfer | Redshift is geometric encoding |
+| T_μν^EM sources gravity | Photons witness, not create, healing |
+| "Where did energy go?" | Energy is coordinate-dependent; information is invariant |
+
+**Central result**: Photons are **information witnesses**, not **information storers**. They record the geometry they traverse without participating in its maintenance. The fourth Noether law ensures this witness information is never lost—it is the conserved quantity, not the coordinate-dependent energy.
+
+This resolves the apparent paradox of gravitational redshift: no energy is "lost" because information—the true conserved quantity—is preserved exactly.
+
+---
+
 ## 10. Discussion
 
 ### 10.1 Ontological Implications
@@ -662,6 +835,7 @@ In this paper, we applied the universal law to 4D spacetime geometry. The conseq
 3. **Gravity as information gradient**: $\vec{g} = -(c^4/8\pi G)\nabla I$
 4. **Black hole information paradox resolved**: information conserved, not destroyed
 5. **Holographic bound derived**: maximum information throughput, not storage
+6. **Gravitational redshift reinterpreted**: photons do not "lose energy" but encode geometric witness information—the redshift records the spacetime geometry traversed
 
 ### 11.3 The Deeper Picture
 

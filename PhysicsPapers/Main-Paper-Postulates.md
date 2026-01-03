@@ -10,9 +10,9 @@
 
 We present a unified framework resting on a single foundational claim: **spacetime is discrete at the Planck scale**. From this postulate, combined with the mathematical necessity of geometry, we derive five operational principles that generate known physics. The central thesis is that **all particles attempt to propagate at the speed of light c**, but massive particles must expend energy reshaping local spacetime geometry with each discrete transition—this reshaping cost manifests as mass. The Standard Model is not a theory requiring unification with gravity—it generates spacetime geometry. Gravity is the output, not a missing input.
 
-The framework makes concrete experimental predictions validated by recent data: quantum error rates scale with action density ρ_S = NkT/V (not temperature alone), producing power-law temperature dependence T^(-2.5) as observed in Diraq/Nature 2024 spin qubit experiments—definitively inconsistent with Arrhenius exponential scaling. We provide falsifiable predictions and reference detailed appendices for full mathematical development.
+The framework makes concrete experimental predictions validated by recent data: quantum error rates scale with action density ρ_S = NkT/V (not temperature alone), producing power-law temperature dependence T^(-2.5) as observed in Diraq/Nature 2024 spin qubit experiments—definitively inconsistent with Arrhenius exponential scaling. A key application resolves the apparent paradox of gravitational redshift: photons do not "lose energy" to gravity but rather encode geometric witness information—the redshift records the spacetime traversed while total information is conserved. We provide falsifiable predictions and reference detailed appendices for full mathematical development.
 
-**Keywords**: Quantum gravity, discrete spacetime, geometric reshaping, mass origin, information conservation, action density, quantum computing errors
+**Keywords**: Quantum gravity, discrete spacetime, geometric reshaping, mass origin, information conservation, action density, quantum computing errors, gravitational redshift
 
 ---
 
@@ -176,9 +176,79 @@ $$v_{\text{eff}} = c \times P(\text{transition}) = c \times \frac{p}{\sqrt{p^2 +
 
 Photons require only 2 effective dimensions to propagate. At any energy scale:
 
-$$d_{\text{required}}(\text{photon}) = 2 \leq d_{\text{available}}(E) = 4 - 2E/E_P$$
+$d_{\text{required}}(\text{photon}) = 2 \leq d_{\text{available}}(E) = 4 - 2E/E_P$
 
 No dimensional mismatch → no reshaping cost → no mass → propagation at $c$.
+
+### 3.5 Photons and Gravitational Redshift: Information Witnesses
+
+A fundamental distinction emerges from the reshaping framework:
+
+| Particle Type | Information Status | Reshaping Cost | Graviton Emission |
+|---------------|-------------------|----------------|-------------------|
+| **Massive** | Stores information (I_bound ≠ 0) | E_reshape = mc²·f(R,π,e,√2) | Yes (above threshold) |
+| **Massless** | Carries information (I_bound = 0) | E_reshape = 0 | No |
+
+**The key insight**: Massive particles **store** information in their reshaping patterns. Massless particles **carry** information without storing it—they are witnesses, not participants.
+
+#### The Gravitational Redshift "Paradox"
+
+A photon climbing out of a gravitational well loses energy (frequency decreases). Classical question: *Where does this energy go?*
+
+Within the reshaping framework, this question is malformed. The photon:
+1. Has no bound information (m = 0)
+2. Pays no reshaping cost (E_reshape = 0)
+3. Creates no computational defects δ(π, e, √2)
+4. Emits no gravitons
+5. Does not participate in the healing flow
+
+**The photon "surfs" on geometry created by massive objects without participating in its maintenance.**
+
+#### Redshift as Information Encoding
+
+The gravitational redshift is not "lost energy"—it is **encoded information** about the geometry traversed:
+
+$I_{\text{witness}} = \log_2\left(\frac{f_{\text{emitted}}}{f_{\text{observed}}}\right) = \log_2\left(\frac{1}{\sqrt{1 - 2GM/rc^2}}\right)$
+
+This encodes:
+- The mass M of the gravitating source
+- The emission radius r
+- The integrated gravitational potential along the path
+
+**The photon "trades" spectral sharpness for geometric witness information.**
+
+#### Information Conservation for Photons
+
+The fourth Noether law (Principle 4) guarantees:
+
+$I_{\text{photon}}^{\text{source}} = I_{\text{photon}}^{\text{observer}}$
+
+Total photon information is conserved:
+$I_{\text{photon}} = I_{\text{spectral}} + I_{\text{phase}} + I_{\text{polarization}} + I_{\text{witness}} = \text{const}$
+
+The apparent "energy loss" is a coordinate artifact. Energy is observer-dependent in curved spacetime; information is the true invariant.
+
+**Analogy**: A letter passing through customs receives stamps at each border. The letter doesn't "lose weight"—it gains information about its journey. Similarly, a photon's redshift is a "stamp" recording its passage through curved geometry.
+
+#### Physical Picture
+
+```
+Massive objects create geometric strain
+        ↓
+Virtual gravitons maintain field (continuous local repair)
+        ↓
+Photon propagates through healed geometry
+        ↓
+Follows null geodesic (ds² = 0)
+        ↓
+Frequency shifts encode geometric information
+        ↓
+Total information conserved (4th Noether)
+```
+
+**Central result**: Photons are **information witnesses**, not **information storers**. They record the geometry they traverse without participating in its maintenance. This resolves the apparent paradox: no energy is "lost" because information—the true conserved quantity—is preserved exactly.
+
+*Full treatment*: See Appendix F §9B.
 
 ---
 
@@ -614,6 +684,8 @@ Spacetime and the Standard Model are dual projections of a single algebraic stru
 
 **Temperature dependence is not Arrhenius**—it is action density.
 
+**Gravitational redshift is not energy loss**—it is information encoding about traversed geometry.
+
 ---
 
 ## 13. Conclusion
@@ -627,6 +699,7 @@ From a single postulate—**spacetime is discrete**—we derive:
 5. **Time emergence** from computational incompleteness (dt = dS/L)
 6. **Self-healing geometry** (two-tier mechanism)
 7. **Action density** determines quantum errors (ρ_S = NkT/V)
+8. **Gravitational redshift** as information encoding (photons witness geometry, not reshape it)
 
 The framework is validated by Diraq/Nature 2024: power-law temperature scaling T^(-2.5) observed, Arrhenius exponential inconsistent with data. Different electron configurations show different exponents, confirming N-dependence beyond simple temperature effects.
 
