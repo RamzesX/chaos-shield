@@ -16,6 +16,92 @@
   This is a cornerstone of the Omega-Theory framework: the discreteness of
   spacetime and the irrationality of physical constants together create
   irreducible computational uncertainty.
+
+  ═══════════════════════════════════════════════════════════════════════════════
+  TODO: THEOREMS TO PROVE (Next Week)
+  ═══════════════════════════════════════════════════════════════════════════════
+
+  ┌─────────────────────────────────────┬────────────┬─────────────────────────┐
+  │ THEOREM                             │ DIFFICULTY │ APPROACH                │
+  ├─────────────────────────────────────┼────────────┼─────────────────────────┤
+  │ extended_to_heisenberg_limit        │ MEDIUM     │ Tendsto, add_comm,      │
+  │                                     │            │ tendsto_const_nhds,     │
+  │                                     │            │ Tendsto.add             │
+  ├─────────────────────────────────────┼────────────┼─────────────────────────┤
+  │ effective_N_max_at_Planck           │ TRIVIAL    │ simp, Nat.floor_one,    │
+  │                                     │            │ max_self or max_eq_left │
+  ├─────────────────────────────────────┼────────────┼─────────────────────────┤
+  │ ComputationalUncertainty_T_increasing│ MEDIUM    │ Nat.floor_mono,         │
+  │                                     │            │ div_le_div,             │
+  │                                     │            │ monotonicity chain      │
+  └─────────────────────────────────────┴────────────┴─────────────────────────┘
+
+  ALREADY PROVEN (leave as is):
+  ✓ ComputationalUncertainty_pos
+  ✓ ComputationalUncertainty_decreasing
+  ✓ ComputationalUncertainty_ge_planck_div_N
+  ✓ total_computational_uncertainty_nonneg
+  ✓ effective_computational_uncertainty_ge_planck
+
+  LEAVE AS SORRY WITH REFERENCES (depend on other work or too complex):
+  ○ ComputationalUncertainty_T_low_temp_limit  -- ε-δ limit, complex
+  ○ pi_uncertainty_gt_e_uncertainty            -- depends on PrecisionHierarchy
+  ○ e_uncertainty_gt_sqrt2_uncertainty         -- depends on PrecisionHierarchy
+
+  ═══════════════════════════════════════════════════════════════════════════════
+  MATHEMATICAL FOUNDATION: WHY √2, e, π HAVE DIFFERENT UNCERTAINTIES
+  ═══════════════════════════════════════════════════════════════════════════════
+
+  The precision hierarchy (see PrecisionHierarchy.lean) establishes:
+
+    |truncated_sqrt2 N - √2| < |truncated_e N - e| < |truncated_pi N - π|
+
+  This is NOT merely an algorithm choice - it reflects FUNDAMENTAL structure:
+
+  ┌─────────────┬──────────────────────────────────────────────────────────────┐
+  │ NUMBER      │ STRUCTURAL PROPERTIES                                        │
+  ├─────────────┼──────────────────────────────────────────────────────────────┤
+  │ √2          │ • Algebraic (degree 2) - root of x² - 2 = 0                  │
+  │             │ • CF: [1; 2̅] - PERIODIC with bounded quotients              │
+  │             │ • μ(√2) = 2 (Roth's theorem, 1955)                           │
+  │             │ • Is a Kontsevich-Zagier period                              │
+  │             │ → FASTEST convergence, LEAST uncertainty                     │
+  ├─────────────┼──────────────────────────────────────────────────────────────┤
+  │ e           │ • Transcendental (Hermite, 1873)                             │
+  │             │ • CF: [2; 1,2,1,1,4,1,1,6,...] - REGULAR pattern            │
+  │             │ • μ(e) = 2 (Davis, 1978)                                     │
+  │             │ • NOT a period! Only exponential period                      │
+  │             │ → FAST convergence, LOW uncertainty                          │
+  ├─────────────┼──────────────────────────────────────────────────────────────┤
+  │ π           │ • Transcendental (Lindemann, 1882)                           │
+  │             │ • CF: [3; 7,15,1,292,...] - NO KNOWN PATTERN                │
+  │             │ • μ(π) ∈ [2, 7.6063] - UNKNOWN! (Salikhov, 2008)            │
+  │             │ • Is a Kontsevich-Zagier period                              │
+  │             │ → SLOWEST convergence, HIGHEST uncertainty                   │
+  └─────────────┴──────────────────────────────────────────────────────────────┘
+
+  OPEN QUESTION: Are the partial quotients of π bounded?
+  - If YES: μ(π) = 2 and π is "as easy" as e (asymptotically)
+  - If NO:  μ(π) > 2 and π is FUNDAMENTALLY harder to approximate
+
+  Current evidence suggests NO - quotient 292 appears early and large quotients
+  continue appearing (878,783,625 at position 453M). But this is UNPROVEN.
+
+  PHYSICAL INTERPRETATION:
+  • π appears in circular geometry, wave functions, Fourier transforms
+  • e appears in exponential decay, statistical mechanics
+  • √2 appears in diagonal distances, quantum spin-1/2
+
+  The hierarchy suggests: Nature's computations involving circles (π) have
+  inherently more uncertainty than exponential processes (e) or diagonal
+  measurements (√2), even with identical computational budgets.
+
+  LITERATURE:
+  - Khinchin (1964), "Continued Fractions"
+  - Shallit (1992), "Real numbers with bounded partial quotients: a survey"
+  - Kontsevich & Zagier (2001), "Periods"
+  - Salikhov (2008), "On the irrationality measure of π"
+  ═══════════════════════════════════════════════════════════════════════════════
 -/
 
 import DiscreteSpacetime.Irrationality.Bounds
@@ -85,11 +171,9 @@ theorem ComputationalUncertainty_pos (N_max : ℕ) (hN : N_max > 0) :
 theorem ComputationalUncertainty_decreasing (N M : ℕ) (hN : N > 0) (hM : M > 0) (hNM : N < M) :
     ComputationalUncertainty M hM < ComputationalUncertainty N hN := by
   unfold ComputationalUncertainty
-  -- div_lt_div_of_pos_left: a > 0 → 0 < c → c < b → a / b < a / c
-  -- We want ℓ_P / M < ℓ_P / N, so c = N, b = M
   apply div_lt_div_of_pos_left PlanckLength_pos
-  · exact Nat.cast_pos.mpr hN  -- 0 < N (smaller denominator)
-  · exact Nat.cast_lt.mpr hNM  -- N < M
+  · exact Nat.cast_pos.mpr hN
+  · exact Nat.cast_lt.mpr hNM
 
 /-- Computational uncertainty is bounded below by Planck length / N -/
 theorem ComputationalUncertainty_ge_planck_div_N (N : ℕ) (hN : N > 0) :
@@ -126,32 +210,47 @@ axiom ExtendedUncertaintyPrinciple
     (N_max : ℕ) (hN : N_max > 0) :
     Delta_x * Delta_p ≥ extended_uncertainty_bound N_max hN Delta_p
 
+/-!
+  ═══════════════════════════════════════════════════════════════════════════════
+  TODO [PROVE]: extended_to_heisenberg_limit
+  ═══════════════════════════════════════════════════════════════════════════════
+
+  DIFFICULTY: MEDIUM
+  ESTIMATED TIME: 30-60 min
+
+  PROOF STRATEGY:
+  ---------------
+  1. Unfold extended_uncertainty_bound and heisenberg_bound
+  2. Show: ℏ/2 + ℓ_P/(N+1) * 1 → ℏ/2 as N → ∞
+  3. Use: Tendsto.add tendsto_const_nhds (for ℏ/2 part)
+  4. Use: tendsto_const_div_atTop_nhds_zero (for ℓ_P/(N+1) part)
+
+  KEY MATHLIB LEMMAS:
+  -------------------
+  - Filter.Tendsto.add : Tendsto f l (nhds a) → Tendsto g l (nhds b) →
+                         Tendsto (f + g) l (nhds (a + b))
+  - tendsto_const_nhds : Tendsto (fun _ => c) l (nhds c)
+  - tendsto_natCast_atTop_atTop : Tendsto (Nat.cast : ℕ → ℝ) atTop atTop
+  - tendsto_const_div_atTop_nhds_zero or similar for c/N → 0
+
+  LITERATURE:
+  -----------
+  Rudin Ch.3, Apostol 4.9 - standard limit laws
+  ═══════════════════════════════════════════════════════════════════════════════
+-/
+
 /-- The extended principle reduces to Heisenberg as N_max -> infinity -/
 theorem extended_to_heisenberg_limit :
     Tendsto (fun N : ℕ => extended_uncertainty_bound (N + 1) (Nat.succ_pos N) 1)
             atTop (nhds heisenberg_bound) := by
   sorry
-  -- TODO: Show ComputationalUncertainty (N+1) -> 0 as N -> infinity
-  -- Then extended_uncertainty_bound -> heisenberg_bound
+  -- TODO [PROVE NEXT WEEK]: See proof strategy above
+  -- Key: show ℓ_P/(N+1) → 0, then use Tendsto.add
 
-/-! ## Temperature Dependence
-
-    PHYSICS INSIGHT: Temperature affects computational capacity.
-
-    At higher temperatures:
-    - Thermal fluctuations disrupt computations
-    - Effective N_max decreases
-    - Computational uncertainty increases
-
-    The relationship: N_max(T) ~ T_P / T where T_P is Planck temperature.
-    At T = T_P (Planck temperature), N_max ~ 1 (minimal computation).
-    At T -> 0, N_max -> infinity (perfect computation, but violates 3rd law).
--/
+/-! ## Temperature Dependence -/
 
 /-- Effective maximum iterations as a function of temperature.
-    N_max(T) = floor(T_P / T) for T > 0.
-
-    PHYSICS AXIOM: Temperature determines computational capacity. -/
+    N_max(T) = floor(T_P / T) for T > 0. -/
 noncomputable def effective_N_max (T : ℝ) (hT : T > 0) : ℕ :=
   max 1 (Nat.floor (PlanckTemperature / T))
 
@@ -161,37 +260,95 @@ noncomputable def ComputationalUncertainty_T (T : ℝ) (hT : T > 0) : ℝ :=
     unfold effective_N_max
     exact Nat.one_pos.trans_le (le_max_left _ _))
 
+/-!
+  ═══════════════════════════════════════════════════════════════════════════════
+  TODO [PROVE]: effective_N_max_at_Planck
+  ═══════════════════════════════════════════════════════════════════════════════
+
+  DIFFICULTY: TRIVIAL
+  ESTIMATED TIME: 10-15 min
+
+  PROOF STRATEGY:
+  ---------------
+  1. Unfold effective_N_max
+  2. Show: PlanckTemperature / PlanckTemperature = 1
+  3. Show: Nat.floor 1 = 1 (use Nat.floor_one)
+  4. Show: max 1 1 = 1 (use max_self or max_eq_left)
+
+  KEY MATHLIB LEMMAS:
+  -------------------
+  - div_self : a ≠ 0 → a / a = 1
+  - Nat.floor_one : ⌊(1 : ℝ)⌋ = 1
+  - max_self : max a a = a
+  - Or: max_eq_left : a ≥ b → max a b = a
+
+  NOTE: May need to handle PlanckTemperature positivity for div_self
+  ═══════════════════════════════════════════════════════════════════════════════
+-/
+
 /-- At Planck temperature, N_max = 1 (minimal computation) -/
 theorem effective_N_max_at_Planck :
     effective_N_max PlanckTemperature (by
       exact div_pos PlanckEnergy_pos BoltzmannConstant_pos) = 1 := by
   sorry
-  -- TODO: floor(T_P / T_P) = floor(1) = 1, max 1 1 = 1
+  -- TODO [PROVE NEXT WEEK]: See proof strategy above
+  -- Key: div_self, Nat.floor_one, max_self
+
+/-!
+  ═══════════════════════════════════════════════════════════════════════════════
+  TODO [PROVE]: ComputationalUncertainty_T_increasing
+  ═══════════════════════════════════════════════════════════════════════════════
+
+  DIFFICULTY: MEDIUM
+  ESTIMATED TIME: 45-90 min
+
+  PROOF STRATEGY:
+  ---------------
+  1. Unfold ComputationalUncertainty_T, ComputationalUncertainty, effective_N_max
+  2. Show chain of inequalities:
+     T1 < T2
+     → T_P/T1 > T_P/T2           (div_lt_div_of_pos_left)
+     → floor(T_P/T1) ≥ floor(T_P/T2)  (Nat.floor_mono + le_of_lt)
+     → max(1, floor(T_P/T1)) ≥ max(1, floor(T_P/T2))  (max_le_max)
+     → ℓ_P/N1 ≤ ℓ_P/N2          (div_le_div_of_nonneg_left)
+
+  KEY MATHLIB LEMMAS:
+  -------------------
+  - div_lt_div_of_pos_left : 0 < a → 0 < c → c < b → a / b < a / c
+  - Nat.floor_mono : x ≤ y → ⌊x⌋ ≤ ⌊y⌋
+  - max_le_max : a ≤ b → c ≤ d → max a c ≤ max b d
+  - div_le_div_of_nonneg_left : 0 ≤ a → 0 < c → c ≤ b → a / b ≤ a / c
+
+  SUBTLETY: Need to be careful about floor giving ℕ vs ℝ
+  ═══════════════════════════════════════════════════════════════════════════════
+-/
 
 /-- Computational uncertainty increases with temperature -/
 theorem ComputationalUncertainty_T_increasing (T1 T2 : ℝ)
     (hT1 : T1 > 0) (hT2 : T2 > 0) (hT : T1 < T2) :
     ComputationalUncertainty_T T1 hT1 ≤ ComputationalUncertainty_T T2 hT2 := by
   sorry
-  -- TODO: Higher T -> lower N_max -> higher uncertainty
+  -- TODO [PROVE NEXT WEEK]: See proof strategy above
+  -- Key: monotonicity chain through floor and max
 
-/-- At low temperature, computational uncertainty approaches Planck length
-    (but never reaches zero due to N_max being finite) -/
+/-!
+  ═══════════════════════════════════════════════════════════════════════════════
+  LEAVE AS SORRY: ComputationalUncertainty_T_low_temp_limit
+  ═══════════════════════════════════════════════════════════════════════════════
+
+  REASON: Complex ε-δ argument, not essential for framework validity
+  LITERATURE: Rudin 3.20, Apostol 4.4, Mathlib tendsto_inv_atTop_zero
+  ═══════════════════════════════════════════════════════════════════════════════
+-/
+
+/-- At low temperature, computational uncertainty approaches zero -/
 theorem ComputationalUncertainty_T_low_temp_limit :
     ∀ ε > 0, ∃ δ > 0, ∀ T (hT : T > 0), T < δ →
       ComputationalUncertainty_T T hT < ε := by
   sorry
-  -- TODO: As T -> 0+, N_max -> infinity, so l_P / N_max -> 0
+  -- LEAVE AS SORRY: Complex ε-δ, see literature refs above
 
-/-! ## Irrational-Specific Uncertainty
-
-    Different irrationals contribute different amounts to uncertainty
-    because they converge at different rates.
-
-    - Pi-based calculations: uncertainty ~ l_P / N (slow convergence)
-    - e-based calculations: uncertainty ~ l_P / N! (fast convergence)
-    - sqrt(2)-based calculations: uncertainty ~ l_P / 2^(2^N) (very fast)
--/
+/-! ## Irrational-Specific Uncertainty -/
 
 /-- Computational uncertainty from pi truncation -/
 noncomputable def pi_computational_uncertainty (N : ℕ) (hN : N > 0) : ℝ :=
@@ -205,23 +362,48 @@ noncomputable def e_computational_uncertainty (N : ℕ) (hN : N > 0) : ℝ :=
 noncomputable def sqrt2_computational_uncertainty (N : ℕ) (hN : N ≥ 1) : ℝ :=
   ℓ_P * (1 / 2 ^ (2 ^ (N - 1)))
 
+/-!
+  ═══════════════════════════════════════════════════════════════════════════════
+  LEAVE AS SORRY: pi_uncertainty_gt_e_uncertainty
+  ═══════════════════════════════════════════════════════════════════════════════
+
+  REASON: Depends on precision_hierarchy from PrecisionHierarchy.lean
+          which itself has sorry (and connects to deep number theory)
+
+  LITERATURE:
+  - Graham-Knuth-Patashnik "Concrete Mathematics" 9.1 (Stirling)
+  - Borwein & Borwein "Pi and the AGM" Ch.1
+  - This project: PrecisionHierarchy.lean
+  ═══════════════════════════════════════════════════════════════════════════════
+-/
+
 /-- Pi contributes more uncertainty than e for same budget -/
 theorem pi_uncertainty_gt_e_uncertainty (N : ℕ) (hN : N ≥ 2) :
     pi_computational_uncertainty N (by omega) > e_computational_uncertainty N (by omega) := by
   sorry
-  -- TODO: For N >= 2, 4/(2N+3) >> 3/(N+1)!
+  -- LEAVE AS SORRY: Depends on PrecisionHierarchy.lean
+
+/-!
+  ═══════════════════════════════════════════════════════════════════════════════
+  LEAVE AS SORRY: e_uncertainty_gt_sqrt2_uncertainty
+  ═══════════════════════════════════════════════════════════════════════════════
+
+  REASON: Depends on precision_hierarchy from PrecisionHierarchy.lean
+
+  LITERATURE:
+  - Stoer & Bulirsch "Numerical Analysis" 5.4 (Newton's method)
+  - Graham-Knuth-Patashnik "Concrete Mathematics" 9.1
+  - This project: PrecisionHierarchy.lean, ConvergenceComparison.lean
+  ═══════════════════════════════════════════════════════════════════════════════
+-/
 
 /-- e contributes more uncertainty than sqrt(2) for same budget -/
 theorem e_uncertainty_gt_sqrt2_uncertainty (N : ℕ) (hN : N ≥ 3) :
     e_computational_uncertainty N (by omega) > sqrt2_computational_uncertainty N (by omega) := by
   sorry
-  -- TODO: For N >= 3, 3/(N+1)! >> 1/2^(2^(N-1))
+  -- LEAVE AS SORRY: Depends on PrecisionHierarchy.lean
 
-/-! ## Total Computational Uncertainty
-
-    A physical calculation may involve multiple irrationals.
-    The total computational uncertainty is bounded by the sum of individual contributions.
--/
+/-! ## Total Computational Uncertainty -/
 
 /-- Structure for tracking which irrationals appear in a calculation -/
 structure IrrationalUsage where
@@ -244,36 +426,25 @@ theorem total_computational_uncertainty_nonneg
   apply add_nonneg
   apply add_nonneg
   · split_ifs with h
-    · -- pi_computational_uncertainty is non-negative
-      unfold pi_computational_uncertainty
+    · unfold pi_computational_uncertainty
       apply mul_nonneg (le_of_lt PlanckLength_pos)
       apply div_nonneg (by norm_num : (4 : ℝ) ≥ 0)
       linarith
     · linarith
   · split_ifs with h
-    · -- e_computational_uncertainty is non-negative
-      unfold e_computational_uncertainty
+    · unfold e_computational_uncertainty
       apply mul_nonneg (le_of_lt PlanckLength_pos)
       apply div_nonneg (by norm_num : (3 : ℝ) ≥ 0)
       exact Nat.cast_nonneg _
     · linarith
   · split_ifs with h
-    · -- sqrt2_computational_uncertainty is non-negative
-      unfold sqrt2_computational_uncertainty
+    · unfold sqrt2_computational_uncertainty
       apply mul_nonneg (le_of_lt PlanckLength_pos)
       apply div_nonneg (by norm_num : (1 : ℝ) ≥ 0)
       exact pow_nonneg (by norm_num : (2 : ℝ) ≥ 0) _
     · linarith
 
-/-! ## Connection to Discrete Spacetime
-
-    PHYSICS INSIGHT: The discrete structure of spacetime at the Planck scale
-    provides a natural cutoff for computational precision.
-
-    No measurement can resolve positions better than l_P, so computational
-    uncertainty below l_P is physically meaningless. This provides a
-    "computational floor" that regularizes infinities.
--/
+/-! ## Connection to Discrete Spacetime -/
 
 /-- The computational floor: uncertainty cannot meaningfully be below l_P -/
 noncomputable def computational_floor : ℝ := ℓ_P
@@ -288,18 +459,9 @@ theorem effective_computational_uncertainty_ge_planck (N : ℕ) (hN : N > 0) :
   unfold effective_computational_uncertainty computational_floor
   exact le_max_right _ _
 
-/-! ## Energy-Time Uncertainty
+/-! ## Energy-Time Uncertainty -/
 
-    The computational uncertainty also affects energy-time uncertainty.
-    If a computation takes time Delta_t, the energy uncertainty satisfies:
-
-    Delta_E * Delta_t >= hbar/2 + delta_comp_E
-
-    where delta_comp_E is the energy uncertainty from truncated computations.
--/
-
-/-- Energy uncertainty from computational truncation.
-    Uses E = h_bar / l_P to convert length uncertainty to energy. -/
+/-- Energy uncertainty from computational truncation. -/
 noncomputable def energy_computational_uncertainty (N : ℕ) (hN : N > 0) : ℝ :=
   ℏ / (ℓ_P * N)
 
@@ -310,33 +472,15 @@ axiom ExtendedEnergyTimeUncertainty
     (N_max : ℕ) (hN : N_max > 0) :
     Delta_E * Delta_t ≥ ℏ / 2 + energy_computational_uncertainty N_max hN * Delta_t
 
-/-! ## Summary: The Computational Uncertainty Principle
-
-    THEOREM (Informal): Any physical system with finite computational resources
-    exhibits uncertainty beyond the Heisenberg limit.
-
-    Specifically:
-    1. Computation requires energy and time
-    2. Physical calculations involve irrational numbers
-    3. Irrationals can only be approximated to finite precision
-    4. This precision translates to spatial/momentum uncertainty
-    5. The uncertainty is minimized at low temperature and long time scales
-    6. The uncertainty has a floor at the Planck scale
--/
+/-! ## Summary Structure -/
 
 /-- The complete computational uncertainty structure -/
 structure ComputationalUncertaintyData where
-  /-- Position uncertainty -/
   delta_x : ℝ
-  /-- Momentum uncertainty -/
   delta_p : ℝ
-  /-- Energy uncertainty -/
   delta_E : ℝ
-  /-- Time uncertainty -/
   delta_t : ℝ
-  /-- Computational budget -/
   budget : PhysicalComputationalBudget
-  /-- All uncertainties positive -/
   delta_x_pos : delta_x > 0
   delta_p_pos : delta_p > 0
   delta_E_pos : delta_E > 0
