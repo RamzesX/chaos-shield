@@ -641,7 +641,129 @@ where:
 
 4. Without defects, no healing is required—photons do not emit gravitons. □
 
-**Physical interpretation**: Photons "surf" on the geometry created and maintained by massive objects. They witness the healing field (virtual gravitons) without participating in it.
+**Physical interpretation**: Photons do not participate in geometric reshaping or the healing flow. However, this does not mean propagation is "free."
+
+### 9B.2A The Gravitational Field as Information-Processing Medium
+
+**Key insight from information conservation**: The fourth Noether law requires that information about geometry must propagate—but propagation cannot be free. If an observer receives information about the gravitational potential of a distant star (via photon redshift), that information transfer must have a cost.
+
+**Proposition 9B.1A** (G Field as Active Medium): The gravitational field acts as an **active information-processing medium**, not a passive background:
+
+| Classical Maxwell in curved spacetime | Information-theoretic view |
+|---------------------------------------|---------------------------|
+| Geometry is passive background | G field actively processes EM |
+| EM "feels" curvature via metric | G field extracts toll from EM |
+| No energy exchange (coordinate effect) | Information cost paid |
+| One-way: geometry dictates | Transaction: G transforms EM |
+
+**Definition 9B.1A** (Propagation Cost): For a photon traversing curved spacetime, the information cost per discrete step is:
+
+$\delta I_{\text{cost}} = f(R_{\mu\nu\rho\sigma}) \cdot \ell_P$
+
+where $f$ is a function of the local Riemann tensor, and $\ell_P$ is the Planck length.
+
+**Critical properties**:
+1. **Geometry-dependent**: Cost increases with local curvature (more curved → higher toll)
+2. **Cumulative**: Total cost integrates along the photon worldline
+3. **Asymmetric**: G transforms EM, but EM does not transform G (except at horizons)
+4. **c remains invariant**: The photon always propagates at c locally—what changes is geometry, not speed
+
+**Critical distinction: What changes vs. what remains constant**:
+
+| What changes | What remains constant |
+|--------------|----------------------|
+| Tensor F_μν (energy, frequency, polarization) | Local propagation speed = c |
+| Effective distances (geometry) | Rate of EM tensor transformation |
+| Observed frequency (redshift) | Photon's local experience of c |
+
+The "observed slowdown" near massive objects (Shapiro delay) reflects the photon experiencing **more geometry to traverse**, not a reduction in the fundamental propagation rate. The photon still executes each Planck step at c, but the number of steps differs from flat space as measured by a distant observer.
+
+**Physical picture**:
+
+```
+Photon enters curved region
+        ↓
+Local G field "reads" photon state (F_μν)
+        ↓
+G field extracts information cost ∝ local curvature
+        ↓
+G field "writes" transformed state back to photon
+        ↓
+Photon continues at c through modified geometry
+        ↓
+Observer measures redshift = record of accumulated transactions
+```
+
+**Compatibility with General Relativity**:
+
+This interpretation does not contradict GR—it **extends** it. GR correctly describes the kinematics (what happens); the information-theoretic framework explains the dynamics (why it happens):
+
+| General Relativity | Information-theoretic extension |
+|--------------------|--------------------------------|
+| Describes WHAT happens | Explains WHY it happens |
+| Geometry provides connection coefficients | Connection coefficients encode information cost |
+| Redshift is coordinate effect (kinematic) | Redshift records information transaction (dynamic) |
+| Equations are correct | Equations have physical interpretation |
+
+We do not "replace" Maxwell in curved spacetime—we add that the geometric information encoded in the covariant derivative has a **cost**. The standard formulation $\nabla_\mu F^{\mu\nu} = J^\nu$ remains correct; we add that using this geometry requires payment.
+
+**Theorem 9B.1A** (Asymmetric Interaction Hierarchy):
+
+$\text{G} \xrightarrow{\text{transforms}} \text{EM} \quad \text{(always)}$
+$\text{EM} \xrightarrow{\text{transforms}} \text{G} \quad \text{(only at } E \gtrsim E_P \text{)}$
+
+*Justification*:
+
+1. **G → EM**: The gravitational tensor transforms the EM tensor at every propagation step. This is the "toll" for information about geometry.
+
+2. **EM → G**: Only at extreme energies (approaching Planck scale) does the EM field carry enough energy to create geometric defects requiring healing. At a black hole horizon, E_photon → ∞ (blueshift), crossing the threshold where EM finally affects G—the photon is absorbed.
+
+**Corollary 9B.1A** (Black Hole as Threshold): The black hole horizon represents the boundary where the G↔EM interaction becomes bidirectional. Below horizon energy scales, G dominates; at horizon scales, EM finally "pays enough" to modify G.
+
+### 9B.2B Observational Constraints on the Transformation Operator
+
+Three classes of observation constrain the form of the transformation operator $\mathcal{T}[R_{\mu\nu\rho\sigma}]$:
+
+**1. Gravitational Lensing** (G changes EM direction):
+- Light bends around massive objects
+- Deflection angle: $\alpha = 4GM/rc^2$
+- Constrains: How $\mathcal{T}$ affects the momentum/direction components of $F_{\mu\nu}$
+
+**2. Gravitational Redshift** (G changes EM energy):
+- Frequency shift: $f_{obs}/f_{emit} = \sqrt{g_{00}(emit)/g_{00}(obs)}$
+- Constrains: How $\mathcal{T}$ affects the energy/frequency components of $F_{\mu\nu}$
+
+**3. Black Hole Absorption** (G fully absorbs EM at threshold):
+- At horizon: $g_{00} \to 0$, transformation becomes total
+- Constrains: The asymptotic behavior of $\mathcal{T}$ at extreme curvature
+
+**Deduction program**: From these three observational classes, the form of $\mathcal{T}$ can be constrained. The transformation must:
+- Reduce to identity in flat spacetime: $\mathcal{T}[R=0] = \mathbb{1}$
+- Reproduce standard lensing angles
+- Reproduce standard redshift formula  
+- Diverge appropriately at horizons
+
+**Observer locality**: Each observer receives the EM field in their local frame. The transformation G→EM is **local** at each propagation step—there is no global "energy loss," only a series of local transactions. This is fully consistent with the observer-dependence of energy in GR while adding that the local transformation encodes information transfer.
+
+### 9B.2C Connection to the Tensor Extension of Noether's Theorem
+
+The G→EM interaction fits within the broader framework of tensor conservation laws on the discrete Planck lattice Λ = ℓ_P · ℤ⁴:
+
+$\partial_\mu J^\mu_I = 0 \quad \text{(Information current)}$
+$\partial_\mu T^{\mu\nu} = 0 \quad \text{(Energy-momentum tensor)}$
+$\partial_\mu j^\mu_{em} = 0 \quad \text{(Charge current)}$
+$D_\mu j^\mu_a = 0 \quad \text{(Color current)}$
+
+All four conservation laws are **projections** of the master information conservation onto specific sectors of Ω (see Main Paper §8, unified-theory-diagram Level 8).
+
+**The G→EM transformation respects all conservation laws simultaneously**:
+- Information is conserved (photon gains witness information as it loses spectral sharpness)
+- Energy-momentum is locally conserved (transformation is covariant)
+- Charge is conserved (photon remains neutral)
+
+The transformation $\mathcal{T}$ must be derived such that it respects all tensor conservation laws. This is a strong constraint that will guide the formal derivation in Appendix EMG.
+
+*Future formalization*: The precise tensor transformation equations—how $R_{\mu\nu\rho\sigma}$ acts on $F_{\mu\nu}$—require rigorous derivation from information-theoretic principles. This will be developed in Appendix EMG following Lean formalization of the core gravitational framework. The foundation (G-G interactions, healing flow) must be established before introducing the EM actor.
 
 ### 9B.3 Gravitational Redshift as Information Transformation
 

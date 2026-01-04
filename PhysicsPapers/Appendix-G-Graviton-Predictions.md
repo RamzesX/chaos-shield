@@ -792,6 +792,49 @@ One can transmit information via radio waves, via quantum entanglement, or by th
 
 **This appendix treats gravity. Other channels require separate treatment.**
 
+### 11.1A The G→EM Interaction: Foundation Before Actors
+
+**Critical observation**: While this appendix focuses on G-G interactions (gravitational self-healing), the gravitational field also interacts with the electromagnetic field in a fundamentally **asymmetric** way:
+
+$\text{G} \xrightarrow{\text{transforms}} \text{EM} \quad \text{(always)}$
+$\text{EM} \xrightarrow{\text{transforms}} \text{G} \quad \text{(only at extreme energies)}$
+
+**The G field as information-processing medium**:
+
+The gravitational field is not a passive background through which electromagnetic waves propagate. Rather, G acts as an **active medium** that:
+
+1. **Reads** the EM tensor F_μν of propagating photons
+2. **Extracts** an information cost proportional to local curvature R_μνρσ
+3. **Writes** a transformed EM tensor back to the photon
+
+This is fundamentally different from standard Maxwell equations in curved spacetime, where geometry provides "free" information through connection coefficients. In the information-theoretic framework, **information is never free**—the G field charges a toll.
+
+**Compatibility with GR and Maxwell**: This interpretation does not contradict General Relativity or Maxwell's equations in curved spacetime—it **extends** them. The standard equations correctly describe WHAT happens (the kinematics); we add WHY it happens (the dynamics). The equations $\nabla_\mu F^{\mu\nu} = J^\nu$ and $R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}R = \frac{8\pi G}{c^4}T_{\mu\nu}$ remain correct. We add that the geometric information encoded in the covariant derivative has a **cost**.
+
+**Resolution of apparent paradoxes**: Questions like "where does the photon's energy go during gravitational redshift?" are resolved by reframing: energy is observer-dependent (coordinate effect), but information is invariant (physical quantity). The photon transforms information between channels (spectral → geometric witness), preserving total information exactly as required by the fourth Noether law.
+
+**Why this must wait for Appendix EMG**:
+
+The mathematical formalization of G→EM transformation requires:
+
+1. **Established foundation**: The healing flow, defect theory, and G-G interactions must be rigorously formalized in Lean first
+2. **Scene before actors**: One cannot introduce EM as an "actor" on the spacetime "stage" until the stage itself (discrete geometry with self-healing) is fully constructed
+3. **Derived, not postulated**: The G→EM transformation equations should **emerge** from information-theoretic principles, not be postulated independently
+
+**Preliminary structure** (to be developed in Appendix EMG):
+
+$\delta F_{\mu\nu} = \mathcal{T}[R_{\alpha\beta\gamma\delta}] \cdot F_{\mu\nu}$
+
+where $\mathcal{T}$ is a transformation operator encoding how local curvature acts on the EM tensor. The precise form of $\mathcal{T}$ will be derived from:
+- Information cost requirements (fourth Noether law)
+- Consistency with observed gravitational redshift
+- Spin structure (graviton spin-2, photon spin-1)
+- Threshold behavior at black hole horizons
+
+**Connection to Hawking radiation**: The black hole horizon represents the threshold where G↔EM interaction becomes bidirectional. Below threshold: G dominates, transforming EM freely. At threshold: EM finally carries enough energy to create geometric defects, modifying G—this manifests as photon absorption into the black hole.
+
+*Full treatment deferred to*: Appendix EMG (following Lean formalization of core gravitational framework).
+
 If gravitons repair geometric defects, what repairs other defects?
 
 | Force | Defect Type | Repair Carrier | What's Repaired |

@@ -970,6 +970,69 @@ One can transmit information via radio waves, via quantum entanglement, or by th
 
 **This appendix treats gravitational topology. Other channels require separate treatment.**
 
+### 11.9 Foundation Before Actors: The EMG Program
+
+**Methodological principle**: The discrete spacetime with self-healing geometry constitutes the **stage** upon which other physics plays out. The electromagnetic field, fermions, and other Standard Model content are **actors** on this stage. One cannot rigorously introduce actors until the stage is fully constructed.
+
+**The G→EM interaction**:
+
+While this appendix establishes gravitational self-healing, there exists a crucial **asymmetric interaction** between the gravitational and electromagnetic fields:
+
+$\text{G field} \xrightarrow{\text{actively transforms}} \text{EM field}$
+
+The gravitational field acts as an **information-processing medium** that extracts a toll from propagating electromagnetic waves. This is not the passive "geometry as background" of standard Maxwell equations in curved spacetime—it is an active transaction where:
+
+1. G field reads the local EM tensor F_μν
+2. G field extracts information cost proportional to local curvature
+3. G field writes transformed tensor back to the photon
+
+**Compatibility with General Relativity**:
+
+This interpretation does not contradict GR or Maxwell's equations—it **extends** them:
+
+| Standard Physics | Information-Theoretic Extension |
+|------------------|--------------------------------|
+| Describes WHAT happens | Explains WHY it happens |
+| Equations are correct | Equations have physical interpretation |
+| Redshift is coordinate effect | Redshift records information transaction |
+| Energy is observer-dependent | Information is invariant |
+
+**Resolution of apparent paradoxes**: The question "where does the photon's energy go during redshift?" dissolves when reframed. Energy is observer-dependent; information is conserved. The photon's total information transforms between channels (spectral → geometric witness) rather than being "lost."
+
+**Connection to Tensor Conservation Laws**:
+
+The G→EM transformation must respect all four tensor conservation laws on the discrete Planck lattice Λ = ℓ_P · ℤ⁴:
+
+$\partial_\mu J^\mu_I = 0 \quad \text{(Information current)}$
+$\partial_\mu T^{\mu\nu} = 0 \quad \text{(Energy-momentum tensor)}$
+$\partial_\mu j^\mu_{em} = 0 \quad \text{(Charge current)}$
+$D_\mu j^\mu_a = 0 \quad \text{(Color current)}$
+
+These four conservation laws are **projections** of the master information conservation onto specific sectors of Ω. The transformation operator $\mathcal{T}$ must be derived such that it respects all four simultaneously—this is a strong constraint guiding the formal derivation.
+
+**Why this is deferred to Appendix EMG**:
+
+| Prerequisite | Status | Required for EMG |
+|--------------|--------|------------------|
+| Discrete spacetime structure | Established (§2) | ✓ |
+| Defect theory | Established (§4) | ✓ |
+| Healing flow | Established (§5-6) | ✓ |
+| Lyapunov stability | Established (§6) | ✓ |
+| Continuum limit | Established (§7-9) | ✓ |
+| **Lean formalization** | In progress | Required |
+| Graviton energetics | Established (§14) | ✓ |
+| G→EM transformation | **FUTURE** | Appendix EMG |
+
+The Lean formalization provides the **rigor** needed to extend the framework. Once the healing flow and graviton dynamics are formally verified, the G→EM interaction can be derived (not postulated) from information-theoretic principles:
+
+$\delta F_{\mu\nu} = \mathcal{T}[R_{\alpha\beta\gamma\delta}] \cdot F_{\mu\nu}$
+
+where $\mathcal{T}$ emerges from the requirement that information cost must be paid for propagation through curved geometry, while respecting all tensor conservation laws.
+
+**The threshold at black holes**: The black hole horizon represents where G↔EM interaction becomes bidirectional. Below threshold, G dominates (transforms EM without being affected). At threshold, EM energy is sufficient to create geometric defects—the photon is absorbed.
+
+*Full treatment*: Appendix EMG (following Lean formalization).
+
 ---
 
 ## 12. Physical Predictions

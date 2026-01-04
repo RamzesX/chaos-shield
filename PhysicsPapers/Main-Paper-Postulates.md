@@ -248,7 +248,15 @@ Total information conserved (4th Noether)
 
 **Central result**: Photons are **information witnesses**, not **information storers**. They record the geometry they traverse without participating in its maintenance. This resolves the apparent paradox: no energy is "lost" because information—the true conserved quantity—is preserved exactly.
 
+**Critical asymmetry**: The gravitational field actively transforms the electromagnetic tensor of propagating photons, extracting an information cost proportional to local curvature. However, the EM field does not modify the gravitational field—except at extreme energies (black hole horizons) where the photon is fully absorbed. This asymmetry reflects a fundamental hierarchy: the G field acts as an **information-processing medium** that charges a toll from EM propagation.
+
+**Compatibility with General Relativity**: This interpretation does not contradict GR—it **extends** it. GR correctly describes the kinematics (what happens); the information-theoretic framework explains the dynamics (why it happens). The equations remain unchanged; we add physical interpretation to what were previously "coordinate effects."
+
+**Resolution of apparent paradoxes**: Standard questions like "where does the photon's energy go during redshift?" dissolve when reframed information-theoretically. Energy is observer-dependent; information is invariant. The photon's information is conserved exactly—it transforms between channels (spectral → geometric witness) rather than being "lost."
+
 *Full treatment*: See Appendix F §9B.
+
+*Future work*: Following rigorous Lean formalization of the core gravitational self-healing framework, a dedicated appendix (Appendix EMG) will develop the mathematical structure of G→EM tensor transformation, deriving the interaction equations from information-theoretic first principles.
 
 ---
 
@@ -654,6 +662,7 @@ States principles, demonstrates consistency, provides predictions.
 | Lorentz-Doppler | Time Dilation | Reshaping wave mechanics |
 | **P** | **Einstein-Cartan Torsion** | **Popławski synthesis: torsion-information coupling, baby universe, redundant singularity protection** |
 | S | Stable Wormholes & Chronology | Extends E: three-tier classification, engineering requirements, time travel impossibility |
+| **EMG** | **G→EM Tensor Interaction** | **FUTURE: Derives how gravitational field transforms electromagnetic tensor; asymmetric interaction hierarchy; information cost of propagation through curved spacetime** |
 
 ### Supporting Document
 **KeyInsight-Irrationals-Action-Thresholds.md**: Complete derivation connecting π, e, √2 to quantum uncertainty through computational deadlines.
@@ -686,6 +695,8 @@ Spacetime and the Standard Model are dual projections of a single algebraic stru
 
 **Gravitational redshift is not energy loss**—it is information encoding about traversed geometry.
 
+**The gravitational field is not passive**—it is an active information-processing medium that transforms the electromagnetic tensor of propagating light, extracting a toll proportional to local curvature.
+
 ---
 
 ## 13. Conclusion
@@ -704,6 +715,8 @@ From a single postulate—**spacetime is discrete**—we derive:
 The framework is validated by Diraq/Nature 2024: power-law temperature scaling T^(-2.5) observed, Arrhenius exponential inconsistent with data. Different electron configurations show different exponents, confirming N-dependence beyond simple temperature effects.
 
 **Unification does not require adding gravity to the Standard Model. It requires recognizing that spacetime and the Standard Model are dual projections of a single structure.**
+
+**Future direction**: Following Lean formalization of the core gravitational framework (healing flow, defect theory, graviton dynamics), Appendix EMG will derive the G→EM tensor transformation—how the gravitational field actively processes electromagnetic propagation. The foundation must be established before introducing actors: the stage (discrete self-healing spacetime) before the play (EM and other fields).
 
 ---
 
