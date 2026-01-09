@@ -192,7 +192,11 @@ theorem minkowski_inverse_self : inverseMetric minkowskiMetric = minkowskiMetric
   unfold inverseMetric minkowskiMetric
   -- The diagonal matrix with entries [-1, 1, 1, 1] is its own inverse
   -- since each diagonal entry squared equals 1
-  sorry
+  apply Matrix.inv_eq_left_inv
+  rw [Matrix.diagonal_mul_diagonal]
+  ext i j
+  simp only [Matrix.diagonal_apply, Matrix.one_apply]
+  split_ifs with h <;> fin_cases i <;> norm_num
 
 /-! ## Index Raising and Lowering -/
 
@@ -209,10 +213,14 @@ noncomputable def lowerIndex (g : MetricTensor) (v : Fin 4 → ℝ) : Fin 4 → 
 /-- Raising then lowering returns the original vector (for non-degenerate g) -/
 theorem lower_raise_identity (g : MetricTensor) (hnd : IsNondegenerate g) (v : Fin 4 → ℝ) :
     lowerIndex g (raiseIndex g v) = v := by
-  funext μ
-  unfold lowerIndex raiseIndex
-  -- This follows from g * g⁻¹ = 1
-  sorry
+  -- lowerIndex is g.mulVec, raiseIndex is g⁻¹.mulVec
+  -- So this is g *ᵥ (g⁻¹ *ᵥ v) = (g * g⁻¹) *ᵥ v = 1 *ᵥ v = v
+  have hlower : ∀ w, lowerIndex g w = g.mulVec w := fun w => rfl
+  have hraise : raiseIndex g v = (inverseMetric g).mulVec v := rfl
+  rw [hlower, hraise]
+  rw [Matrix.mulVec_mulVec]
+  rw [metric_mul_inverse g hnd]
+  exact Matrix.one_mulVec v
 
 /-! ## Metric Compatibility -/
 
