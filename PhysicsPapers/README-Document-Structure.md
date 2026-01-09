@@ -75,6 +75,7 @@ Diagrams showing:
 | **H** | Renormalization Correspondence | UV cutoff interpretation, hierarchy resolution |
 | **I** | Experimental Tests | Protocols, testable predictions |
 | **Lorentz-Doppler** | Lorentz-Doppler Equivalence | Time dilation as wave mechanics |
+| **P** | Einstein-Cartan Torsion Integration | Poplawski synthesis, spin generates torsion, Big Bounce |
 | **S** | Stable Wormholes and Chronology Protection | Extends E: three-tier wormhole classification, maintenance requirements, chronology protection from information conservation |
 
 ---
@@ -94,10 +95,16 @@ Full technical treatment (~50 pages):
 
 ---
 
-### 6. Reference Document (Superseded)
-**File**: `unified-physics-paper.md`
+### 6. Lean Formalization
+**Directory**: `LeanFormalization/`
 
-Original extended paper (~100 pages). Contains derivations but predates the postulational reorganization. Retained for reference.
+Machine-verified proofs in Lean 4 with Mathlib v4.13.0:
+- 36 Lean files, 10,000+ lines of verified proofs
+- Planck relations, Christoffel symmetry, metric compatibility
+- Fourth Noether Law (information conservation)
+- Newton-Raphson precision bounds for irrationals
+
+See [LeanFormalization/README.md](LeanFormalization/README.md) for details.
 
 ---
 

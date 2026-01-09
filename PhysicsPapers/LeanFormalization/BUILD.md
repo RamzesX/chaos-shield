@@ -9,8 +9,8 @@
 ## Quick Start
 
 ```bash
-# From Windows CMD/PowerShell - full rebuild with 32 threads
-wsl.exe bash -c "cd /mnt/c/Users/Norbert/IdeaProjects/chaos-shield/PhysicsPapers/LeanFormalization && ~/.elan/bin/lake exe cache get && export LAKE_JOBS=32 && ~/.elan/bin/lake build 2>&1"
+# From Windows CMD/PowerShell
+wsl.exe bash -c "cd /mnt/c/Users/Norbert/IdeaProjects/chaos-shield/PhysicsPapers/LeanFormalization && ~/.elan/bin/lake exe cache get && ~/.elan/bin/lake build --log-level=error 2>&1"
 ```
 
 ## Step by Step
@@ -22,9 +22,11 @@ lake exe cache get
 
 ### 2. Build
 ```bash
-export LAKE_JOBS=32  # Use all cores
-lake build
+# Lake 5.0 has automatic parallelism - no LAKE_JOBS needed!
+lake build --log-level=error
 ```
+
+**Note**: Lake 5.0+ automatically uses all available cores. The `--log-level=error` flag suppresses warning spam.
 
 ### 3. After Updating Dependencies
 ```bash

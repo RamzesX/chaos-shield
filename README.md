@@ -1,82 +1,239 @@
-# Chaos Shield: Ω-Theory 🛡️
+```
+╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                                                  ║
+║     ██████╗ ███╗   ███╗███████╗ ██████╗  █████╗       ████████╗██╗  ██╗███████╗ ██████╗ ██████╗ ██╗   ██╗        ║
+║    ██╔═══██╗████╗ ████║██╔════╝██╔════╝ ██╔══██╗      ╚══██╔══╝██║  ██║██╔════╝██╔═══██╗██╔══██╗╚██╗ ██╔╝        ║
+║    ██║   ██║██╔████╔██║█████╗  ██║  ███╗███████║█████╗   ██║   ███████║█████╗  ██║   ██║██████╔╝ ╚████╔╝         ║
+║    ██║   ██║██║╚██╔╝██║██╔══╝  ██║   ██║██╔══██║╚════╝   ██║   ██╔══██║██╔══╝  ██║   ██║██╔══██╗  ╚██╔╝          ║
+║    ╚██████╔╝██║ ╚═╝ ██║███████╗╚██████╔╝██║  ██║         ██║   ██║  ██║███████╗╚██████╔╝██║  ██║   ██║           ║
+║     ╚═════╝ ╚═╝     ╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝         ╚═╝   ╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝           ║
+║                                                                                                                  ║
+║                    Discrete Spacetime  ──►  Mass as Geometry Reshaping  ──►  Unified Physics                     ║
+║                                                                                                                  ║
+║                                          Λ = ℓ_P · Z⁴  →  Everything                                             ║
+║                                                                                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+```
 
 > *"What if everything wants to teleport at the speed of light—but we can't, because we have mass, and need to expend energy to reshape the geometry around us?"*
 
 This simple question started it all.
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+[![Lean 4](https://img.shields.io/badge/Lean-4-blue.svg)](PhysicsPapers/LeanFormalization/)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-## What is Ω-Theory?
+---
 
-A unified physics framework where:
-
-- **Mass = reshaping cost** — Particles pay energy to reshape local geometry at each Planck-scale jump
-- **Quantum uncertainty = truncated irrationals** — π, e, √2 can't be computed before action thresholds force transitions
-- **Entanglement = unstable wormholes** — D_ent connections collapse upon measurement (Lyapunov instability)
-- **Black holes = hungry wormholes** — Devastating because they self-feed on mass
-- **Time travel = impossible** — CTCs violate information conservation (fourth Noether law)
-
-**One question. One answer. Everything follows.**
-
-## Key Ideas
+## One Question. One Answer. Everything Follows.
 
 | Insight | Consequence |
 |---------|-------------|
-| Spacetime is discrete (ℓ_P lattice) | All physics emerges from Planck-scale jumps |
-| All particles want to move at c | Mass is what you pay when you can't |
-| Action accumulates to S = nℏ | Computational deadlines create quantum uncertainty |
-| Information is conserved (∂_μJ^μ_I = 0) | Fourth Noether law; chronology protection automatic |
-| Entanglement wormholes are unstable | Measurement triggers collapse; no-signaling explained |
-| Safe wormholes need external energy | Unlike black holes (self-feeding), engineered wormholes require maintenance |
+| **Spacetime is discrete** (ℓ_P lattice) | All physics emerges from Planck-scale jumps |
+| **All particles want to move at c** | Mass is what you pay when you can't |
+| **π, e, √2 can't be computed exactly** | Action thresholds S = nℏ create quantum uncertainty |
+| **Information is conserved** (∂_μJ^μ_I = 0) | Fourth Noether law; chronology protection automatic |
+| **Entanglement = unstable wormholes** | Measurement triggers collapse; no-signaling explained |
+| **Black holes = hungry wormholes** | Devastating because they self-feed on mass |
 
-## Repository Structure
+---
+
+## The Complete Picture
 
 ```
-PhysicsPapers/       # Ω-Theory unified physics (17 papers)
-ConvQMath/           # Constructive mathematics framework (16 papers)
-QuantumSecurity/     # Quantum-resistant protocols (3 papers)
-UnixOs/              # System internals documentation
+                                     DISCRETENESS (Λ = ℓ_P · Z⁴)
+                                               │
+                          ┌────────────────────┴────────────────────┐
+                          ▼                                         ▼
+              ┌─────────────────────┐                   ┌─────────────────────┐
+              │  Counting requires  │                   │  Geometry requires  │
+              │     INTEGERS        │                   │  π, e, √2           │
+              └─────────────────────┘                   └─────────────────────┘
+                          │                                         │
+                          ▼                                         ▼
+              ┌─────────────────────┐                   ┌─────────────────────┐
+              │  CONSERVATION       │                   │  COMPUTATIONAL      │
+              │  LAWS               │                   │  DEADLINES          │
+              │  (∂_μJ^μ_I = 0)     │                   │  (τ = ℏ/E)          │
+              └─────────────────────┘                   └─────────────────────┘
+                          │                                         │
+                          └────────────────────┬────────────────────┘
+                                               ▼
+                               ┌───────────────────────────┐
+                               │    FORCED TRANSITIONS     │
+                               │    AT ACTION THRESHOLD    │
+                               │         S = nℏ            │
+                               └───────────────────────────┘
+                                               │
+                          ┌────────────────────┼────────────────────┐
+                          ▼                    ▼                    ▼
+              ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐
+              │      TIME       │  │   UNCERTAINTY   │  │    HEALING      │
+              │    emerges      │  │    emerges      │  │     FLOW        │
+              │  (tick count)   │  │   (truncation)  │  │   (repair)      │
+              └─────────────────┘  └─────────────────┘  └─────────────────┘
+                          │                    │                    │
+                          └────────────────────┼────────────────────┘
+                                               ▼
+                               ╔═══════════════════════════╗
+                               ║           Ω               ║
+                               ║      = ⟨1, 2, 3⟩          ║
+                               ║   Standard Model IS the   ║
+                               ║   alphabet of reality     ║
+                               ╚═══════════════════════════╝
+                                               │
+                          ┌────────────────────┼────────────────────┐
+                          ▼                    ▼                    ▼
+              ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐
+              │   SPACETIME     │  │     GAUGE       │  │     D_ent       │
+              │   (mirror)      │  │    (forces)     │  │   (wormholes)   │
+              └─────────────────┘  └─────────────────┘  └─────────────────┘
+                          │                    │                    │
+                          └────────────────────┼────────────────────┘
+                                               ▼
+                               ╔═══════════════════════════╗
+                               ║    OBSERVED PHYSICS       ║
+                               ║    ═════════════════      ║
+                               ║    QM + GR + SM UNIFIED   ║
+                               ╚═══════════════════════════╝
 ```
 
-**Full paper index**: [`PAPERS.md`](PAPERS.md)  
-**Physics summary**: [`Physics-Papers-Summary.md`](Physics-Papers-Summary.md)
+---
 
-## Quick Start
+## Key Documents
 
-### The Genesis Story
-Start with [`PhysicsPapers/Main-Paper-Postulates.md`](PhysicsPapers/Main-Paper-Postulates.md) — includes "How This Started"
+### Start Here
+| Document | What It Is |
+|----------|-----------|
+| [**Main-Paper-Postulates.md**](PhysicsPapers/Main-Paper-Postulates.md) | Entry point: thesis, principles, "How This Started" |
+| [**unified-theory-diagram.md**](PhysicsPapers/unified-theory-diagram.md) | Visual summary with 11 levels of ASCII diagrams |
+| [**README-Document-Structure.md**](PhysicsPapers/README-Document-Structure.md) | Reading guide and document hierarchy |
 
-### Core Mechanism
-[`PhysicsPapers/KeyInsight-Irrationals-Action-Thresholds.md`](PhysicsPapers/KeyInsight-Irrationals-Action-Thresholds.md) — How π, e, √2 create quantum uncertainty
+### Core Theory
+| Document | What It Is |
+|----------|-----------|
+| [**Complete-Omega-Theory**](PhysicsPapers/Complete-Omega-Theory-Unified-Framework.md) | Full technical treatment (~50 pages) |
+| [**KeyInsight-Irrationals**](PhysicsPapers/KeyInsight-Irrationals-Action-Thresholds.md) | How π, e, √2 create quantum uncertainty |
 
-### Practical Applications
-[`PhysicsPapers/Appendix-B-Quantum-Computing-Temperature-Limits.md`](PhysicsPapers/Appendix-B-Quantum-Computing-Temperature-Limits.md) — $1.4B industry impact potential
+### Essential Appendices
+| Appendix | Topic |
+|----------|-------|
+| [**D - Topological Surgery**](PhysicsPapers/Appendix-D-Topological-Surgery-And-Information-Healing.md) | Mathematical backbone: healing flow, Lyapunov stability |
+| [**F - Information Conservation**](PhysicsPapers/Appendix-F-Information-Flow-Conservation.md) | **Fourth Noether Law**: ∂_μJ^μ_I = 0 |
+| [**S - Stable Wormholes**](PhysicsPapers/Appendix-S-Stable-Wormholes-And-Chronology-Protection.md) | Why time travel is impossible |
+| [**I - Experimental Tests**](PhysicsPapers/Appendix-I-Experimental-Tests.md) | 21 testable experiments |
+| [**P - Einstein-Cartan Torsion**](PhysicsPapers/Appendix-P-Einstein-Cartan-Torsion-Integration.md) | Poplawski synthesis, Big Bounce |
 
-### NEW: Stable Wormholes
-[`PhysicsPapers/Appendix-S-Stable-Wormholes-And-Chronology-Protection.md`](PhysicsPapers/Appendix-S-Stable-Wormholes-And-Chronology-Protection.md) — Three-tier classification, time paradox prevention
+**Full paper index**: [`PAPERS.md`](PAPERS.md)
+
+---
+
+## Formal Verification in Lean 4
+
+Unlike typical physics papers, Omega-Theory includes **10,000+ lines of machine-verified proofs**.
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│  PROVEN THEOREMS (No `sorry`)                                │
+├──────────────────────────────────────────────────────────────┤
+│  E_P = m_P × c²              Planck energy-mass relation     │
+│  Γᵢⱼₖ = Γᵢₖⱼ                 Christoffel symmetry            │
+│  ∇_μ g_νρ = 0                Metric compatibility            │
+│  ∂_μ J^μ_I = 0               Fourth Noether Law (NOVEL)      │
+│  √2 precision in O(log log)  Newton-Raphson bounds           │
+└──────────────────────────────────────────────────────────────┘
+```
+
+**9 modules, 36 files** covering: discrete geometry, conservation laws, irrationality bounds, torsion, emergence
+
+[**→ Lean Formalization**](PhysicsPapers/LeanFormalization/)
+
+---
 
 ## Testable Predictions
 
-| Prediction | Status | How to Test |
-|------------|--------|-------------|
-| F(T) = F₀/(1 + αT) linear scaling | ✓ Diraq 2024 data matches | Quantum computers |
-| Power-law T^(-2.5) not Arrhenius | ✓ Confirmed | Temperature sweeps |
-| Entanglement fidelity F_ent(T) | Testable | Ion traps, superconducting qubits |
-| No time travel possible | Consistent | Any CTC observation would falsify |
+| Prediction | Status | Falsification |
+|------------|--------|---------------|
+| F(T) = F₀/(1 + αT) linear scaling | **✓ Diraq 2024** | Non-linear F(T) observed |
+| Power-law T^(-2.5) not Arrhenius | **✓ Confirmed** | Exponential temp dependence |
+| No 4th generation fermions | Consistent | Any 4th gen discovery |
+| CPT exactly conserved | Consistent (10⁻¹⁸) | Any CPT violation |
+| d_eff = 2 at Planck | CDT confirms | d_eff ≠ 2 at high E |
+| Time travel impossible | Consistent | Any CTC observation |
 
 **Philosophy**: Good science should be **FUN**, **FALSIFIABLE**, and **USEFUL**.
 
-## Recent Additions
+---
 
-**Physics (Ω-Theory)**:
-- **Appendix S** (NEW): Stable wormholes, three-tier classification, chronology protection
-- **Appendix E** (REVISED): Entanglement as topologically unstable wormholes with Lyapunov collapse
-- **Main Paper**: Added "How This Started" genesis section
+## Fundamental Equations
 
-**Mathematics (Conv(ℚ))**:
-- **Paper 14** (NEW): Arbitrary Precision Operator (APO) - SOLVES IVT and completeness theorems!
-- **Paper 15** (NEW): Computational Debt - Gödel's theorems as resource economics
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│  FUNDAMENTAL EQUATIONS                                                  │
+├─────────────────────────────────────────────────────────────────────────┤
+│  Λ = ℓ_P · Z⁴               Discrete spacetime lattice                  │
+│  d_eff(E) = 4 - 2E/E_P      Dimensional flow (CDT confirmed)            │
+│  ∂_μ J^μ_I = 0              Information conservation (Fourth Law)       │
+│  dt = dS/L                  Time from action accumulation               │
+│  ρ_S = NkT/V                Action density (three variables!)           │
+│  F(T) = F₀/(1 + αT)         Gate fidelity (Diraq 2024 confirmed)        │
+│  E_g = E_P/2                Graviton energy                             │
+└─────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Repository Structure
+
+### Primary Research: Omega-Theory
+
+```
+PhysicsPapers/                  # 17 papers on discrete spacetime physics
+├── Main-Paper-Postulates.md    # START HERE - central thesis
+├── unified-theory-diagram.md   # Visual summary (11 levels)
+├── Complete-Omega-Theory*.md   # Full technical treatment
+├── KeyInsight-Irrationals*.md  # Core mechanism: how irrationals create uncertainty
+├── Appendix-A through S        # Technical appendices (see PAPERS.md)
+└── LeanFormalization/          # 10K+ lines of Lean 4 verified proofs
+    ├── Basic/                  # Constants, lattice, operators
+    ├── Axioms/                 # Physical postulates
+    ├── Geometry/               # Discrete differential geometry
+    ├── Conservation/           # Noether theorems + Fourth Law
+    └── Irrationality/          # Computational bounds
+```
+
+### Mathematical Foundations
+
+```
+ConvQMath/                      # 16 papers on constructive mathematics
+├── 00-09                       # Core essays: foundations through grand unification
+├── 14_Arbitrary_Precision*     # APO - solves IVT constructively (NEW)
+└── 15_Computational_Debt*      # Gödel as resource economics (NEW)
+```
+
+The Conv(Q) framework provides the philosophical foundation: irrationals as algorithmic processes, not completed infinities.
+
+---
+
+## Other Research
+
+### Quantum Security
+[`QuantumSecurity/`](QuantumSecurity/) - 3 papers on post-quantum cryptography
+- Quantum-resistant identity systems
+- "Harvest Now, Decrypt Later" defense strategies
+- NIST PQC algorithm integration
+
+### Hardware Security
+[`YubikeysEsimVsGps/`](YubikeysEsimVsGps/) - 2 papers on authentication architecture
+- YubiKey + eSIM infrastructure design
+- GPS-based anti-spoofing authentication
+
+### Systems Documentation
+[`UnixOs/`](UnixOs/) - Educational materials
+- Shell internals and implementation
+- x86 bootloader tutorial
+
+---
 
 ## Citation
 
@@ -94,9 +251,10 @@ Start with [`PhysicsPapers/Main-Paper-Postulates.md`](PhysicsPapers/Main-Paper-P
 Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 We especially need:
-- Experimental validation (quantum computing temperature data)
-- Critical analysis (find the errors!)
-- Extensions (cosmology, particle physics)
+- **Experimental validation** (quantum computing temperature data)
+- **Critical analysis** (find the errors!)
+- **Extensions** (cosmology, particle physics)
+- **Lean proofs** (formalize more results)
 
 ## License
 
@@ -106,4 +264,4 @@ We especially need:
 
 > *"The universe whispers its secrets through every quantum error, every thermal decoherence event. The message: I am discrete, I am computational, I am under deadlines."*
 
-> *"One question. One answer. Everything follows."*
+**One question. One answer. Everything follows.**

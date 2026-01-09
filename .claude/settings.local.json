@@ -40,7 +40,8 @@
       "Bash(cmd.exe /c \"where lake\")",
       "Bash(powershell.exe -NoProfile -Command:*)",
       "Bash(cmd /c \"lake build DiscreteSpacetime.Dynamics.Healing 2>&1\")",
-      "Bash(cmd.exe:*)"
+      "Bash(cmd.exe:*)",
+      "Bash(del /f \"C:\\\\Users\\\\Norbert\\\\IdeaProjects\\\\chaos-shield\\\\nul\")"
     ]
   }
 }

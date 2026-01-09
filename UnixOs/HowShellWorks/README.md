@@ -5,7 +5,6 @@ A comprehensive technical documentation explaining UNIX shell architecture and i
 ## Contents
 
 - **[how-shell-works.md](./how-shell-works.md)** - Main documentation in English
-- **[Wyjaśnienie](./Wyjaśnienie)** - Original article in Polish
 
 ## Overview
 

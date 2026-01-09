@@ -44,26 +44,37 @@
 11. [`Appendix-H-Renormalization-Correspondence.md`](PhysicsPapers/Appendix-H-Renormalization-Correspondence.md) - **Renormalization**: UV cutoff as discrete spacetime signature
 12. [`Appendix-I-Experimental-Tests.md`](PhysicsPapers/Appendix-I-Experimental-Tests.md) - **Experimental Tests**: 30+ validation protocols
 13. [`Appendix-LorentzDopplerEquivalence.md`](PhysicsPapers/Appendix-LorentzDopplerEquivalence.md) - **Lorentz-Doppler**: Time dilation as wave mechanics
-14. [`Appendix-S-Stable-Wormholes-And-Chronology-Protection.md`](PhysicsPapers/Appendix-S-Stable-Wormholes-And-Chronology-Protection.md) - **NEW: Stable Wormholes**: Three-tier classification, maintenance requirements, time paradox prevention
+14. [`Appendix-P-Einstein-Cartan-Torsion-Integration.md`](PhysicsPapers/Appendix-P-Einstein-Cartan-Torsion-Integration.md) - **Einstein-Cartan Torsion**: Poplawski synthesis, spin generates torsion, Big Bounce
+15. [`Appendix-S-Stable-Wormholes-And-Chronology-Protection.md`](PhysicsPapers/Appendix-S-Stable-Wormholes-And-Chronology-Protection.md) - **Stable Wormholes**: Three-tier classification, chronology protection
 
 ### Supporting Documents
-15. [`unified-theory-diagram.md`](PhysicsPapers/unified-theory-diagram.md) - **Visual Architecture**: Complete 11-level framework diagram
-16. [`Complete-Omega-Theory-Unified-Framework.md`](PhysicsPapers/Complete-Omega-Theory-Unified-Framework.md) - **Full Technical Treatment**: 50+ pages comprehensive development
-17. [`README-Document-Structure.md`](PhysicsPapers/README-Document-Structure.md) - **Reading Guide**: Document hierarchy and reading order
+16. [`unified-theory-diagram.md`](PhysicsPapers/unified-theory-diagram.md) - **Visual Architecture**: Complete 11-level framework diagram
+17. [`Complete-Omega-Theory-Unified-Framework.md`](PhysicsPapers/Complete-Omega-Theory-Unified-Framework.md) - **Full Technical Treatment**: 50+ pages comprehensive development
+18. [`README-Document-Structure.md`](PhysicsPapers/README-Document-Structure.md) - **Reading Guide**: Document hierarchy and reading order
 
-### Legacy Document
-~~`unified-physics-paper.md`~~ - **DELETED** (superseded by postulational reorganization)
+### Lean 4 Formalization
+[`LeanFormalization/`](PhysicsPapers/LeanFormalization/) - **Machine-verified proofs** in Lean 4 with Mathlib v4.13.0
+- 36 files, 10,000+ lines of verified proofs
+- Planck relations, Christoffel symmetry, metric compatibility
+- Fourth Noether Law (information conservation)
+- Newton-Raphson precision bounds
+- See [`LeanFormalization/README.md`](PhysicsPapers/LeanFormalization/README.md) for details
 
 ## Quantum Security
 
 - [`quantum-chaos-protocols.md`](QuantumSecurity/quantum-chaos-protocols.md) - Economic defense through obfuscation
-- [`quantum-identity-paper.md`](QuantumSecurity/quantum-identity-paper.md) - Identity in quantum systems
-- [`quantum-patient-observer.md`](QuantumSecurity/quantum-patient-observer.md) - Observer paradox analysis
+- [`quantum-identity-paper.md`](QuantumSecurity/quantum-identity-paper.md) - Quantum-resistant biometric identity system
+- [`quantum-patient-observer.md`](QuantumSecurity/quantum-patient-observer.md) - HNDL defense strategies
+
+## Hardware Security
+
+- [`YubiKey-eSIM-Government-Infrastructure-Security-Paper.md`](YubikeysEsimVsGps/YubiKey-eSIM-Government-Infrastructure-Security-Paper.md) - Premium hardware auth with cellular
+- [`GPS-Authentication-Verification-Architecture.md`](YubikeysEsimVsGps/GPS-Authentication-Verification-Architecture.md) - GPS anti-spoofing architecture
 
 ## Systems Documentation
 
-- [`HowShellWorks/`](UnixOs/HowShellWorks/) - Shell internals
-- [`HowTheOsWakeUp/`](UnixOs/HowTheOsWakeUp/) - Boot process
+- [`HowShellWorks/`](UnixOs/HowShellWorks/) - Shell internals and implementation
+- [`HowTheOsWakeUp/`](UnixOs/HowTheOsWakeUp/) - x86 bootloader tutorial
 
 ---
 
@@ -108,11 +119,19 @@
                     ┌─────────────────────────────────────┐
                     │  Complete-Omega-Theory-Unified-     │
                     │  Framework.md                       │
+                    └─────────────────┬───────────────────┘
+                                      │
+                                      ▼
+                    ┌─────────────────────────────────────┐
+                    │  LeanFormalization/                 │
+                    │  (Machine-verified proofs)          │
+                    │  36 files, 10K+ lines               │
                     └─────────────────────────────────────┘
 ```
 
 ---
 
-*Total Physics Papers: 17 documents*
+*Total Physics Papers: 18 documents + Lean formalization*
 *Total Mathematics Papers: 16 documents*
 *Total Security Papers: 3 documents*
+*Total Hardware Security: 2 documents*
