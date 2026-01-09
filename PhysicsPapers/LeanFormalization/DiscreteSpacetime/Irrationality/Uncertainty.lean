@@ -17,32 +17,6 @@
   spacetime and the irrationality of physical constants together create
   irreducible computational uncertainty.
 
-  ═══════════════════════════════════════════════════════════════════════════════
-  TODO: THEOREMS TO PROVE (Next Week)
-  ═══════════════════════════════════════════════════════════════════════════════
-
-  ┌─────────────────────────────────────┬────────────┬─────────────────────────┐
-  │ THEOREM                             │ DIFFICULTY │ APPROACH                │
-  ├─────────────────────────────────────┼────────────┼─────────────────────────┤
-  │ extended_to_heisenberg_limit        │ MEDIUM     │ Tendsto, add_comm,      │
-  │                                     │            │ tendsto_const_nhds,     │
-  │                                     │            │ Tendsto.add             │
-  ├─────────────────────────────────────┼────────────┼─────────────────────────┤
-  │ effective_N_max_at_Planck           │ TRIVIAL    │ simp, Nat.floor_one,    │
-  │                                     │            │ max_self or max_eq_left │
-  ├─────────────────────────────────────┼────────────┼─────────────────────────┤
-  │ ComputationalUncertainty_T_increasing│ MEDIUM    │ Nat.floor_mono,         │
-  │                                     │            │ div_le_div,             │
-  │                                     │            │ monotonicity chain      │
-  └─────────────────────────────────────┴────────────┴─────────────────────────┘
-
-  ALREADY PROVEN (leave as is):
-  ✓ ComputationalUncertainty_pos
-  ✓ ComputationalUncertainty_decreasing
-  ✓ ComputationalUncertainty_ge_planck_div_N
-  ✓ total_computational_uncertainty_nonneg
-  ✓ effective_computational_uncertainty_ge_planck
-
   LEAVE AS SORRY WITH REFERENCES (depend on other work or too complex):
   ○ ComputationalUncertainty_T_low_temp_limit  -- ε-δ limit, complex
   ○ pi_uncertainty_gt_e_uncertainty            -- depends on PrecisionHierarchy
@@ -210,42 +184,21 @@ axiom ExtendedUncertaintyPrinciple
     (N_max : ℕ) (hN : N_max > 0) :
     Delta_x * Delta_p ≥ extended_uncertainty_bound N_max hN Delta_p
 
-/-!
-  ═══════════════════════════════════════════════════════════════════════════════
-  TODO [PROVE]: extended_to_heisenberg_limit
-  ═══════════════════════════════════════════════════════════════════════════════
-
-  DIFFICULTY: MEDIUM
-  ESTIMATED TIME: 30-60 min
-
-  PROOF STRATEGY:
-  ---------------
-  1. Unfold extended_uncertainty_bound and heisenberg_bound
-  2. Show: ℏ/2 + ℓ_P/(N+1) * 1 → ℏ/2 as N → ∞
-  3. Use: Tendsto.add tendsto_const_nhds (for ℏ/2 part)
-  4. Use: tendsto_const_div_atTop_nhds_zero (for ℓ_P/(N+1) part)
-
-  KEY MATHLIB LEMMAS:
-  -------------------
-  - Filter.Tendsto.add : Tendsto f l (nhds a) → Tendsto g l (nhds b) →
-                         Tendsto (f + g) l (nhds (a + b))
-  - tendsto_const_nhds : Tendsto (fun _ => c) l (nhds c)
-  - tendsto_natCast_atTop_atTop : Tendsto (Nat.cast : ℕ → ℝ) atTop atTop
-  - tendsto_const_div_atTop_nhds_zero or similar for c/N → 0
-
-  LITERATURE:
-  -----------
-  Rudin Ch.3, Apostol 4.9 - standard limit laws
-  ═══════════════════════════════════════════════════════════════════════════════
--/
-
 /-- The extended principle reduces to Heisenberg as N_max -> infinity -/
 theorem extended_to_heisenberg_limit :
     Tendsto (fun N : ℕ => extended_uncertainty_bound (N + 1) (Nat.succ_pos N) 1)
             atTop (nhds heisenberg_bound) := by
-  sorry
-  -- TODO [PROVE NEXT WEEK]: See proof strategy above
-  -- Key: show ℓ_P/(N+1) → 0, then use Tendsto.add
+  unfold extended_uncertainty_bound ComputationalUncertainty
+  simp only [mul_one]
+  -- Goal: Tendsto (fun N => heisenberg_bound + ℓ_P / ↑(N + 1)) atTop (nhds heisenberg_bound)
+  have h_cast : Tendsto (fun N : ℕ => (↑(N + 1) : ℝ)) atTop atTop := by
+    refine Tendsto.comp ?_ (tendsto_add_atTop_nat 1)
+    exact tendsto_natCast_atTop_atTop
+  have h_lim : Tendsto (fun N : ℕ => ℓ_P / (↑(N + 1) : ℝ)) atTop (nhds 0) := by
+    exact Filter.Tendsto.div_atTop tendsto_const_nhds h_cast
+  have h_eq : heisenberg_bound = heisenberg_bound + 0 := by ring
+  conv_rhs => rw [h_eq]
+  exact Tendsto.add tendsto_const_nhds h_lim
 
 /-! ## Temperature Dependence -/
 
@@ -260,76 +213,36 @@ noncomputable def ComputationalUncertainty_T (T : ℝ) (hT : T > 0) : ℝ :=
     unfold effective_N_max
     exact Nat.one_pos.trans_le (le_max_left _ _))
 
-/-!
-  ═══════════════════════════════════════════════════════════════════════════════
-  TODO [PROVE]: effective_N_max_at_Planck
-  ═══════════════════════════════════════════════════════════════════════════════
-
-  DIFFICULTY: TRIVIAL
-  ESTIMATED TIME: 10-15 min
-
-  PROOF STRATEGY:
-  ---------------
-  1. Unfold effective_N_max
-  2. Show: PlanckTemperature / PlanckTemperature = 1
-  3. Show: Nat.floor 1 = 1 (use Nat.floor_one)
-  4. Show: max 1 1 = 1 (use max_self or max_eq_left)
-
-  KEY MATHLIB LEMMAS:
-  -------------------
-  - div_self : a ≠ 0 → a / a = 1
-  - Nat.floor_one : ⌊(1 : ℝ)⌋ = 1
-  - max_self : max a a = a
-  - Or: max_eq_left : a ≥ b → max a b = a
-
-  NOTE: May need to handle PlanckTemperature positivity for div_self
-  ═══════════════════════════════════════════════════════════════════════════════
--/
-
 /-- At Planck temperature, N_max = 1 (minimal computation) -/
 theorem effective_N_max_at_Planck :
     effective_N_max PlanckTemperature (by
       exact div_pos PlanckEnergy_pos BoltzmannConstant_pos) = 1 := by
-  sorry
-  -- TODO [PROVE NEXT WEEK]: See proof strategy above
-  -- Key: div_self, Nat.floor_one, max_self
+  unfold effective_N_max
+  have hT_pos : PlanckTemperature > 0 := div_pos PlanckEnergy_pos BoltzmannConstant_pos
+  have hT_ne : PlanckTemperature ≠ 0 := ne_of_gt hT_pos
+  rw [div_self hT_ne]
+  simp only [Nat.floor_one, max_self]
 
-/-!
-  ═══════════════════════════════════════════════════════════════════════════════
-  TODO [PROVE]: ComputationalUncertainty_T_increasing
-  ═══════════════════════════════════════════════════════════════════════════════
-
-  DIFFICULTY: MEDIUM
-  ESTIMATED TIME: 45-90 min
-
-  PROOF STRATEGY:
-  ---------------
-  1. Unfold ComputationalUncertainty_T, ComputationalUncertainty, effective_N_max
-  2. Show chain of inequalities:
-     T1 < T2
-     → T_P/T1 > T_P/T2           (div_lt_div_of_pos_left)
-     → floor(T_P/T1) ≥ floor(T_P/T2)  (Nat.floor_mono + le_of_lt)
-     → max(1, floor(T_P/T1)) ≥ max(1, floor(T_P/T2))  (max_le_max)
-     → ℓ_P/N1 ≤ ℓ_P/N2          (div_le_div_of_nonneg_left)
-
-  KEY MATHLIB LEMMAS:
-  -------------------
-  - div_lt_div_of_pos_left : 0 < a → 0 < c → c < b → a / b < a / c
-  - Nat.floor_mono : x ≤ y → ⌊x⌋ ≤ ⌊y⌋
-  - max_le_max : a ≤ b → c ≤ d → max a c ≤ max b d
-  - div_le_div_of_nonneg_left : 0 ≤ a → 0 < c → c ≤ b → a / b ≤ a / c
-
-  SUBTLETY: Need to be careful about floor giving ℕ vs ℝ
-  ═══════════════════════════════════════════════════════════════════════════════
--/
 
 /-- Computational uncertainty increases with temperature -/
 theorem ComputationalUncertainty_T_increasing (T1 T2 : ℝ)
     (hT1 : T1 > 0) (hT2 : T2 > 0) (hT : T1 < T2) :
     ComputationalUncertainty_T T1 hT1 ≤ ComputationalUncertainty_T T2 hT2 := by
-  sorry
-  -- TODO [PROVE NEXT WEEK]: See proof strategy above
-  -- Key: monotonicity chain through floor and max
+  unfold ComputationalUncertainty_T ComputationalUncertainty
+  -- Goal: ℓ_P / effective_N_max T1 ≤ ℓ_P / effective_N_max T2
+  apply div_le_div_of_nonneg_left (le_of_lt PlanckLength_pos)
+  -- Need: effective_N_max T2 > 0 (as Real)
+  · simp only [Nat.cast_pos]
+    unfold effective_N_max
+    exact Nat.one_pos.trans_le (le_max_left _ _)
+  -- Need: effective_N_max T2 ≤ effective_N_max T1 (as Real)
+  · simp only [Nat.cast_le]
+    unfold effective_N_max
+    apply max_le_max (le_refl 1)
+    apply Nat.floor_mono
+    -- Need: PlanckTemperature / T2 ≤ PlanckTemperature / T1
+    have hTP : PlanckTemperature > 0 := div_pos PlanckEnergy_pos BoltzmannConstant_pos
+    exact div_le_div_of_nonneg_left (le_of_lt hTP) hT1 (le_of_lt hT)
 
 /-!
   ═══════════════════════════════════════════════════════════════════════════════
