@@ -347,6 +347,8 @@ And it is not tragedy—it is the structure of reality, making room for irreduci
 
 Gödel, K. (1931). "Über formal unentscheidbare Sätze der Principia Mathematica und verwandter Systeme I." *Monatshefte für Mathematik und Physik*, 38, 173-198.
 
+Tarski, A. (1936). "Der Wahrheitsbegriff in den formalisierten Sprachen." *Studia Philosophica*, 1, 261-405. [The concept of truth in formalized languages - establishes that truth predicates cannot be defined within a system for that same system, the semantic counterpart to Gödel's syntactic incompleteness.]
+
 Cantor, G. (1874-1897). Works on transfinite numbers.
 
 Kronecker, L. (1887). "Über den Zahlbegriff." *Journal für die reine und angewandte Mathematik*, 101, 337-355.
