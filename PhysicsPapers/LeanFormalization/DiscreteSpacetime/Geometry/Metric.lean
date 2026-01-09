@@ -280,10 +280,15 @@ theorem minkowski_interval (dx : Fin 4 → ℝ) :
     squaredInterval minkowskiMetric dx =
     -(dx 0)^2 + (dx 1)^2 + (dx 2)^2 + (dx 3)^2 := by
   unfold squaredInterval metricInnerProduct minkowskiMetric
-  -- Diagonal matrix: nonzero only when μ = ν
-  simp only [Matrix.diagonal]
-  -- The proof requires expanding the finite sums over Fin 4
-  sorry
+  simp only [Fin.sum_univ_four, Matrix.diagonal_apply, Fin.isValue]
+  simp only [Fin.reduceEq, ↓reduceIte, mul_zero, add_zero, zero_mul, zero_add]
+  -- Przypadki dla każdego indeksu - używamy norm_num do redukcji wektora
+  conv_lhs =>
+    rw [show (![-1, 1, 1, 1] : Fin 4 → ℝ) 0 = -1 from rfl]
+    rw [show (![-1, 1, 1, 1] : Fin 4 → ℝ) 1 = 1 from rfl]
+    rw [show (![-1, 1, 1, 1] : Fin 4 → ℝ) 2 = 1 from rfl]
+    rw [show (![-1, 1, 1, 1] : Fin 4 → ℝ) 3 = 1 from rfl]
+  ring
 
 /-- Classification of intervals -/
 inductive IntervalType
