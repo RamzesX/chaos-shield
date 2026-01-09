@@ -225,8 +225,52 @@ theorem christoffel_lower_formula (g : DiscreteMetric) (hNd : DiscreteMetric.IsE
     christoffelLower g ρ μ ν p =
     (1/2 : ℝ) * (metricDerivative g μ ν ρ p + metricDerivative g ν μ ρ p - metricDerivative g ρ μ ν p) := by
   unfold christoffelLower christoffelSymbol
-  -- Use g * g⁻¹ = 1 to simplify
-  sorry -- Proof requires careful index manipulation
+  -- Goal: Σ_σ g_{ρσ} * ((1/2) * Σ_τ g^{στ} * D_τ) = (1/2) * D_ρ
+
+  -- Step 1: Key lemma - metric contraction gives Kronecker delta
+  have h_contract : ∀ τ : Fin 4,
+      Finset.univ.sum (fun σ => (g p) ρ σ * (inverseMetric (g p)) σ τ) =
+      if ρ = τ then 1 else 0 := by
+    intro τ
+    have hnd_p := hNd p
+    have h := metric_mul_inverse (g p) hnd_p
+    have := congrFun (congrFun h ρ) τ
+    simp only [Matrix.mul_apply, Matrix.one_apply] at this
+    exact this
+
+  -- Step 2: Distribute g_{ρσ} into the inner sum and exchange sum order
+  simp_rw [Finset.mul_sum]
+  rw [Finset.sum_comm]
+
+  -- Step 3: Define the derivative term for clarity
+  set D := fun τ : Fin 4 =>
+    metricDerivative g μ ν τ p + metricDerivative g ν μ τ p - metricDerivative g τ μ ν p with hD
+
+  -- Step 4: Transform the double sum step by step
+  -- Current form: Σ_τ Σ_σ g_{ρσ} * (1/2 * (g^{στ} * D_τ))
+  -- Target form: 1/2 * D_ρ
+
+  -- First, show each inner sum equals (1/2 * D_τ) * δ_{ρτ}
+  have h_inner : ∀ τ : Fin 4,
+      Finset.univ.sum (fun σ => (g p) ρ σ * (1 / 2 * ((inverseMetric (g p)) σ τ * D τ))) =
+      if ρ = τ then 1 / 2 * D τ else 0 := by
+    intro τ
+    calc Finset.univ.sum (fun σ => (g p) ρ σ * (1 / 2 * ((inverseMetric (g p)) σ τ * D τ)))
+        = Finset.univ.sum (fun σ => (1 / 2 * D τ) * ((g p) ρ σ * (inverseMetric (g p)) σ τ)) := by
+          apply Finset.sum_congr rfl; intro σ _; ring
+      _ = (1 / 2 * D τ) * Finset.univ.sum (fun σ => (g p) ρ σ * (inverseMetric (g p)) σ τ) := by
+          rw [← Finset.mul_sum]
+      _ = (1 / 2 * D τ) * (if ρ = τ then 1 else 0) := by rw [h_contract]
+      _ = if ρ = τ then 1 / 2 * D τ else 0 := by split_ifs <;> ring
+
+  -- Step 5: Apply h_inner to rewrite the outer sum
+  calc Finset.univ.sum (fun τ => Finset.univ.sum (fun σ =>
+          (g p) ρ σ * (1 / 2 * ((inverseMetric (g p)) σ τ * D τ))))
+      = Finset.univ.sum (fun τ => if ρ = τ then 1 / 2 * D τ else 0) := by
+        apply Finset.sum_congr rfl; intro τ _; exact h_inner τ
+    _ = if ρ ∈ Finset.univ then 1 / 2 * D ρ else 0 := Finset.sum_ite_eq Finset.univ ρ _
+    _ = 1 / 2 * D ρ := by simp only [Finset.mem_univ, if_true]
+    _ = 1 / 2 * (metricDerivative g μ ν ρ p + metricDerivative g ν μ ρ p - metricDerivative g ρ μ ν p) := by rfl
 
 /-- Trace of Christoffel symbol: Gamma^μ_{μν} -/
 noncomputable def christoffelTrace (g : DiscreteMetric) (ν : Fin 4) (p : LatticePoint) : ℝ :=
