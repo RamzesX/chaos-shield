@@ -173,46 +173,13 @@ noncomputable def covariantDerivTensor20 (g : DiscreteMetric) (T : LatticeTensor
     ∇_ρ T_{μν} = ∂_ρ T_{μν} - Gamma^σ_{ρμ} T_{σν} - Gamma^σ_{ρν} T_{μσ} -/
 noncomputable def covariantDerivTensor02 (g : DiscreteMetric) (T : LatticeTensorField)
     (μ ν ρ : Fin 4) (p : LatticePoint) : ℝ :=
-  symmetricDiff (fun q => T q μ ν) ρ p -
-  Finset.univ.sum fun σ => christoffelSymbol g σ ρ μ p * T p σ ν -
-  Finset.univ.sum fun σ => christoffelSymbol g σ ρ ν p * T p μ σ
+  let sum1 := Finset.univ.sum (fun σ => christoffelSymbol g σ ρ μ p * T p σ ν)
+  let sum2 := Finset.univ.sum (fun σ => christoffelSymbol g σ ρ ν p * T p μ σ)
+  symmetricDiff (fun q => T q μ ν) ρ p - sum1 - sum2
 
 /-! ## Metric Compatibility -/
 
-/-- The Levi-Civita connection is metric compatible: ∇_ρ g_{μν} = 0.
-    This is a fundamental property that follows from the definition of
-    Christoffel symbols in terms of metric derivatives.
-
-    PROOF SKETCH: Direct computation shows that the connection terms
-    exactly cancel the partial derivatives. -/
-theorem metric_compatibility (g : DiscreteMetric) (hSym : DiscreteMetric.IsEverywhereSymmetric g)
-    (hNd : DiscreteMetric.IsEverywhereNondegenerate g)
-    (μ ν ρ : Fin 4) (p : LatticePoint) :
-    covariantDerivTensor02 g (fun q α β => (g q) α β) μ ν ρ p = 0 := by
-  unfold covariantDerivTensor02
-  -- The partial derivative term is ∂_ρ g_{μν}
-  -- The Christoffel terms are -Γ^σ_{ρμ} g_{σν} - Γ^σ_{ρν} g_{μσ}
-  -- Using the definition of Christoffel symbols, these cancel
-  sorry -- Full proof requires substantial algebraic manipulation
-
-/-! ## Parallel Transport -/
-
-/-- A vector field V is parallel transported along direction μ if ∇_μ V = 0 -/
-def IsParallelTransported (g : DiscreteMetric) (V : LatticeVectorField) (μ : Fin 4)
-    (p : LatticePoint) : Prop :=
-  ∀ ν, covariantDerivVector g V ν μ p = 0
-
-/-- A curve is a geodesic if its tangent vector is parallel transported along itself.
-    For discrete lattice, we consider geodesic as piecewise linear path. -/
-structure DiscreteGeodesic (g : DiscreteMetric) where
-  /-- Path as sequence of lattice points -/
-  path : ℕ → LatticePoint
-  /-- Tangent vectors at each point (discrete approximation) -/
-  tangent : ℕ → Fin 4 → ℝ
-  /-- Geodesic equation: tangent is parallel transported -/
-  geodesic_eq : ∀ n μ ν, covariantDerivVector g (fun _ => tangent n) μ ν (path n) = 0
-
-/-! ## Christoffel Symbol Properties -/
+/-! ### Christoffel Lower Index -/
 
 /-- Contraction of Christoffel symbol with metric -/
 noncomputable def christoffelLower (g : DiscreteMetric) (ρ μ ν : Fin 4) (p : LatticePoint) : ℝ :=
@@ -247,10 +214,6 @@ theorem christoffel_lower_formula (g : DiscreteMetric) (hNd : DiscreteMetric.IsE
     metricDerivative g μ ν τ p + metricDerivative g ν μ τ p - metricDerivative g τ μ ν p with hD
 
   -- Step 4: Transform the double sum step by step
-  -- Current form: Σ_τ Σ_σ g_{ρσ} * (1/2 * (g^{στ} * D_τ))
-  -- Target form: 1/2 * D_ρ
-
-  -- First, show each inner sum equals (1/2 * D_τ) * δ_{ρτ}
   have h_inner : ∀ τ : Fin 4,
       Finset.univ.sum (fun σ => (g p) ρ σ * (1 / 2 * ((inverseMetric (g p)) σ τ * D τ))) =
       if ρ = τ then 1 / 2 * D τ else 0 := by
@@ -271,6 +234,143 @@ theorem christoffel_lower_formula (g : DiscreteMetric) (hNd : DiscreteMetric.IsE
     _ = if ρ ∈ Finset.univ then 1 / 2 * D ρ else 0 := Finset.sum_ite_eq Finset.univ ρ _
     _ = 1 / 2 * D ρ := by simp only [Finset.mem_univ, if_true]
     _ = 1 / 2 * (metricDerivative g μ ν ρ p + metricDerivative g ν μ ρ p - metricDerivative g ρ μ ν p) := by rfl
+
+/-! ### Helper Lemmas -/
+
+/-- Helper: The sum Σ_σ Γ^σ_{ρμ} g_{σν} equals christoffelLower g ν ρ μ.
+    This follows from metric symmetry: g_{σν} = g_{νσ}. -/
+theorem christoffel_metric_contraction (g : DiscreteMetric) (hSym : DiscreteMetric.IsEverywhereSymmetric g)
+    (ν ρ μ : Fin 4) (p : LatticePoint) :
+    Finset.univ.sum (fun σ => christoffelSymbol g σ ρ μ p * (g p) σ ν) =
+    christoffelLower g ν ρ μ p := by
+  unfold christoffelLower
+  apply Finset.sum_congr rfl
+  intro σ _
+  -- Need: Γ^σ_{ρμ} * g_{σν} = g_{νσ} * Γ^σ_{ρμ}
+  -- By commutativity of multiplication and metric symmetry
+  have h_sym : (g p) σ ν = (g p) ν σ := by
+    have := hSym p
+    unfold IsSymmetric at this
+    have := congrFun (congrFun this ν) σ
+    simp only [Matrix.transpose_apply] at this
+    exact this
+  rw [h_sym]
+  ring
+
+/-- Helper: Symmetry of metric derivative in the last two indices.
+    ∂_ρ g_{μν} = ∂_ρ g_{νμ} when metric is symmetric. -/
+theorem metricDerivative_symm (g : DiscreteMetric) (hSym : DiscreteMetric.IsEverywhereSymmetric g)
+    (ρ μ ν : Fin 4) (p : LatticePoint) :
+    metricDerivative g ρ μ ν p = metricDerivative g ρ ν μ p := by
+  unfold metricDerivative symmetricDiff
+  have hpos := hSym (p.shiftPos ρ)
+  have hneg := hSym (p.shiftNeg ρ)
+  unfold IsSymmetric at hpos hneg
+  have hpos_elem : (g (p.shiftPos ρ)) μ ν = (g (p.shiftPos ρ)) ν μ := by
+    have := congrFun (congrFun hpos ν) μ
+    simp only [Matrix.transpose_apply] at this
+    exact this
+  have hneg_elem : (g (p.shiftNeg ρ)) μ ν = (g (p.shiftNeg ρ)) ν μ := by
+    have := congrFun (congrFun hneg ν) μ
+    simp only [Matrix.transpose_apply] at this
+    exact this
+  simp only [hpos_elem, hneg_elem]
+
+/-- The Levi-Civita connection is metric compatible: ∇_ρ g_{μν} = 0.
+    This is a fundamental property that follows from the definition of
+    Christoffel symbols in terms of metric derivatives.
+
+    PROOF: The two Christoffel terms contracted with the metric give
+    christoffelLower, which by christoffel_lower_formula expand to
+    derivative terms that exactly cancel the partial derivative. -/
+theorem metric_compatibility (g : DiscreteMetric) (hSym : DiscreteMetric.IsEverywhereSymmetric g)
+    (hNd : DiscreteMetric.IsEverywhereNondegenerate g)
+    (μ ν ρ : Fin 4) (p : LatticePoint) :
+    covariantDerivTensor02 g (fun q α β => (g q) α β) μ ν ρ p = 0 := by
+  unfold covariantDerivTensor02
+  -- Goal: ∂_ρ g_{μν} - Σ_σ Γ^σ_{ρμ} g_{σν} - Σ_σ Γ^σ_{ρν} g_{μσ} = 0
+
+  -- Step 1: Rewrite Christoffel sums as christoffelLower
+  have h1 : Finset.univ.sum (fun σ => christoffelSymbol g σ ρ μ p * (g p) σ ν) =
+            christoffelLower g ν ρ μ p := christoffel_metric_contraction g hSym ν ρ μ p
+
+  -- For second sum: Σ_σ Γ^σ_{ρν} g_{μσ} = Σ_σ Γ^σ_{ρν} g_{σμ} (by symmetry) = christoffelLower g μ ρ ν
+  have h2_pre : ∀ σ, (g p) μ σ = (g p) σ μ := by
+    intro σ
+    have := hSym p
+    unfold IsSymmetric at this
+    have := congrFun (congrFun this μ) σ
+    simp only [Matrix.transpose_apply] at this
+    exact this.symm
+  have h2 : Finset.univ.sum (fun σ => christoffelSymbol g σ ρ ν p * (g p) μ σ) =
+            christoffelLower g μ ρ ν p := by
+    calc Finset.univ.sum (fun σ => christoffelSymbol g σ ρ ν p * (g p) μ σ)
+        = Finset.univ.sum (fun σ => christoffelSymbol g σ ρ ν p * (g p) σ μ) := by
+          apply Finset.sum_congr rfl; intro σ _; rw [h2_pre]
+      _ = christoffelLower g μ ρ ν p := christoffel_metric_contraction g hSym μ ρ ν p
+
+  rw [h1, h2]
+
+  -- Step 2: Apply christoffel_lower_formula
+  rw [christoffel_lower_formula g hNd ν ρ μ p]
+  rw [christoffel_lower_formula g hNd μ ρ ν p]
+
+  -- Step 3: Use metric derivative symmetry
+  -- ∂_ρ g_{νμ} = ∂_ρ g_{μν}
+  have hd1 : metricDerivative g ρ ν μ p = metricDerivative g ρ μ ν p :=
+    metricDerivative_symm g hSym ρ ν μ p
+
+  -- Step 4: The goal simplifies to:
+  -- symmetricDiff g_{μν} ρ p - (1/2)(...) - (1/2)(...) = 0
+  -- Note: symmetricDiff (fun q => g q μ ν) = metricDerivative g ρ μ ν p
+
+  -- Unfold metricDerivative in christoffel_lower_formula results
+  unfold metricDerivative
+
+  -- Step 5: Algebraic simplification using symmetry
+  -- LHS: ∂_ρ g_{μν} - (1/2)(∂_ρ g_{μν} + ∂_μ g_{ρν} - ∂_ν g_{ρμ})
+  --                 - (1/2)(∂_ρ g_{νμ} + ∂_ν g_{ρμ} - ∂_μ g_{ρν})
+  -- Using ∂_ρ g_{νμ} = ∂_ρ g_{μν} (from hd1, now unfolded):
+  -- = ∂_ρ g_{μν} - (1/2)(2*∂_ρ g_{μν})
+  -- = 0
+
+  -- hd1 is now about symmetricDiff after unfold
+  have hd1' : symmetricDiff (fun q => (g q) ν μ) ρ p = symmetricDiff (fun q => (g q) μ ν) ρ p := by
+    unfold symmetricDiff
+    have hpos := hSym (p.shiftPos ρ)
+    have hneg := hSym (p.shiftNeg ρ)
+    unfold IsSymmetric at hpos hneg
+    have hpos_elem : (g (p.shiftPos ρ)) ν μ = (g (p.shiftPos ρ)) μ ν := by
+      have := congrFun (congrFun hpos μ) ν
+      simp only [Matrix.transpose_apply] at this
+      exact this
+    have hneg_elem : (g (p.shiftNeg ρ)) ν μ = (g (p.shiftNeg ρ)) μ ν := by
+      have := congrFun (congrFun hneg μ) ν
+      simp only [Matrix.transpose_apply] at this
+      exact this
+    simp only [hpos_elem, hneg_elem]
+
+  rw [hd1']
+  ring
+
+/-! ## Parallel Transport -/
+
+/-- A vector field V is parallel transported along direction μ if ∇_μ V = 0 -/
+def IsParallelTransported (g : DiscreteMetric) (V : LatticeVectorField) (μ : Fin 4)
+    (p : LatticePoint) : Prop :=
+  ∀ ν, covariantDerivVector g V ν μ p = 0
+
+/-- A curve is a geodesic if its tangent vector is parallel transported along itself.
+    For discrete lattice, we consider geodesic as piecewise linear path. -/
+structure DiscreteGeodesic (g : DiscreteMetric) where
+  /-- Path as sequence of lattice points -/
+  path : ℕ → LatticePoint
+  /-- Tangent vectors at each point (discrete approximation) -/
+  tangent : ℕ → Fin 4 → ℝ
+  /-- Geodesic equation: tangent is parallel transported -/
+  geodesic_eq : ∀ n μ ν, covariantDerivVector g (fun _ => tangent n) μ ν (path n) = 0
+
+/-! ## Christoffel Trace -/
 
 /-- Trace of Christoffel symbol: Gamma^μ_{μν} -/
 noncomputable def christoffelTrace (g : DiscreteMetric) (ν : Fin 4) (p : LatticePoint) : ℝ :=
