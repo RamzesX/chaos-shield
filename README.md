@@ -104,6 +104,8 @@ This simple question started it all.
 
 ## Key Documents
 
+> **Ask AI about this theory**: Enable [GitHub Models](https://docs.github.com/en/github-models) and use the `omega-theory-explainer.prompt.yml` to ask questions like *"What is mass in Omega-Theory?"* or *"How does this explain time travel impossibility?"*
+
 ### Start Here
 | Document | What It Is |
 |----------|-----------|
