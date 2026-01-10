@@ -5,7 +5,9 @@ import HeroSection from '../components/HeroSection.astro';
 import FeatureCard from '../components/FeatureCard.astro';
 import PhysicsBox from '../components/PhysicsBox.astro';
 
-const baseUrl = import.meta.env.BASE_URL;
+// Ensure baseUrl has trailing slash
+const rawBase = import.meta.env.BASE_URL;
+const baseUrl = rawBase.endsWith('/') ? rawBase : rawBase + '/';
 ---
 
 <BaseLayout title="Discrete Spacetime and Mass as Geometric Reshaping">
@@ -31,19 +33,19 @@ const baseUrl = import.meta.env.BASE_URL;
         icon="🔬"
         title="21 Testable Predictions"
         description="Not philosophical speculation—concrete experiments including gate fidelity scaling, quantum gravity signatures, and modified dispersion relations."
-        href={`${baseUrl}papers/appendix-i/`}
+        href={`${baseUrl}papers/appendix-i-experimental-tests/`}
       />
       <FeatureCard
         icon="✓"
         title="Machine-Verified Proofs"
         description="10,000+ lines of Lean 4 code formally verifying the mathematics—from Planck relations to the Fourth Noether Theorem."
-        href={`${baseUrl}lean/`}
+        href="https://github.com/RamzesX/Omega-Theory-Discrete-Spacetime/tree/main/PhysicsPapers/LeanFormalization"
       />
       <FeatureCard
         icon="🌀"
         title="No Time Travel"
         description="Proves chronology protection as a mathematical theorem. Wormholes can exist but cannot be traversed for time travel."
-        href={`${baseUrl}papers/appendix-s/`}
+        href={`${baseUrl}papers/appendix-s-stable-wormholes-and-chronology-protection/`}
       />
     </div>
   </section>
@@ -138,7 +140,7 @@ const baseUrl = import.meta.env.BASE_URL;
           <p>Full technical treatment with all equations</p>
         </div>
       </a>
-      <a href={`${baseUrl}papers/appendix-i/`} class="reading-step">
+      <a href={`${baseUrl}papers/appendix-i-experimental-tests/`} class="reading-step">
         <span class="step-number">4</span>
         <div class="step-content">
           <strong>Experimental Tests</strong>
