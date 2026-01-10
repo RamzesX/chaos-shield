@@ -31,6 +31,7 @@ import Mathlib.Data.Matrix.Basic
 import Mathlib.Data.Fin.VecNotation
 import Mathlib.Algebra.BigOperators.Group.Finset
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
+import Mathlib.GroupTheory.Perm.Sign
 import DiscreteSpacetime.Basic.Lattice
 import DiscreteSpacetime.Basic.Operators
 import DiscreteSpacetime.Basic.Constants
@@ -279,12 +280,64 @@ noncomputable def torsionVector
     (mu : Fin 4) (p : LatticePoint) : ℝ :=
   Finset.univ.sum fun lambda => S lambda mu lambda p
 
-/-- The torsion pseudo-trace: S'_mu = epsilon^{lambda nu rho sigma} S_{lambda nu rho} g_{sigma mu} -/
+/-! ### Levi-Civita Symbol (Totally Antisymmetric Tensor) -/
+
+/-- Check if four Fin 4 values are all distinct.
+    This is the condition for a non-zero Levi-Civita symbol. -/
+def allDistinct4 (i j k l : Fin 4) : Bool :=
+  i ≠ j ∧ i ≠ k ∧ i ≠ l ∧ j ≠ k ∧ j ≠ l ∧ k ≠ l
+
+/-- Count the number of inversions in a sequence of 4 indices.
+    An inversion is a pair (a, b) where a comes before b but a > b.
+    The parity of inversions determines the sign of the Levi-Civita symbol. -/
+def countInversions4 (i j k l : Fin 4) : ℕ :=
+  (if i > j then 1 else 0) + (if i > k then 1 else 0) + (if i > l then 1 else 0) +
+  (if j > k then 1 else 0) + (if j > l then 1 else 0) +
+  (if k > l then 1 else 0)
+
+/-- The Levi-Civita symbol ε^{ijkl} in 4 dimensions.
+
+    ε^{ijkl} = (-1)^(number of inversions) if i,j,k,l are all distinct
+             = 0                           if any indices repeat
+
+    The sign is determined by the parity of inversions in the sequence (i,j,k,l). -/
+noncomputable def leviCivitaSymbol (i j k l : Fin 4) : ℝ :=
+  if allDistinct4 i j k l then
+    if countInversions4 i j k l % 2 = 0 then 1 else -1
+  else
+    0
+
+/-- Notation for Levi-Civita symbol -/
+notation "ε[" i "," j "," k "," l "]" => leviCivitaSymbol i j k l
+
+/-- Levi-Civita symbol for identity permutation (0,1,2,3) equals 1 -/
+theorem leviCivita_identity : leviCivitaSymbol 0 1 2 3 = 1 := by
+  unfold leviCivitaSymbol allDistinct4 countInversions4
+  simp only [ne_eq, Fin.zero_eta, Fin.isValue, one_ne_zero, not_false_eq_true, decide_True,
+    Fin.reduceEq, Bool.true_and, gt_iff_lt, Fin.reduceLT, decide_False, ↓reduceIte,
+    add_zero, Nat.reduceMod, and_self]
+
+/-- Levi-Civita symbol vanishes when two indices are equal -/
+theorem leviCivita_repeat_zero (i j k l : Fin 4) (h : i = j ∨ i = k ∨ i = l ∨ j = k ∨ j = l ∨ k = l) :
+    leviCivitaSymbol i j k l = 0 := by
+  unfold leviCivitaSymbol allDistinct4
+  simp only [ne_eq, decide_not, Bool.not_eq_true', decide_eq_false_iff_not,
+             Decidable.not_not, ↓reduceIte]
+  rcases h with rfl | rfl | rfl | rfl | rfl | rfl <;>
+  simp [decide_eq_true_eq]
+
+/-- The torsion pseudo-trace: S'_mu = epsilon^{lambda nu rho sigma} S_{lambda nu rho} g_{sigma mu}
+
+    This is a pseudo-scalar formed by contracting the torsion tensor with
+    the Levi-Civita symbol. It captures the "axial" part of torsion. -/
 noncomputable def torsionPseudoTrace
     (S : Fin 4 → Fin 4 → Fin 4 → LatticePoint → ℝ)
     (g : DiscreteMetric) (mu : Fin 4) (p : LatticePoint) : ℝ :=
-  -- Using the Levi-Civita symbol
-  sorry -- Requires epsilon tensor definition
+  Finset.univ.sum fun lambda =>
+    Finset.univ.sum fun nu =>
+      Finset.univ.sum fun rho =>
+        Finset.univ.sum fun sigma =>
+          leviCivitaSymbol lambda nu rho sigma * S lambda nu rho p * (g p) sigma mu
 
 /-! ## Cartan Curvature -/
 

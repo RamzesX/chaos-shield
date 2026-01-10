@@ -137,7 +137,7 @@ This simple question started it all.
 
 ## Formal Verification in Lean 4
 
-Unlike typical physics papers, Omega-Theory includes **10,000+ lines of machine-verified proofs**.
+Unlike typical physics papers, Omega-Theory includes **10,000+ lines of Lean 4 proofs** with Mathlib integration.
 
 ```
 ┌──────────────────────────────────────────────────────────────┐
@@ -148,12 +148,44 @@ Unlike typical physics papers, Omega-Theory includes **10,000+ lines of machine-
 │  ∇_μ g_νρ = 0                Metric compatibility            │
 │  ∂_μ J^μ_I = 0               Fourth Noether Law (NOVEL)      │
 │  √2 precision in O(log log)  Newton-Raphson bounds           │
+│  Connection uniqueness       Levi-Civita theorem             │
+│  Spin-torsion coupling       Cartan geometry                 │
 └──────────────────────────────────────────────────────────────┘
 ```
 
-**9 modules, 36 files** covering: discrete geometry, conservation laws, irrationality bounds, torsion, emergence
+### Proof Status (Honest Assessment)
 
-[**→ Lean Formalization**](PhysicsPapers/LeanFormalization/)
+**Formalization: ~42% complete** | **~60 `sorry` statements remaining**
+
+The entire project **compiles successfully** with Mathlib v4.13.0.
+
+**Completed modules (no sorries):**
+| Module | Status | Content |
+|--------|--------|---------|
+| `Basic/` | ✓ Complete | Constants, lattice structure, operators |
+| `Axioms/` | ✓ Complete | Physical postulates |
+| `Conservation/` | ✓ Complete | Noether theorems, Fourth Law |
+| `Variational/` | ✓ Complete | Graph action, discrete Noether |
+
+**Work in progress (~60 sorries):**
+| Module | Sorries | Notes |
+|--------|---------|-------|
+| `Dynamics/` | ~24 | Lyapunov stability, healing flow convergence |
+| `Geometry/` | ~16 | Riemann symmetries, Einstein tensor (current focus) |
+| `Emergence/` | ~13 | Continuum limit, Sobolev convergence |
+| `Torsion/` | ~3 | Poplawski Big Bounce cosmology |
+| `Irrationality/` | ~12 | **Will remain** - touches open problems in number theory |
+
+**Why some sorries will remain:**
+- Irrationality bounds connect to **unsolved problems** in mathematics (irrationality measure of algebraic numbers)
+- These sorries are *intentional* - they mark the frontier between physics formalization and open mathematical research
+- Lyapunov stability proofs require substantial functional analysis not yet in Mathlib
+
+**What's fully proven:** Planck constants, lattice structure, discrete operators, Christoffel symbols, metric compatibility, conservation laws, spin-torsion coupling, Levi-Civita theorem.
+
+**9 modules, 36+ files** covering: discrete geometry, conservation laws, irrationality bounds, torsion, emergence
+
+[**→ Lean Formalization**](PhysicsPapers/LeanFormalization/) | [**→ Build Instructions**](PhysicsPapers/LeanFormalization/BUILD.md)
 
 ---
 
