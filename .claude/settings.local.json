@@ -46,7 +46,8 @@
       "WebFetch(domain:just-the-docs.com)",
       "WebFetch(domain:chrisyeh96.github.io)",
       "WebFetch(domain:github.com)",
-      "WebFetch(domain:orcid.org)"
+      "WebFetch(domain:orcid.org)",
+      "WebFetch(domain:ramzesx.github.io)"
     ]
   }
 }

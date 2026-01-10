@@ -19,7 +19,7 @@
 
 This simple question started it all.
 
-[![GitHub Pages](https://img.shields.io/badge/docs-GitHub%20Pages-blue?logo=github)](https://ramzesx.github.io/chaos-shield/)
+[![GitHub Pages](https://img.shields.io/badge/docs-GitHub%20Pages-blue?logo=github)](https://ramzesx.github.io/Omega-Theory-Discrete-Spacetime/)
 [![ORCID](https://img.shields.io/badge/ORCID-0009--0007--3029--175X-A6CE39?logo=orcid)](https://orcid.org/0009-0007-3029-175X)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![Lean 4](https://img.shields.io/badge/Lean-4-blue.svg)](PhysicsPapers/LeanFormalization/)
@@ -108,6 +108,7 @@ This simple question started it all.
 | Document | What It Is |
 |----------|-----------|
 | [**Main-Paper-Postulates.md**](PhysicsPapers/Main-Paper-Postulates.md) | Entry point: thesis, principles, "How This Started" |
+| [**Browse Online Documentation**](https://ramzesx.github.io/Omega-Theory-Discrete-Spacetime/) | Full GitHub Pages site with LaTeX rendering |
 | [**unified-theory-diagram.md**](PhysicsPapers/unified-theory-diagram.md) | Visual summary with 11 levels of ASCII diagrams |
 | [**README-Document-Structure.md**](PhysicsPapers/README-Document-Structure.md) | Reading guide and document hierarchy |
 
