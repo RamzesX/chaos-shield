@@ -212,15 +212,28 @@ pre code {
   color: var(--color-text);
 }
 
-/* ASCII Art and Diagrams - Full width for better readability */
+/* ASCII Art and Diagrams - Optimized for proper character alignment */
 pre.ascii,
 pre:has(code):not(:has(.language-)),
 pre {
-  font-size: 0.7rem;
-  line-height: 1.25;
+  /* Font stack optimized for ASCII art - good Unicode coverage */
+  font-family: 'Menlo', 'Roboto Mono', 'Noto Mono', 'Source Code Pro', 'Monaco', 'Consolas', 'Courier New', monospace;
+  font-size: 0.75rem;
+  line-height: 1.3;
   letter-spacing: 0;
+  /* Ensure fixed-width numbers */
+  font-variant-numeric: tabular-nums;
+  font-variant-ligatures: none;
+  -webkit-font-feature-settings: "liga" 0;
+  font-feature-settings: "liga" 0;
+  /* Rendering optimization */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Layout */
   background: linear-gradient(135deg, var(--color-void), var(--color-cosmic));
-  border-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-md);
   white-space: pre;
   overflow-x: auto;
   /* Allow pre blocks to expand beyond content width */
@@ -229,21 +242,29 @@ pre {
   margin-left: -2rem;
   margin-right: -2rem;
   padding: var(--space-lg) var(--space-xl);
+  tab-size: 4;
 }
 
-/* Code blocks that look like ASCII diagrams (contain box drawing chars) */
+/* Code inside pre blocks inherits ASCII-optimized font */
 pre code {
-  font-family: var(--font-mono);
-  font-variant-ligatures: none;
-  tab-size: 4;
-  font-size: 0.7rem;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  font-variant-numeric: inherit;
+  font-variant-ligatures: inherit;
+  background: none;
+  padding: 0;
 }
 
 /* Ensure monospace rendering for diagrams */
 .diagram, .ascii-diagram {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  line-height: 1.2;
+  font-family: 'Menlo', 'Roboto Mono', 'Noto Mono', 'Source Code Pro', 'Monaco', 'Consolas', 'Courier New', monospace;
+  font-size: 0.7rem;
+  line-height: 1.3;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+  font-variant-ligatures: none;
   white-space: pre;
   overflow-x: auto;
   background: var(--color-void);
