@@ -19,6 +19,8 @@
 
 This simple question started it all.
 
+### [**Read the Full Documentation**](https://ramzesx.github.io/Omega-Theory-Discrete-Spacetime/) | [**Start with Main Paper**](PhysicsPapers/Main-Paper-Postulates.md)
+
 [![GitHub Pages](https://img.shields.io/badge/docs-GitHub%20Pages-blue?logo=github)](https://ramzesx.github.io/Omega-Theory-Discrete-Spacetime/)
 [![ORCID](https://img.shields.io/badge/ORCID-0009--0007--3029--175X-A6CE39?logo=orcid)](https://orcid.org/0009-0007-3029-175X)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
