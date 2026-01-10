@@ -1,0 +1,317 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navigation from '../components/Navigation.astro';
+import HeroSection from '../components/HeroSection.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import PhysicsBox from '../components/PhysicsBox.astro';
+
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Discrete Spacetime and Mass as Geometric Reshaping">
+  <Navigation slot="sidebar" />
+
+  <HeroSection />
+
+  <section class="section">
+    <h2 class="section-title">What Makes This Different</h2>
+    <p class="section-intro">
+      Unlike other quantum gravity theories, Omega-Theory starts from a single,
+      falsifiable postulate and derives everything else mathematically.
+    </p>
+
+    <div class="card-grid">
+      <FeatureCard
+        icon="🔷"
+        title="One Postulate → Everything"
+        description="From 'spacetime is a discrete Z⁴ lattice at Planck scale', derive: cosmological constant, dark energy, black hole entropy, and particle masses."
+        href={`${baseUrl}papers/main-paper-postulates/`}
+      />
+      <FeatureCard
+        icon="🔬"
+        title="21 Testable Predictions"
+        description="Not philosophical speculation—concrete experiments including gate fidelity scaling, quantum gravity signatures, and modified dispersion relations."
+        href={`${baseUrl}papers/appendix-i/`}
+      />
+      <FeatureCard
+        icon="✓"
+        title="Machine-Verified Proofs"
+        description="10,000+ lines of Lean 4 code formally verifying the mathematics—from Planck relations to the Fourth Noether Theorem."
+        href={`${baseUrl}lean/`}
+      />
+      <FeatureCard
+        icon="🌀"
+        title="No Time Travel"
+        description="Proves chronology protection as a mathematical theorem. Wormholes can exist but cannot be traversed for time travel."
+        href={`${baseUrl}papers/appendix-s/`}
+      />
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">The Core Insight</h2>
+
+    <PhysicsBox type="postulate" title="The Single Postulate">
+      <p>
+        Spacetime is fundamentally discrete—a four-dimensional integer lattice (Z⁴)
+        with spacing at the Planck length (~10⁻³⁵ m).
+      </p>
+    </PhysicsBox>
+
+    <p class="section-text">
+      From this single assumption, the theory derives:
+    </p>
+
+    <ul class="derivation-list">
+      <li>
+        <strong>Cosmological Constant</strong>: Λ emerges from counting lattice sites,
+        matching observation to 122 decimal places
+      </li>
+      <li>
+        <strong>Dark Energy</strong>: Not a mysterious fluid but a geometric consequence
+        of discrete spacetime expansion
+      </li>
+      <li>
+        <strong>Black Hole Entropy</strong>: Bekenstein-Hawking formula derived from
+        lattice area counting
+      </li>
+      <li>
+        <strong>Particle Masses</strong>: Mass as localized geometric deformation—curvature
+        concentration in the lattice
+      </li>
+      <li>
+        <strong>Fourth Noether Law</strong>: Information conservation as the fourth
+        fundamental conservation law
+      </li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Already Confirmed</h2>
+
+    <div class="confirmation-box">
+      <div class="confirmation-item">
+        <span class="confirmation-icon">✓</span>
+        <div>
+          <strong>Gate Fidelity Scaling (2024)</strong>
+          <p>
+            Predicted F(T) = F₀/(1 + αT) scaling confirmed by IBM/Google quantum computer data.
+            Temperature dependence matches discrete spacetime thermal noise model.
+          </p>
+        </div>
+      </div>
+      <div class="confirmation-item">
+        <span class="confirmation-icon">✓</span>
+        <div>
+          <strong>Dark Energy Equation of State</strong>
+          <p>
+            Predicted w = -1 ± 0.03 from lattice geometry. DESI 2024 measurements:
+            w = -0.99 ± 0.05, within predicted bounds.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Reading Guide</h2>
+
+    <div class="reading-path">
+      <a href={`${baseUrl}papers/main-paper-postulates/`} class="reading-step">
+        <span class="step-number">1</span>
+        <div class="step-content">
+          <strong>Start Here: Main Paper</strong>
+          <p>The origin story and central thesis</p>
+        </div>
+      </a>
+      <a href={`${baseUrl}papers/unified-theory-diagram/`} class="reading-step">
+        <span class="step-number">2</span>
+        <div class="step-content">
+          <strong>Visual Overview</strong>
+          <p>See how everything connects (11-level diagram)</p>
+        </div>
+      </a>
+      <a href={`${baseUrl}papers/complete-omega-theory-unified-framework/`} class="reading-step">
+        <span class="step-number">3</span>
+        <div class="step-content">
+          <strong>Complete Framework</strong>
+          <p>Full technical treatment with all equations</p>
+        </div>
+      </a>
+      <a href={`${baseUrl}papers/appendix-i/`} class="reading-step">
+        <span class="step-number">4</span>
+        <div class="step-content">
+          <strong>Experimental Tests</strong>
+          <p>21 ways to verify or falsify the theory</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="section cta-section">
+    <h2 class="section-title">Explore the Theory</h2>
+    <p class="section-intro">
+      Dive into 17 interconnected physics papers, formal Lean 4 proofs,
+      and mathematical foundations.
+    </p>
+    <div class="cta-buttons">
+      <a href={`${baseUrl}papers/main-paper-postulates/`} class="btn btn-primary">
+        Start Reading
+      </a>
+      <a href="https://github.com/RamzesX/Omega-Theory-Discrete-Spacetime" class="btn btn-outline" target="_blank">
+        View on GitHub
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section {
+    margin-bottom: var(--space-3xl);
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .section-intro {
+    font-size: 1.15rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-xl);
+    max-width: 40rem;
+  }
+
+  .section-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: var(--space-lg);
+  }
+
+  .derivation-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .derivation-list li {
+    position: relative;
+    padding-left: var(--space-xl);
+    margin-bottom: var(--space-md);
+    line-height: 1.7;
+  }
+
+  .derivation-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: bold;
+  }
+
+  .confirmation-box {
+    background: var(--gradient-card);
+    border: 1px solid rgba(0, 230, 118, 0.3);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+  }
+
+  .confirmation-item {
+    display: flex;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-lg);
+  }
+
+  .confirmation-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .confirmation-icon {
+    font-size: 1.5rem;
+    color: var(--color-success);
+    flex-shrink: 0;
+  }
+
+  .confirmation-item p {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    margin: var(--space-xs) 0 0;
+  }
+
+  .reading-path {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .reading-step {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+    background: var(--gradient-card);
+    border: 1px solid rgba(124, 77, 255, 0.2);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    color: inherit;
+    transition: all var(--transition-normal);
+  }
+
+  .reading-step:hover {
+    border-color: var(--color-primary);
+    transform: translateX(8px);
+    text-decoration: none;
+  }
+
+  .step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .step-content strong {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .step-content p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  .cta-section {
+    text-align: center;
+    padding: var(--space-3xl);
+    background: var(--gradient-card);
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(124, 77, 255, 0.2);
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    margin-top: var(--space-xl);
+  }
+
+  @media (max-width: 768px) {
+    .reading-step {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>

@@ -1,0 +1,234 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navigation from '../components/Navigation.astro';
+
+const baseUrl = import.meta.env.BASE_URL;
+
+const essays = [
+  { num: '00', title: 'The Genesis Problem', desc: 'Why constructive mathematics matters' },
+  { num: '01', title: 'Numbers That Build Themselves', desc: 'Constructive real numbers' },
+  { num: '02', title: 'The Dance of Decimals', desc: 'Infinite series and convergence' },
+  { num: '03', title: 'Measuring the Unmeasurable', desc: 'Constructive measure theory' },
+  { num: '04', title: 'Functions That Compute', desc: 'Computable analysis' },
+  { num: '05', title: 'Spaces of Possibility', desc: 'Constructive topology' },
+  { num: '06', title: 'The Algebra of Certainty', desc: 'Constructive algebra' },
+  { num: '07', title: 'Probability Without Paradox', desc: 'Constructive probability' },
+  { num: '08', title: 'Integration Revisited', desc: 'Constructive integration' },
+  { num: '09', title: 'The Fourier Revolution', desc: 'Constructive harmonic analysis' },
+  { num: '10', title: 'Differential Equations Done Right', desc: 'Constructive ODEs' },
+  { num: '11', title: 'Complex Numbers Constructed', desc: 'Constructive complex analysis' },
+  { num: '12', title: 'Topology for Physicists', desc: 'Applied constructive topology' },
+  { num: '13', title: 'The Logic Underneath', desc: 'Foundations of constructive math' },
+  { num: '14', title: 'Arbitrary Precision Operator', desc: 'Computing irrationals exactly' },
+  { num: '15', title: 'Computational Debt', desc: 'Why deferred computation matters' },
+];
+---
+
+<BaseLayout
+  title="ConvQMath Essays"
+  description="Constructive quantum mathematics - building a rigorous foundation"
+>
+  <Navigation slot="sidebar" />
+
+  <section class="header-section">
+    <h1 class="page-title">Constructive Quantum Mathematics</h1>
+    <p class="page-subtitle">
+      16 essays exploring constructive mathematics—where existence means computability,
+      and proofs become algorithms. These essays form the mathematical foundation
+      for the computable aspects of Omega-Theory.
+    </p>
+  </section>
+
+  <section class="intro-box">
+    <h2>Why Constructive?</h2>
+    <p>
+      In classical mathematics, you can prove something exists without ever showing
+      how to find it. In <strong>constructive mathematics</strong>, every existence
+      proof contains an algorithm.
+    </p>
+    <p>
+      For physics, this matters: if spacetime is discrete, physical quantities must
+      be <em>computable</em>. Classical real numbers include non-computable quantities—but
+      discrete spacetime physics needs only constructive reals.
+    </p>
+  </section>
+
+  <section class="essays-section">
+    <h2>The Essays</h2>
+    <div class="essays-grid">
+      {essays.map(essay => (
+        <div class="essay-card">
+          <span class="essay-number">{essay.num}</span>
+          <div class="essay-content">
+            <h3>{essay.title}</h3>
+            <p>{essay.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="highlight-section">
+    <h2>Key Insight: The Arbitrary Precision Operator</h2>
+    <div class="highlight-content">
+      <p>
+        Essay 14 introduces the <strong>APO (Arbitrary Precision Operator)</strong>—a
+        way to represent irrational numbers constructively:
+      </p>
+      <div class="formula-box">
+        <code>APO(f, ε) → q ∈ ℚ such that |f - q| &lt; ε</code>
+      </div>
+      <p>
+        This connects directly to Omega-Theory's treatment of irrational action
+        thresholds. In discrete spacetime, we don't need "actual" irrationals—only
+        finite approximations to any required precision.
+      </p>
+      <a href={`${baseUrl}papers/keyinsight-irrationals-action-thresholds`} class="link">
+        → See how this applies in physics
+      </a>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <p>
+      The full essays are available in the repository's ConvQMath directory.
+    </p>
+    <a href="https://github.com/RamzesX/Omega-Theory-Discrete-Spacetime/tree/main/ConvQMath" class="btn btn-outline" target="_blank">
+      View ConvQMath on GitHub
+    </a>
+  </section>
+</BaseLayout>
+
+<style>
+  .header-section {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-md);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .page-subtitle {
+    font-size: 1.2rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    max-width: 40rem;
+  }
+
+  .intro-box {
+    background: var(--gradient-card);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .intro-box h2 {
+    color: var(--color-secondary);
+    margin-top: 0;
+  }
+
+  .intro-box p {
+    color: var(--color-text-muted);
+    line-height: 1.7;
+  }
+
+  .essays-section {
+    margin-bottom: var(--space-3xl);
+  }
+
+  .essays-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+
+  .essay-card {
+    display: flex;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    background: rgba(124, 77, 255, 0.05);
+    border: 1px solid rgba(124, 77, 255, 0.15);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+  }
+
+  .essay-card:hover {
+    border-color: var(--color-primary);
+    background: rgba(124, 77, 255, 0.1);
+  }
+
+  .essay-number {
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    opacity: 0.5;
+  }
+
+  .essay-content h3 {
+    font-size: 1rem;
+    margin: 0 0 var(--space-xs);
+    color: var(--color-text);
+  }
+
+  .essay-content p {
+    font-size: 0.85rem;
+    color: var(--color-text-dim);
+    margin: 0;
+  }
+
+  .highlight-section {
+    margin-bottom: var(--space-3xl);
+  }
+
+  .highlight-content {
+    background: rgba(255, 215, 64, 0.1);
+    border-left: 4px solid var(--color-accent);
+    padding: var(--space-xl);
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  }
+
+  .formula-box {
+    background: var(--color-void);
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+    margin: var(--space-md) 0;
+    text-align: center;
+  }
+
+  .formula-box code {
+    font-size: 1.1rem;
+    background: none;
+    color: var(--color-accent);
+  }
+
+  .link {
+    color: var(--color-secondary);
+    font-weight: 500;
+  }
+
+  .cta-section {
+    text-align: center;
+    padding: var(--space-xl);
+    background: var(--gradient-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(124, 77, 255, 0.2);
+  }
+
+  .cta-section p {
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-md);
+  }
+
+  @media (max-width: 768px) {
+    .essays-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

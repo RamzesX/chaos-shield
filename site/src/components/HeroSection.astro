@@ -1,0 +1,266 @@
+---
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Discrete Spacetime Physics</div>
+
+    <h1 class="hero-title">
+      <span class="omega">Ω</span>mega-Theory
+    </h1>
+
+    <p class="hero-subtitle">
+      Mass as Geometric Reshaping of Discrete Spacetime
+    </p>
+
+    <div class="hero-equation">
+      <div class="equation-box">
+        <span class="equation-label">The Single Postulate</span>
+        <div class="equation">
+          Λ = ℓ<sub>P</sub> · Z<sup>4</sup>
+        </div>
+        <span class="equation-desc">Spacetime is a discrete Z⁴ lattice at Planck scale</span>
+      </div>
+    </div>
+
+    <p class="hero-description">
+      A unified physics framework deriving <strong>all fundamental forces</strong>,
+      <strong>particle masses</strong>, and <strong>cosmological constants</strong>
+      from a single geometric postulate. Includes <strong>10,000+ lines</strong>
+      of Lean 4 machine-verified proofs.
+    </p>
+
+    <div class="hero-cta">
+      <a href={`${baseUrl}papers/main-paper-postulates/`} class="btn btn-primary">
+        <span>Read the Paper</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 8h10M9 4l4 4-4 4"/>
+        </svg>
+      </a>
+      <a href={`${baseUrl}papers/unified-theory-diagram/`} class="btn btn-outline">
+        <span>Visual Overview</span>
+      </a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-value">17</span>
+        <span class="stat-label">Physics Papers</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">21</span>
+        <span class="stat-label">Testable Predictions</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">10K+</span>
+        <span class="stat-label">Lines of Lean Proofs</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="lattice-animation">
+      <div class="lattice-grid">
+        {Array.from({ length: 25 }).map((_, i) => (
+          <div class="lattice-point" style={`animation-delay: ${i * 0.1}s`}></div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3xl);
+    padding: var(--space-3xl) 0;
+    min-height: 80vh;
+    align-items: center;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: var(--space-xs) var(--space-md);
+    background: rgba(124, 77, 255, 0.2);
+    border: 1px solid var(--color-primary);
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-primary-light);
+    margin-bottom: var(--space-lg);
+  }
+
+  .hero-title {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0 0 var(--space-md);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .omega {
+    font-size: 5rem;
+    font-weight: 800;
+  }
+
+  .hero-subtitle {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--color-secondary);
+    margin: 0 0 var(--space-xl);
+    font-style: italic;
+  }
+
+  .hero-equation {
+    margin: var(--space-xl) 0;
+  }
+
+  .equation-box {
+    background: linear-gradient(135deg, rgba(124, 77, 255, 0.15), rgba(0, 212, 255, 0.1));
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    text-align: center;
+    box-shadow: var(--shadow-glow);
+  }
+
+  .equation-label {
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-sm);
+  }
+
+  .equation {
+    font-family: var(--font-math);
+    font-size: 2.5rem;
+    color: var(--color-accent);
+    margin: var(--space-md) 0;
+    text-shadow: 0 0 30px rgba(255, 215, 64, 0.3);
+  }
+
+  .equation-desc {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--color-text-dim);
+  }
+
+  .hero-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-xl);
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: var(--space-md);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: var(--space-xl);
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-value {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary-light);
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--color-text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lattice-animation {
+    width: 300px;
+    height: 300px;
+    position: relative;
+  }
+
+  .lattice-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 40px;
+    padding: 20px;
+  }
+
+  .lattice-point {
+    width: 12px;
+    height: 12px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+    box-shadow: 0 0 20px var(--color-primary);
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.7;
+    }
+    50% {
+      transform: scale(1.5);
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .hero {
+      grid-template-columns: 1fr;
+      text-align: center;
+      min-height: auto;
+      padding: var(--space-2xl) 0;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+    }
+
+    .omega {
+      font-size: 3rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+    }
+
+    .equation {
+      font-size: 1.8rem;
+    }
+
+    .hero-cta {
+      justify-content: center;
+    }
+
+    .hero-stats {
+      justify-content: center;
+    }
+
+    .hero-visual {
+      display: none;
+    }
+  }
+</style>

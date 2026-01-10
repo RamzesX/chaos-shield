@@ -1,0 +1,77 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  icon: string;
+  href?: string;
+}
+
+const { title, description, icon, href } = Astro.props;
+---
+
+{href ? (
+  <a href={href} class="card feature-card">
+    <span class="card-icon">{icon}</span>
+    <h3 class="card-title">{title}</h3>
+    <p class="card-description">{description}</p>
+    <span class="card-link">
+      Learn more
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 8h10M9 4l4 4-4 4"/>
+      </svg>
+    </span>
+  </a>
+) : (
+  <div class="card feature-card">
+    <span class="card-icon">{icon}</span>
+    <h3 class="card-title">{title}</h3>
+    <p class="card-description">{description}</p>
+  </div>
+)}
+
+<style>
+  .feature-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .card-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 var(--space-sm);
+    color: var(--color-text);
+  }
+
+  .card-description {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .card-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    margin-top: var(--space-md);
+    color: var(--color-primary-light);
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+
+  a.feature-card:hover .card-link {
+    color: var(--color-secondary);
+  }
+
+  a.feature-card:hover .card-link svg {
+    transform: translateX(4px);
+    transition: transform var(--transition-fast);
+  }
+</style>

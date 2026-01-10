@@ -1,0 +1,88 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const { title, description = "Discrete Spacetime and Mass as Geometric Reshaping - A unified physics framework", ogImage } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="generator" content={Astro.generator} />
+
+  <!-- SEO -->
+  <title>{title} | Omega-Theory</title>
+  <meta name="description" content={description} />
+  <meta name="author" content="Norbert Marchewka" />
+  <meta name="keywords" content="quantum gravity, discrete spacetime, Planck scale, cosmological constant, dark energy, wormholes, black holes, Lean 4, formal verification" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={`${title} | Omega-Theory`} />
+  <meta property="og:description" content={description} />
+  <meta property="og:site_name" content="Omega-Theory" />
+  {ogImage && <meta property="og:image" content={ogImage} />}
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={`${title} | Omega-Theory`} />
+  <meta name="twitter:description" content={description} />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href={`${baseUrl}favicon.svg`} />
+
+  <!-- KaTeX CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66 voices" crossorigin="anonymous">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <slot name="sidebar" />
+    <main class="main-content">
+      <slot />
+    </main>
+  </div>
+
+  <script is:inline>
+    // Theme persistence
+    const theme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', theme);
+  </script>
+</body>
+</html>
+
+<style>
+  .app-container {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  .main-content {
+    flex: 1;
+    padding: var(--space-xl) var(--space-2xl);
+    max-width: var(--content-width);
+    margin: 0 auto;
+  }
+
+  @media (max-width: 1024px) {
+    .app-container {
+      flex-direction: column;
+    }
+
+    .main-content {
+      padding: var(--space-lg);
+    }
+  }
+</style>

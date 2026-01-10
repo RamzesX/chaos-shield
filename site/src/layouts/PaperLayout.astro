@@ -1,0 +1,168 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Navigation from '../components/Navigation.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  date?: string;
+  readingTime?: string;
+  category?: string;
+}
+
+const { title, description, date, readingTime, category } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title={title} description={description}>
+  <Navigation slot="sidebar" />
+
+  <article class="paper">
+    <header class="paper-header">
+      {category && <span class="paper-category">{category}</span>}
+      <h1 class="paper-title">{title}</h1>
+      {description && <p class="paper-description">{description}</p>}
+      <div class="paper-meta">
+        {date && (
+          <span class="meta-item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M4 0v2H2v14h12V2h-2V0h-2v2H6V0H4zm8 4v2H4V4h8zm0 4v6H4V8h8z"/>
+            </svg>
+            {date}
+          </span>
+        )}
+        {readingTime && (
+          <span class="meta-item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M8 0a8 8 0 100 16A8 8 0 008 0zm0 14A6 6 0 118 2a6 6 0 010 12zm1-6V4H7v5h4V7H9z"/>
+            </svg>
+            {readingTime} read
+          </span>
+        )}
+      </div>
+    </header>
+
+    <div class="paper-content">
+      <slot />
+    </div>
+
+    <footer class="paper-footer">
+      <a href={baseUrl} class="back-link">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M13 8H3M7 4L3 8l4 4"/>
+        </svg>
+        Back to Overview
+      </a>
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  .paper {
+    max-width: 100%;
+  }
+
+  .paper-header {
+    margin-bottom: var(--space-2xl);
+    padding-bottom: var(--space-xl);
+    border-bottom: 2px solid rgba(124, 77, 255, 0.2);
+  }
+
+  .paper-category {
+    display: inline-block;
+    padding: var(--space-xs) var(--space-sm);
+    background: rgba(124, 77, 255, 0.2);
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-primary-light);
+    margin-bottom: var(--space-md);
+  }
+
+  .paper-title {
+    font-size: 2.5rem;
+    margin: 0 0 var(--space-md);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .paper-description {
+    font-size: 1.2rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: var(--space-lg);
+  }
+
+  .paper-meta {
+    display: flex;
+    gap: var(--space-lg);
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: 0.9rem;
+    color: var(--color-text-dim);
+  }
+
+  .paper-content {
+    line-height: 1.8;
+    font-size: 1.05rem;
+  }
+
+  .paper-content :global(h2) {
+    margin-top: var(--space-2xl);
+  }
+
+  .paper-content :global(h3) {
+    margin-top: var(--space-xl);
+  }
+
+  .paper-content :global(img) {
+    max-width: 100%;
+    border-radius: var(--radius-md);
+    margin: var(--space-lg) 0;
+  }
+
+  .paper-content :global(.katex-display) {
+    overflow-x: auto;
+    padding: var(--space-md) 0;
+  }
+
+  .paper-footer {
+    margin-top: var(--space-3xl);
+    padding-top: var(--space-xl);
+    border-top: 1px solid rgba(124, 77, 255, 0.2);
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--transition-fast);
+  }
+
+  .back-link:hover {
+    color: var(--color-primary-light);
+    text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    .paper-title {
+      font-size: 1.75rem;
+    }
+
+    .paper-meta {
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+  }
+</style>

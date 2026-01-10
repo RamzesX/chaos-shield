@@ -27,4 +27,20 @@ venv/
 # Temporary
 *.tmp
 *.temp
+
+# Lean build artifacts
 /PhysicsPapers/LeanFormalization/.lake/
+/PhysicsPapers/LeanFormalization/build/
+/PhysicsPapers/LeanFormalization/lake-packages/
+
+# MkDocs - copied content (source of truth is root folders)
+/docs/PhysicsPapers/
+/docs/ConvQMath/
+/docs/QuantumSecurity/
+/docs/YubikeysEsimVsGps/
+/docs/UnixOs/
+
+# Astro build output (site source is tracked)
+/site/dist/
+/site/node_modules/
+/site/.astro/

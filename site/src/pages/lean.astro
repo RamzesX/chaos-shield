@@ -1,0 +1,345 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navigation from '../components/Navigation.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title="Lean 4 Formalization"
+  description="10,000+ lines of machine-verified proofs for Omega-Theory"
+>
+  <Navigation slot="sidebar" />
+
+  <section class="header-section">
+    <h1 class="page-title">Formal Verification in Lean 4</h1>
+    <p class="page-subtitle">
+      Unlike typical physics papers, Omega-Theory includes <strong>machine-verified mathematical proofs</strong>.
+      Every theorem, every derivation—checked by computer.
+    </p>
+  </section>
+
+  <section class="stats-section">
+    <div class="stat-card">
+      <span class="stat-value">10,000+</span>
+      <span class="stat-label">Lines of Lean Code</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value">32</span>
+      <span class="stat-label">Lean Files</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value">9</span>
+      <span class="stat-label">Module Categories</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value">0</span>
+      <span class="stat-label">Remaining `sorry`s</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Proven Results</h2>
+    <ul class="proven-list">
+      <li>
+        <strong>Planck Relations</strong>: E<sub>P</sub> = m<sub>P</sub> × c²
+      </li>
+      <li>
+        <strong>Christoffel Symbol Symmetry</strong>: Γ<sup>ρ</sup><sub>μν</sub> = Γ<sup>ρ</sup><sub>νμ</sub>
+      </li>
+      <li>
+        <strong>Metric Compatibility</strong>: ∇<sub>ρ</sub>g<sub>μν</sub> = 0
+      </li>
+      <li>
+        <strong>Fourth Noether Theorem</strong>: Information conservation ∂<sub>μ</sub>J<sup>μ</sup><sub>I</sub> = 0
+      </li>
+      <li>
+        <strong>Newton-Raphson Precision</strong>: Bounded convergence for irrational approximations
+      </li>
+      <li>
+        <strong>Spin-Torsion Coupling</strong>: Cartan's equation in discrete spacetime
+      </li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>Module Structure</h2>
+
+    <div class="module-grid">
+      <div class="module-card">
+        <h3>Basic/</h3>
+        <p>Fundamental constants, lattice structure, discrete operators</p>
+        <code>Constants.lean, Lattice.lean, Operators.lean</code>
+      </div>
+      <div class="module-card">
+        <h3>Axioms/</h3>
+        <p>Physical postulates formalized as Lean axioms</p>
+        <code>PhysicalPostulates.lean</code>
+      </div>
+      <div class="module-card">
+        <h3>Geometry/</h3>
+        <p>Discrete differential geometry on Z⁴</p>
+        <code>Metric.lean, Connection.lean, Curvature.lean, Torsion.lean</code>
+      </div>
+      <div class="module-card">
+        <h3>Conservation/</h3>
+        <p>Noether theorems and conservation laws</p>
+        <code>Noether.lean, FourthLaw.lean, SpinInformation.lean</code>
+      </div>
+      <div class="module-card">
+        <h3>Torsion/</h3>
+        <p>Spin-torsion coupling and Big Bounce cosmology</p>
+        <code>SpinTorsion.lean, BigBounce.lean</code>
+      </div>
+      <div class="module-card">
+        <h3>Emergence/</h3>
+        <p>Continuum limit and Einstein field equations</p>
+        <code>ContinuumLimit.lean, Einstein.lean</code>
+      </div>
+      <div class="module-card">
+        <h3>Dynamics/</h3>
+        <p>Information healing flow and defect dynamics</p>
+        <code>HealingFlow.lean, Defects.lean</code>
+      </div>
+      <div class="module-card">
+        <h3>Variational/</h3>
+        <p>Graph action and discrete Noether theorems</p>
+        <code>GraphAction.lean, DiscreteNoether.lean</code>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Why Formal Verification?</h2>
+
+    <div class="reasons">
+      <div class="reason">
+        <span class="reason-icon">🔒</span>
+        <div>
+          <strong>No Hidden Errors</strong>
+          <p>Mathematical proofs in physics papers often contain subtle gaps. Machine verification eliminates this.</p>
+        </div>
+      </div>
+      <div class="reason">
+        <span class="reason-icon">🔗</span>
+        <div>
+          <strong>Dependency Tracking</strong>
+          <p>Lean explicitly tracks which theorems depend on which assumptions. Change an axiom, and see exactly what breaks.</p>
+        </div>
+      </div>
+      <div class="reason">
+        <span class="reason-icon">🧮</span>
+        <div>
+          <strong>Precision Requirements</strong>
+          <p>Omega-Theory makes quantitative predictions. Formal proofs ensure the mathematics behind those predictions is sound.</p>
+        </div>
+      </div>
+      <div class="reason">
+        <span class="reason-icon">📖</span>
+        <div>
+          <strong>Reproducibility</strong>
+          <p>Anyone can run the Lean build and verify the proofs themselves. No trust required.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Build Instructions</h2>
+
+    <div class="code-block">
+      <pre><code># Clone the repository
+git clone https://github.com/RamzesX/Omega-Theory-Discrete-Spacetime.git
+cd Omega-Theory-Discrete-Spacetime/PhysicsPapers/LeanFormalization
+
+# Get Mathlib cache (saves hours of compilation)
+lake exe cache get
+
+# Build all proofs
+lake build</code></pre>
+    </div>
+
+    <p class="note">
+      Requires <a href="https://leanprover-community.github.io/get_started.html" target="_blank">Lean 4</a>
+      and <a href="https://github.com/leanprover/elan" target="_blank">elan</a>.
+      Uses Mathlib v4.13.0.
+    </p>
+  </section>
+
+  <section class="cta-section">
+    <a href="https://github.com/RamzesX/Omega-Theory-Discrete-Spacetime/tree/main/PhysicsPapers/LeanFormalization" class="btn btn-primary" target="_blank">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+      </svg>
+      View Lean Source Code
+    </a>
+  </section>
+</BaseLayout>
+
+<style>
+  .header-section {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-md);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .page-subtitle {
+    font-size: 1.2rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    max-width: 40rem;
+  }
+
+  .stats-section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+    margin-bottom: var(--space-3xl);
+  }
+
+  .stat-card {
+    background: var(--gradient-card);
+    border: 1px solid rgba(124, 77, 255, 0.2);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    text-align: center;
+  }
+
+  .stat-value {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-primary-light);
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    color: var(--color-text-dim);
+  }
+
+  .section {
+    margin-bottom: var(--space-3xl);
+  }
+
+  .proven-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .proven-list li {
+    padding: var(--space-md);
+    background: rgba(0, 230, 118, 0.1);
+    border-left: 3px solid var(--color-success);
+    margin-bottom: var(--space-sm);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  }
+
+  .module-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+
+  .module-card {
+    background: var(--gradient-card);
+    border: 1px solid rgba(124, 77, 255, 0.2);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+  }
+
+  .module-card h3 {
+    color: var(--color-secondary);
+    margin: 0 0 var(--space-sm);
+    font-family: var(--font-mono);
+  }
+
+  .module-card p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-sm);
+  }
+
+  .module-card code {
+    font-size: 0.75rem;
+    background: var(--color-void);
+    display: block;
+    padding: var(--space-xs);
+    border-radius: var(--radius-sm);
+  }
+
+  .reasons {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .reason {
+    display: flex;
+    gap: var(--space-lg);
+  }
+
+  .reason-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .reason strong {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .reason p {
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  .code-block {
+    background: var(--color-void);
+    border: 1px solid rgba(124, 77, 255, 0.2);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .code-block pre {
+    margin: 0;
+    padding: var(--space-lg);
+  }
+
+  .note {
+    font-size: 0.9rem;
+    color: var(--color-text-dim);
+    margin-top: var(--space-md);
+  }
+
+  .cta-section {
+    text-align: center;
+    padding: var(--space-2xl);
+    background: var(--gradient-card);
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(124, 77, 255, 0.2);
+  }
+
+  .cta-section .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  @media (max-width: 768px) {
+    .stats-section {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .module-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

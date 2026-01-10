@@ -1,0 +1,283 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+interface NavItem {
+  title: string;
+  href: string;
+  children?: NavItem[];
+}
+
+const baseUrl = import.meta.env.BASE_URL;
+
+const navigation: NavItem[] = [
+  {
+    title: "Getting Started",
+    href: "#",
+    children: [
+      { title: "Overview", href: `${baseUrl}` },
+      { title: "Main Paper", href: `${baseUrl}papers/main-paper-postulates/` },
+      { title: "Visual Summary", href: `${baseUrl}papers/unified-theory-diagram/` },
+    ]
+  },
+  {
+    title: "Core Theory",
+    href: "#",
+    children: [
+      { title: "Complete Framework", href: `${baseUrl}papers/complete-omega-theory-unified-framework/` },
+      { title: "Key Insight: Irrationals", href: `${baseUrl}papers/keyinsight-irrationals-action-thresholds/` },
+      { title: "Erdős Lagrangian", href: `${baseUrl}papers/erdoslagrangianunification/` },
+    ]
+  },
+  {
+    title: "Appendices",
+    href: "#",
+    children: [
+      { title: "A: Action Density & Quantum Errors", href: `${baseUrl}papers/appendix-a-action-density-and-quantum-errors/` },
+      { title: "B: Quantum Computing Limits", href: `${baseUrl}papers/appendix-b-quantum-computing-temperature-limits/` },
+      { title: "C: Evolution Functionals", href: `${baseUrl}papers/appendix-c-catalog-of-evolution-functionals/` },
+      { title: "D: Topological Surgery", href: `${baseUrl}papers/appendix-d-topological-surgery-and-information-healing/` },
+      { title: "E: Entanglement Theory", href: `${baseUrl}papers/appendix-e-quantum-entanglement-dimensional-theory/` },
+      { title: "E: Visual Diagrams", href: `${baseUrl}papers/appendix-e-visual-diagrams/` },
+      { title: "F: Information Conservation", href: `${baseUrl}papers/appendix-f-information-flow-conservation/` },
+      { title: "G: Graviton Predictions", href: `${baseUrl}papers/appendix-g-graviton-predictions/` },
+      { title: "H: Renormalization", href: `${baseUrl}papers/appendix-h-renormalization-correspondence/` },
+      { title: "I: Experimental Tests", href: `${baseUrl}papers/appendix-i-experimental-tests/` },
+      { title: "L: Lorentz-Doppler", href: `${baseUrl}papers/appendix-lorentzdopplerequivalence/` },
+      { title: "P: Einstein-Cartan Torsion", href: `${baseUrl}papers/appendix-p-einstein-cartan-torsion-integration/` },
+      { title: "S: Wormholes & Chronology", href: `${baseUrl}papers/appendix-s-stable-wormholes-and-chronology-protection/` },
+    ]
+  },
+  {
+    title: "Formal Verification",
+    href: "#",
+    children: [
+      { title: "Lean 4 Proofs", href: `${baseUrl}lean/` },
+    ]
+  },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <a href={baseUrl} class="logo">
+      <span class="logo-symbol">Ω</span>
+      <span class="logo-text">Omega-Theory</span>
+    </a>
+    <ThemeToggle />
+  </div>
+
+  <nav class="nav">
+    {navigation.map((section) => (
+      <div class="nav-section">
+        <button class="nav-section-title" aria-expanded="true">
+          {section.title}
+          <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M4.5 6l3.5 3.5L11.5 6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          </svg>
+        </button>
+        {section.children && (
+          <ul class="nav-items">
+            {section.children.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class:list={["nav-link", { active: currentPath === item.href }]}
+                >
+                  {item.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    ))}
+  </nav>
+
+  <div class="sidebar-footer">
+    <a href="https://github.com/RamzesX/Omega-Theory-Discrete-Spacetime" target="_blank" rel="noopener" class="github-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+      </svg>
+      <span>GitHub</span>
+    </a>
+    <p class="copyright">© 2024 Norbert Marchewka</p>
+  </div>
+</aside>
+
+<style>
+  .sidebar {
+    width: var(--sidebar-width);
+    min-width: var(--sidebar-width);
+    background: var(--color-space);
+    border-right: 1px solid rgba(124, 77, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  .sidebar-header {
+    padding: var(--space-lg);
+    border-bottom: 1px solid rgba(124, 77, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    text-decoration: none;
+    color: var(--color-text);
+  }
+
+  .logo:hover {
+    text-decoration: none;
+  }
+
+  .logo-symbol {
+    font-size: 1.75rem;
+    font-weight: 700;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .logo-text {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .nav {
+    flex: 1;
+    padding: var(--space-md);
+    overflow-y: auto;
+  }
+
+  .nav-section {
+    margin-bottom: var(--space-md);
+  }
+
+  .nav-section-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: var(--space-sm) var(--space-sm);
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: color var(--transition-fast);
+  }
+
+  .nav-section-title:hover {
+    color: var(--color-text);
+  }
+
+  .chevron {
+    transition: transform var(--transition-fast);
+  }
+
+  .nav-section-title[aria-expanded="false"] .chevron {
+    transform: rotate(-90deg);
+  }
+
+  .nav-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav-link {
+    display: block;
+    padding: var(--space-xs) var(--space-md);
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+  }
+
+  .nav-link:hover {
+    color: var(--color-text);
+    background: rgba(124, 77, 255, 0.1);
+    text-decoration: none;
+  }
+
+  .nav-link.active {
+    color: var(--color-primary-light);
+    background: rgba(124, 77, 255, 0.15);
+    border-left: 2px solid var(--color-primary);
+  }
+
+  .sidebar-footer {
+    padding: var(--space-lg);
+    border-top: 1px solid rgba(124, 77, 255, 0.2);
+  }
+
+  .github-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-bottom: var(--space-sm);
+    transition: color var(--transition-fast);
+  }
+
+  .github-link:hover {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .copyright {
+    font-size: 0.75rem;
+    color: var(--color-text-dim);
+    margin: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+      border-right: none;
+      border-bottom: 1px solid rgba(124, 77, 255, 0.2);
+    }
+
+    .nav {
+      display: none;
+    }
+
+    .sidebar.open .nav {
+      display: block;
+    }
+  }
+</style>
+
+<script>
+  // Toggle nav sections
+  document.querySelectorAll('.nav-section-title').forEach(button => {
+    button.addEventListener('click', () => {
+      const expanded = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', (!expanded).toString());
+      const items = button.nextElementSibling;
+      if (items) {
+        items.style.display = expanded ? 'none' : 'block';
+      }
+    });
+  });
+</script>
