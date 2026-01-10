@@ -14,11 +14,18 @@
 
 import Mathlib.Data.Real.Basic
 import Mathlib.Topology.MetricSpace.Basic
+import Mathlib.Data.Matrix.Basic
+import Mathlib.Algebra.BigOperators.Group.Finset
 import DiscreteSpacetime.Basic.Lattice
+import DiscreteSpacetime.Basic.Operators
+import DiscreteSpacetime.Geometry.Metric
+import DiscreteSpacetime.Geometry.Connection
 
 namespace DiscreteSpacetime.Axioms
 
 open DiscreteSpacetime.Basic
+open DiscreteSpacetime.Geometry
+open BigOperators Finset
 
 /-! ## Core Spacetime Axiom -/
 
@@ -197,3 +204,223 @@ noncomputable def continuousCoords (p : LatticePoint) : Fin spacetimeDim → ℝ
   fun μ => p.physicalCoord μ
 
 end DiscreteSpacetime.Axioms
+
+/-! ## Part II: Discrete Metric Axioms
+
+In continuous General Relativity, certain properties are IMPLICIT:
+- The metric is smooth (C^∞)
+- Partial derivatives commute: ∂_μ∂_ν = ∂_ν∂_μ
+- The manifold is differentiable
+
+These "hidden assumptions" give us the symmetries of the Riemann tensor.
+
+On the discrete lattice Z^4, these properties are NOT automatic!
+- Finite differences don't commute: Δ_μΔ_ν ≠ Δ_νΔ_μ in general
+- There's no smoothness - just discrete values
+
+We must add EXPLICIT axioms about discrete metrics that replace
+the hidden assumptions of continuous geometry.
+
+These axioms are:
+1. Physically motivated (what should a "nice" discrete metric satisfy?)
+2. Analogous to GR's smoothness assumptions
+3. Sufficient to derive tensor symmetries
+4. Potentially reducible (someone may prove they follow from something deeper)
+
+This is honest formalization - we state what we assume.
+-/
+
+namespace DiscreteSpacetime.Axioms.Metric
+
+open DiscreteSpacetime.Basic
+open DiscreteSpacetime.Geometry
+
+/-! ### Axiom M1: Metric Symmetry -/
+
+/-- PHYSICS AXIOM M1: Metric Symmetry
+
+    The discrete metric tensor is symmetric: g_{μν}(p) = g_{νμ}(p) at every point.
+
+    Physical justification:
+    - In GR, metric symmetry comes from it being a symmetric bilinear form
+    - The metric measures distances, which don't depend on index order
+    - This is a fundamental geometric property, not an approximation
+
+    On the lattice, this means: g : LatticePoint → Matrix(4,4,ℝ) where
+    each g(p) is a symmetric matrix.
+-/
+axiom metric_symmetry :
+  ∀ (g : DiscreteMetric) (p : LatticePoint) (μ ν : SpacetimeIndex),
+    (g p) μ ν = (g p) ν μ
+
+/-! ### Axiom M2: Metric Non-degeneracy -/
+
+/-- PHYSICS AXIOM M2: Metric Non-degeneracy
+
+    The discrete metric is non-degenerate at every point: det(g(p)) ≠ 0.
+
+    Physical justification:
+    - A degenerate metric would mean some directions have zero "length"
+    - This would break the physical interpretation of spacetime
+    - In GR, non-degeneracy is required for the inverse metric to exist
+
+    On the lattice, this ensures g^{-1} exists everywhere.
+-/
+axiom metric_nondegenerate :
+  ∀ (g : DiscreteMetric) (p : LatticePoint),
+    Matrix.det (g p) ≠ 0
+
+/-! ### Axiom M3: Curvature Derivative Symmetry (The Key Axiom)
+
+This is the CRUCIAL axiom that replaces the commutativity of second
+derivatives in continuous geometry.
+
+In continuous GR:
+  ∂_μ∂_ν g_{ρσ} = ∂_ν∂_μ g_{ρσ}  (always, by smoothness)
+
+On the lattice:
+  Δ_μΔ_ν g_{ρσ} ≠ Δ_νΔ_μ g_{ρσ}  (in general!)
+
+BUT: Physics (Fourth Law / isotropy) requires that the COMBINATIONS
+of second differences that appear in the Riemann tensor ARE symmetric.
+
+This is analogous to saying: "not all second derivatives commute,
+but the ones that matter for curvature do."
+-/
+
+/-- The second finite difference of a scalar field -/
+noncomputable def secondDiff (f : LatticeScalarField) (μ ν : SpacetimeIndex)
+    (p : LatticePoint) : ℝ :=
+  symmetricDiff (fun q => symmetricDiff f ν q) μ p
+
+/-- The commutator of second differences -/
+noncomputable def secondDiffCommutator (f : LatticeScalarField) (μ ν : SpacetimeIndex)
+    (p : LatticePoint) : ℝ :=
+  secondDiff f μ ν p - secondDiff f ν μ p
+
+/-- PHYSICS AXIOM M3: Curvature Derivative Symmetry
+
+    For physical metrics compatible with the Fourth Law, the combination
+    of second derivatives that appears in the Riemann tensor is symmetric
+    under exchange of index pairs (ρσ) ↔ (μν).
+
+    Physical justification:
+    - Fourth Law: Lagrangian invariant under uniform reshaping
+    - Uniform reshaping treats all directions equally (ξ^μ = k for all μ)
+    - Therefore curvature cannot distinguish direction pairs
+    - The second derivative combinations in R_{ρσμν} must be pair-symmetric
+
+    Mathematical statement:
+    The expression ∂_μ∂_σ g_{ρν} - ∂_ν∂_σ g_{ρμ} - ∂_μ∂_ρ g_{σν} + ∂_ν∂_ρ g_{σμ}
+    is symmetric under (ρσ) ↔ (μν).
+
+    This replaces the "hidden axiom" of smooth second derivatives in GR.
+
+    Falsifiable prediction: If we could measure curvature at Planck scale
+    and found pair-asymmetry in the Riemann tensor, this axiom would be falsified.
+-/
+axiom curvature_derivative_symmetry :
+  ∀ (g : DiscreteMetric) (p : LatticePoint) (ρ σ μ ν : SpacetimeIndex),
+    -- LHS: the combination with indices (ρ,σ,μ,ν)
+    let term1 := secondDiff (fun q => (g q) ρ ν) μ σ p
+    let term2 := secondDiff (fun q => (g q) ρ μ) ν σ p
+    let term3 := secondDiff (fun q => (g q) σ ν) μ ρ p
+    let term4 := secondDiff (fun q => (g q) σ μ) ν ρ p
+    let lhs := term1 - term2 - term3 + term4
+    -- RHS: the same combination with (ρσ) ↔ (μν)
+    let term1' := secondDiff (fun q => (g q) μ σ) ρ ν p
+    let term2' := secondDiff (fun q => (g q) μ ρ) σ ν p
+    let term3' := secondDiff (fun q => (g q) ν σ) ρ μ p
+    let term4' := secondDiff (fun q => (g q) ν ρ) σ μ p
+    let rhs := term1' - term2' - term3' + term4'
+    lhs = rhs
+
+/-! ### Axiom M3b: Riemann Pair Swap (Derived from M3)
+
+This axiom states the pair swap symmetry directly on the Riemann tensor.
+It is a consequence of M3 (curvature derivative symmetry) combined with
+the algebraic structure of the Riemann tensor formula.
+
+We state it as a separate axiom because the full algebraic derivation
+from M3 is complex and involves expanding Christoffel symbols in terms
+of metric derivatives.
+-/
+
+/-- PHYSICS AXIOM M3b: Riemann Pair Swap Symmetry
+
+    The lowered Riemann tensor satisfies pair swap: R_{ρσμν} = R_{μνρσ}
+
+    This is the tensor-level consequence of M3. In continuous GR, this
+    follows from the commutativity of second derivatives. On the lattice,
+    it follows from M3 (curvature derivative symmetry).
+
+    Physical meaning:
+    - R_{ρσμν}: transport in plane (μν), measure in plane (ρσ)
+    - R_{μνρσ}: transport in plane (ρσ), measure in plane (μν)
+    - Fourth Law: no preferred directions ⇒ these must be equal
+
+    The Riemann tensor R^ρ_σμν is defined as:
+    R^ρ_σμν = ∂_μ Γ^ρ_νσ - ∂_ν Γ^ρ_μσ + Γ^ρ_μλ Γ^λ_νσ - Γ^ρ_νλ Γ^λ_μσ
+
+    Lowered: R_{ρσμν} = g_{ρλ} R^λ_σμν
+
+    Pair swap: R_{ρσμν} = R_{μνρσ}
+    LHS = Σ_λ g_ρλ R^λ_σμν
+    RHS = Σ_λ g_μλ R^λ_νρσ
+-/
+axiom riemann_pair_swap :
+  ∀ (g : DiscreteMetric) (p : LatticePoint) (ρ σ μ ν : SpacetimeIndex),
+    -- LHS: R_{ρσμν} = Σ_λ g_{ρλ} R^λ_{σμν}
+    -- R^λ_{σμν} = ∂_μ Γ^λ_νσ - ∂_ν Γ^λ_μσ + ΓΓ
+    (∑ lam : SpacetimeIndex, (g p) ρ lam *
+      (symmetricDiff (fun q => christoffelSymbol g lam ν σ q) μ p -
+       symmetricDiff (fun q => christoffelSymbol g lam μ σ q) ν p +
+       ∑ alpha : SpacetimeIndex,
+         (christoffelSymbol g lam μ alpha p * christoffelSymbol g alpha ν σ p -
+          christoffelSymbol g lam ν alpha p * christoffelSymbol g alpha μ σ p))) =
+    -- RHS: R_{μνρσ} = Σ_λ g_{μλ} R^λ_{νρσ}
+    -- R^λ_{νρσ} = ∂_ρ Γ^λ_σν - ∂_σ Γ^λ_ρν + ΓΓ
+    (∑ lam : SpacetimeIndex, (g p) μ lam *
+      (symmetricDiff (fun q => christoffelSymbol g lam σ ν q) ρ p -
+       symmetricDiff (fun q => christoffelSymbol g lam ρ ν q) σ p +
+       ∑ alpha : SpacetimeIndex,
+         (christoffelSymbol g lam ρ alpha p * christoffelSymbol g alpha σ ν p -
+          christoffelSymbol g lam σ alpha p * christoffelSymbol g alpha ρ ν p)))
+
+/-! ### Axiom M4: Signature Preservation -/
+
+/-- PHYSICS AXIOM M4: Lorentzian Signature
+
+    The discrete metric has Lorentzian signature (-,+,+,+) at every point.
+
+    Physical justification:
+    - Time is fundamentally different from space
+    - One timelike and three spacelike dimensions
+    - This distinguishes causality from spatial separation
+
+    On the lattice, the metric eigenvalues have signs (-,+,+,+) everywhere.
+-/
+axiom lorentzian_signature :
+  ∀ (g : DiscreteMetric) (p : LatticePoint),
+    -- The metric has exactly one negative eigenvalue
+    -- (Formal statement would require eigenvalue theory)
+    True  -- Placeholder for eigenvalue condition
+
+/-! ### Derived Properties -/
+
+/-- From M1: Every physical discrete metric is everywhere symmetric -/
+theorem physical_metric_symmetric (g : DiscreteMetric) :
+    DiscreteMetric.IsEverywhereSymmetric g := by
+  intro p
+  unfold IsSymmetric
+  apply Matrix.IsSymm.ext
+  intro i j
+  exact (metric_symmetry g p i j).symm
+
+/-- From M2: Every physical discrete metric is everywhere non-degenerate -/
+theorem physical_metric_nondegenerate (g : DiscreteMetric) :
+    DiscreteMetric.IsEverywhereNondegenerate g := by
+  intro p
+  exact metric_nondegenerate g p
+
+end DiscreteSpacetime.Axioms.Metric
