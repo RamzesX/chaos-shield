@@ -13,6 +13,7 @@
 -/
 
 import DiscreteSpacetime.Geometry.Curvature.Common
+import DiscreteSpacetime.Geometry.Curvature.Bianchi
 
 namespace DiscreteSpacetime.Geometry.Curvature
 
@@ -38,6 +39,52 @@ theorem riemann_antisym_34 (g : DiscreteMetric) (hSym : DiscreteMetric.IsEverywh
   -- Goal becomes: A - B + C - D = -(B - A + D - C)
   -- This is algebraically: A - B + C - D = -B + A - D + C = A - B + C - D ✓
   ring
+
+/-! ## Helper Lemmas for Lowered Tensor -/
+
+/-- Antisymmetry in last two indices is preserved under lowering.
+    R_{ρσμν} = -R_{ρσνμ}
+
+    This follows directly from riemann_antisym_34 by linearity of summation. -/
+theorem riemann_lower_antisym_34 (g : DiscreteMetric) (hSym : DiscreteMetric.IsEverywhereSymmetric g)
+    (ρ σ μ ν : Fin 4) (p : LatticePoint) :
+    riemannLower g ρ σ μ ν p = -riemannLower g ρ σ ν μ p := by
+  unfold riemannLower
+  -- Goal: Σ_λ g_{ρλ} R^λ_{σμν} = -Σ_λ g_{ρλ} R^λ_{σνμ}
+  -- Use riemann_antisym_34 to rewrite each term
+  have h : ∀ lam : Fin 4, (g p) ρ lam * riemannTensor g lam σ μ ν p =
+                         -((g p) ρ lam * riemannTensor g lam σ ν μ p) := by
+    intro lam
+    rw [riemann_antisym_34 g hSym lam σ μ ν p]
+    ring
+  -- Now apply to the sum
+  rw [← Finset.sum_neg_distrib]
+  apply Finset.sum_congr rfl
+  intro lam _
+  exact h lam
+
+/-- First Bianchi identity holds for lowered tensor.
+    R_{ρσμν} + R_{ρμνσ} + R_{ρνσμ} = 0
+
+    This follows from first_bianchi by linearity of metric contraction. -/
+theorem first_bianchi_lower (g : DiscreteMetric) (hSym : DiscreteMetric.IsEverywhereSymmetric g)
+    (ρ σ μ ν : Fin 4) (p : LatticePoint) :
+    riemannLower g ρ σ μ ν p + riemannLower g ρ μ ν σ p + riemannLower g ρ ν σ μ p = 0 := by
+  unfold riemannLower
+  -- Goal: Σ_λ g_{ρλ}(R^λ_{σμν} + R^λ_{μνσ} + R^λ_{νσμ}) = 0
+  -- Factor out the metric and use first_bianchi
+  rw [← Finset.sum_add_distrib, ← Finset.sum_add_distrib]
+  have h : ∀ lam : Fin 4,
+      (g p) ρ lam * riemannTensor g lam σ μ ν p +
+      (g p) ρ lam * riemannTensor g lam μ ν σ p +
+      (g p) ρ lam * riemannTensor g lam ν σ μ p = 0 := by
+    intro lam
+    rw [← mul_add, ← mul_add]
+    rw [first_bianchi g hSym lam σ μ ν p]
+    ring
+  apply Finset.sum_eq_zero
+  intro lam _
+  exact h lam
 
 /-! ## Antisymmetry in First Two Indices (Lowered) -/
 
