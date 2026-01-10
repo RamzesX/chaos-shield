@@ -1,0 +1,215 @@
+<!-- MathJax 3 Configuration for LaTeX rendering -->
+<!-- Supports both $...$ inline and $$...$$ display math -->
+
+{% if page.math != false and site.math %}
+<script>
+MathJax = {
+  tex: {
+    // Enable $...$ for inline math (in addition to \(...\))
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    // Enable $$...$$ for display math (in addition to \[...\])
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    // Process \$ as escaped dollar sign
+    processEscapes: true,
+    // Process environments like \begin{equation}...\end{equation}
+    processEnvironments: true,
+    // Process \ref{...} and \eqref{...}
+    processRefs: true,
+    // Common LaTeX packages/macros
+    packages: {'[+]': ['ams', 'newcommand', 'configmacros']},
+    // Custom macros for physics
+    macros: {
+      // Greek letters shortcuts
+      ell: '\\ell',
+      // Operators
+      Tr: '\\operatorname{Tr}',
+      tr: '\\operatorname{tr}',
+      det: '\\operatorname{det}',
+      // Derivatives
+      dd: ['\\mathrm{d}#1', 1],
+      dv: ['\\frac{\\mathrm{d} #1}{\\mathrm{d} #2}', 2],
+      pdv: ['\\frac{\\partial #1}{\\partial #2}', 2],
+      // Common physics notation
+      bra: ['\\langle #1 |', 1],
+      ket: ['| #1 \\rangle', 1],
+      braket: ['\\langle #1 | #2 \\rangle', 2],
+      // Bold vectors
+      vb: ['\\mathbf{#1}', 1],
+      // Planck units
+      lP: '\\ell_P',
+      tP: 't_P',
+      mP: 'm_P',
+      EP: 'E_P'
+    },
+    tags: 'ams',
+    tagSide: 'right',
+    tagIndent: '0.8em'
+  },
+  svg: {
+    fontCache: 'global',
+    scale: 1,
+    minScale: 0.5
+  },
+  options: {
+    // Process math on page load
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+    // Ignore class
+    ignoreHtmlClass: 'tex2jax_ignore',
+    // Process class
+    processHtmlClass: 'tex2jax_process'
+  },
+  startup: {
+    pageReady: () => {
+      return MathJax.startup.defaultPageReady().then(() => {
+        console.log('MathJax initial typesetting complete');
+      });
+    }
+  }
+};
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<style>
+/* Ensure math renders well in dark mode */
+.MathJax svg {
+  color: inherit;
+}
+/* Prevent overflow on mobile */
+mjx-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+/* Display math centering */
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+/* Inline math spacing */
+mjx-container[jax="SVG"]:not([display="true"]) {
+  display: inline-block;
+}
+</style>
+{% endif %}
+
+<!-- JetBrains Mono for guaranteed Unicode box-drawing support -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+<!-- Custom styles for physics papers and ASCII art -->
+<style>
+/* ============================================
+   ASCII ART & BOX-DRAWING CHARACTER SUPPORT
+   ============================================ */
+
+/* Unicode-complete monospace font stack */
+pre, pre code, code {
+  font-family:
+    'JetBrains Mono',
+    'Cascadia Code',
+    'Fira Code',
+    'SF Mono',
+    'DejaVu Sans Mono',
+    'Consolas',
+    'Monaco',
+    'Menlo',
+    'Courier New',
+    monospace;
+}
+
+/* Pre block styling for ASCII diagrams */
+pre {
+  white-space: pre;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  line-height: 1.2;
+  min-width: 0;
+  padding: 1em;
+  border-radius: 6px;
+  tab-size: 4;
+  -moz-tab-size: 4;
+}
+
+/* Code inside pre - the actual ASCII art */
+pre code {
+  font-family: inherit;
+  font-size: 0.8125rem;
+  line-height: 1.15;
+  word-break: keep-all;
+  word-wrap: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+  display: block;
+  padding: 0;
+}
+
+/* Mobile-specific adjustments */
+@media screen and (max-width: 768px) {
+  pre code {
+    font-size: 0.6875rem;
+    line-height: 1.1;
+  }
+}
+
+/* Prevent horizontal page scroll from ASCII art */
+.main-content pre,
+.content pre,
+article pre {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Horizontal scrollbar styling (WebKit/Blink) */
+pre::-webkit-scrollbar {
+  height: 8px;
+}
+pre::-webkit-scrollbar-track {
+  background: rgba(128, 128, 128, 0.1);
+  border-radius: 4px;
+}
+pre::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.4);
+  border-radius: 4px;
+}
+pre::-webkit-scrollbar-thumb:hover {
+  background: rgba(128, 128, 128, 0.6);
+}
+
+/* Firefox scrollbar styling */
+pre {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(128, 128, 128, 0.4) rgba(128, 128, 128, 0.1);
+}
+
+/* Table styling for equations */
+table {
+  margin: 1em 0;
+}
+th, td {
+  padding: 0.5em 1em;
+}
+
+/* Equation boxes */
+.equation-box {
+  border: 1px solid var(--color-border);
+  padding: 1em;
+  margin: 1em 0;
+  border-radius: 4px;
+  background: var(--color-background-alt);
+}
+
+/* Print styling for ASCII art */
+@media print {
+  pre {
+    white-space: pre;
+    overflow: visible;
+    page-break-inside: avoid;
+    font-size: 8pt;
+    line-height: 1.1;
+  }
+}
+</style>

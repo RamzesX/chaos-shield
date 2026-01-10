@@ -41,7 +41,12 @@
       "Bash(powershell.exe -NoProfile -Command:*)",
       "Bash(cmd /c \"lake build DiscreteSpacetime.Dynamics.Healing 2>&1\")",
       "Bash(cmd.exe:*)",
-      "Bash(del /f \"C:\\\\Users\\\\Norbert\\\\IdeaProjects\\\\chaos-shield\\\\nul\")"
+      "Bash(del /f \"C:\\\\Users\\\\Norbert\\\\IdeaProjects\\\\chaos-shield\\\\nul\")",
+      "WebFetch(domain:just-the-docs.github.io)",
+      "WebFetch(domain:just-the-docs.com)",
+      "WebFetch(domain:chrisyeh96.github.io)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:orcid.org)"
     ]
   }
 }
