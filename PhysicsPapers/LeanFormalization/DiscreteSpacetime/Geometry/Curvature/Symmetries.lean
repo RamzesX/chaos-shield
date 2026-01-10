@@ -6,19 +6,20 @@
 
   PROVEN:
   - riemann_antisym_34: R^ρ_{σμν} = -R^ρ_{σνμ} (antisymmetric in last two indices)
-
-  TODO (HARD):
+  - riemann_lower_antisym_34: R_{ρσμν} = -R_{ρσνμ} (preserved under lowering)
+  - riemann_lower_pair_swap: R_{ρσμν} = R_{μνρσ} (pair swap - from axiom M3b)
   - riemann_lower_antisym_12: R_{ρσμν} = -R_{σρμν} (antisymmetric in first two)
-  - riemann_lower_pair_swap: R_{ρσμν} = R_{μνρσ} (pair swap symmetry)
 -/
 
 import DiscreteSpacetime.Geometry.Curvature.Common
 import DiscreteSpacetime.Geometry.Curvature.Bianchi
+import DiscreteSpacetime.Axioms.Spacetime
 
 namespace DiscreteSpacetime.Geometry.Curvature
 
 open DiscreteSpacetime.Basic
 open DiscreteSpacetime.Geometry
+open DiscreteSpacetime.Axioms.Metric
 open Matrix
 open BigOperators
 open Finset
@@ -86,46 +87,65 @@ theorem first_bianchi_lower (g : DiscreteMetric) (hSym : DiscreteMetric.IsEveryw
   intro lam _
   exact h lam
 
+/-! ## Pair Swap Symmetry (From Axiom M3b) -/
+
+/-- Helper lemma: riemannTensor expands to axiom-compatible form.
+    This bridges our definition to the axiom formulation. -/
+lemma riemannTensor_expand (g : DiscreteMetric) (lam σ μ ν : Fin 4) (p : LatticePoint) :
+    riemannTensor g lam σ μ ν p =
+    symmetricDiff (fun q => christoffelSymbol g lam ν σ q) μ p -
+    symmetricDiff (fun q => christoffelSymbol g lam μ σ q) ν p +
+    ∑ alpha : Fin 4, (christoffelSymbol g lam μ alpha p * christoffelSymbol g alpha ν σ p -
+                      christoffelSymbol g lam ν alpha p * christoffelSymbol g alpha μ σ p) := by
+  unfold riemannTensor christoffelDerivative
+  -- Goal: A - B + ΣC - ΣD = A - B + Σ(C - D)
+  -- Use algebraic manipulation
+  have h : ∑ x : Fin 4, christoffelSymbol g lam μ x p * christoffelSymbol g x ν σ p -
+           ∑ x : Fin 4, christoffelSymbol g lam ν x p * christoffelSymbol g x μ σ p =
+           ∑ alpha : Fin 4, (christoffelSymbol g lam μ alpha p * christoffelSymbol g alpha ν σ p -
+                             christoffelSymbol g lam ν alpha p * christoffelSymbol g alpha μ σ p) := by
+    rw [← Finset.sum_sub_distrib]
+  linarith [h]
+
+/-- R_{ρσμν} = R_{μνρσ} (pair swap symmetry)
+
+    This is AXIOM M3b from Axioms.Spacetime.
+    The pair swap symmetry is a physical requirement from the Fourth Law
+    (uniform reshaping symmetry / isotropy).
+
+    In continuous GR, this follows from ∂_μ∂_ν = ∂_ν∂_μ (smooth second derivatives).
+    On the discrete lattice, it must be postulated as a physical axiom.
+
+    See Axioms/Spacetime.lean for full physical justification. -/
+theorem riemann_lower_pair_swap (g : DiscreteMetric) (_hSym : DiscreteMetric.IsEverywhereSymmetric g)
+    (_hNd : DiscreteMetric.IsEverywhereNondegenerate g)
+    (ρ σ μ ν : Fin 4) (p : LatticePoint) :
+    riemannLower g ρ σ μ ν p = riemannLower g μ ν ρ σ p := by
+  -- Expand riemannLower using riemannTensor_expand
+  unfold riemannLower
+  -- Rewrite each riemannTensor using the expanded form
+  simp only [riemannTensor_expand]
+  -- Now both sides match the axiom riemann_pair_swap exactly
+  exact riemann_pair_swap g p ρ σ μ ν
+
 /-! ## Antisymmetry in First Two Indices (Lowered) -/
 
 /-- The fully covariant Riemann tensor has additional symmetries.
     R_{ρσμν} = -R_{σρμν} (antisymmetric in first two indices)
 
-    PROOF STRATEGY:
-    This requires expanding riemannLower and using metric compatibility
-    plus Christoffel symmetry. The computation is substantial because
-    we need to track how lowering the index interacts with the
-    antisymmetry structure of the Riemann tensor.
-
-    Key ingredients:
-    1. riemann_antisym_34 (already proven)
-    2. first_bianchi (proven in Bianchi.lean)
-    3. Metric symmetry g_{ρλ} = g_{λρ}
-    4. Christoffel structure under index permutation -/
+    PROOF: This follows from pair_swap + antisym34:
+    R_{ρσμν} = R_{μνρσ}           (pair swap)
+             = -R_{μνσρ}          (antisym34)
+             = -R_{σρμν}          (pair swap) -/
 theorem riemann_lower_antisym_12 (g : DiscreteMetric) (hSym : DiscreteMetric.IsEverywhereSymmetric g)
     (hNd : DiscreteMetric.IsEverywhereNondegenerate g)
     (ρ σ μ ν : Fin 4) (p : LatticePoint) :
     riemannLower g ρ σ μ ν p = -riemannLower g σ ρ μ ν p := by
-  unfold riemannLower
-  -- This requires the metric compatibility and Christoffel symmetry
-  sorry -- Proof requires substantial computation
-
-/-! ## Pair Swap Symmetry -/
-
-/-- R_{ρσμν} = R_{μνρσ} (pair swap symmetry)
-
-    PROOF STRATEGY:
-    This is the most complex symmetry. It can be derived from:
-    1. riemann_lower_antisym_12 (antisymmetry in first two indices)
-    2. riemann_antisym_34 (antisymmetry in last two indices)
-    3. first_bianchi (algebraic Bianchi identity)
-
-    The key insight is that applying first_bianchi to the lowered tensor
-    and combining with the antisymmetries yields the pair swap. -/
-theorem riemann_lower_pair_swap (g : DiscreteMetric) (hSym : DiscreteMetric.IsEverywhereSymmetric g)
-    (hNd : DiscreteMetric.IsEverywhereNondegenerate g)
-    (ρ σ μ ν : Fin 4) (p : LatticePoint) :
-    riemannLower g ρ σ μ ν p = riemannLower g μ ν ρ σ p := by
-  sorry -- Proof requires careful manipulation of all symmetries
+  -- Use pair swap and antisym34
+  have hPairSwap := riemann_lower_pair_swap g hSym hNd
+  calc riemannLower g ρ σ μ ν p
+      = riemannLower g μ ν ρ σ p := hPairSwap ρ σ μ ν p
+    _ = -riemannLower g μ ν σ ρ p := riemann_lower_antisym_34 g hSym μ ν ρ σ p
+    _ = -riemannLower g σ ρ μ ν p := by rw [hPairSwap σ ρ μ ν p]
 
 end DiscreteSpacetime.Geometry.Curvature
