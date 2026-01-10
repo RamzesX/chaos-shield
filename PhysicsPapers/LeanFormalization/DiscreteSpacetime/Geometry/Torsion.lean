@@ -36,6 +36,7 @@ import DiscreteSpacetime.Basic.Operators
 import DiscreteSpacetime.Basic.Constants
 import DiscreteSpacetime.Geometry.Metric
 import DiscreteSpacetime.Geometry.Connection
+import DiscreteSpacetime.Geometry.Curvature
 import DiscreteSpacetime.Dynamics.Defects
 
 namespace DiscreteSpacetime.Geometry
@@ -287,19 +288,67 @@ noncomputable def torsionPseudoTrace
 
 /-! ## Cartan Curvature -/
 
+/-! ### Helper: Partial derivative of contorsion tensor -/
+
+/-- Partial derivative of contorsion tensor K^ρ_{σν} along direction μ.
+    Uses symmetric difference for O(l_P²) accuracy. -/
+noncomputable def contorsionDerivative
+    (S : Fin 4 → Fin 4 → Fin 4 → LatticePoint → ℝ)
+    (g : DiscreteMetric) (rho sigma nu mu : Fin 4) (p : LatticePoint) : ℝ :=
+  symmetricDiff (fun q => contorsionTensor S g rho sigma nu q) mu p
+
+/-! ### Helper: Covariant derivative of contorsion tensor -/
+
+/-- Covariant derivative of contorsion: ∇_μ K^ρ_{σν}
+
+    The contorsion K^ρ_{σν} is a (1,2) tensor, so:
+    ∇_μ K^ρ_{σν} = ∂_μ K^ρ_{σν} + Γ^ρ_{μλ} K^λ_{σν}
+                   - Γ^λ_{μσ} K^ρ_{λν} - Γ^λ_{μν} K^ρ_{σλ} -/
+noncomputable def covariantDerivContorsion
+    (S : Fin 4 → Fin 4 → Fin 4 → LatticePoint → ℝ)
+    (g : DiscreteMetric) (rho sigma nu mu : Fin 4) (p : LatticePoint) : ℝ :=
+  -- Term 1: Partial derivative
+  contorsionDerivative S g rho sigma nu mu p +
+  -- Term 2: +Γ^ρ_{μλ} K^λ_{σν}
+  Finset.univ.sum (fun lam =>
+    christoffelSymbol g rho mu lam p * contorsionTensor S g lam sigma nu p) -
+  -- Term 3: -Γ^λ_{μσ} K^ρ_{λν}
+  Finset.univ.sum (fun lam =>
+    christoffelSymbol g lam mu sigma p * contorsionTensor S g rho lam nu p) -
+  -- Term 4: -Γ^λ_{μν} K^ρ_{σλ}
+  Finset.univ.sum (fun lam =>
+    christoffelSymbol g lam mu nu p * contorsionTensor S g rho sigma lam p)
+
+/-! ### Main Definition: Einstein-Cartan Curvature -/
+
 /-- The curvature tensor in Einstein-Cartan theory includes torsion contributions.
 
-    R^rho_{sigma mu nu}[EC] = R^rho_{sigma mu nu}[LC] + nabla_mu K^rho_{sigma nu}
-                              - nabla_nu K^rho_{sigma mu} + K^rho_{lambda mu} K^lambda_{sigma nu}
-                              - K^rho_{lambda nu} K^lambda_{sigma mu}
+    R^ρ_{σμν}[EC] = R^ρ_{σμν}[LC] + ∇_μ K^ρ_{σν} - ∇_ν K^ρ_{σμ}
+                   + K^ρ_{λμ} K^λ_{σν} - K^ρ_{λν} K^λ_{σμ}
 
-    where [LC] denotes the Levi-Civita (torsion-free) curvature and K is contorsion. -/
+    where:
+    - [LC] denotes the Levi-Civita (torsion-free) curvature from riemannTensor
+    - K is the contorsion tensor
+    - The last four terms are the torsion contributions
+
+    This is the fundamental curvature tensor of Einstein-Cartan gravity,
+    reducing to standard GR when torsion S = 0. -/
 noncomputable def cartanCurvature
     (g : DiscreteMetric)
     (S : Fin 4 → Fin 4 → Fin 4 → LatticePoint → ℝ)
     (rho sigma mu nu : Fin 4) (p : LatticePoint) : ℝ :=
-  -- Placeholder: Full computation requires extensive index manipulation
-  sorry
+  -- Term 1: Levi-Civita (torsion-free) Riemann curvature
+  riemannTensor g rho sigma mu nu p +
+  -- Term 2: +∇_μ K^ρ_{σν}
+  covariantDerivContorsion S g rho sigma nu mu p -
+  -- Term 3: -∇_ν K^ρ_{σμ}
+  covariantDerivContorsion S g rho sigma mu nu p +
+  -- Term 4: +K^ρ_{λμ} K^λ_{σν} (contorsion product)
+  Finset.univ.sum (fun lam =>
+    contorsionTensor S g rho lam mu p * contorsionTensor S g lam sigma nu p) -
+  -- Term 5: -K^ρ_{λν} K^λ_{σμ} (contorsion product)
+  Finset.univ.sum (fun lam =>
+    contorsionTensor S g rho lam nu p * contorsionTensor S g lam sigma mu p)
 
 /-! ## Effective Energy-Momentum from Torsion -/
 
