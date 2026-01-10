@@ -1,0 +1,213 @@
+# Omega-Theory Documentation
+# MkDocs Material Configuration
+# https://squidfunk.github.io/mkdocs-material/
+
+site_name: "Ω-Theory"
+site_description: "Discrete Spacetime and Mass as Geometric Reshaping - A Unified Physics Framework"
+site_author: "Norbert Marchewka"
+site_url: "https://ramzesx.github.io/Omega-Theory-Discrete-Spacetime/"
+
+repo_name: "RamzesX/Omega-Theory-Discrete-Spacetime"
+repo_url: "https://github.com/RamzesX/Omega-Theory-Discrete-Spacetime"
+
+copyright: "CC BY 4.0 - Norbert Marchewka"
+
+# Docs directory
+docs_dir: "docs"
+
+theme:
+  name: material
+
+  # Color palette with dark/light toggle
+  palette:
+    - scheme: slate
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    - scheme: default
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+  # Typography
+  font:
+    text: "Inter"
+    code: "JetBrains Mono"
+
+  # Features
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.tabs.link
+    - content.code.copy
+    - content.code.annotate
+
+  # Logo and icons
+  icon:
+    repo: fontawesome/brands/github
+    logo: material/omega
+
+  # Custom directory for overrides
+  custom_dir: docs/overrides
+
+# Extensions for physics papers
+markdown_extensions:
+  # Math support (KaTeX for speed)
+  - pymdownx.arithmatex:
+      generic: true
+
+  # Admonitions (theorem boxes, proofs, etc.)
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+  # Enhanced formatting
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.mark
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.tilde
+
+  # Tables and formatting
+  - tables
+  - attr_list
+  - md_in_html
+  - def_list
+  - footnotes
+  - abbr
+
+  # Table of contents
+  - toc:
+      permalink: true
+      title: "On this page"
+      toc_depth: 3
+
+  # Emoji and icons
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+  # Task lists
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+  # Tabbed content
+  - pymdownx.tabbed:
+      alternate_style: true
+
+# Plugins
+plugins:
+  - search:
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+  - minify:
+      minify_html: true
+
+# Extra JavaScript for math rendering
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+# Extra CSS
+extra_css:
+  - stylesheets/extra.css
+
+# Extra configuration
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/RamzesX
+      name: GitHub
+    - icon: fontawesome/brands/orcid
+      link: https://orcid.org/0009-0007-3029-175X
+      name: ORCID
+
+  generator: false
+
+  analytics:
+    provider: google
+    property: G-XXXXXXXXXX  # Add your GA4 ID if desired
+
+# Navigation structure
+nav:
+  - Home: index.md
+
+  - "Ω-Theory":
+    - "Overview": PhysicsPapers/README-Document-Structure.md
+    - "Main Paper": PhysicsPapers/Main-Paper-Postulates.md
+    - "Visual Diagrams": PhysicsPapers/unified-theory-diagram.md
+    - "Complete Framework": PhysicsPapers/Complete-Omega-Theory-Unified-Framework.md
+    - "Key Insight: Irrationals": PhysicsPapers/KeyInsight-Irrationals-Action-Thresholds.md
+
+    - "Appendices":
+      - "A: Action Density": PhysicsPapers/Appendix-A-Action-Density-and-Quantum-Errors.md
+      - "B: Quantum Computing": PhysicsPapers/Appendix-B-Quantum-Computing-Temperature-Limits.md
+      - "C: Evolution Functionals": PhysicsPapers/Appendix-C-Catalog-of-Evolution-Functionals.md
+      - "D: Topological Surgery": PhysicsPapers/Appendix-D-Topological-Surgery-And-Information-Healing.md
+      - "E: Entanglement": PhysicsPapers/Appendix-E-Quantum-Entanglement-Dimensional-Theory.md
+      - "E: Visual Diagrams": PhysicsPapers/appendix-E-visual-diagrams.md
+      - "F: Information Conservation": PhysicsPapers/Appendix-F-Information-Flow-Conservation.md
+      - "G: Graviton Predictions": PhysicsPapers/Appendix-G-Graviton-Predictions.md
+      - "H: Renormalization": PhysicsPapers/Appendix-H-Renormalization-Correspondence.md
+      - "I: Experimental Tests": PhysicsPapers/Appendix-I-Experimental-Tests.md
+      - "Lorentz-Doppler": PhysicsPapers/Appendix-LorentzDopplerEquivalence.md
+      - "P: Einstein-Cartan Torsion": PhysicsPapers/Appendix-P-Einstein-Cartan-Torsion-Integration.md
+      - "S: Stable Wormholes": PhysicsPapers/Appendix-S-Stable-Wormholes-And-Chronology-Protection.md
+
+    - "Advanced":
+      - "Erdős Lagrangian": PhysicsPapers/ErdosLagrangianUnification.md
+
+  - "Lean Proofs":
+    - "Overview": PhysicsPapers/LeanFormalization/README.md
+    - "Build Instructions": PhysicsPapers/LeanFormalization/BUILD.md
+
+  - "Conv(ℚ) Math":
+    - "Overview": ConvQMath/README.md
+    - "00: Introduction": ConvQMath/00_Introduction.md
+    - "01: The Two Sins": ConvQMath/01_The_Two_Sins.md
+    - "02: Constructive Foundations": ConvQMath/02_Constructive_Foundations.md
+    - "03: Pure Mathematics": ConvQMath/03_Pure_Mathematics.md
+    - "04: Real Analysis": ConvQMath/04_Real_Analysis_Conv.md
+    - "05: Applied Mathematics": ConvQMath/05_Applied_Mathematics_Conv.md
+    - "06: Physics": ConvQMath/06_Physics_Conv.md
+    - "07: Computer Science": ConvQMath/07_Computer_Science_Conv.md
+    - "08: Advanced Mathematics": ConvQMath/08_Advanced_Mathematics_Conv.md
+    - "09: Grand Unification": ConvQMath/09_Grand_Unification_Conv.md
+    - "10: Digital Physics": ConvQMath/10_Digital_Physis_Connection.md
+    - "11: Philosophical Stand": ConvQMath/11_Philosophical_Stand.md
+    - "12: Open Problems": ConvQMath/12_Open_Problems.md
+    - "13: Quantum Integers": ConvQMath/13_Quantum_Integers.md
+    - "14: Arbitrary Precision": ConvQMath/14_Arbitrary_Precision_Operator.md
+    - "15: Computational Debt": ConvQMath/15_Computational_Debt.md
+
+  - "Other Research":
+    - "Quantum Security": QuantumSecurity/README.md
+    - "Hardware Security": YubikeysEsimVsGps/README.md
+    - "Unix/OS": UnixOs/README.md
+

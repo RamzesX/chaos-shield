@@ -8,7 +8,7 @@ import { remarkRewritePaperLinks } from './src/plugins/remarkRewritePaperLinks.m
 export default defineConfig({
   site: 'https://ramzesx.github.io',
   base: '/Omega-Theory-Discrete-Spacetime',
-  trailingSlash: 'ignore',
+  trailingSlash: 'always',
 
   integrations: [
     mdx(),
@@ -62,9 +62,6 @@ export default defineConfig({
           // Information current
           '\\JI': 'J^\\mu_I',
           '\\divJ': '\\partial_\\mu J^\\mu_I',
-
-          // Christoffel
-          '\\Gamma': '\\Gamma^{#1}_{#2#3}',
 
           // Common
           '\\half': '\\frac{1}{2}',

@@ -141,12 +141,7 @@ appear to require fine-tuning to 1 part in 10³⁴.
 
 The hierarchy emerges naturally from cascading reshaping costs:
 
-$$\begin{aligned}
-E_1 &= E_{\text{Planck}} && \text{(direct geometric scale)} \\
-E_2 &= E_{\text{Planck}} \times \alpha_{\text{reshape}} && \sim 10^{16} \text{ GeV (GUT scale)} \\
-E_3 &= E_{\text{Planck}} \times \alpha_{\text{reshape}}^2 && \sim 10^3 \text{ GeV (weak scale)} \\
-E_4 &= E_{\text{Planck}} \times \alpha_{\text{reshape}}^3 && \sim 1 \text{ GeV (QCD scale)}
-\end{aligned}$$
+$$\begin{aligned} E_1 &= E_{\text{Planck}} && \text{(direct geometric scale)} \\ E_2 &= E_{\text{Planck}} \times \alpha_{\text{reshape}} && \sim 10^{16} \text{ GeV (GUT scale)} \\ E_3 &= E_{\text{Planck}} \times \alpha_{\text{reshape}}^2 && \sim 10^3 \text{ GeV (weak scale)} \\ E_4 &= E_{\text{Planck}} \times \alpha_{\text{reshape}}^3 && \sim 1 \text{ GeV (QCD scale)} \end{aligned}$$
 
 where α_reshape ~ (ℓ_p × δ(π,e,√2))^(1/n) is the geometric reshaping factor.
 

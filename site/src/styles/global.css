@@ -212,13 +212,48 @@ pre code {
   color: var(--color-text);
 }
 
-/* ASCII Art */
-pre.ascii {
-  font-size: 0.75rem;
-  line-height: 1.2;
+/* ASCII Art and Diagrams - Full width for better readability */
+pre.ascii,
+pre:has(code):not(:has(.language-)),
+pre {
+  font-size: 0.7rem;
+  line-height: 1.25;
   letter-spacing: 0;
   background: linear-gradient(135deg, var(--color-void), var(--color-cosmic));
   border-color: var(--color-primary);
+  white-space: pre;
+  overflow-x: auto;
+  /* Allow pre blocks to expand beyond content width */
+  max-width: none;
+  width: calc(100% + 4rem);
+  margin-left: -2rem;
+  margin-right: -2rem;
+  padding: var(--space-lg) var(--space-xl);
+}
+
+/* Code blocks that look like ASCII diagrams (contain box drawing chars) */
+pre code {
+  font-family: var(--font-mono);
+  font-variant-ligatures: none;
+  tab-size: 4;
+  font-size: 0.7rem;
+}
+
+/* Ensure monospace rendering for diagrams */
+.diagram, .ascii-diagram {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  line-height: 1.2;
+  white-space: pre;
+  overflow-x: auto;
+  background: var(--color-void);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-primary);
+  max-width: none;
+  width: calc(100% + 4rem);
+  margin-left: -2rem;
+  margin-right: -2rem;
 }
 
 /* ----------------------------------------------------------------------------
@@ -309,11 +344,41 @@ hr {
 
 .katex {
   font-size: 1.1em;
+  color: var(--color-text);
+}
+
+/* Ensure all KaTeX elements inherit text color */
+.katex .base,
+.katex .strut,
+.katex .mord,
+.katex .mop,
+.katex .mbin,
+.katex .mrel,
+.katex .mopen,
+.katex .mclose,
+.katex .mpunct,
+.katex .minner,
+.katex .katex-html {
+  color: inherit;
+}
+
+/* KaTeX error styling (unrecognized LaTeX) */
+.katex .katex-error {
+  color: var(--color-error);
 }
 
 /* Inline math */
 .katex:not(.katex-display .katex) {
   font-size: 1em;
+}
+
+/* Light mode KaTeX adjustments */
+[data-theme="light"] .katex {
+  color: var(--color-text);
+}
+
+[data-theme="light"] .katex-display {
+  background: rgba(255, 215, 64, 0.15);
 }
 
 /* ----------------------------------------------------------------------------

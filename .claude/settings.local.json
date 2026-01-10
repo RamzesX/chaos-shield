@@ -47,7 +47,26 @@
       "WebFetch(domain:chrisyeh96.github.io)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:orcid.org)",
-      "WebFetch(domain:ramzesx.github.io)"
+      "WebFetch(domain:ramzesx.github.io)",
+      "WebFetch(domain:docs.github.com)",
+      "WebFetch(domain:squidfunk.github.io)",
+      "WebFetch(domain:docusaurus.io)",
+      "WebFetch(domain:quarto.org)",
+      "WebFetch(domain:hugoblox.com)",
+      "Bash(mkdocs serve:*)",
+      "Bash(mkdocs build:*)",
+      "WebFetch(domain:astro.build)",
+      "Bash(npm install)",
+      "Bash(powershell.exe -Command \"cd ''C:\\\\Users\\\\Norbert\\\\IdeaProjects\\\\chaos-shield\\\\site''; npm install 2>&1\")",
+      "Bash(timeout:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(npm run dev:*)",
+      "Bash(node:*)",
+      "Bash(ping:*)",
+      "Bash(npm ls:*)",
+      "WebFetch(domain:www.byteli.com)",
+      "Bash(npx astro build:*)"
     ]
   }
 }

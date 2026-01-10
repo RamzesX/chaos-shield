@@ -1,0 +1,451 @@
+/* ============================================================================
+   OMEGA-THEORY - CUSTOM PHYSICS STYLING
+   MkDocs Material Theme Enhancements
+   ============================================================================ */
+
+/* ----------------------------------------------------------------------------
+   ROOT VARIABLES - Physics Color Palette
+   ---------------------------------------------------------------------------- */
+:root {
+  /* Primary colors - Deep space theme */
+  --omega-primary: #7c4dff;
+  --omega-secondary: #448aff;
+  --omega-accent: #ffd740;
+  --omega-success: #69f0ae;
+  --omega-warning: #ffab40;
+  --omega-error: #ff5252;
+
+  /* Physics-specific colors */
+  --theorem-bg: rgba(124, 77, 255, 0.08);
+  --theorem-border: #7c4dff;
+  --proof-bg: rgba(68, 138, 255, 0.08);
+  --proof-border: #448aff;
+  --definition-bg: rgba(105, 240, 174, 0.08);
+  --definition-border: #69f0ae;
+  --equation-bg: rgba(255, 215, 64, 0.05);
+  --equation-border: #ffd740;
+  --postulate-bg: rgba(255, 82, 82, 0.08);
+  --postulate-border: #ff5252;
+
+  /* Typography */
+  --font-serif: "Crimson Pro", "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  --font-math: "Latin Modern Math", "STIX Two Math", "Cambria Math", serif;
+}
+
+/* ----------------------------------------------------------------------------
+   TYPOGRAPHY - Academic Paper Style
+   ---------------------------------------------------------------------------- */
+
+/* Main content styling */
+.md-content {
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+/* Headings with elegant styling */
+.md-content h1 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  border-bottom: 2px solid var(--omega-primary);
+  padding-bottom: 0.5rem;
+  margin-top: 2rem;
+}
+
+.md-content h2 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  color: var(--omega-primary);
+  margin-top: 2.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid rgba(124, 77, 255, 0.3);
+}
+
+.md-content h3 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  color: var(--omega-secondary);
+}
+
+/* ----------------------------------------------------------------------------
+   MATH EQUATIONS - Beautiful LaTeX Rendering
+   ---------------------------------------------------------------------------- */
+
+/* Display math blocks */
+.arithmatex {
+  overflow-x: auto;
+  padding: 1.5rem 1rem;
+  margin: 1.5rem 0;
+  background: var(--equation-bg);
+  border-left: 4px solid var(--equation-border);
+  border-radius: 0 8px 8px 0;
+}
+
+/* Inline math */
+.arithmatex:not(.block) {
+  padding: 0.1em 0.3em;
+  background: transparent;
+  border: none;
+}
+
+/* MathJax specific */
+mjx-container {
+  font-size: 110% !important;
+}
+
+mjx-container[display="true"] {
+  margin: 1em 0 !important;
+}
+
+/* ----------------------------------------------------------------------------
+   ADMONITIONS - Physics Paper Boxes
+   ---------------------------------------------------------------------------- */
+
+/* Base admonition styling */
+.admonition {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 1.5rem 0;
+  border-width: 0 0 0 4px;
+}
+
+.admonition-title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+}
+
+/* THEOREM box */
+.admonition.theorem,
+.admonition.thm {
+  background: var(--theorem-bg);
+  border-color: var(--theorem-border);
+}
+
+.admonition.theorem .admonition-title,
+.admonition.thm .admonition-title {
+  background: rgba(124, 77, 255, 0.15);
+  color: var(--theorem-border);
+}
+
+.admonition.theorem .admonition-title::before,
+.admonition.thm .admonition-title::before {
+  content: "📐 ";
+}
+
+/* PROOF box */
+.admonition.proof {
+  background: var(--proof-bg);
+  border-color: var(--proof-border);
+}
+
+.admonition.proof .admonition-title {
+  background: rgba(68, 138, 255, 0.15);
+  color: var(--proof-border);
+}
+
+.admonition.proof .admonition-title::before {
+  content: "∎ ";
+}
+
+/* DEFINITION box */
+.admonition.definition,
+.admonition.def {
+  background: var(--definition-bg);
+  border-color: var(--definition-border);
+}
+
+.admonition.definition .admonition-title,
+.admonition.def .admonition-title {
+  background: rgba(105, 240, 174, 0.15);
+  color: var(--definition-border);
+}
+
+.admonition.definition .admonition-title::before,
+.admonition.def .admonition-title::before {
+  content: "📖 ";
+}
+
+/* POSTULATE box - Special for Omega-Theory */
+.admonition.postulate,
+.admonition.axiom {
+  background: var(--postulate-bg);
+  border-color: var(--postulate-border);
+}
+
+.admonition.postulate .admonition-title,
+.admonition.axiom .admonition-title {
+  background: rgba(255, 82, 82, 0.15);
+  color: var(--postulate-border);
+  font-variant: small-caps;
+}
+
+.admonition.postulate .admonition-title::before,
+.admonition.axiom .admonition-title::before {
+  content: "⚛️ ";
+}
+
+/* EQUATION highlight box */
+.admonition.equation {
+  background: var(--equation-bg);
+  border-color: var(--equation-border);
+  text-align: center;
+}
+
+.admonition.equation .admonition-title {
+  background: rgba(255, 215, 64, 0.15);
+  color: #b8860b;
+}
+
+/* EXPERIMENTAL box */
+.admonition.experimental,
+.admonition.experiment {
+  background: rgba(0, 200, 83, 0.08);
+  border-color: #00c853;
+}
+
+.admonition.experimental .admonition-title,
+.admonition.experiment .admonition-title {
+  background: rgba(0, 200, 83, 0.15);
+  color: #00c853;
+}
+
+.admonition.experimental .admonition-title::before,
+.admonition.experiment .admonition-title::before {
+  content: "🔬 ";
+}
+
+/* LEMMA box */
+.admonition.lemma {
+  background: rgba(156, 39, 176, 0.08);
+  border-color: #9c27b0;
+}
+
+.admonition.lemma .admonition-title {
+  background: rgba(156, 39, 176, 0.15);
+  color: #9c27b0;
+}
+
+/* COROLLARY box */
+.admonition.corollary {
+  background: rgba(63, 81, 181, 0.08);
+  border-color: #3f51b5;
+}
+
+.admonition.corollary .admonition-title {
+  background: rgba(63, 81, 181, 0.15);
+  color: #3f51b5;
+}
+
+/* ----------------------------------------------------------------------------
+   CODE BLOCKS - Lean 4 Syntax Highlighting
+   ---------------------------------------------------------------------------- */
+
+/* Code block styling */
+.highlight {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.highlight pre {
+  border-radius: 8px;
+}
+
+/* Lean 4 specific */
+.language-lean .highlight,
+.language-lean4 .highlight {
+  border-left: 4px solid #7c4dff;
+}
+
+/* Copy button */
+.md-clipboard {
+  color: var(--omega-accent) !important;
+}
+
+/* ----------------------------------------------------------------------------
+   TABLES - Clean Academic Style
+   ---------------------------------------------------------------------------- */
+
+.md-typeset table:not([class]) {
+  border-collapse: collapse;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 0.95rem;
+}
+
+.md-typeset table:not([class]) th {
+  background: linear-gradient(135deg, var(--omega-primary), var(--omega-secondary));
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+
+.md-typeset table:not([class]) td {
+  border-bottom: 1px solid rgba(124, 77, 255, 0.1);
+}
+
+.md-typeset table:not([class]) tr:hover td {
+  background: rgba(124, 77, 255, 0.05);
+}
+
+/* ----------------------------------------------------------------------------
+   ASCII ART DIAGRAMS
+   ---------------------------------------------------------------------------- */
+
+/* Preserve ASCII art formatting */
+pre code {
+  font-family: "JetBrains Mono", "Fira Code", "SF Mono", monospace;
+  font-size: 0.8rem;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+/* ASCII diagram blocks */
+.language-text pre,
+.language-plaintext pre,
+.language- pre {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border: 1px solid rgba(124, 77, 255, 0.3);
+}
+
+/* ----------------------------------------------------------------------------
+   NAVIGATION ENHANCEMENTS
+   ---------------------------------------------------------------------------- */
+
+/* Tab styling */
+.md-tabs__link {
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+}
+
+/* Active tab */
+.md-tabs__link--active {
+  border-bottom: 3px solid var(--omega-accent);
+}
+
+/* Sidebar navigation */
+.md-nav__link {
+  font-size: 0.9rem;
+}
+
+.md-nav__link--active {
+  font-weight: 600;
+  color: var(--omega-primary) !important;
+}
+
+/* ----------------------------------------------------------------------------
+   SPECIAL ELEMENTS
+   ---------------------------------------------------------------------------- */
+
+/* Blockquotes - for quotes and important statements */
+.md-typeset blockquote {
+  border-left: 4px solid var(--omega-accent);
+  background: rgba(255, 215, 64, 0.05);
+  font-style: italic;
+  font-family: var(--font-serif);
+}
+
+/* Horizontal rules */
+.md-typeset hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--omega-primary), transparent);
+  margin: 3rem 0;
+}
+
+/* Footnotes */
+.md-typeset .footnote {
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(124, 77, 255, 0.2);
+  padding-top: 1rem;
+  margin-top: 3rem;
+}
+
+/* ----------------------------------------------------------------------------
+   HOMEPAGE SPECIAL STYLING
+   ---------------------------------------------------------------------------- */
+
+/* Hero section */
+.hero-equation {
+  font-size: 2rem;
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(124, 77, 255, 0.1), rgba(68, 138, 255, 0.1));
+  border-radius: 16px;
+  margin: 2rem 0;
+  border: 2px solid var(--omega-primary);
+}
+
+/* Key insights grid */
+.key-insights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.key-insight-card {
+  padding: 1.5rem;
+  background: rgba(124, 77, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(124, 77, 255, 0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.key-insight-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(124, 77, 255, 0.2);
+}
+
+/* ----------------------------------------------------------------------------
+   PRINT STYLES
+   ---------------------------------------------------------------------------- */
+
+@media print {
+  .md-content {
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  .admonition {
+    break-inside: avoid;
+    border: 1px solid #ccc;
+  }
+
+  .arithmatex {
+    break-inside: avoid;
+  }
+
+  .md-header,
+  .md-sidebar,
+  .md-tabs {
+    display: none !important;
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   DARK MODE ADJUSTMENTS
+   ---------------------------------------------------------------------------- */
+
+[data-md-color-scheme="slate"] {
+  --theorem-bg: rgba(124, 77, 255, 0.12);
+  --proof-bg: rgba(68, 138, 255, 0.12);
+  --definition-bg: rgba(105, 240, 174, 0.12);
+  --equation-bg: rgba(255, 215, 64, 0.08);
+  --postulate-bg: rgba(255, 82, 82, 0.12);
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
+  background: linear-gradient(135deg, #512da8, #1976d2);
+}
+
+[data-md-color-scheme="slate"] .language-text pre,
+[data-md-color-scheme="slate"] .language-plaintext pre {
+  background: linear-gradient(135deg, #0d0d1a, #0f1729);
+}
