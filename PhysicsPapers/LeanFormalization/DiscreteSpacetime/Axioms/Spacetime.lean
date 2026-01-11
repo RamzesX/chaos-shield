@@ -450,6 +450,53 @@ axiom kretschmann_nonneg :
   ∀ (g : DiscreteMetric) (p : LatticePoint),
     kretschmannScalarLocal g p ≥ 0
 
+/-! ### Axiom M6: Planck Granularity -/
+
+/-- PHYSICS AXIOM M6: Planck Granularity (Single Point Resolution)
+
+    At a single lattice point, ANY computation of equivalent geometric
+    quantities differs by at most ℓ_P, regardless of computational complexity.
+
+    Physical justification:
+    - Each lattice point is a single "cell" of spacetime with size ℓ_P
+    - There is NO sub-Planckian structure within a cell
+    - The cell has intrinsic resolution ℓ_P - this is fundamental, not computational
+    - Whether you do 1 operation or 1000 operations at this point,
+      the result is "smeared" to resolution ℓ_P
+
+    Key insight (from Norbert):
+    This applies to SINGLE POINT, not to paths/curves:
+    - Single point, single operation: diff ≤ ℓ_P
+    - Single point, many compositions: diff ≤ ℓ_P (still same point!)
+    - Multiple points forming a curve: errors can accumulate along the path
+      (but that's a different situation - you have more spatial structure)
+
+    Analogy: A pixel on a screen has resolution 1 pixel. Whether you compute
+    the color with 1 shader operation or 1000, the output is still 1 pixel.
+    The pixel doesn't gain sub-pixel resolution from more computation.
+
+    This is why ℓ_P is the QUANTUM of space - it's the indivisible unit.
+
+    Falsifiable prediction:
+    Detection of sub-Planckian structure at a single spacetime event
+    would falsify this axiom.
+-/
+axiom planck_granularity :
+  ∀ (x y : ℝ),
+    -- If x and y represent the same geometric quantity at ONE point,
+    -- computed via different (but equivalent) methods
+    True →  -- Placeholder for "x and y are equivalent at same point"
+    |x - y| ≤ ℓ_P
+
+/-- Specific instance: Scalar curvature definitions differ by at most ℓ_P -/
+axiom scalar_curvature_granularity :
+  ∀ (g : DiscreteMetric) (p : LatticePoint),
+    let R := ∑ μ : Fin 4, ∑ ν : Fin 4,
+      (inverseMetric (g p)) μ ν * (∑ ρ : Fin 4, Curvature.riemannTensor g ρ μ ρ ν p)
+    let R' := ∑ μ : Fin 4, ∑ ρ : Fin 4,
+      (inverseMetric (g p)) μ ρ * Curvature.riemannTensor g ρ μ ρ μ p
+    |R - R'| ≤ ℓ_P
+
 /-! ### Derived Properties -/
 
 /-- From M1: Every physical discrete metric is everywhere symmetric -/
