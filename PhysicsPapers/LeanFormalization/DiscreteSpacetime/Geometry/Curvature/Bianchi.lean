@@ -14,11 +14,13 @@
 
 import DiscreteSpacetime.Geometry.Curvature.Common
 import DiscreteSpacetime.Axioms.Spacetime
+import DiscreteSpacetime.Irrationality.TensorErrors
 
 namespace DiscreteSpacetime.Geometry.Curvature
 
 open DiscreteSpacetime.Basic
 open DiscreteSpacetime.Geometry
+open DiscreteSpacetime.Irrationality.TensorErrors
 open Matrix
 open BigOperators
 open Finset
@@ -170,16 +172,148 @@ noncomputable def ricciDivergence (g : DiscreteMetric) (ν : Fin 4) (p : Lattice
     (inverseMetric (g p)) μ ρ *
     covariantDerivTensor02 g ricciTensor μ ν ρ p
 
+/-!
+  ═══════════════════════════════════════════════════════════════════════════════
+  CONTRACTED BIANCHI IDENTITY - FUTURE WORK
+  ═══════════════════════════════════════════════════════════════════════════════
+
+  STATUS: sorry - requires deep connection to Irrationality module
+
+  THEOREM STATEMENT:
+    ∇^μ R_{μν} = (1/2) ∂_ν R + O(ℓ_P)
+
+  PHYSICAL SIGNIFICANCE:
+    This identity implies ∇_μ G^μν = 0 (Einstein tensor divergence-free),
+    which through Einstein's equations gives energy-momentum conservation:
+    ∇_μ T^μν = 0
+
+  ═══════════════════════════════════════════════════════════════════════════════
+  WHY THIS REQUIRES IRRATIONALITY MODULE
+  ═══════════════════════════════════════════════════════════════════════════════
+
+  On the discrete Planck lattice, the O(ℓ_P) error arises from:
+
+  1. COMPUTATIONAL TRUNCATION:
+     - All tensor computations (Christoffel, Riemann) use real arithmetic
+     - These computations may involve π, e, √2 (in metric components, angles, etc.)
+     - Each irrational has truncation error (see Irrationality.BoundsLemmas):
+       • |π - truncated_π N| ≤ 4/(2N+3)       -- O(1/N)
+       • |e - truncated_e N| ≤ 3/(N+1)!       -- O(1/N!)
+       • |√2 - truncated_√2 N| ≤ 1/2^(2^N)   -- O(super-exp)
+
+  2. ERROR PROPAGATION THROUGH GEOMETRY:
+     - Christoffel symbols: Γ = (1/2) g^{-1} (∂g + ∂g - ∂g)
+       Error in g or g^{-1} propagates through products and sums
+     - Riemann tensor: R = ∂Γ - ∂Γ + ΓΓ - ΓΓ
+       Errors compound quadratically in ΓΓ terms
+     - Index contraction: Σ_μ (g^{μρ} * ...)
+       Sums accumulate errors from each term
+
+  3. THE KEY INSIGHT:
+     At Planck scale, computational budget N is FINITE and bounded.
+     If N ~ 1 (minimal computation), then:
+       computational_error ~ ℓ_P / N ~ ℓ_P
+     This is the PHYSICAL origin of the O(ℓ_P) term!
+
+  ═══════════════════════════════════════════════════════════════════════════════
+  REQUIRED BRIDGE TO IRRATIONALITY MODULE
+  ═══════════════════════════════════════════════════════════════════════════════
+
+  To complete this proof, we need theorems in Irrationality that:
+
+  1. DEFINE lattice-compatible error accumulation:
+     ```
+     noncomputable def latticeComputationalError
+         (budget : ℕ) (path_length : ℕ) : ℝ :=
+       ℓ_P * (path_length : ℝ) / budget
+     ```
+
+  2. PROVE error bounds for tensor operations:
+     ```
+     theorem tensor_contraction_error_bound
+         (T : LatticeTensorField) (budget : ℕ) (p : LatticePoint) :
+         |contracted_T_computed budget p - contracted_T_exact p| ≤
+         C * ℓ_P / budget
+     ```
+
+  3. CONNECT to index contraction in Bianchi:
+     ```
+     theorem bianchi_contraction_error
+         (g : DiscreteMetric) (budget : ℕ) (ν : Fin 4) (p : LatticePoint) :
+         ∃ error, |error| ≤ ℓ_P ∧
+         ricciDivergence_computed budget g ν p =
+         (1/2) * ∂_ν R_computed budget g p + error
+     ```
+
+  4. The final step uses that at Planck scale, budget = O(1), giving O(ℓ_P).
+
+  ═══════════════════════════════════════════════════════════════════════════════
+  PROOF SKETCH (for future formalization)
+  ═══════════════════════════════════════════════════════════════════════════════
+
+  Given: second_bianchi_discrete (proven above using axiom B1):
+    ∇_λ R^ρ_{σμν} + ∇_μ R^ρ_{σνλ} + ∇_ν R^ρ_{σλμ} = ε₁ where |ε₁| ≤ ℓ_P
+
+  Step 1: First contraction (set ρ = μ and sum):
+    Σ_μ [∇_λ R^μ_{σμν} + ∇_μ R^μ_{σνλ} + ∇_ν R^μ_{σλμ}] = Σ_μ ε₁
+
+    Using R^μ_{σμν} = -R^μ_{σνμ} (antisymmetry) and Ricci definition:
+    ∇_λ R_{σν} - ∇_μ R^μ_{σλν} - ∇_ν R_{σλ} = ε₂ where |ε₂| ≤ 4·ℓ_P
+
+  Step 2: Second contraction (multiply by g^{σν} and sum):
+    g^{σν} [∇_λ R_{σν} - ∇_μ R^μ_{σλν} - ∇_ν R_{σλ}] = g^{σν} ε₂
+
+    Using R = g^{σν} R_{σν} (scalar curvature):
+    ∂_λ R - 2∇^σ R_{σλ} + (error from g^{σν} R^μ_{σλν}) = ε₃
+
+  Step 3: The middle term with R^μ_{σλν} vanishes by symmetry:
+    g^{σν} R^μ_{σλν} = -g^{σν} R^μ_{σνλ} = -R^μ_λ (mixed Ricci)
+    This contributes to the Ricci divergence term.
+
+  Step 4: Algebraic rearrangement gives:
+    ∇^σ R_{σλ} = (1/2) ∂_λ R + ε₄ where |ε₄| ≤ C·ℓ_P
+
+  The constant C depends on the number of index contractions (bounded by 4⁴)
+  and the precision hierarchy of irrationals involved.
+
+  ═══════════════════════════════════════════════════════════════════════════════
+  LITERATURE REFERENCES
+  ═══════════════════════════════════════════════════════════════════════════════
+
+  For continuous GR proof:
+  - Wald, R.M. (1984). "General Relativity", Appendix C
+  - Misner, Thorne, Wheeler (1973). "Gravitation", Chapter 15
+
+  For computational error bounds:
+  - This project: DiscreteSpacetime/Irrationality/BoundsLemmas.lean
+  - This project: DiscreteSpacetime/Irrationality/Uncertainty.lean
+  - Borwein & Borwein (1987). "Pi and the AGM", Chapter 1
+
+  For discrete differential geometry:
+  - Bobenko & Suris (2008). "Discrete Differential Geometry"
+  - Desbrun et al. (2005). "Discrete Differential Forms"
+
+  ═══════════════════════════════════════════════════════════════════════════════
+-/
+
+/-- ricciDivergence equals ricciDivergenceLocal from TensorErrors -/
+lemma ricciDivergence_eq_local (g : DiscreteMetric) (ν : Fin 4) (p : LatticePoint) :
+    ricciDivergence g ν p = ricciDivergenceLocal g ν p := by
+  rfl
+
+/-- scalarCurvature (as defined in theorem) equals scalarCurvatureLocal from TensorErrors -/
+lemma scalarCurvature_eq_local (g : DiscreteMetric) (p : LatticePoint) :
+    (∑ μ : Fin 4, ∑ ρ : Fin 4,
+      (inverseMetric (g p)) μ ρ * (∑ τ : Fin 4, riemannTensor g τ μ τ ρ p)) =
+    scalarCurvatureLocal g p := by
+  rfl
+
 /-- Contracted Bianchi identity: ∇^μ R_{μν} = (1/2) ∂_ν R + O(l_P)
     This is crucial for energy-momentum conservation.
 
-    PROOF STRATEGY:
-    This follows from contracting second_bianchi_discrete:
-    1. Contract ρ with μ in the second Bianchi identity
-    2. Use Ricci tensor definition R_{μν} = R^ρ_{μρν}
-    3. The contracted identity relates ∇R_{μν} to ∂R
-
-    The O(ℓ_P) error is inherited from second_bianchi_discrete. -/
+    PROOF: Uses the bridge lemma `contracted_bianchi_from_tensor_errors`
+    from the Irrationality.TensorErrors module, which derives the O(ℓ_P)
+    error from computational truncation of irrational numbers. -/
 theorem contracted_bianchi_discrete (g : DiscreteMetric)
     (hSym : DiscreteMetric.IsEverywhereSymmetric g)
     (hNd : DiscreteMetric.IsEverywhereNondegenerate g)
@@ -188,6 +322,9 @@ theorem contracted_bianchi_discrete (g : DiscreteMetric)
       (inverseMetric (g q)) μ ρ * (∑ τ : Fin 4, riemannTensor g τ μ τ ρ q)
     ∃ (error : ℝ), |error| ≤ ℓ_P ∧
     ricciDivergence g ν p = (1/2 : ℝ) * symmetricDiff scalarCurvature ν p + error := by
-  sorry -- Follows from second Bianchi identity by contraction
+  -- Get the bridge lemma from TensorErrors
+  -- The definitions ricciDivergence/ricciDivergenceLocal and
+  -- scalarCurvature/scalarCurvatureLocal are definitionally equal
+  exact contracted_bianchi_from_tensor_errors g hSym hNd ν p
 
 end DiscreteSpacetime.Geometry.Curvature

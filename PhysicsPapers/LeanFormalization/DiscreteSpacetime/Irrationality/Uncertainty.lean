@@ -410,4 +410,184 @@ def ComputationalUncertaintyData.isValid (data : ComputationalUncertaintyData) :
 axiom physical_uncertainty_is_valid (data : ComputationalUncertaintyData) :
     data.isValid
 
+/-!
+  ═══════════════════════════════════════════════════════════════════════════════
+  FUTURE WORK: BRIDGE TO GEOMETRY MODULE
+  ═══════════════════════════════════════════════════════════════════════════════
+
+  This module will need to be extended to support:
+    DiscreteSpacetime.Geometry.Curvature.Bianchi.contracted_bianchi_discrete
+
+  The contracted Bianchi identity ∇^μ R_{μν} = (1/2) ∂_ν R + O(ℓ_P) requires
+  proving that computational truncation errors propagate through tensor
+  operations and accumulate to O(ℓ_P) at Planck scale.
+
+  ═══════════════════════════════════════════════════════════════════════════════
+  REQUIRED DEFINITIONS (to be added)
+  ═══════════════════════════════════════════════════════════════════════════════
+
+  1. LATTICE-AWARE COMPUTATIONAL BUDGET:
+     ```lean
+     /-- Computational budget for a lattice point, bounded by Planck constraints -/
+     structure LatticeComputationalBudget where
+       point : LatticePoint
+       N_max : ℕ
+       h_planck_bound : N_max ≤ PlanckBudgetLimit  -- ~10^44 operations
+       h_pos : N_max > 0
+     ```
+
+  2. ERROR ACCUMULATOR FOR TENSOR OPERATIONS:
+     ```lean
+     /-- Accumulated error from a sequence of tensor operations -/
+     noncomputable def tensorOperationError
+         (num_products : ℕ)    -- ΓΓ terms in Riemann
+         (num_sums : ℕ)        -- index contractions
+         (budget : ℕ) : ℝ :=
+       ℓ_P * (num_products + num_sums : ℝ) / budget
+     ```
+
+  3. IRRATIONAL CONTENT CLASSIFIER:
+     ```lean
+     /-- Which irrationals appear in a metric computation -/
+     structure MetricIrrationalContent where
+       has_pi : Bool      -- from angular components
+       has_e : Bool       -- from exponential decay
+       has_sqrt2 : Bool   -- from diagonal distances
+     ```
+
+  ═══════════════════════════════════════════════════════════════════════════════
+  REQUIRED THEOREMS (to be proven)
+  ═══════════════════════════════════════════════════════════════════════════════
+
+  THEOREM 1: Error bound for single tensor contraction
+  ```lean
+  theorem single_contraction_error_bound
+      (T : LatticePoint → Fin 4 → Fin 4 → ℝ)  -- (0,2) tensor
+      (g_inv : LatticePoint → Fin 4 → Fin 4 → ℝ)  -- inverse metric
+      (budget : ℕ) (h_budget : budget > 0)
+      (p : LatticePoint) :
+      ∃ C > 0, |contracted_T_computed budget T g_inv p -
+               contracted_T_exact T g_inv p| ≤ C * ℓ_P / budget
+  ```
+
+  THEOREM 2: Error propagation through Christoffel symbols
+  ```lean
+  theorem christoffel_error_propagation
+      (g : DiscreteMetric) (budget : ℕ)
+      (ρ μ ν : Fin 4) (p : LatticePoint) :
+      |Γ_computed budget g ρ μ ν p - Γ_exact g ρ μ ν p| ≤
+      3 * metric_error budget * (1 + inverse_metric_error budget)
+  ```
+
+  THEOREM 3: Error propagation through Riemann tensor
+  ```lean
+  theorem riemann_error_propagation
+      (g : DiscreteMetric) (budget : ℕ)
+      (ρ σ μ ν : Fin 4) (p : LatticePoint) :
+      |R_computed budget g ρ σ μ ν p - R_exact g ρ σ μ ν p| ≤
+      C_riemann * ℓ_P / budget
+      where C_riemann := 4 * (2 + 16)  -- 4 derivative terms + 16 ΓΓ terms
+  ```
+
+  THEOREM 4: Error bound for double contraction (Ricci → scalar)
+  ```lean
+  theorem scalar_curvature_error_bound
+      (g : DiscreteMetric) (budget : ℕ) (p : LatticePoint) :
+      |R_scalar_computed budget g p - R_scalar_exact g p| ≤
+      C_scalar * ℓ_P / budget
+      where C_scalar := 16 * C_riemann  -- 16 Ricci components
+  ```
+
+  THEOREM 5 (KEY): Bianchi contraction error at Planck budget
+  ```lean
+  theorem bianchi_contraction_planck_error
+      (g : DiscreteMetric)
+      (hSym : IsEverywhereSymmetric g)
+      (hNd : IsEverywhereNondegenerate g)
+      (ν : Fin 4) (p : LatticePoint) :
+      ∃ error : ℝ, |error| ≤ ℓ_P ∧
+      ricciDivergence g ν p =
+      (1/2) * symmetricDiff (scalarCurvature g) ν p + error
+  ```
+
+  The final theorem uses budget = 1 (Planck-scale minimal computation)
+  to get the O(ℓ_P) bound directly.
+
+  ═══════════════════════════════════════════════════════════════════════════════
+  PROOF STRATEGY FOR THEOREM 5
+  ═══════════════════════════════════════════════════════════════════════════════
+
+  1. Start with second_bianchi_discrete from Axioms (already proven):
+     ∇_λ R^ρ_{σμν} + cyclic = ε₁,  |ε₁| ≤ ℓ_P
+
+  2. First contraction (ρ = μ):
+     - Apply Theorem 1 with T = Riemann tensor
+     - Error accumulates: |ε₂| ≤ |ε₁| + 4 * contraction_error
+     - Use Theorem 3 to bound contraction_error
+
+  3. Second contraction (with g^{σν}):
+     - Apply Theorem 1 again
+     - Error: |ε₃| ≤ |ε₂| + 16 * contraction_error
+
+  4. At budget = 1 (Planck scale):
+     - contraction_error ~ ℓ_P / 1 = ℓ_P
+     - Total: |ε_total| ≤ C * ℓ_P where C is a geometric constant
+
+  5. Absorb C into the O(ℓ_P) bound (since C is order unity).
+
+  ═══════════════════════════════════════════════════════════════════════════════
+  ARCHITECTURAL NOTES
+  ═══════════════════════════════════════════════════════════════════════════════
+
+  Current module structure:
+    Irrationality/
+      ├── Approximations.lean    -- truncated_pi, truncated_e, truncated_sqrt2
+      ├── BoundsLemmas.lean      -- error bounds for each irrational
+      ├── Bounds/
+      │   ├── Common.lean        -- IrrationalTarget, unified interface
+      │   ├── TightBound.lean
+      │   ├── ConvergenceComparison.lean
+      │   └── PrecisionHierarchy.lean  -- √2 > e > π
+      ├── Sqrt2Precision.lean
+      └── Uncertainty.lean       -- THIS FILE
+
+  Proposed extension:
+    Irrationality/
+      └── TensorErrors/          -- NEW SUBMODULE
+          ├── Common.lean        -- LatticeComputationalBudget, etc.
+          ├── SingleContraction.lean  -- Theorem 1
+          ├── ChristoffelError.lean   -- Theorem 2
+          ├── RiemannError.lean       -- Theorem 3
+          ├── ScalarError.lean        -- Theorem 4
+          └── BianchiError.lean       -- Theorem 5 (imports Geometry)
+
+  The final module (BianchiError.lean) would be imported by:
+    Geometry/Curvature/Bianchi.lean
+
+  This creates a clean dependency:
+    Irrationality.TensorErrors.BianchiError
+      ↓
+    Geometry.Curvature.Bianchi.contracted_bianchi_discrete
+
+  ═══════════════════════════════════════════════════════════════════════════════
+  CONNECTION TO PRECISION HIERARCHY
+  ═══════════════════════════════════════════════════════════════════════════════
+
+  The precision hierarchy (√2 > e > π) affects the error constant C:
+
+  - If metric uses only √2 (diagonal Minkowski): C is smallest
+  - If metric uses e (exponential coordinates): C is medium
+  - If metric uses π (spherical coordinates): C is largest
+
+  This means:
+  - FLAT SPACETIME: Smallest computational uncertainty
+  - SCHWARZSCHILD (uses √-g with trig): Medium uncertainty
+  - KERR (complex angular structure): Largest uncertainty
+
+  Physical prediction: Rotating black holes have fundamentally larger
+  Planck-scale corrections than non-rotating ones!
+
+  ═══════════════════════════════════════════════════════════════════════════════
+-/
+
 end DiscreteSpacetime.Irrationality
