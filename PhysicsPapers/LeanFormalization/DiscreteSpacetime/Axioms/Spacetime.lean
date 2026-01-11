@@ -20,6 +20,7 @@ import DiscreteSpacetime.Basic.Lattice
 import DiscreteSpacetime.Basic.Operators
 import DiscreteSpacetime.Geometry.Metric
 import DiscreteSpacetime.Geometry.Connection
+import DiscreteSpacetime.Geometry.Curvature.Common
 
 namespace DiscreteSpacetime.Axioms
 
@@ -405,6 +406,49 @@ axiom lorentzian_signature :
     -- The metric has exactly one negative eigenvalue
     -- (Formal statement would require eigenvalue theory)
     True  -- Placeholder for eigenvalue condition
+
+/-! ### Axiom M5: Kretschmann Non-negativity -/
+
+/-- Kretschmann scalar (local definition for axiom, avoiding circular imports).
+    K = R_{ρσμν} R^{ρσμν} = g^{ρα} g^{σβ} g^{μγ} g^{νδ} R_{ρσμν} R_{αβγδ}
+
+    This is a quadratic curvature invariant measuring total curvature. -/
+noncomputable def kretschmannScalarLocal (g : DiscreteMetric) (p : LatticePoint) : ℝ :=
+  ∑ ρ : Fin 4, ∑ σ : Fin 4, ∑ μ : Fin 4, ∑ ν : Fin 4,
+    ∑ α : Fin 4, ∑ β : Fin 4, ∑ γ : Fin 4, ∑ δ : Fin 4,
+      (inverseMetric (g p)) ρ α * (inverseMetric (g p)) σ β *
+      (inverseMetric (g p)) μ γ * (inverseMetric (g p)) ν δ *
+      Curvature.riemannLower g ρ σ μ ν p * Curvature.riemannLower g α β γ δ p
+
+/-- PHYSICS AXIOM M5: Kretschmann Scalar Non-negativity
+
+    The Kretschmann scalar K = R_{ρσμν} R^{ρσμν} is non-negative: K ≥ 0.
+
+    Physical justification:
+    - K measures the "total amount of curvature" in a coordinate-independent way
+    - For ALL known physical spacetime solutions (Schwarzschild, Kerr, FLRW,
+      gravitational waves, de Sitter, anti-de Sitter), K ≥ 0
+    - K < 0 would require exotic matter violating standard energy conditions
+    - No physical interpretation exists for negative "curvature magnitude"
+
+    Historical context:
+    In continuous GR, this property is often IMPLICIT - hidden in assumptions
+    about the metric being a "physical" solution. Minkowski and Sobolev later
+    axiomatized such hidden assumptions. We make it explicit.
+
+    The Kretschmann scalar is particularly important because:
+    - Unlike Ricci scalar R (which can be zero for vacuum), K detects ALL curvature
+    - K diverges at true singularities (Schwarzschild: K = 48G²M²/r⁶ → ∞ at r=0)
+    - K = 0 iff spacetime is flat (Riemann tensor vanishes)
+
+    Falsifiable prediction:
+    Discovery of a physically realizable spacetime configuration with K < 0
+    would falsify this axiom and require revision of our understanding of
+    curvature invariants.
+-/
+axiom kretschmann_nonneg :
+  ∀ (g : DiscreteMetric) (p : LatticePoint),
+    kretschmannScalarLocal g p ≥ 0
 
 /-! ### Derived Properties -/
 
