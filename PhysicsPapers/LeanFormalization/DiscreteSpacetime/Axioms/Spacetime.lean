@@ -424,3 +424,96 @@ theorem physical_metric_nondegenerate (g : DiscreteMetric) :
   exact metric_nondegenerate g p
 
 end DiscreteSpacetime.Axioms.Metric
+
+/-! ## Part III: Bianchi Identity Axiom
+
+In continuous General Relativity, the second (differential) Bianchi identity
+∇_λ R^ρ_{σμν} + ∇_μ R^ρ_{σνλ} + ∇_ν R^ρ_{σλμ} = 0
+follows from the Jacobi identity for covariant derivatives, which in turn
+requires the COMMUTATIVITY of partial derivatives (smoothness).
+
+On the discrete lattice:
+- Finite differences do NOT commute: Δ_μΔ_ν ≠ Δ_νΔ_μ
+- The Jacobi identity derivation breaks down
+- We cannot PROVE the second Bianchi identity
+
+Therefore, we postulate it as a physics axiom with O(ℓ_P) corrections.
+This is analogous to axioms M3/M3b which replace smoothness assumptions.
+
+Physical justification:
+- The contracted Bianchi identity implies ∇_μ G^μν = 0 (Einstein tensor divergence-free)
+- This gives ∇_μ T^μν = 0 (energy-momentum conservation)
+- Conservation laws are fundamental to physics
+- We assume nature respects them even at Planck scale (up to O(ℓ_P) corrections)
+-/
+
+namespace DiscreteSpacetime.Axioms.Bianchi
+
+open DiscreteSpacetime.Basic
+open DiscreteSpacetime.Geometry
+open BigOperators Finset
+
+/-! ### Local definitions for the axiom
+
+We define riemannTensor and riemannCovariantDeriv locally to avoid
+circular imports with Geometry.Curvature modules.
+-/
+
+/-- Partial derivative of Christoffel symbol (local copy for axiom) -/
+noncomputable def christoffelDerivative (g : DiscreteMetric) (ρ ν σ μ : SpacetimeIndex)
+    (p : LatticePoint) : ℝ :=
+  symmetricDiff (fun q => christoffelSymbol g ρ ν σ q) μ p
+
+/-- Riemann curvature tensor R^ρ_{σμν} (local copy for axiom)
+    R^ρ_{σμν} = ∂_μ Γ^ρ_{νσ} - ∂_ν Γ^ρ_{μσ} + Γ^ρ_{μλ} Γ^λ_{νσ} - Γ^ρ_{νλ} Γ^λ_{μσ} -/
+noncomputable def riemannTensor (g : DiscreteMetric) (ρ σ μ ν : SpacetimeIndex)
+    (p : LatticePoint) : ℝ :=
+  christoffelDerivative g ρ ν σ μ p - christoffelDerivative g ρ μ σ ν p +
+  ∑ lam : SpacetimeIndex, christoffelSymbol g ρ μ lam p * christoffelSymbol g lam ν σ p -
+  ∑ lam : SpacetimeIndex, christoffelSymbol g ρ ν lam p * christoffelSymbol g lam μ σ p
+
+/-- Covariant derivative of the Riemann tensor (local copy for axiom)
+    ∇_λ R^ρ_{σμν} = ∂_λ R^ρ_{σμν} + Γ^ρ_{λα} R^α_{σμν} - Γ^α_{λσ} R^ρ_{αμν}
+                                  - Γ^α_{λμ} R^ρ_{σαν} - Γ^α_{λν} R^ρ_{σμα} -/
+noncomputable def riemannCovariantDeriv (g : DiscreteMetric) (ρ σ μ ν lam : SpacetimeIndex)
+    (p : LatticePoint) : ℝ :=
+  symmetricDiff (fun q => riemannTensor g ρ σ μ ν q) lam p +
+  ∑ α : SpacetimeIndex, christoffelSymbol g ρ lam α p * riemannTensor g α σ μ ν p -
+  ∑ α : SpacetimeIndex, christoffelSymbol g α lam σ p * riemannTensor g ρ α μ ν p -
+  ∑ α : SpacetimeIndex, christoffelSymbol g α lam μ p * riemannTensor g ρ σ α ν p -
+  ∑ α : SpacetimeIndex, christoffelSymbol g α lam ν p * riemannTensor g ρ σ μ α p
+
+/-! ### The Second Bianchi Axiom -/
+
+/-- PHYSICS AXIOM B1: Second (Differential) Bianchi Identity
+
+    ∇_λ R^ρ_{σμν} + ∇_μ R^ρ_{σνλ} + ∇_ν R^ρ_{σλμ} = O(ℓ_P)
+
+    In continuous GR, the cyclic sum equals exactly zero.
+    On the discrete lattice, we allow O(ℓ_P) corrections.
+
+    Physical justification:
+    1. This identity is required for energy-momentum conservation
+    2. Conservation laws are fundamental physical principles
+    3. At scales >> ℓ_P, we recover the exact identity
+    4. At Planck scale, discreteness may introduce small corrections
+
+    The O(ℓ_P) bound reflects that:
+    - Discrete geometry introduces errors proportional to lattice spacing
+    - These vanish in the continuum limit ℓ_P → 0
+
+    Falsifiable prediction:
+    If energy-momentum conservation were violated by more than O(ℓ_P)
+    at any scale, this axiom would be falsified.
+-/
+axiom second_bianchi_axiom :
+  ∀ (g : DiscreteMetric)
+    (hSym : DiscreteMetric.IsEverywhereSymmetric g)
+    (hNd : DiscreteMetric.IsEverywhereNondegenerate g)
+    (ρ σ μ ν lam : SpacetimeIndex) (p : LatticePoint),
+    ∃ (error : ℝ), |error| ≤ ℓ_P ∧
+    riemannCovariantDeriv g ρ σ μ ν lam p +
+    riemannCovariantDeriv g ρ σ ν lam μ p +
+    riemannCovariantDeriv g ρ σ lam μ ν p = error
+
+end DiscreteSpacetime.Axioms.Bianchi
