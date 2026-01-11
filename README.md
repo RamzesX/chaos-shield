@@ -29,6 +29,40 @@ This simple question started it all.
 
 ---
 
+## 📋 Current Work (January 2026)
+
+**Geometry module complete** → Now: TensorErrors → Next: Stability/Healing/Dynamics
+
+### Recent Changes
+
+**Axiomatization of Discrete Metric** (`Axioms/Spacetime.lean`)
+- Added physics axioms M1-M6 for discrete metrics on Planck lattice
+- M1: Metric symmetry | M2: Non-degeneracy | M3/M3b: Curvature derivative symmetry
+- M4: Lorentzian signature | M5: Kretschmann non-negativity | M6: Planck granularity
+- Similar to how GR received its axiomatization (Minkowski, Sobolev) - we make hidden assumptions explicit
+
+**Semi-Tensors with Built-in Defects** (`Irrationality/TensorErrors.lean`)
+- New approach: accept that Riemann/Ricci/Weyl tensors are imperfect on Z⁴ lattice
+- All continuous identities become approximate: |a - b| ≤ ℓ_P instead of a = b
+- Two error sources: (1) quantization of space, (2) irrational numbers (π, √2, e) never computed exactly
+- Real work: analyzing error propagation O(ℓ_P) across multiple transitions
+
+**Philosophy Shift**
+- This is NOT differential geometry (no smoothness)
+- This is NOT Regge calculus (different discretization)
+- This IS: "numerical methods on the universe's computer" with Planck-scale resolution
+- Defects are fundamental, not bugs - healing flow is necessary, not optional
+
+### Roadmap
+| Phase | Status | Timeline |
+|-------|--------|----------|
+| Tensor calculus with ≤ℓ_P bounds | **In Progress** | ~2 weeks |
+| Error accumulation O(ℓ_P) analysis | Next | ~2 weeks |
+| Stability + Dynamics + Healing | Planned | ~1 month |
+| Emergence (continuum limit) | Planned | ~1 month |
+
+---
+
 ## One Question. One Answer. Everything Follows.
 
 | Insight | Consequence |
@@ -167,14 +201,19 @@ The entire project **compiles successfully** with Mathlib v4.13.0.
 | `Conservation/` | ✓ Complete | Noether theorems, Fourth Law |
 | `Variational/` | ✓ Complete | Graph action, discrete Noether |
 
-**Work in progress (~60 sorries):**
+**Work in progress (~48 sorries):**
 | Module | Sorries | Notes |
 |--------|---------|-------|
 | `Dynamics/` | ~24 | Lyapunov stability, healing flow convergence |
-| `Geometry/` | ~16 | Riemann symmetries, Einstein tensor (current focus) |
 | `Emergence/` | ~13 | Continuum limit, Sobolev convergence |
 | `Torsion/` | ~3 | Poplawski Big Bounce cosmology |
-| `Irrationality/` | ~12 | **Will remain** - touches open problems in number theory |
+| `Irrationality/` | ~8 | **Will remain** - touches open problems in number theory |
+
+**Physics axioms (sorry by design):**
+| Module | Sorries | Notes |
+|--------|---------|-------|
+| `Geometry/` | ~12 | **Intentional** - ≤ℓ_P bounds from Axiom M6 (Planck granularity) |
+| `Irrationality/TensorErrors` | ~4 | **Intentional** - error propagation O(ℓ_P) |
 
 **Why some sorries will remain:**
 - Irrationality bounds connect to **unsolved problems** in mathematics (irrationality measure of algebraic numbers)
