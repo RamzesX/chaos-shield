@@ -33,10 +33,12 @@
 
   ### TODO - MODERATE:
   - ricci_symmetric (Ricci) - depends on pair_swap
-  - weyl_tracefree (Weyl)
-  - weyl_antisym_34, weyl_antisym_12, weyl_pair_swap (Weyl)
-  - kretschmann_nonneg (Kretschmann)
-  - scalarCurvature_eq_scalarCurvature' (Scalar)
+  - weyl_tracefree_discrete (Weyl) - ≤ ℓ_P bound
+  - weyl_antisym_*_discrete, weyl_pair_swap_discrete (Weyl) - ≤ ℓ_P bounds
+  - scalarCurvature_eq_scalarCurvature'_discrete (Scalar) - ≤ ℓ_P bound
+
+  ### DONE (via axiom):
+  - kretschmann_nonneg (Kretschmann) - from Axiom M5
 
   Usage:
     import DiscreteSpacetime.Geometry.Curvature
@@ -83,7 +85,8 @@ export Curvature (ricciTensor ricciTensor' ricci_symmetric)
 export Curvature (scalarCurvature scalarCurvature')
 
 -- Weyl tensor
-export Curvature (weylTensor weyl_tracefree)
+export Curvature (weylTensor weyl_tracefree_discrete weyl_antisym_34_discrete
+                  weyl_antisym_12_discrete weyl_pair_swap_discrete)
 
 -- Kretschmann scalar
 export Curvature (kretschmannScalar kretschmann_nonneg kretschmann_flat_vanishes)

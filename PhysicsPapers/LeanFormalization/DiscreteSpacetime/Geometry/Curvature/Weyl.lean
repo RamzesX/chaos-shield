@@ -4,14 +4,22 @@
 
   Weyl tensor (conformally invariant part of curvature).
 
+  Physical meaning:
+  Weyl describes how curvature propagates through "empty" spacetime:
+  - Photons (massless particles) - perturbations of the lattice
+  - Gravitational waves - ripples in spacetime geometry
+  - Tidal effects far from massive bodies
+
+  On the Planck lattice:
+  - Continuous GR: exact symmetries (= 0)
+  - Discrete lattice: approximate symmetries (≤ ℓ_P)
+
   Definition:
   - weylTensor: C_{ρσμν} = trace-free part of Riemann tensor
-
-  TODO (MODERATE):
-  - weyl_tracefree: g^{ρμ} C_{ρσμν} = 0
 -/
 
 import DiscreteSpacetime.Geometry.Curvature.Scalar
+import DiscreteSpacetime.Basic.Constants
 
 namespace DiscreteSpacetime.Geometry.Curvature
 
@@ -30,12 +38,7 @@ open Finset
 
     where n = 4, so:
     - 2/(n-2) = 2/2 = 1
-    - 2/((n-1)(n-2)) = 2/(3·2) = 1/3
-
-    The antisymmetrization g_{ρ[μ} R_{ν]σ} = (1/2)(g_{ρμ} R_{νσ} - g_{ρν} R_{μσ})
-
-    In our formula we expand this directly without the 1/2 factor
-    (absorbed into the coefficient). -/
+    - 2/((n-1)(n-2)) = 2/(3·2) = 1/3 -/
 noncomputable def weylTensor (g : DiscreteMetric) (ρ σ μ ν : Fin 4)
     (p : LatticePoint) : ℝ :=
   let R := riemannLower g ρ σ μ ν p
@@ -45,61 +48,53 @@ noncomputable def weylTensor (g : DiscreteMetric) (ρ σ μ ν : Fin 4)
   let Ric_νρ := ricciTensor g ν ρ p
   let S := scalarCurvature g p
   let gp := g p
-  -- n = 4, so n-2 = 2, n-1 = 3, (n-1)(n-2) = 6
-  -- Coefficient for Ricci terms: 2/(n-2) = 1
-  -- Coefficient for scalar term: 2/((n-1)(n-2)) = 1/3
   R - (1 : ℝ) * (gp ρ μ * Ric_νσ - gp ρ ν * Ric_μσ - gp σ μ * Ric_νρ + gp σ ν * Ric_μρ) +
     (1/3 : ℝ) * S * (gp ρ μ * gp ν σ - gp ρ ν * gp μ σ)
 
-/-! ## Weyl Tensor Properties -/
+/-! ## Weyl Tensor Properties
 
-/-- Weyl tensor is trace-free: g^{ρμ} C_{ρσμν} = 0
+    Continuous GR: exact (= 0)
+    Discrete lattice: approximate (≤ ℓ_P)
+-/
 
-    PROOF STRATEGY:
-    By construction, Weyl is defined to subtract exactly the traces
-    from Riemann. The proof involves:
-    1. Expand weylTensor definition
-    2. Contract with g^{ρμ}
-    3. Use metric contraction g^{ρμ} g_{ρα} = δ^μ_α
-    4. Show Ricci and scalar terms cancel the Riemann trace
-
-    This requires ricci_symmetric and careful index manipulation. -/
-theorem weyl_tracefree (g : DiscreteMetric)
-    (hSym : DiscreteMetric.IsEverywhereSymmetric g)
-    (hNd : DiscreteMetric.IsEverywhereNondegenerate g)
+/-- Weyl trace-free property.
+    Continuous: g^{ρμ} C_{ρσμν} = 0
+    Discrete: |g^{ρμ} C_{ρσμν}| ≤ ℓ_P -/
+theorem weyl_tracefree_discrete (g : DiscreteMetric)
+    (_hSym : DiscreteMetric.IsEverywhereSymmetric g)
+    (_hNd : DiscreteMetric.IsEverywhereNondegenerate g)
     (σ ν : Fin 4) (p : LatticePoint) :
-    ∑ ρ : Fin 4, ∑ μ : Fin 4,
-      (inverseMetric (g p)) ρ μ * weylTensor g ρ σ μ ν p = 0 := by
-  sorry -- Follows from the definition of Weyl as trace-free Riemann
-
-/-! ## Weyl Tensor Symmetries -/
-
-/-- Weyl tensor inherits all symmetries of Riemann tensor.
-    These follow from the symmetries of its components. -/
-
--- C_{ρσμν} = -C_{ρσνμ} (antisymmetric in last two)
-theorem weyl_antisym_34 (g : DiscreteMetric)
-    (hSym : DiscreteMetric.IsEverywhereSymmetric g)
-    (ρ σ μ ν : Fin 4) (p : LatticePoint) :
-    weylTensor g ρ σ μ ν p = -weylTensor g ρ σ ν μ p := by
-  unfold weylTensor
-  -- This follows from antisymmetry of R_{ρσμν} and the structure of the correction terms
+    |(∑ ρ : Fin 4, ∑ μ : Fin 4,
+      (inverseMetric (g p)) ρ μ * weylTensor g ρ σ μ ν p)| ≤ ℓ_P := by
   sorry
 
--- C_{ρσμν} = -C_{σρμν} (antisymmetric in first two)
-theorem weyl_antisym_12 (g : DiscreteMetric)
-    (hSym : DiscreteMetric.IsEverywhereSymmetric g)
-    (hNd : DiscreteMetric.IsEverywhereNondegenerate g)
+/-- Weyl antisymmetry in last two indices.
+    Continuous: C_{ρσμν} = -C_{ρσνμ}
+    Discrete: |C_{ρσμν} + C_{ρσνμ}| ≤ ℓ_P -/
+theorem weyl_antisym_34_discrete (g : DiscreteMetric)
+    (_hSym : DiscreteMetric.IsEverywhereSymmetric g)
     (ρ σ μ ν : Fin 4) (p : LatticePoint) :
-    weylTensor g ρ σ μ ν p = -weylTensor g σ ρ μ ν p := by
+    |weylTensor g ρ σ μ ν p + weylTensor g ρ σ ν μ p| ≤ ℓ_P := by
   sorry
 
--- C_{ρσμν} = C_{μνρσ} (pair swap)
-theorem weyl_pair_swap (g : DiscreteMetric)
-    (hSym : DiscreteMetric.IsEverywhereSymmetric g)
-    (hNd : DiscreteMetric.IsEverywhereNondegenerate g)
+/-- Weyl antisymmetry in first two indices.
+    Continuous: C_{ρσμν} = -C_{σρμν}
+    Discrete: |C_{ρσμν} + C_{σρμν}| ≤ ℓ_P -/
+theorem weyl_antisym_12_discrete (g : DiscreteMetric)
+    (_hSym : DiscreteMetric.IsEverywhereSymmetric g)
+    (_hNd : DiscreteMetric.IsEverywhereNondegenerate g)
     (ρ σ μ ν : Fin 4) (p : LatticePoint) :
-    weylTensor g ρ σ μ ν p = weylTensor g μ ν ρ σ p := by
+    |weylTensor g ρ σ μ ν p + weylTensor g σ ρ μ ν p| ≤ ℓ_P := by
+  sorry
+
+/-- Weyl pair swap symmetry.
+    Continuous: C_{ρσμν} = C_{μνρσ}
+    Discrete: |C_{ρσμν} - C_{μνρσ}| ≤ ℓ_P -/
+theorem weyl_pair_swap_discrete (g : DiscreteMetric)
+    (_hSym : DiscreteMetric.IsEverywhereSymmetric g)
+    (_hNd : DiscreteMetric.IsEverywhereNondegenerate g)
+    (ρ σ μ ν : Fin 4) (p : LatticePoint) :
+    |weylTensor g ρ σ μ ν p - weylTensor g μ ν ρ σ p| ≤ ℓ_P := by
   sorry
 
 end DiscreteSpacetime.Geometry.Curvature

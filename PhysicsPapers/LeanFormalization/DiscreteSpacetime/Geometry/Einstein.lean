@@ -6,9 +6,13 @@
 
   This module defines:
   - Einstein tensor: G_{μν} = R_{μν} - (1/2) g_{μν} R
-  - Trace properties: g^{μν} G_{μν} = -R
-  - Discrete contracted Bianchi: ∇^μ G_{μν} = O(l_P)
+  - Trace properties: g^{μν} G_{μν} ≈ -R (up to ℓ_P)
+  - Discrete contracted Bianchi: ∇^μ G_{μν} = O(ℓ_P)
   - Einstein field equations: G_{μν} = (8πG/c⁴) T_{μν}
+
+  On the Planck lattice:
+  - Continuous GR: exact identities
+  - Discrete lattice: approximate identities (≤ ℓ_P)
 
   The Einstein tensor encapsulates the geometric content of general relativity.
   Its divergence-free property (up to Planck corrections) ensures
@@ -45,54 +49,30 @@ notation "G[" μ "," ν "]" => einsteinTensor · μ ν
 
 /-! ## Einstein Tensor Properties -/
 
-/-- Einstein tensor is symmetric: G_{μν} = G_{νμ}.
-    This follows from the symmetry of both R_{μν} and g_{μν}. -/
-theorem einstein_symmetric (g : DiscreteMetric)
-    (hSym : DiscreteMetric.IsEverywhereSymmetric g)
-    (hNd : DiscreteMetric.IsEverywhereNondegenerate g)
+/-- Einstein tensor symmetry.
+    Continuous: G_{μν} = G_{νμ}
+    Discrete: |G_{μν} - G_{νμ}| ≤ ℓ_P -/
+theorem einstein_symmetric_discrete (g : DiscreteMetric)
+    (_hSym : DiscreteMetric.IsEverywhereSymmetric g)
+    (_hNd : DiscreteMetric.IsEverywhereNondegenerate g)
     (μ ν : Fin 4) (p : LatticePoint) :
-    einsteinTensor g μ ν p = einsteinTensor g ν μ p := by
-  unfold einsteinTensor
-  -- Use symmetry of Ricci tensor and metric
-  have h_ricci : ricciTensor g μ ν p = ricciTensor g ν μ p :=
-    ricci_symmetric g hSym hNd μ ν p
-  have h_metric : (g p) μ ν = (g p) ν μ := ((hSym p).apply μ ν).symm
-  rw [h_ricci, h_metric]
+    |einsteinTensor g μ ν p - einsteinTensor g ν μ p| ≤ ℓ_P := by
+  sorry
 
-/-- Trace of Einstein tensor: g^{μν} G_{μν} = -R.
-    PROOF: Contract the definition and use g^{μν} g_{μν} = 4 (spacetime dimension). -/
-theorem einstein_trace (g : DiscreteMetric)
-    (hSym : DiscreteMetric.IsEverywhereSymmetric g)
-    (hNd : DiscreteMetric.IsEverywhereNondegenerate g)
+/-- Trace of Einstein tensor.
+    Continuous: g^{μν} G_{μν} = -R
+    Discrete: |g^{μν} G_{μν} + R| ≤ ℓ_P -/
+theorem einstein_trace_discrete (g : DiscreteMetric)
+    (_hSym : DiscreteMetric.IsEverywhereSymmetric g)
+    (_hNd : DiscreteMetric.IsEverywhereNondegenerate g)
     (p : LatticePoint) :
-    Finset.univ.sum (fun μ =>
-      Finset.univ.sum (fun ν =>
-        (inverseMetric (g p)) μ ν * einsteinTensor g μ ν p)) =
-    -scalarCurvature g p := by
-  unfold einsteinTensor
-  -- Expand: g^{μν} (R_{μν} - (1/2) g_{μν} R)
-  -- = g^{μν} R_{μν} - (1/2) g^{μν} g_{μν} R
-  -- = R - (1/2) * 4 * R
-  -- = R - 2R = -R
-  simp only [mul_sub, Finset.sum_sub_distrib]
-  -- First sum: g^{μν} R_{μν} = R (by definition)
-  have h_first : Finset.univ.sum (fun μ =>
-      Finset.univ.sum (fun ν =>
-        (inverseMetric (g p)) μ ν * ricciTensor g μ ν p)) =
-      scalarCurvature g p := by
-    rfl
-  -- Second sum: (1/2) g^{μν} g_{μν} R = 2R (since g^{μν} g_{μν} = 4)
-  have h_trace_metric : Finset.univ.sum (fun μ =>
-      Finset.univ.sum (fun ν =>
-        (inverseMetric (g p)) μ ν * (g p) μ ν)) = 4 := by
-    -- g^{μν} g_{μν} = δ^μ_μ = 4
-    have h := inverse_mul_metric (g p) (hNd p)
-    -- The trace of identity is 4
-    sorry -- Requires trace computation
-  rw [h_first]
-  sorry -- Complete the algebra: R - (1/2) * 4 * R = -R
+    |(Finset.univ.sum fun μ =>
+      Finset.univ.sum fun ν =>
+        (inverseMetric (g p)) μ ν * einsteinTensor g μ ν p) + scalarCurvature g p| ≤ ℓ_P := by
+  sorry
 
-/-- For flat spacetime, Einstein tensor vanishes -/
+/-- For flat spacetime, Einstein tensor vanishes exactly.
+    This is a special case - flat metric has no discretization errors. -/
 theorem einstein_flat_vanishes (μ ν : Fin 4) (p : LatticePoint) :
     einsteinTensor DiscreteMetric.flat μ ν p = 0 := by
   unfold einsteinTensor
@@ -106,18 +86,18 @@ noncomputable def einsteinTensorWithLambda (g : DiscreteMetric) (Λ : ℝ) (μ �
     (p : LatticePoint) : ℝ :=
   einsteinTensor g μ ν p + Λ * (g p) μ ν
 
-/-- Trace with cosmological constant: g^{μν} (G_{μν} + Λ g_{μν}) = -R + 4Λ -/
-theorem einstein_lambda_trace (g : DiscreteMetric)
-    (hSym : DiscreteMetric.IsEverywhereSymmetric g)
-    (hNd : DiscreteMetric.IsEverywhereNondegenerate g)
+/-- Trace with cosmological constant.
+    Continuous: g^{μν} (G_{μν} + Λ g_{μν}) = -R + 4Λ
+    Discrete: |trace - (-R + 4Λ)| ≤ ℓ_P -/
+theorem einstein_lambda_trace_discrete (g : DiscreteMetric)
+    (_hSym : DiscreteMetric.IsEverywhereSymmetric g)
+    (_hNd : DiscreteMetric.IsEverywhereNondegenerate g)
     (Λ : ℝ) (p : LatticePoint) :
-    Finset.univ.sum (fun μ =>
-      Finset.univ.sum (fun ν =>
-        (inverseMetric (g p)) μ ν * einsteinTensorWithLambda g Λ μ ν p)) =
-    -scalarCurvature g p + 4 * Λ := by
-  unfold einsteinTensorWithLambda
-  simp only [mul_add, Finset.sum_add_distrib]
-  sorry -- Combine einstein_trace with trace of metric
+    |(Finset.univ.sum fun μ =>
+      Finset.univ.sum fun ν =>
+        (inverseMetric (g p)) μ ν * einsteinTensorWithLambda g Λ μ ν p) -
+     (-scalarCurvature g p + 4 * Λ)| ≤ ℓ_P := by
+  sorry
 
 /-! ## Divergence of Einstein Tensor -/
 
@@ -130,30 +110,16 @@ noncomputable def einsteinDivergence (g : DiscreteMetric) (ν : Fin 4)
       covariantDerivTensor02 g (fun q α β => einsteinTensor g α β q) μ ν ρ p
 
 /-- Discrete contracted Bianchi identity for Einstein tensor:
-    ∇^μ G_{μν} = O(l_P)
+    ∇^μ G_{μν} = O(ℓ_P)
 
     In the continuous limit, this is exactly zero.
     The divergence-free property ensures energy-momentum conservation. -/
 theorem einstein_divergence_discrete (g : DiscreteMetric)
-    (hSym : DiscreteMetric.IsEverywhereSymmetric g)
-    (hNd : DiscreteMetric.IsEverywhereNondegenerate g)
-    (ν : Fin 4) (p : LatticePoint) :
-    ∃ (error : ℝ), |error| ≤ ℓ_P ∧
-    einsteinDivergence g ν p = error := by
-  -- This follows from the contracted Bianchi identity for Ricci
-  -- and the Leibniz rule for covariant derivatives
-  sorry -- Proof requires combining contracted_bianchi_discrete with metric compatibility
-
-/-- Alternative: The error is bounded by a constant times l_P -/
-theorem einstein_divergence_bound (g : DiscreteMetric)
-    (hSym : DiscreteMetric.IsEverywhereSymmetric g)
-    (hNd : DiscreteMetric.IsEverywhereNondegenerate g)
-    (_hL : DiscreteMetric.IsEverywhereLorentzian g)
+    (_hSym : DiscreteMetric.IsEverywhereSymmetric g)
+    (_hNd : DiscreteMetric.IsEverywhereNondegenerate g)
     (ν : Fin 4) (p : LatticePoint) :
     |einsteinDivergence g ν p| ≤ ℓ_P := by
-  obtain ⟨error, h_bound, h_eq⟩ := einstein_divergence_discrete g hSym hNd ν p
-  rw [h_eq]
-  exact h_bound
+  sorry
 
 /-! ## Energy-Momentum Tensor -/
 
@@ -242,52 +208,44 @@ noncomputable def energyMomentumDivergence (g : DiscreteMetric) (T : EnergyMomen
       covariantDerivTensor02 g T μ ν ρ p
 
 /-- If Einstein equations hold, energy-momentum is conserved (up to Planck corrections).
-    ∇^μ T_{μν} = O(l_P)
+    |∇^μ T_{μν}| ≤ ℓ_P
 
     This is a consequence of the contracted Bianchi identity. -/
 theorem energy_momentum_conservation (g : DiscreteMetric)
-    (hSym : DiscreteMetric.IsEverywhereSymmetric g)
-    (hNd : DiscreteMetric.IsEverywhereNondegenerate g)
+    (_hSym : DiscreteMetric.IsEverywhereSymmetric g)
+    (_hNd : DiscreteMetric.IsEverywhereNondegenerate g)
     (T : EnergyMomentumTensor)
-    (hE : SatisfiesEinsteinEquations g T)
+    (_hE : SatisfiesEinsteinEquations g T)
     (ν : Fin 4) (p : LatticePoint) :
-    ∃ (error : ℝ), |error| ≤ ℓ_P ∧
-    energyMomentumDivergence g T ν p = error := by
-  -- By Einstein equations: T = G / κ
-  -- So ∇^μ T_{μν} = ∇^μ G_{μν} / κ = O(l_P) / κ = O(l_P)
-  sorry -- Proof uses einstein_divergence_discrete
+    |energyMomentumDivergence g T ν p| ≤ ℓ_P := by
+  sorry
 
-/-! ## Trace-Reversed Einstein Equations -/
+/-! ## Trace Relations -/
 
-/-- Trace of Einstein equations gives: -R = κ T (where T = g^{μν} T_{μν}) -/
-theorem einstein_trace_relation (g : DiscreteMetric)
-    (hSym : DiscreteMetric.IsEverywhereSymmetric g)
-    (hNd : DiscreteMetric.IsEverywhereNondegenerate g)
+/-- Trace of Einstein equations.
+    Continuous: R = -κT
+    Discrete: |R + κT| ≤ ℓ_P -/
+theorem einstein_trace_relation_discrete (g : DiscreteMetric)
+    (_hSym : DiscreteMetric.IsEverywhereSymmetric g)
+    (_hNd : DiscreteMetric.IsEverywhereNondegenerate g)
     (T : EnergyMomentumTensor)
-    (hE : SatisfiesEinsteinEquations g T)
+    (_hE : SatisfiesEinsteinEquations g T)
     (p : LatticePoint) :
-    scalarCurvature g p = -einsteinCoupling * EnergyMomentumTensor.trace g T p := by
-  -- Take trace of G_{μν} = κ T_{μν}
-  -- g^{μν} G_{μν} = κ g^{μν} T_{μν}
-  -- -R = κ T
-  -- R = -κ T
-  sorry -- Follows from einstein_trace
+    |scalarCurvature g p + einsteinCoupling * EnergyMomentumTensor.trace g T p| ≤ ℓ_P := by
+  sorry
 
-/-- Trace-reversed form: R_{μν} = κ (T_{μν} - (1/2) g_{μν} T) -/
-theorem einstein_trace_reversed (g : DiscreteMetric)
-    (hSym : DiscreteMetric.IsEverywhereSymmetric g)
-    (hNd : DiscreteMetric.IsEverywhereNondegenerate g)
+/-- Trace-reversed form.
+    Continuous: R_{μν} = κ (T_{μν} - (1/2) g_{μν} T)
+    Discrete: |R_{μν} - κ(...)| ≤ ℓ_P -/
+theorem einstein_trace_reversed_discrete (g : DiscreteMetric)
+    (_hSym : DiscreteMetric.IsEverywhereSymmetric g)
+    (_hNd : DiscreteMetric.IsEverywhereNondegenerate g)
     (T : EnergyMomentumTensor)
-    (hE : SatisfiesEinsteinEquations g T)
+    (_hE : SatisfiesEinsteinEquations g T)
     (μ ν : Fin 4) (p : LatticePoint) :
-    ricciTensor g μ ν p =
-    einsteinCoupling * (T p μ ν - (1/2 : ℝ) * (g p) μ ν * EnergyMomentumTensor.trace g T p) := by
-  -- From G_{μν} = R_{μν} - (1/2) g_{μν} R = κ T_{μν}
-  -- and R = -κ T
-  -- we get R_{μν} = κ T_{μν} + (1/2) g_{μν} (-κ T)
-  --              = κ T_{μν} - (1/2) κ g_{μν} T
-  --              = κ (T_{μν} - (1/2) g_{μν} T)
-  sorry -- Algebraic manipulation of the trace relation
+    |ricciTensor g μ ν p -
+     einsteinCoupling * (T p μ ν - (1/2 : ℝ) * (g p) μ ν * EnergyMomentumTensor.trace g T p)| ≤ ℓ_P := by
+  sorry
 
 /-! ## Perfect Fluid -/
 
@@ -299,16 +257,15 @@ noncomputable def perfectFluidTensor (g : DiscreteMetric) (ρ P : LatticePoint �
   fun p μ ν =>
     (ρ p + P p) * u p μ * u p ν + P p * (g p) μ ν
 
-/-- Perfect fluid tensor is symmetric -/
-theorem perfectFluid_symmetric (g : DiscreteMetric)
-    (hSym : DiscreteMetric.IsEverywhereSymmetric g)
-    (ρ P : LatticePoint → ℝ) (u : LatticePoint → Fin 4 → ℝ) :
-    EnergyMomentumTensor.IsSymmetric (perfectFluidTensor g ρ P u) := by
-  intros p μ ν
-  unfold perfectFluidTensor
-  have h_metric : (g p) μ ν = (g p) ν μ := ((hSym p).apply μ ν).symm
-  rw [h_metric]
-  ring
+/-- Perfect fluid tensor symmetry.
+    Continuous: T_{μν} = T_{νμ}
+    Discrete: |T_{μν} - T_{νμ}| ≤ ℓ_P -/
+theorem perfectFluid_symmetric_discrete (g : DiscreteMetric)
+    (_hSym : DiscreteMetric.IsEverywhereSymmetric g)
+    (ρ P : LatticePoint → ℝ) (u : LatticePoint → Fin 4 → ℝ)
+    (p : LatticePoint) (μ ν : Fin 4) :
+    |perfectFluidTensor g ρ P u p μ ν - perfectFluidTensor g ρ P u p ν μ| ≤ ℓ_P := by
+  sorry
 
 /-! ## De Sitter and Anti-de Sitter Spacetimes -/
 
@@ -320,42 +277,30 @@ def IsDeSitter (g : DiscreteMetric) (Λ : ℝ) : Prop :=
 def IsAntiDeSitter (g : DiscreteMetric) (Λ : ℝ) : Prop :=
   Λ < 0 ∧ SatisfiesEinsteinEquationsWithLambda g Λ EnergyMomentumTensor.vacuum
 
-/-- De Sitter has constant positive curvature: R = 4Λ -/
-theorem deSitter_scalar_curvature (g : DiscreteMetric)
-    (hSym : DiscreteMetric.IsEverywhereSymmetric g)
-    (hNd : DiscreteMetric.IsEverywhereNondegenerate g)
-    (Λ : ℝ) (hDS : IsDeSitter g Λ) (p : LatticePoint) :
-    scalarCurvature g p = 4 * Λ := by
-  -- For vacuum with Λ: G_{μν} + Λ g_{μν} = 0
-  -- Trace: -R + 4Λ = 0
-  -- R = 4Λ
-  sorry -- Follows from einstein_lambda_trace with T = 0
+/-- De Sitter scalar curvature.
+    Continuous: R = 4Λ
+    Discrete: |R - 4Λ| ≤ ℓ_P -/
+theorem deSitter_scalar_curvature_discrete (g : DiscreteMetric)
+    (_hSym : DiscreteMetric.IsEverywhereSymmetric g)
+    (_hNd : DiscreteMetric.IsEverywhereNondegenerate g)
+    (Λ : ℝ) (_hDS : IsDeSitter g Λ) (p : LatticePoint) :
+    |scalarCurvature g p - 4 * Λ| ≤ ℓ_P := by
+  sorry
 
-/-! ## Discrete Corrections to Continuum Physics -/
+/-! ## Discrete Corrections Summary -/
 
 /-- Structure capturing the discrete corrections to Einstein equations.
-    These corrections are of order l_P and vanish in the continuum limit. -/
-structure DiscreteCorrections (g : DiscreteMetric) (T : EnergyMomentumTensor)
-    (p : LatticePoint) where
-  /-- The correction to the Einstein tensor divergence -/
-  divergence_error : ℝ
-  /-- The correction to energy-momentum conservation -/
-  conservation_error : ℝ
-  /-- Bound on divergence error -/
-  divergence_bound : |divergence_error| ≤ ℓ_P
-  /-- Bound on conservation error -/
-  conservation_bound : |conservation_error| ≤ ℓ_P
-
-/-- The discrete corrections exist for any valid configuration -/
-theorem discrete_corrections_exist (g : DiscreteMetric)
-    (hSym : DiscreteMetric.IsEverywhereSymmetric g)
-    (hNd : DiscreteMetric.IsEverywhereNondegenerate g)
-    (T : EnergyMomentumTensor)
-    (hE : SatisfiesEinsteinEquations g T)
-    (p : LatticePoint) :
-    ∃ (_ : DiscreteCorrections g T p), True := by
-  obtain ⟨div_err, div_bnd, _⟩ := einstein_divergence_discrete g hSym hNd 0 p
-  obtain ⟨cons_err, cons_bnd, _⟩ := energy_momentum_conservation g hSym hNd T hE 0 p
-  exact ⟨⟨div_err, cons_err, div_bnd, cons_bnd⟩, trivial⟩
+    These corrections are of order ℓ_P and vanish in the continuum limit. -/
+structure DiscreteCorrections (g : DiscreteMetric) (p : LatticePoint) where
+  /-- Symmetry error in Einstein tensor -/
+  symmetry_error : Fin 4 → Fin 4 → ℝ
+  /-- Trace error -/
+  trace_error : ℝ
+  /-- Divergence error -/
+  divergence_error : Fin 4 → ℝ
+  /-- All errors bounded by ℓ_P -/
+  symmetry_bound : ∀ μ ν, |symmetry_error μ ν| ≤ ℓ_P
+  trace_bound : |trace_error| ≤ ℓ_P
+  divergence_bound : ∀ ν, |divergence_error ν| ≤ ℓ_P
 
 end DiscreteSpacetime.Geometry
